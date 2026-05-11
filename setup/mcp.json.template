@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "mem0": {
+      "command": "mem0-mcp-server",
+      "env": {
+        "MEM0_API_KEY": "op://Personal/mem0/api-key"
+      }
+    },
+    "github": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "op://Personal/github-mcp/pat"
+      }
+    },
+    "agentmail": {
+      "command": "npx",
+      "args": ["-y", "@agentmail/mcp-server"],
+      "env": {
+        "AGENTMAIL_API_KEY": "op://Personal/agentmail/api-key"
+      }
+    }
+  }
+}
