@@ -36,6 +36,17 @@ bundles loaded on demand. Each is a directory containing a
   [obra/superpowers](https://github.com/obra/superpowers); adapted
   for any Claude Code environment.
 
+**Reference skills** (`skills/reference/`) — Session-register and
+persona-overlay patterns. Substrate-coupled discipline; fork and
+adapt.
+
+- `chat-mode` — Loads the dialogue register (substantive
+  conversation that can produce binding output, distinct from
+  task execution).
+- `exec-mode` — Loads an executive-persona overlay for broad-scope
+  sweep / cleanup / strategic-reflection sessions. Ships with the
+  persona doctrine file.
+
 **Reference agents** (`agents/reference/`) — Carry concept-level
 patterns we found useful, but cite VADE-internal memos. Fork and
 adapt to your own substrate.
