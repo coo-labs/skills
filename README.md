@@ -17,6 +17,9 @@ bundles loaded on demand. Each is a directory containing a
   hallucinating API signatures.
 - `canvas-ui` — Canvas / tldraw frontend conventions and the
   recurring landmines a tldraw-based codebase teaches you about.
+- `peer-review` — Commission N independent peer reviewers on a
+  long-form authored artifact (essay, paper, RFC, plan) and
+  synthesize findings into a trackable revision pipeline.
 
 **Agents** (`agents/`) — Sub-agent definitions for Claude Code's
 `Agent` tool. Each is a single `.md` file with frontmatter
