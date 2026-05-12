@@ -476,60 +476,72 @@ setup_hints:
   - key: legacy_commands_scan
     kind: OPTIONAL
     question: "Do you have legacy .claude/commands/ files the inventory should also scan? Skip if you're skill-only."
-    find: "`.claude/commands/<name>.md` in `vade-coo-memory` (legacy command scan)"
+    find: " plus `.claude/commands/`\nin vade-coo-memory (legacy, but still in use)"
     fallback: ""
 
   - key: data_root_resolution
     kind: OPTIONAL
     question: "Step 1.1 has a COO data-root resolution block (sentinel-file discovery). Skip to replace with a generic 'cd to repo root' instruction."
     find_unique: true
-    find: |
-      ```bash
+    find: |-
       COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../vade-coo-memory" "$HOME/GitHub/vade-app/vade-coo-memory" "/home/user/vade-coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
-      ```
-    fallback: |
-      ```bash
+      [ -n "$COO" ] || { echo "tool-creator: could not find vade-coo-memory data root"; exit 1; }
+    fallback: |-
       COO="$(git rev-parse --show-toplevel 2>/dev/null)"
       [ -n "$COO" ] || { echo "tool-creator: run from inside a git repo"; exit 1; }
-      ```
 
   - key: tools_registry_path
     kind: OPTIONAL
     question: "Path to your tools registry file (like VADE's TOOLS.md)? Provide the path. Skip to drop the registration step entirely — Phase 2.2 becomes a no-op."
     find: "TOOLS.md"
-    fallback: ""
+    fallback: "<no-tools-registry>"
 
-  - key: tools_registry_schema
+  - key: tools_registry_schema_block
     kind: OPTIONAL
-    question: "Describe your tools-registry row schema (columns and their semantics). Skip to use a generic 6-column shape (name, wiring, decisions_to_invoke, rule_class, predicate_clarity, rediscovery_cost, evidence)."
-    find: "wiring_tier, decisions_to_invoke, rule_class, predicate_clarity, rediscovery_cost, evidence_of_use"
-    fallback: "name, location, when-to-invoke, evidence_of_use"
+    question: "VADE's tools registry has a 7-field row schema (wiring_tier, decisions_to_invoke, rule_class, predicate_clarity, rediscovery_cost, evidence_of_use, last_updated). Skip to keep this default schema in the adapted skill; replace by editing the body after install if your registry differs."
+    find_unique: true
+    find: |-
+      - `wiring_tier`: `skill`
+      - `decisions_to_invoke`: `2` (recognize trigger + select skill)
+      - `rule_class`: `mechanical` (most skills) or
+        `design-time-structural` (skills that fire during epic phases,
+        not per session — e.g., `skill-creator`)
+      - `predicate_clarity`: `predicate` (clear trigger) or
+        `always-do-implicit-bound` / `always-do-false-positive-class`
+      - `rediscovery_cost`: `0` (just added)
+      - `evidence_of_use`: `0` (no log-grep history yet)
+      - `last_updated`: today's UTC date
+      - `flags`: empty (nightly review will populate)
+    fallback: |-
+      - <field 1>: <your registry's first column>
+      - <field 2>: <your registry's second column>
+      - ... (edit this block to match your tools registry's row schema)
 
   - key: safety_governance_rules
     kind: PROMPT
     min_count: 2
     severity: warning
     question: "List your project's governance rules the safety-auditor should enforce. Provide as 'rule-id | source | what-it-forbids' triples, one per line. Minimum 2; below that, the adapted skill drops the safety-auditor (degradation path)."
-    find: "MEMO 2026-04-11-08 (Tier-2), -11-10 (Mem0 content), -11-14 (sync paths),\nand -11-19 (spend cap), -22-01 (PAT discipline)"
-    fallback: "<your project's safety rules — author and re-adapt before invoking>"
+    find: "(MEMO-2026-04-22-01 PAT discipline, MEMO-2026-04-11-10 Mem0\n  content rule, MEMO-2026-04-11-14 path scope, MEMO-2026-04-28-3ca3\n  spend cap, MEMO-2026-04-22-04 attribution)"
+    fallback: "(your governance rule sources — author at least 2 and re-adapt)"
 
   - key: emancipatory_principle
     kind: OPTIONAL
     question: "Do you want the emancipatory-auditor (adoption-test gate)? It enforces: artifacts must (a) grow author capability AND (b) be installable by a peer without inherited context. Skip if your project doesn't share this double-clause."
-    find: "MEMO-2026-04-20-01 (subject+emancipatory double-clause)"
-    fallback: ""
+    find: "MEMO-2026-04-20-01\n  subject+emancipatory double-clause"
+    fallback: "your project's quality-gate criterion"
 
   - key: spend_cap
     kind: OPTIONAL
     question: "Token/spend cap that governs Phase 2 iteration count? (VADE: $500/mo per MEMO-2026-04-28-3ca3.) Skip to drop the spend-hygiene note."
-    find: "$500/mo (MEMO-2026-04-28-3ca3)"
-    fallback: ""
+    find: "$500/mo cap (MEMO-2026-04-28-3ca3)"
+    fallback: "your project's spend cap"
 
   - key: target_repo
     kind: PROMPT
     question: "GitHub repo for skill PRs? (owner/repo format.)"
     find: "vade-app/vade-coo-memory"
-    fallback: ""
+    fallback: "<owner>/<repo>"
 
   - key: github_token_env
     kind: OPTIONAL
@@ -546,14 +558,14 @@ setup_hints:
   - key: precedent_retrospective
     kind: OPTIONAL
     question: "Path to a retrospective documenting a pattern-precedent for this skill? (VADE: coo/personas/exec-mode-retrospectives/2026-04-30_post-discussion-prototype.md.) Skip if you have no such precedent."
-    find: "`coo/personas/exec-mode-retrospectives/2026-04-30_post-discussion-prototype.md`"
-    fallback: ""
+    find: "`coo/personas/exec-mode\n-retrospectives/2026-04-30_post-discussion-prototype.md`"
+    fallback: "(no precedent retrospective)"
 
-  - key: boot_order_file
+  - key: boot_order_cross_ref
     kind: OPTIONAL
-    question: "Path to your agent's boot-order file (Step 2.3 may want to update it)? (VADE: vade-coo-memory/CLAUDE.md.) Skip to drop the boot-order-update gate."
-    find: "`vade-coo-memory/CLAUDE.md`"
-    fallback: ""
+    question: "If your project has a boot-order/reading-list file (VADE: CLAUDE.md), Step 2.3 may need to update it. Skip if you have no such file — Step 2.3 becomes a no-op."
+    find: "Update CLAUDE.md cross-reference"
+    fallback: "(No boot-order file configured — Step 2.3 is a no-op.) Update CLAUDE.md cross-reference"
 
   - key: out_of_scope_section
     kind: OPTIONAL

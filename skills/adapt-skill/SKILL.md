@@ -265,9 +265,25 @@ the substitution map, and the final installed SKILL.md.
 skills/adapt-skill/SKILL.md (this file)
 skills/adapt-skill/SCHEMA.md (the # Setup hints manifest schema)
 skills/adapt-skill/WORKED-EXAMPLE.md (status-check adaptation walkthrough)
+skills/adapt-skill/scripts/dry-run-validator.py (QA tool: parses a hints manifest, verifies every find: string is in the body, reports problems)
 skills/reference/<name>/SKILL.md (each reference skill carries its own hints)
 agents/reference/<name>.md (each reference agent carries its own hints)
 ```
+
+## Validating a reference skill's hints manifest
+
+Before adapting (or when authoring a new reference skill), run the
+validator against the source SKILL.md:
+
+```sh
+python3 skills/adapt-skill/scripts/dry-run-validator.py \
+  skills/reference/<name>/SKILL.md
+```
+
+Exit 0 means every declared `find:` string is present in the body
+and every `script_hints` path resolves. Exit 1 means the manifest
+has gaps the adapter can't paper over. Stderr lists each problem
+with the offending hint key.
 
 ## Cross-references
 

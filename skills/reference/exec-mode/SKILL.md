@@ -115,13 +115,13 @@ setup_hints:
   - key: persona_doctrine_path_long
     kind: OPTIONAL
     question: "Same path again, with full prose context — see find string. Skip to leave the VADE worked-example reference."
-    find: "(originally `coo/personas/exec-mode.md` in the substrate this was extracted from — adapt to your own project's location)"
+    find: "(originally `coo/personas/exec-mode.md` in the substrate this was\nextracted from — adapt to your own project's location)"
     fallback: ""
 
   - key: repo_set_description
     kind: PROMPT
     question: "What's the repo set this exec-mode will sweep across? (Examples: 'the three repos under myorg', 'just this one repo', 'all repos in my GitHub org'.) Used as a default-scope description in Step 5."
-    find: "open PRs across the five vade-app repos; open `proj:*` issues"
+    find: "open PRs across the five\n   vade-app repos; open `proj:*` issues"
     fallback: "open PRs across your repo set; open prioritized issues"
 
   - key: vade_repos_aside

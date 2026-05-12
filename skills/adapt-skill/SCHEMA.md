@@ -278,17 +278,30 @@ add its `# Setup hints` section at the bottom. Checklist:
 3. Write `find` strings that are unambiguous. Prefer paths with
    leading directory context (`coo/retrospectives/`) over bare
    filenames.
-4. If a string would collide, mark `find_unique: true` and pick a
+4. **Verify each `find` string actually appears in the body**
+   — markdown wraps lines at ~70 chars, so a string you wrote as
+   one line ("open PRs across the five vade-app repos") may
+   actually live across two ("open PRs across the five\n   vade-app
+   repos") in the rendered source. The validator at
+   `scripts/dry-run-validator.py` enforces this.
+5. If a string would collide, mark `find_unique: true` and pick a
    surrounding-context-rich excerpt.
-5. Provide a `fallback` for every entry — what does the installed
+6. Provide a `fallback` for every entry — what does the installed
    skill look like if the user skips this?
-6. If the skill embeds a value/philosophy that's not universally
+7. If the skill embeds a value/philosophy that's not universally
    shared, add `philosophical_gate`.
-7. If the skill needs other helpers or skills to be installed
+8. If the skill needs other helpers or skills to be installed
    first, add `requires`.
-8. If the skill has bundled scripts/templates, add `script_hints`.
-9. Test by running `/adapt-skill <name> --dry-run` and verifying
-   the substitution map covers everything.
+9. If the skill has bundled scripts/templates, add `script_hints`.
+10. Validate with `scripts/dry-run-validator.py`:
+    ```sh
+    python3 scripts/dry-run-validator.py path/to/SKILL.md
+    ```
+    Exit 0 means every `find` string was located. The validator
+    also catches: malformed YAML, missing `find` fields, ambiguous
+    `find_unique` (≠1 occurrence), and `script_hints` paths that
+    don't exist in the skill directory. Run before committing any
+    new reference skill or hints update.
 
 ## Cross-references
 
