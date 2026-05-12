@@ -5,6 +5,50 @@ All notable changes to this repository are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows [Semantic Versioning](https://semver.org/).
 
+## v0.4.0 — 2026-05-12
+
+Extends the `skills/reference/` tier with six substrate-discipline
+skills from the VADE corpus — patterns that were live in the
+private substrate but had not yet been ported to the public corpus.
+Same fork-and-adapt model as v0.3.0: pattern ports cleanly,
+substrate references in the discipline files don't.
+
+### Reference skills
+
+- `skills/reference/day-overview` — briefing-shape synthesis of a
+  day's shipped work (memos, merged PRs, integrity snapshot)
+  grouped into lanes, with carried-forward follow-ups and ranked
+  next actions. Ships with `scripts/day-overview.sh` as the
+  worked manifest-gatherer.
+- `skills/reference/request-briefing` — author an NNN-numbered
+  session-handoff briefing. Load-bearing structural requirement:
+  a mandatory "Known bounds" section where the author names
+  their blind spots so the recipient re-examines the framing
+  rather than rubber-stamping it.
+- `skills/reference/commission-retrospective` — impartial
+  project-historian retrospective on a window of project work.
+  Two evidence sub-agents in parallel (memos-and-essays analyst,
+  PR/issue-graph analyst), then a third-person draft that
+  refuses recycled defended positions. Ships with shell
+  pre-flight and three sub-agent templates.
+- `skills/reference/end-session` — session close-down checklist.
+  Begins with an externalization-reflection step (did anything
+  this session produce a transferable pattern worth packaging?),
+  followed by one episodic-memory entry, a session log,
+  transcript-export sidecar pickup, and a marker file that
+  silences a Stop hook.
+- `skills/reference/status-check` — six-item read-only grounding
+  audit (who/what/where/next/decision/resource) capped at eight
+  lines, with `⚠ not grounded` as the explicit "I can't answer
+  that from loaded context" marker. The most substrate-agnostic
+  of the reference skills.
+- `skills/reference/tool-creator` — staged-checkpoint skill
+  authoring. Phase 1 draft (inventory check, frontmatter
+  decision-tree, deliberate stop). Phase 2 finalize (two
+  adversarial auditors in parallel, tools-registry row, PR).
+  Four canonical refactor patterns documented. Ships with four
+  templates.
+
 ## v0.3.0 — 2026-05-11
 
 Adds `skills/reference/` tier — session-register and persona-overlay

@@ -36,9 +36,12 @@ bundles loaded on demand. Each is a directory containing a
   [obra/superpowers](https://github.com/obra/superpowers); adapted
   for any Claude Code environment.
 
-**Reference skills** (`skills/reference/`) — Session-register and
-persona-overlay patterns. Substrate-coupled discipline; fork and
-adapt.
+**Reference skills** (`skills/reference/`) — Session-register
+loaders, persona overlays, and substrate-discipline patterns
+(session-end checklist, briefing-shape day synthesis, project-
+historian commissions, handoff briefings with honesty gates,
+grounding audits, staged skill authoring). Substrate-coupled
+discipline; fork and adapt.
 
 - `chat-mode` — Loads the dialogue register (substantive
   conversation that can produce binding output, distinct from
@@ -46,6 +49,30 @@ adapt.
 - `exec-mode` — Loads an executive-persona overlay for broad-scope
   sweep / cleanup / strategic-reflection sessions. Ships with the
   persona doctrine file.
+- `day-overview` — Briefing-shape synthesis of a day's shipped
+  work — memos, merged PRs, integrity snapshot — grouped into
+  lanes. Ships with a manifest-gatherer script.
+- `request-briefing` — Author an NNN-numbered session-handoff
+  briefing with a mandatory "Known bounds" honesty gate where the
+  author names their blind spots so the recipient re-examines
+  the framing rather than rubber-stamping it.
+- `commission-retrospective` — Commission an impartial project-
+  historian retrospective on a window of project work. Two
+  evidence sub-agents in parallel, then a third-person draft
+  that refuses recycled defended positions. Ships with shell
+  pre-flight and three sub-agent templates.
+- `end-session` — Session close-down checklist with an
+  externalization-reflection step (did this session produce a
+  pattern worth packaging?), one episodic-memory entry, a session
+  log, and a marker file that silences the Stop hook.
+- `status-check` — Six-item read-only grounding audit
+  (who/what/where/next/decision/resource) capped at eight lines,
+  with `⚠ not grounded` as the explicit "I can't answer that
+  from loaded context" marker. Largely substrate-agnostic.
+- `tool-creator` — Staged skill authoring: Phase 1 draft with
+  inventory check and frontmatter decision-tree, then a deliberate
+  stop for operator review; Phase 2 finalize with two adversarial
+  auditors in parallel, a tools-registry row, and a PR.
 
 **Reference agents** (`agents/reference/`) — Carry concept-level
 patterns we found useful, but cite VADE-internal memos. Fork and
