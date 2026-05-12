@@ -260,3 +260,81 @@ MEMO-2026-04-27-02 (relocation from vade-core/docs/briefings/ to current home)
   second canonical example.
 - vade-coo-memory#333 — command→skill migration sweep epic; this
   skill is Class B item 4 of 4.
+
+# Setup hints
+
+*Read by [`adapt-skill`](../../adapt-skill/SKILL.md). Stripped from
+the adapted output. Schema: [`adapt-skill/SCHEMA.md`](../../adapt-skill/SCHEMA.md).*
+
+```yaml
+setup_hints:
+  - key: briefings_dir
+    kind: PROMPT
+    question: "Where should briefings live in your repo? (Examples: docs/briefings/, .claude/briefings/, coo/briefings/.) The adapt-skill will not create README.md or TEMPLATE.md inside this directory — you'll need to author those before running the adapted skill."
+    find: "coo/briefings/"
+    fallback: "docs/briefings/"
+
+  - key: data_root_discovery
+    kind: PROMPT
+    question: "The Step 0 block does data-root discovery via a sentinel file (coo/memo_protocol.md). What's the equivalent sentinel file in your substrate that proves the working dir is the right repo? (Or skip — the block will be replaced with 'cd to your repo root before running'.)"
+    find_unique: true
+    find: |
+      ```bash
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../vade-coo-memory" "$HOME/GitHub/vade-app/vade-coo-memory" "/home/user/vade-coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      [ -n "$COO" ] || { echo "request-briefing: could not find vade-coo-memory data root"; exit 1; }
+      ```
+    fallback: |
+      ```bash
+      REPO_ROOT="$(git rev-parse --show-toplevel)"
+      [ -n "$REPO_ROOT" ] || { echo "request-briefing: run from inside a git repo"; exit 1; }
+      ```
+
+  - key: data_root_var
+    kind: PROMPT
+    question: "What shell variable name should hold the repo root in this skill? (VADE uses $COO. Examples: $REPO, $REPO_ROOT, $PROJECT.)"
+    find: "$COO"
+    fallback: "$REPO_ROOT"
+
+  - key: target_repo
+    kind: PROMPT
+    question: "What GitHub repo should briefing PRs target? (owner/repo format. Examples: myorg/notes, alice/research.)"
+    find: "vade-app/vade-coo-memory"
+    fallback: ""
+    severity: warning
+
+  - key: github_token_env
+    kind: OPTIONAL
+    question: "What environment variable holds your GitHub PAT for PR creation? (Examples: GITHUB_TOKEN, GITHUB_MCP_PAT.) Skip if you rely on gh's default auth."
+    find: "GH_TOKEN=\"$GITHUB_MCP_PAT\" "
+    fallback: ""
+
+  - key: branch_prefix
+    kind: OPTIONAL
+    question: "Branch naming prefix for new briefing branches? (VADE uses claude/briefing-NNN-slug.) Skip for the default."
+    find: "claude/briefing-${NEXT_NNN}-<slug>"
+    fallback: "briefing-${NEXT_NNN}-<slug>"
+
+  - key: example_briefings
+    kind: OPTIONAL
+    question: "Path(s) to existing briefings to reference as author-blurb examples? Comma-separated, or skip if you have none yet (first briefing has no prior art)."
+    find: |
+      Compose a one-line author blurb that matches the shape of the
+      existing examples in
+      `$COO/coo/briefings/001-session-token-plan.md` and
+      `003-claude-code-cross-session-state.md`. Be specific about what
+      your scope can and cannot see — the recipient relies on this to
+      calibrate trust in your framing.
+    fallback: |
+      Compose a one-line author blurb. Be specific about what your
+      scope can and cannot see — the recipient relies on this to
+      calibrate trust in your framing. (No prior briefings yet —
+      this one establishes the shape.)
+    cold_start: skip
+
+requires:
+  - kind: file
+    name: "briefings/ directory with README.md and TEMPLATE.md"
+    detect: "test -f \"$(git rev-parse --show-toplevel 2>/dev/null)\"/<your-briefings_dir>/TEMPLATE.md && test -f \"$(git rev-parse --show-toplevel 2>/dev/null)\"/<your-briefings_dir>/README.md"
+    severity: warning
+    install_hint: "Author a briefings/README.md (covers lifecycle + NNN namespace) and TEMPLATE.md (the fill-in template) before running the adapted skill. The skill reads both at runtime; without them, Step 1 fails. See vade-app/vade-coo-memory/coo/briefings/ for the worked-example pair."
+```

@@ -301,3 +301,148 @@ vade-coo-memory/coo/retrospectives/<date>_day-overview.md (output location)
   cross-consumer refactor).
 - vade-coo-memory#333 — command→skill migration sweep epic; this
   skill is Class C item 1 of 3.
+
+# Setup hints
+
+*Read by [`adapt-skill`](../../adapt-skill/SKILL.md). Stripped from
+the adapted output. Schema: [`adapt-skill/SCHEMA.md`](../../adapt-skill/SCHEMA.md).
+The bundled `scripts/day-overview.sh` is REGENERATE-PER-USER —
+the meta-skill emits a skeleton, not a working script; you author
+the manifest builder against your own substrate.*
+
+```yaml
+requires:
+  - kind: file
+    name: "post-discussion helper (for --post flag only)"
+    detect: "test -f \"$(git rev-parse --show-toplevel 2>/dev/null)\"/.claude/_lib/post-discussion.sh"
+    severity: warning
+    install_hint: "Only needed if you'll use --post to publish to a discussion surface. The shared helper carries platform-specific GraphQL IDs and is best authored per-substrate. Without it, --post is unavailable; the rest of the skill works."
+
+setup_hints:
+  - key: data_root_var
+    kind: PROMPT
+    question: "What shell variable name should hold the repo root in this skill? (VADE uses $COO.) Examples: $REPO, $REPO_ROOT, $PROJECT."
+    find: "$COO"
+    fallback: "$REPO_ROOT"
+
+  - key: data_root_discovery
+    kind: OPTIONAL
+    question: "Step 0 discovers the repo root via a sentinel file (VADE looks for coo/memo_protocol.md). What's your equivalent sentinel? Skip to use git rev-parse instead."
+    find_unique: true
+    find: |
+      ```bash
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../vade-coo-memory" "$HOME/GitHub/vade-app/vade-coo-memory" "/home/user/vade-coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      [ -n "$COO" ] || { echo "day-overview: could not find vade-coo-memory data root"; exit 1; }
+      ```
+    fallback: |
+      ```bash
+      REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
+      [ -n "$REPO_ROOT" ] || { echo "day-overview: run from inside a git repo"; exit 1; }
+      ```
+
+  - key: retrospectives_dir
+    kind: PROMPT
+    question: "Where should day-overview files land? (VADE: coo/retrospectives/.) Examples: docs/retrospectives/, logs/daily/, .agent-logs/days/."
+    find: "coo/retrospectives/<date>_day-overview.md"
+    fallback: "retrospectives/<date>_day-overview.md"
+
+  - key: retrospectives_dir_short
+    kind: PROMPT
+    question: "Same retrospectives dir without the trailing filename (used in several body locations). Provide just the directory path with trailing slash."
+    find: "coo/retrospectives/"
+    fallback: "retrospectives/"
+
+  - key: memos_dir_ref
+    kind: OPTIONAL
+    question: "Do you have a memos directory the skill should mention as the source-of-truth for lanes? (VADE: coo/memos/.) Skip if you have no memo system."
+    find: "`coo/memos/`"
+    fallback: "your project's records directory"
+
+  - key: github_token_env
+    kind: OPTIONAL
+    question: "Environment variable for your GitHub PAT? (Examples: GITHUB_TOKEN, GITHUB_MCP_PAT.) Skip if gh's default auth works."
+    find: "GH_TOKEN=\"$GITHUB_MCP_PAT\" "
+    fallback: ""
+
+  - key: target_repo_prefix
+    kind: PROMPT
+    question: "GitHub org or owner prefix for your repos? (VADE: vade-app.) Examples: myorg, alice."
+    find: "vade-app/"
+    fallback: ""
+
+  - key: target_repo
+    kind: PROMPT
+    question: "Primary repo for day-overview PRs? (owner/repo format.)"
+    find: "vade-app/vade-coo-memory"
+    fallback: ""
+
+  - key: branch_prefix
+    kind: OPTIONAL
+    question: "Branch naming prefix for new day-overview branches? (VADE uses claude/day-overview-YYYY-MM-DD.) Skip for the default."
+    find: "claude/day-overview-${DATE}"
+    fallback: "day-overview-${DATE}"
+
+  - key: branch_match
+    kind: OPTIONAL
+    question: "Branch-name glob for the 'reuse cloud-session designated branch' check? (VADE: claude/*.) Skip for the default."
+    find: "  claude/*) BRANCH=\"$CURRENT_BRANCH\" ;;"
+    fallback: "  agent/*|claude/*) BRANCH=\"$CURRENT_BRANCH\" ;;"
+
+  - key: vade_repo_aside_main
+    kind: OPTIONAL
+    question: "Skip unless you want to keep the 'vade-app/<repo>' reference in the gh pr view example."
+    find: "GH_TOKEN=\"$GITHUB_MCP_PAT\" gh pr view <N> --repo vade-app/<repo>"
+    fallback: "GH_TOKEN=\"$GITHUB_MCP_PAT\" gh pr view <N> --repo <owner>/<repo>"
+
+  - key: post_discussion_step
+    kind: OPTIONAL
+    question: "Do you have a discussion-post surface and helper script for the --post flag? Skip to drop Step 6 entirely."
+    find_unique: true
+    find: |
+      ### 6. Optional: post to Discussions Retrospectives
+      
+      If `$ARGUMENTS` contains `--post`:
+      
+      ```bash
+      # Body = file content + standard source-link footer (day-overview-specific)
+      {
+        cat "$TARGET_FILE"
+        printf '\n\n---\n\n*Source: [`coo/retrospectives/%s_day-overview.md`](https://github.com/vade-app/vade-coo-memory/blob/main/coo/retrospectives/%s_day-overview.md) on `vade-app/vade-coo-memory`. The file is the source of truth; this discussion is the publication surface.*\n' "$DATE" "$DATE"
+      } > "/tmp/day-overview-body-${DATE}.md"
+      
+      # Discussion title — strip the leading "# " from the file's H1 line; no [retrospective*] prefix
+      TITLE="$(head -1 "$TARGET_FILE" | sed 's/^# //')"
+      
+      # Post via the shared helper (created 2026-04-30, vade-coo-memory#313 PR)
+      RESULT=$(bash "$COO/.claude/_lib/post-discussion.sh" \
+        retrospectives \
+        "$TITLE" \
+        "/tmp/day-overview-body-${DATE}.md" \
+        LA_kwDOR_h5U88AAAACgyezFw)
+      
+      URL="$(jq -r '.url' <<<"$RESULT")"
+      NUMBER="$(jq -r '.number' <<<"$RESULT")"
+      ```
+      
+      The helper at `.claude/_lib/post-discussion.sh` owns
+      the GraphQL mechanic, the seven category IDs, and the repo ID.
+      The `retrospective: day-overview` label ID
+      (`LA_kwDOR_h5U88AAAACgyezFw`) is passed as the fourth argument.
+      **The helper is shared with the `post-discussion` skill** — both
+      consumers route through the same authoritative GraphQL surface.
+      
+      Tell the user the discussion number and URL.
+    fallback: |
+      ### 6. (Skipped — no discussion-post surface configured)
+      
+      Adapt-skill: no `_lib/post-discussion.sh` helper detected in your
+      substrate. The `--post` flag is unavailable in this adapted skill.
+      If you later install a discussion-post helper (e.g. by adapting the
+      `post-discussion` skill), re-run `/adapt-skill day-overview` to
+      restore this step.
+
+script_hints:
+  - path: scripts/day-overview.sh
+    treatment: REGENERATE-PER-USER
+    rationale: "Hardcodes five VADE repo names in REPOS array; coo/memo_index.json path; the $VADE_CLOUD_STATE_DIR integrity-check probe; four-level path-relative discovery. Mechanical substitution can't safely rewrite all of these without breaking shell quoting. Skeleton emitted with TODO comments for: REPOS list, memo-index path (or skip-block), integrity-check probe (or skip-block), output directory."
+```

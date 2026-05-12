@@ -148,3 +148,36 @@ vade-coo-memory/coo/status_check_template.md (v0.1, issue #50)
 - vade-coo-memory#345 — v3 /exec-mode migration (skill-primitive
   precedent).
 - MEMO-2026-04-20-01 — subject + emancipatory double-clause.
+
+# Setup hints
+
+*Read by [`adapt-skill`](../../adapt-skill/SKILL.md). Stripped from
+the adapted output. Schema: [`adapt-skill/SCHEMA.md`](../../adapt-skill/SCHEMA.md).*
+
+```yaml
+setup_hints:
+  - key: spec_template_path
+    kind: OPTIONAL
+    question: "Do you have a local spec or template file that should be the authoritative tie-breaker for this skill? Provide the path, or skip."
+    find: "[`coo/status_check_template.md`](../../../coo/status_check_template.md)"
+    fallback: "this file"
+    severity: warning
+
+  - key: memory_layer_constraint
+    kind: OPTIONAL
+    question: "What persistent memory layer does your project use? The skill must not auto-write to it. (Examples: 'Mem0', 'a custom store', 'none'.)"
+    find: "Must not auto-write to Mem0 (MEMO-2026-04-11-10)."
+    fallback: "Must not write to any persistent memory layer."
+
+  - key: content_tier_constraint
+    kind: OPTIONAL
+    question: "Does your project have a content-tier or sensitivity classification term? (VADE uses 'Tier-2'.) Provide the term, or skip for generic phrasing."
+    find: "Must not leak Tier-2 content (MEMO-2026-04-11-08)."
+    fallback: "Must not surface confidential project content."
+
+  - key: subject_label
+    kind: OPTIONAL
+    question: "What's the subject-agent label in your substrate? (VADE uses 'COO'.) Skip for generic 'agent' phrasing."
+    find: "works for COO and non-COO agents"
+    fallback: "works for any agent (specialized or generic)"
+```

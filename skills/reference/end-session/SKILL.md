@@ -141,3 +141,158 @@ container tears down.
 
 Always write this even if some earlier steps were skipped (e.g., no memos,
 no plans). The marker means "end-session ran", not "every step fired".
+
+# Setup hints
+
+*Read by [`adapt-skill`](../../adapt-skill/SKILL.md). Stripped from
+the adapted output. Schema: [`adapt-skill/SCHEMA.md`](../../adapt-skill/SCHEMA.md).
+This skill is heavily surface-coupled: every output destination
+(Mem0, log path, marker, Journal) is its own optional capability.
+The externalization-reflection step (Step 0) is the load-bearing
+part and survives substitution; the rest of the steps are
+independently optional.*
+
+```yaml
+setup_hints:
+  - key: boot_procedure_ref
+    kind: OPTIONAL
+    question: "Path to your agent's session-end checklist canonical source (e.g. CLAUDE.md § 'When you end a session')? Skip to drop the reference."
+    find: "`vade-coo-memory/CLAUDE.md` § \"When you end a session\""
+    fallback: "your project's session-end checklist (if you have one — this skill is the checklist if not)"
+
+  - key: plan_files_setup
+    kind: OPTIONAL
+    question: "Where do in-session plan files live for your harness? (Examples: $HOME/.claude/plans.) Skip to drop Step 1 entirely."
+    find_unique: true
+    find: |
+      ```bash
+      PLANS_DIR="$HOME/.claude/plans"
+      CLAUDE_PLANS_DIR="/home/user/.claude/plans"
+      {
+        [ -d "$PLANS_DIR" ]        && find "$PLANS_DIR"        -maxdepth 1 -type f -name '*.md' 2>/dev/null
+        [ "$PLANS_DIR" != "$CLAUDE_PLANS_DIR" ] && [ -d "$CLAUDE_PLANS_DIR" ] \
+                                   && find "$CLAUDE_PLANS_DIR" -maxdepth 1 -type f -name '*.md' 2>/dev/null
+      } | sort -u
+      ```
+    fallback: |
+      ```bash
+      # (No plan-files directory configured — skip this step if your harness
+      # doesn't keep in-session plans, or set PLANS_DIR before running.)
+      PLANS_DIR="${PLANS_DIR:-}"
+      [ -n "$PLANS_DIR" ] && [ -d "$PLANS_DIR" ] && find "$PLANS_DIR" -maxdepth 1 -type f -name '*.md' 2>/dev/null
+      ```
+
+  - key: plans_repo_path
+    kind: OPTIONAL
+    question: "Where should preserved plan files land in your working repo? (Examples: .vade/plans, docs/plans.) Skip if you don't preserve plans."
+    find: "`<working-repo>/.vade/plans/<slug>.md`"
+    fallback: "`<working-repo>/.plans/<slug>.md` (or skip this step)"
+
+  - key: memory_tool
+    kind: OPTIONAL
+    question: "What MCP tool or API do you use for persistent episodic memory? (Examples: mcp__mem0__add_memory.) Skip to drop Step 2 entirely."
+    find: "Use `mcp__mem0__add_memory` (SOP-MEM-001 v1.1 §5). One entry per session."
+    fallback: "Skip Step 2 — your harness has no persistent episodic-memory layer configured. (Either install one, or write a plain-file session log via Step 4 instead.)"
+
+  - key: memory_user_id
+    kind: OPTIONAL
+    question: "What user_id should episodic memory entries be scoped to? (VADE uses 'ven'.) Skip for generic 'agent_user'."
+    find: 'user_id   = "ven"'
+    fallback: 'user_id   = "agent_user"'
+
+  - key: memory_created_by
+    kind: OPTIONAL
+    question: "What agent identifier should appear in memory metadata as 'created_by'? (VADE uses 'coo'.)"
+    find: "created_by:     \"coo\","
+    fallback: "created_by:     \"agent\","
+
+  - key: run_id_path
+    kind: DETECT
+    detection: "test -f \"$HOME/.vade/agent-state/current-run-id\" && echo \"$HOME/.vade/agent-state/current-run-id\" || true"
+    find: "$HOME/.vade/agent-state/current-run-id"
+    fallback: ""
+
+  - key: memo_sync_step
+    kind: OPTIONAL
+    question: "Do you use a memo system with a sync command (VADE has /memo-sync that reconciles a Mem0 pointer layer)? Skip to drop Step 3 entirely."
+    find_unique: true
+    find: |
+      ## 3. Run `/memo-sync` if a memo was issued this session
+      
+      If any memo was written to `coo/memos/` during this session, run `/memo-sync`
+      now to reconcile the Mem0 `memo_pointer` layer (MEMO-2026-04-24-05). Skip if
+      no memos were issued — a no-op sync adds latency for nothing.
+    fallback: ""
+
+  - key: session_log_dir
+    kind: OPTIONAL
+    question: "Where should session logs land? (Examples: vade-agent-logs/sessions/, .agent-logs/sessions/.) Skip to drop Step 4."
+    find: "vade-agent-logs/sessions/"
+    fallback: ""
+
+  - key: session_log_repo_search
+    kind: OPTIONAL
+    question: "Bash candidate-paths block for locating your session-logs repo? (See find string.) Skip to use a single hardcoded path."
+    find_unique: true
+    find: |
+      ```bash
+      agent_logs_dir=""
+      for _cand in "$HOME/GitHub/vade-app/vade-agent-logs" "/home/user/vade-agent-logs"; do
+        if [ -d "$_cand" ]; then agent_logs_dir="$_cand"; break; fi
+      done
+      if [ -n "$agent_logs_dir" ] && [ -d "$agent_logs_dir/transcripts" ]; then
+        find "$agent_logs_dir/transcripts" -type f \
+          \( -name '*.meta.json' -o -name '*.export-error.txt' \) \
+          -mmin -60 2>/dev/null | sort
+      fi
+      ```
+    fallback: |
+      ```bash
+      # (Configure your session-logs repo path here if you have one.)
+      agent_logs_dir="${AGENT_LOGS_DIR:-}"
+      ```
+
+  - key: journal_url
+    kind: OPTIONAL
+    question: "Do you have a Journal / discussion surface for reflection posts? Provide URL, or skip to drop Step 5 entirely."
+    find: "`https://github.com/vade-app/vade-core/discussions/categories/journal`"
+    fallback: ""
+
+  - key: journal_norms_ref
+    kind: OPTIONAL
+    question: "Path to a norms doc covering your Journal-posting conventions? Skip if you have none."
+    find: "Norms: `vade-coo-memory/coo/agent-boot-discussions-check.md` §Journal."
+    fallback: ""
+
+  - key: marker_path
+    kind: OPTIONAL
+    question: "What marker-file path does your Stop hook look for? (VADE: $HOME/.vade/.end-session-done.) Skip to drop Step 6 if you have no Stop hook."
+    find: "$HOME/.vade/.end-session-done"
+    fallback: ""
+
+degradations:
+  - when: "marker_path fallback applied (no Stop hook configured)"
+    body_replace:
+      find_unique: true
+      find: |
+        ## 6. Write the marker file (always last)
+        
+        ```bash
+        touch "$HOME/.vade/.end-session-done"
+        ```
+        
+        This tells the Stop hook that session-end cleanup is complete. The hook will
+        consume the marker on its next fire and exit silently rather than emitting a
+        nudge. The marker is zero-byte and session-scoped — it disappears when the
+        container tears down.
+        
+        Always write this even if some earlier steps were skipped (e.g., no memos,
+        no plans). The marker means "end-session ran", not "every step fired".
+      with: |
+        ## 6. (Skipped — no Stop hook configured)
+        
+        This adapted skill has no marker-file path configured. If you later add a
+        Stop hook that looks for an end-session marker, re-run /adapt-skill end-session
+        and provide its path.
+    note: "No Stop hook marker — Step 6 is a no-op. If your harness has a Stop hook that nudges 'did you end-session?', configure its marker path and re-adapt."
+```

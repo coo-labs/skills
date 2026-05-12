@@ -56,3 +56,98 @@ If the answer is "they'd need to ask me first" — score E < 1, reject.
 - Mark your task in the shared list complete only when no specialist has an unresolved REWORK from you.
 
 Be ruthless. The double-clause is what the project IS, not a stretch goal — `coo/foundations/2026-04-20_subject_not_object.md` is your reading.
+
+# Setup hints
+
+*Read by [`adapt-skill`](../../skills/adapt-skill/SKILL.md). Stripped
+from the adapted output. Schema:
+[`adapt-skill/SCHEMA.md`](../../skills/adapt-skill/SCHEMA.md).
+This agent embeds a theory of value (the subject+emancipatory
+double-clause), not just substrate paths. The philosophical_gate
+ensures the user actually buys into the theory before mechanical
+substitution proceeds — otherwise the auditor will produce
+verdicts the user doesn't trust.*
+
+```yaml
+philosophical_gate:
+  question: |
+    This auditor enforces a double-clause: every artifact must
+    (a) grow the AUTHOR'S capability AND (b) be installable by a
+    PEER agent without inherited context. It rejects artifacts that
+    are purely self-compounding OR purely altruistic. Does this
+    match how your project judges what's worth shipping?
+  yes_label: "Yes, both clauses fit"
+  no_label: "No, my project judges artifacts differently"
+  no_action: |
+    Read agents/reference/README.md and the emancipatory-auditor body
+    as a pattern, then author your own quality-gate agent that scores
+    against YOUR acceptance criteria (a Definition of Done, an
+    onboarding checklist, your team's house style). The shape — an
+    adversarial Phase-3 teammate that scores against a named rubric —
+    ports cleanly; the double-clause specifically does not.
+
+setup_hints:
+  - key: subject_label
+    kind: PROMPT
+    question: "Who or what is the SUBJECT whose capability the S-score measures? (Examples: 'the COO agent', 'our team', 'the developer using this tool', 'the on-call engineer'.)"
+    find: "COO"
+    fallback: "the author"
+
+  - key: lead_role
+    kind: PROMPT
+    question: "Who is the 'lead' that this auditor CCs on REWORK/DROP? (Examples: 'the orchestrating agent', 'the PR reviewer', 'the team lead'.)"
+    find: "the lead"
+    fallback: "the lead"
+
+  - key: values_doc
+    kind: OPTIONAL
+    question: "Path to a canonical document defining your project's value structure (the equivalent of VADE's subject_not_object.md)? Skip if you have none — the auditor will enforce the rule without a grounding doc."
+    find: "`coo/foundations/2026-04-20_subject_not_object.md`"
+    fallback: "your project's values document (if any)"
+
+  - key: values_doc_memo_id
+    kind: OPTIONAL
+    question: "If your project uses memo IDs (or RFC numbers, etc.) for canonical decisions, name the one that adopts this double-clause. Skip otherwise."
+    find: "MEMO 2026-04-20-01"
+    fallback: "your project's values doc"
+
+  - key: workflow_gate_point
+    kind: OPTIONAL
+    question: "At what point in your workflow does this auditor run? (VADE: Phase 3.) Examples: 'PR review', 'pre-merge', 'pre-commit'. Skip for the default."
+    find: "Phase-3 teammate"
+    fallback: "Phase-3 teammate"
+
+  - key: phase_3_label
+    kind: OPTIONAL
+    question: "Same gate-point reference in a second body location. Skip for the default."
+    find_unique: true
+    find: "A short post on the Phase 3 PR thread"
+    fallback: "A short post on the review thread"
+
+  - key: track_specialist_label
+    kind: OPTIONAL
+    question: "What do you call the role(s) producing the artifacts being audited? (VADE: 'track specialist'.) Skip for default."
+    find: "track specialist"
+    fallback: "specialist"
+
+  - key: rework_example
+    kind: OPTIONAL
+    question: "Skip unless you want to keep the VADE memo.md REWORK example verbatim. (It's an example, not load-bearing.)"
+    find: 'Example: "memo.md hard-codes `coo/memos.md`; should accept a configurable target file or reference it via convention rather than hard-path."'
+    fallback: 'Example: "<artifact> hard-codes <project-specific-path>; should accept it as a parameter or use a convention-based default."'
+
+  - key: legibility_benchmark
+    kind: OPTIONAL
+    question: "Do you have a third-party project whose work you use as a 'good legibility' benchmark? (VADE references obra/superpowers.) Skip if you have none."
+    find: "obra/superpowers patterns for legibility benchmarks"
+    fallback: "well-documented analogous patterns in the open-source ecosystem"
+
+  - key: closing_self_audit
+    kind: OPTIONAL
+    question: |
+      Keep the closing self-audit observation ("did the team's process itself score 2/2?")?
+      This is the most philosophically loaded part — meta-level audit of the workflow.
+      Skip to drop it.
+    find: "- One closing observation: did the team's process itself score 2/2? (i.e., is the team brief reusable by a peer agent?)\n"
+    fallback: ""
+```

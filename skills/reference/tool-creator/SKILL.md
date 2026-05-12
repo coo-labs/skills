@@ -442,3 +442,196 @@ don't drift the spec.
   TOOLS.md-row registration step)
 - MEMO-2026-04-28-4umz (issue/PR ruling-shape; informs PR-body
   shape in Step 2.4)
+
+# Setup hints
+
+*Read by [`adapt-skill`](../../adapt-skill/SKILL.md). Stripped from
+the adapted output. Schema: [`adapt-skill/SCHEMA.md`](../../adapt-skill/SCHEMA.md).
+The auditor pair (safety-auditor, emancipatory-auditor) is the
+hardest part to adapt — without configured governance rules, the
+auditors produce vacuous PASS verdicts. The graceful degradation
+collapses Phase 2 to a self-review checklist when no rules are
+supplied.*
+
+```yaml
+setup_hints:
+  - key: skills_root
+    kind: PROMPT
+    question: "Where do new skills get written in your project? (Examples: .claude/skills/, vade-coo-memory/.claude/skills/.) Provide the directory path that will be the parent of <skill-name>/SKILL.md."
+    find: "vade-coo-memory/.claude/skills/<name>/"
+    fallback: ".claude/skills/<name>/"
+
+  - key: skills_root_short
+    kind: PROMPT
+    question: "Same skills root without the placeholder (used in other body locations). Provide just the directory path."
+    find: "vade-coo-memory/.claude/skills/"
+    fallback: ".claude/skills/"
+
+  - key: repo_roots_for_inventory
+    kind: PROMPT
+    question: "List the repo paths the inventory sub-agent should scan for existing skills (comma-separated absolute paths or repo names). VADE scans three: vade-coo-memory, vade-runtime, vade-core."
+    find: "vade-coo-memory, vade-runtime, vade-core"
+    fallback: "<your primary repo>"
+
+  - key: legacy_commands_scan
+    kind: OPTIONAL
+    question: "Do you have legacy .claude/commands/ files the inventory should also scan? Skip if you're skill-only."
+    find: " plus `.claude/commands/`\nin vade-coo-memory (legacy, but still in use)"
+    fallback: ""
+
+  - key: data_root_resolution
+    kind: OPTIONAL
+    question: "Step 1.1 has a COO data-root resolution block (sentinel-file discovery). Skip to replace with a generic 'cd to repo root' instruction."
+    find_unique: true
+    find: |-
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../vade-coo-memory" "$HOME/GitHub/vade-app/vade-coo-memory" "/home/user/vade-coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      [ -n "$COO" ] || { echo "tool-creator: could not find vade-coo-memory data root"; exit 1; }
+    fallback: |-
+      COO="$(git rev-parse --show-toplevel 2>/dev/null)"
+      [ -n "$COO" ] || { echo "tool-creator: run from inside a git repo"; exit 1; }
+
+  - key: tools_registry_path
+    kind: OPTIONAL
+    question: "Path to your tools registry file (like VADE's TOOLS.md)? Provide the path. Skip to drop the registration step entirely — Phase 2.2 becomes a no-op."
+    find: "TOOLS.md"
+    fallback: "<no-tools-registry>"
+
+  - key: tools_registry_schema_block
+    kind: OPTIONAL
+    question: "VADE's tools registry has a 7-field row schema (wiring_tier, decisions_to_invoke, rule_class, predicate_clarity, rediscovery_cost, evidence_of_use, last_updated). Skip to keep this default schema in the adapted skill; replace by editing the body after install if your registry differs."
+    find_unique: true
+    find: |-
+      - `wiring_tier`: `skill`
+      - `decisions_to_invoke`: `2` (recognize trigger + select skill)
+      - `rule_class`: `mechanical` (most skills) or
+        `design-time-structural` (skills that fire during epic phases,
+        not per session — e.g., `skill-creator`)
+      - `predicate_clarity`: `predicate` (clear trigger) or
+        `always-do-implicit-bound` / `always-do-false-positive-class`
+      - `rediscovery_cost`: `0` (just added)
+      - `evidence_of_use`: `0` (no log-grep history yet)
+      - `last_updated`: today's UTC date
+      - `flags`: empty (nightly review will populate)
+    fallback: |-
+      - <field 1>: <your registry's first column>
+      - <field 2>: <your registry's second column>
+      - ... (edit this block to match your tools registry's row schema)
+
+  - key: safety_governance_rules
+    kind: PROMPT
+    min_count: 2
+    severity: warning
+    question: "List your project's governance rules the safety-auditor should enforce. Provide as 'rule-id | source | what-it-forbids' triples, one per line. Minimum 2; below that, the adapted skill drops the safety-auditor (degradation path)."
+    find: "(MEMO-2026-04-22-01 PAT discipline, MEMO-2026-04-11-10 Mem0\n  content rule, MEMO-2026-04-11-14 path scope, MEMO-2026-04-28-3ca3\n  spend cap, MEMO-2026-04-22-04 attribution)"
+    fallback: "(your governance rule sources — author at least 2 and re-adapt)"
+
+  - key: emancipatory_principle
+    kind: OPTIONAL
+    question: "Do you want the emancipatory-auditor (adoption-test gate)? It enforces: artifacts must (a) grow author capability AND (b) be installable by a peer without inherited context. Skip if your project doesn't share this double-clause."
+    find: "MEMO-2026-04-20-01\n  subject+emancipatory double-clause"
+    fallback: "your project's quality-gate criterion"
+
+  - key: spend_cap
+    kind: OPTIONAL
+    question: "Token/spend cap that governs Phase 2 iteration count? (VADE: $500/mo per MEMO-2026-04-28-3ca3.) Skip to drop the spend-hygiene note."
+    find: "$500/mo cap (MEMO-2026-04-28-3ca3)"
+    fallback: "your project's spend cap"
+
+  - key: target_repo
+    kind: PROMPT
+    question: "GitHub repo for skill PRs? (owner/repo format.)"
+    find: "vade-app/vade-coo-memory"
+    fallback: "<owner>/<repo>"
+
+  - key: github_token_env
+    kind: OPTIONAL
+    question: "Environment variable for GitHub PAT? Skip for gh default."
+    find: "GH_TOKEN=\"$GITHUB_MCP_PAT\" "
+    fallback: ""
+
+  - key: parallel_protocol_ref
+    kind: OPTIONAL
+    question: "Path to your sub-agent dispatch discipline doc (VADE: coo/parallel_instance_protocol.md §8)? Skip to inline the rule."
+    find: "`coo/parallel_instance_protocol.md` §8"
+    fallback: "your project's sub-agent dispatch discipline (or inline the rule: pre-fetch context, forbid re-reading enumerated files, cap output, structured schema)"
+
+  - key: precedent_retrospective
+    kind: OPTIONAL
+    question: "Path to a retrospective documenting a pattern-precedent for this skill? (VADE: coo/personas/exec-mode-retrospectives/2026-04-30_post-discussion-prototype.md.) Skip if you have no such precedent."
+    find: "`coo/personas/exec-mode\n-retrospectives/2026-04-30_post-discussion-prototype.md`"
+    fallback: "(no precedent retrospective)"
+
+  - key: boot_order_cross_ref
+    kind: OPTIONAL
+    question: "If your project has a boot-order/reading-list file (VADE: CLAUDE.md), Step 2.3 may need to update it. Skip if you have no such file — Step 2.3 becomes a no-op."
+    find: "Update CLAUDE.md cross-reference"
+    fallback: "(No boot-order file configured — Step 2.3 is a no-op.) Update CLAUDE.md cross-reference"
+
+  - key: out_of_scope_section
+    kind: OPTIONAL
+    question: "Skip unless you want to keep the VADE-specific 'Out of scope for v1' references (vade-coo-memory#321, #312, #313, named legacy commands)."
+    find_unique: true
+    find: |
+      - **Personas** (`coo/personas/<name>.md`) — vade-specific mode
+        overlay; v3 work. The persona-vs-skill question is real for
+        refactors like vade-coo-memory#321 (exec-mode skill refactor)
+        but v1 doesn't yet handle it.
+      - **Hooks** (settings.json) and compound primitives like
+        triple-wired skill+command+hook (e.g., memo-sync) — v4 work.
+      - **Migrating existing command+skill pairs to skill-only.**
+        Anthropic's docs say `.claude/commands/<name>.md` is now legacy
+        (skills are the recommended primitive), but vade has 11
+        commands across the three repos. Migration is its own sweep,
+        out of /tool-creator v1's job. File a follow-up issue once v1
+        ships.
+      - **Auto-invocation from session signals.** End-of-session
+        externalization (#323) is the natural home for that; once
+        /tool-creator v1 binds, #323 can dispatch it.
+    fallback: |
+      - **Hooks and compound primitives** — different shape; deferred.
+      - **Migrating legacy commands to skills** — its own sweep; deferred.
+      - **Auto-invocation from session signals** — deferred.
+
+requires:
+  - kind: agent
+    name: "safety-auditor (Phase 2 adversarial)"
+    detect: "test -f \"$(git rev-parse --show-toplevel 2>/dev/null)\"/.claude/agents/safety-auditor.md || test -f \"$HOME/.claude/agents/safety-auditor.md\""
+    severity: warning
+    install_hint: "Phase 2 dispatches safety-auditor as one of two parallel auditors. Adapt via /adapt-skill safety-auditor before invoking /tool-creator. If absent, Phase 2 collapses to self-review per the degradation."
+
+  - kind: agent
+    name: "emancipatory-auditor (Phase 2 adversarial)"
+    detect: "test -f \"$(git rev-parse --show-toplevel 2>/dev/null)\"/.claude/agents/emancipatory-auditor.md || test -f \"$HOME/.claude/agents/emancipatory-auditor.md\""
+    severity: warning
+    install_hint: "Phase 2 dispatches emancipatory-auditor alongside safety-auditor. The emancipatory clause is philosophically coupled — adapt via /adapt-skill emancipatory-auditor only if your project shares the double-clause."
+
+script_hints:
+  - path: templates/inventory-brief.md
+    treatment: REGENERATE-PER-USER
+    rationale: "Hardcodes three vade-app repo paths and the .claude/commands/ legacy scan. Skeleton emitted with TODO comments for the repo-roots list and the registry-file path (or registry-absent flag)."
+
+  - path: templates/explicit-invocation-skill.md
+    treatment: PARAMETERIZE
+    rationale: "Frontmatter structure ports verbatim; substitution covers worked-example references and any VADE-specific cross-refs."
+
+  - path: templates/auto-discoverable-skill.md
+    treatment: PARAMETERIZE
+    rationale: "Same as explicit-invocation; replace memo-search worked example with a user-supplied example or leave as VADE-historical context."
+
+  - path: templates/forked-context-skill.md
+    treatment: PARAMETERIZE
+    rationale: "Drop the vade-coo-memory#322 follow-up reference; the rest of the caveat documentation is substrate-agnostic."
+
+degradations:
+  - when: "safety_governance_rules below min_count"
+    body_replace:
+      find: "the auditor pair runs in parallel via the Task tool"
+      with: "Phase 2 runs a single self-review checklist (no auditor pair configured — safety_governance_rules was below min_count at adapt-skill time)"
+    note: "Adapted with insufficient governance rules — Phase 2 collapsed to self-review. Author your safety rules (minimum 2) and re-run /adapt-skill tool-creator to restore the auditor pair."
+
+  - when: "emancipatory_principle fallback applied"
+    body_replace:
+      find: "emancipatory-auditor"
+      with: "(emancipatory-auditor not configured — your project opted out of the double-clause)"
+    note: "Adapted without the emancipatory-auditor — Phase 2 runs safety-auditor only (or self-review if safety rules are also empty)."
+```
