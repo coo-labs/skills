@@ -90,3 +90,74 @@ the persona file wins.
 - `coo/parallel_instance_protocol.md` §8 + §8.5 — sub-agent dispatch
 
 $ARGUMENTS
+
+# Setup hints
+
+*Read by [`adapt-skill`](../../adapt-skill/SKILL.md). Stripped from
+the adapted output. Schema: [`adapt-skill/SCHEMA.md`](../../adapt-skill/SCHEMA.md).
+The persona doctrine file (`persona.md`) is the heart of this
+skill; treat its adaptation as the main work, not the SKILL.md.*
+
+```yaml
+setup_hints:
+  - key: boot_procedure_ref
+    kind: PROMPT
+    question: "Path to your agent's boot/reading-order file (e.g. CLAUDE.md)? Used in Step 1 of the procedure."
+    find: "the `coo/CLAUDE.md` reading order"
+    fallback: "your project's boot reading order (if you have one)"
+
+  - key: persona_doctrine_path
+    kind: OPTIONAL
+    question: "Where will your persona doctrine file live? (Default: ./persona.md alongside this SKILL.md — recommended.) Provide a different path only if you keep persona docs elsewhere."
+    find: "`./persona.md`"
+    fallback: "`./persona.md`"
+
+  - key: persona_doctrine_path_long
+    kind: OPTIONAL
+    question: "Same path again, with full prose context — see find string. Skip to leave the VADE worked-example reference."
+    find: "(originally `coo/personas/exec-mode.md` in the substrate this was extracted from — adapt to your own project's location)"
+    fallback: ""
+
+  - key: repo_set_description
+    kind: PROMPT
+    question: "What's the repo set this exec-mode will sweep across? (Examples: 'the three repos under myorg', 'just this one repo', 'all repos in my GitHub org'.) Used as a default-scope description in Step 5."
+    find: "open PRs across the five vade-app repos; open `proj:*` issues"
+    fallback: "open PRs across your repo set; open prioritized issues"
+
+  - key: vade_repos_aside
+    kind: OPTIONAL
+    question: "Skip unless you want to keep the VADE 'five vade-app/*' aside as documentation of where this pattern was extracted from."
+    find: " (VADE: the five `vade-app/*` repos)"
+    fallback: ""
+
+  - key: integrity_check_path
+    kind: DETECT
+    detection: "test -f \"${VADE_CLOUD_STATE_DIR:-}/integrity-check.json\" 2>/dev/null && echo found || true"
+    find: "`summary.ok` state in `integrity-check.json` (surface failing\n   invariant if degraded)"
+    fallback: "any health-check or environment-validation signals your project has"
+
+  - key: mem0_failure_mode
+    kind: OPTIONAL
+    question: "Does your substrate use Mem0 (or equivalent) for cross-session state? Skip to drop the Mem0-disconnected failure-mode bullet."
+    find: |
+      - **Mem0 disconnected at boot.** File-canonical wins per
+        MEMO-2026-04-27-01; proceed without Mem0 reachable. End-of-session
+        episodic save uses REST fallback per SOP-MEM-001 §5.
+    fallback: ""
+
+script_hints:
+  - path: persona.md
+    treatment: REGENERATE-PER-USER
+    rationale: "The persona doctrine is the heart of exec-mode and is densely substrate-coupled (five named repos, integrity-check probe paths, proj:* labels, permanently-open semantics, coo/lineage/ manifest paths, CB-006 quorum, named auditor agents). Mechanical substitution produces an incoherent doctrine. The adapted version is emitted as a skeleton with Phase 0-4 headings filled in but the discipline-rollup empty for the user to fold their own per-run lessons into. Source for inspiration: skills/reference/exec-mode/persona.md (this file's sibling — read but do not install verbatim)."
+
+  - path: personas-README.md
+    treatment: PARAMETERIZE
+    rationale: "Persona-pattern documentation; mostly substrate-agnostic prose. Light substitution covers the VADE-specific examples; the load-bearing pattern (load-fresh-each-session, retrospectives compound, revision discipline) ports."
+
+degradations:
+  - when: "--revise-persona invoked but auditor_agents not configured"
+    body_replace:
+      find: "jump to the persona file's `## Persona-revision discipline`\n   section and follow that procedure (read-all-retros + plan-mode\n   REQUIRED + auditor gates)"
+      with: "jump to the persona file's `## Persona-revision discipline`\n   section and follow that procedure (read-all-retros + plan-mode\n   REQUIRED). Note: this adapted skill has no auditor agents configured — replace the auditor-gate step with explicit human review before merging the revision PR."
+    note: "Adapted without adversarial auditor agents — --revise-persona's auditor gates degrade to explicit human review. Re-run /adapt-skill exec-mode after installing safety-auditor and emancipatory-auditor (or your own equivalents) to restore the gates."
+```

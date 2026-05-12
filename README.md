@@ -20,6 +20,12 @@ bundles loaded on demand. Each is a directory containing a
 - `peer-review` — Commission N independent peer reviewers on a
   long-form authored artifact (essay, paper, RFC, plan) and
   synthesize findings into a trackable revision pipeline.
+- `adapt-skill` — The meta-skill that ports the **reference**
+  tier (below) into a working installed primitive for your
+  substrate. Reads each reference target's `# Setup hints`
+  manifest, conducts a structured interview, substitutes
+  substrate-coupled surfaces. Run once per reference skill or
+  agent you want to install.
 
 **Agents** (`agents/`) — Sub-agent definitions for Claude Code's
 `Agent` tool. Each is a single `.md` file with frontmatter
@@ -41,7 +47,11 @@ loaders, persona overlays, and substrate-discipline patterns
 (session-end checklist, briefing-shape day synthesis, project-
 historian commissions, handoff briefings with honesty gates,
 grounding audits, staged skill authoring). Substrate-coupled
-discipline; fork and adapt.
+discipline; **install via `/adapt-skill <name>`** (see
+`skills/adapt-skill/`) — the meta-skill reads each reference
+target's structured `# Setup hints` manifest and produces a
+working installed version for your substrate. Manual fork-and-
+adapt remains an option; see `skills/reference/README.md`.
 
 - `chat-mode` — Loads the dialogue register (substantive
   conversation that can produce binding output, distinct from
@@ -75,8 +85,12 @@ discipline; fork and adapt.
   auditors in parallel, a tools-registry row, and a PR.
 
 **Reference agents** (`agents/reference/`) — Carry concept-level
-patterns we found useful, but cite VADE-internal memos. Fork and
-adapt to your own substrate.
+patterns we found useful, but cite VADE-internal memos. **Install
+via `/adapt-skill <name>`** — same flow as reference skills. The
+`emancipatory-auditor` carries a `philosophical_gate:` because the
+double-clause it enforces is a theory of value, not just a path
+set; users who don't share the theory are routed to author from
+the pattern README instead.
 
 - `safety-auditor` — Gate-keeper pattern: adversarial Phase-3
   teammate that blocks artifacts violating named governance memos.
@@ -121,7 +135,27 @@ cp /tmp/vade-skills/agents/*.md /path/to/your-project/.claude/agents/
 ```
 
 Symlinks `skills/*` and `agents/*` into your project's `.claude/`
-directory (or `~/.claude/` if you pass `--user`).
+directory (or `~/.claude/` if you pass `--user`). This installs
+the substrate-agnostic skills (including `adapt-skill`) and
+reference agents directly. The reference *skills* under
+`skills/reference/` are deliberately excluded — they require
+adaptation via `/adapt-skill` rather than verbatim install.
+
+### Adapting reference skills (after install)
+
+Once `adapt-skill` is installed, port each reference skill you
+want to use:
+
+```sh
+/adapt-skill --list                  # see what's available
+/adapt-skill status-check            # simplest port (drop-in)
+/adapt-skill day-overview            # heavier port (regenerates script)
+/adapt-skill emancipatory-auditor    # philosophical_gate first
+```
+
+Each invocation runs a one-time structured interview and produces
+a working installed skill at `.claude/skills/<name>/SKILL.md` (or
+agent at `.claude/agents/<name>.md`).
 
 ### Option C — pin to a release
 

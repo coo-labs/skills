@@ -219,3 +219,173 @@ human or agent reviews the draft and opens the PR by hand.
 <vade-coo-memory>/.claude/skills/commission-retrospective/templates/ (prompts)
 <vade-coo-memory>/.claude/skills/commission-retrospective/scripts/commission-retrospective.sh (shell pre-flight)
 ```
+
+# Setup hints
+
+*Read by [`adapt-skill`](../../adapt-skill/SKILL.md). Stripped from
+the adapted output. Schema: [`adapt-skill/SCHEMA.md`](../../adapt-skill/SCHEMA.md).
+The shell pre-flight is REGENERATE-PER-USER; the three templates
+are PARAMETERIZE. The pivotal-event trigger list (SOP-CULTURE-001
+§2d) is project-philosophy — surface to the user for definition
+rather than mechanical substitution.*
+
+```yaml
+setup_hints:
+  - key: pivotal_triggers
+    kind: PROMPT
+    question: "List your project's 'pivotal event' triggers — what conditions should cause a commission-retrospective to fire? (VADE uses 7 triggers including prime-directive reinterpretation, agent-role changes, multi-week epic close, governance changes, security findings, substrate-capture indicators, persistent integrity-check degradation.) Provide as a bulleted list; the trigger logic ports."
+    find_unique: true
+    find: |
+      - A standing interpretation of the prime directive changes.
+      - A new agent role is commissioned or retired.
+      - A multi-week epic completes or pivots mid-stream.
+      - A governance rule or constitutional file changes via committee.
+      - A security finding changes operational procedure.
+      - A substrate-capture indicator fires (essay §5b mode 4 — unmemo'd
+        decision-bearing work landing).
+      - Group F invariants in `integrity-check.sh` degrade across three
+        consecutive sessions.
+    fallback: |
+      - <Trigger 1 — describe your project's pivotal events here.>
+      - <Trigger 2.>
+      - <Trigger 3.>
+      (Edit this list before invoking the skill. Don't leave placeholders.)
+
+  - key: data_root_var
+    kind: PROMPT
+    question: "Shell variable for the project root? (VADE uses $COO.) Examples: $REPO, $REPO_ROOT, $PROJECT."
+    find: "$COO"
+    fallback: "$REPO_ROOT"
+
+  - key: runtime_root_var
+    kind: OPTIONAL
+    question: "Shell variable for a sibling repo holding your integrity-check / health script? (VADE uses $RUNTIME pointing at vade-runtime.) Skip if you have no separate runtime repo."
+    find: "$RUNTIME"
+    fallback: "$RUNTIME"
+
+  - key: data_root_discovery
+    kind: OPTIONAL
+    question: "Step 1 discovers two roots (data and runtime) via sentinel files. Skip to use git rev-parse for the data root and drop the runtime probe."
+    find_unique: true
+    find: |
+      ```bash
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../vade-coo-memory" "$HOME/GitHub/vade-app/vade-coo-memory" "/home/user/vade-coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      RUNTIME="$(for c in "${VADE_RUNTIME_DIR:-}" "$COO/../vade-runtime" "$HOME/GitHub/vade-app/vade-runtime" "/home/user/vade-runtime"; do [ -n "$c" ] && [ -f "$c/scripts/integrity-check.sh" ] && { cd "$c" && pwd -P; break; }; done)"
+      ```
+    fallback: |
+      ```bash
+      REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
+      [ -n "$REPO_ROOT" ] || { echo "commission-retrospective: run from inside a git repo"; exit 1; }
+      RUNTIME=""  # Set to your integrity-check repo path if you have one; empty skips step 4.
+      ```
+
+  - key: memo_index_path
+    kind: OPTIONAL
+    question: "Path to a memo/record index JSON file? (VADE: coo/memo_index.json.) Skip if your project has no such index — the memos sub-agent will then report no memos."
+    find: "coo/memo_index.json"
+    fallback: ""
+
+  - key: foundations_dir
+    kind: OPTIONAL
+    question: "Directory of dated essay/foundation files (named YYYY-MM-DD_*.md)? (VADE: coo/foundations/.) Skip if you have no such directory."
+    find: "coo/foundations/"
+    fallback: ""
+
+  - key: drafts_dir
+    kind: PROMPT
+    question: "Where should retrospective drafts land? (VADE: coo/_drafts/.) Examples: _drafts/, drafts/, .scratch/."
+    find: "coo/_drafts/"
+    fallback: "_drafts/"
+
+  - key: retrospectives_dir
+    kind: PROMPT
+    question: "Where do your retrospectives (prior commissions) live? (VADE: coo/retrospectives/.) Same dir as drafts is OK; the historian needs to scan prior commissions for voice."
+    find: "coo/retrospectives/"
+    fallback: "retrospectives/"
+
+  - key: target_repo
+    kind: PROMPT
+    question: "Primary repo for PR history scanning AND --open-pr destination? (owner/repo format.)"
+    find: "vade-app/vade-coo-memory"
+    fallback: ""
+
+  - key: github_token_env
+    kind: OPTIONAL
+    question: "Environment variable for your GitHub PAT? Skip for gh default."
+    find: "GH_TOKEN=\"$GITHUB_MCP_PAT\" "
+    fallback: ""
+
+  - key: integrity_check_script
+    kind: OPTIONAL
+    question: "Path to an integrity-check / health-check script (called pre-PR)? (VADE: $RUNTIME/scripts/integrity-check.sh.) Skip to drop Step 4 entirely."
+    find_unique: true
+    find: |
+      ### 4. Gate check
+      
+      Before opening a PR, run integrity-check IF the runtime is reachable:
+      
+      ```bash
+      if [ -n "$RUNTIME" ]; then
+        bash "$RUNTIME/scripts/integrity-check.sh"
+      fi
+      ```
+      
+      Read `$VADE_CLOUD_STATE_DIR/integrity-check.json`. If any of
+      `groups.F.F1`, `F2`, `F3`, `F4` shows `ok: false`, surface the
+      `detail` strings into the PR body — a retrospective that reports on
+      the project cannot silently capture the substrate it reports on.
+      
+      If `$RUNTIME` is empty (peer-agent in a bare clone of vade-coo-memory
+      without vade-runtime adjacent), state that explicitly in the PR body
+      and proceed without the gate. The retrospective is honest about what
+      it could and couldn't audit.
+    fallback: ""
+
+  - key: spec_doc_ref
+    kind: OPTIONAL
+    question: "Path to your authoritative spec for retrospective voice & structure? (VADE: SOP-CULTURE-001 at coo/culture_system_sop.md.) Skip to drop the spec-tie-breaker reference; the inline procedure becomes the spec."
+    find: "`<vade-coo-memory>/coo/culture_system_sop.md`\n(SOP-CULTURE-001). When this skill and the SOP disagree, the SOP wins.\nUpdate this skill; don't drift the spec."
+    fallback: "this file. The inline procedure is the spec."
+
+  - key: voice_priors
+    kind: OPTIONAL
+    question: "Description of your prior-commission voice examples? (VADE describes commissions #1 and #2 by their dates.) Skip to use generic 'prior commissions' phrasing."
+    find: "the voice of commissions #1 and #2 (2026-04-20 subject-reframe; 2026-04-22 \"we can claim a record\")"
+    fallback: "the voice of prior commissions on file (or, if no priors, the inline voice rules)"
+
+  - key: vade_named_priors
+    kind: OPTIONAL
+    question: "Skip unless you want to keep the 'commission #2 refused a cadence' anti-pattern reference verbatim."
+    find: "Commission #2 explicitly refused."
+    fallback: "Prior commissions have refused this; do likewise."
+
+  - key: manual_mode_helper
+    kind: OPTIONAL
+    question: "Do you have a claude -p style harness for running sub-agents without the Task tool? Skip to drop the --manual fallback in graceful-degradation (which is currently unimplemented even in VADE)."
+    find: "Fall back: call\n  `commission-retrospective.sh --manual` which sequences two\n  `claude -p` invocations using the same briefs. Attribution stays\n  correct; wall-clock goes up."
+    fallback: "No fallback configured for harnesses without Task. Re-author the skill to use your harness's sub-agent surface (e.g. inline-prompt the same brief in the main session, accepting that wall-clock and main-context cost go up)."
+
+requires:
+  - kind: file
+    name: "prior-art foundation files for sub-agent calibration"
+    detect: "false"
+    severity: warning
+    install_hint: "The sub-agent briefs reference VADE-internal foundation files (coo/foundations/2026-04-22_agent-reports-*.md) as calibration prior-art. On first commission these don't exist anywhere — the cold_start: skip directive on the sub-agent briefs' calibration step handles this. After 2-3 commissions you'll have your own prior art; consider re-adapting then."
+
+script_hints:
+  - path: scripts/commission-retrospective.sh
+    treatment: REGENERATE-PER-USER
+    rationale: "Hardcodes vade-app/vade-coo-memory, coo/memo_index.json, coo/foundations/, coo/retrospectives/; the --manual mode is an unimplemented stub. Skeleton emitted with TODO comments for: repo name, memo-index path, foundations dir, retrospectives dir, target_repo, GitHub token env var."
+
+  - path: templates/historian-prompt.md
+    treatment: PARAMETERIZE
+    rationale: "Eight required output sections port verbatim; substitution covers VADE project name, drafts dir, and named prior-commission references."
+
+  - path: templates/subagent-memos-brief.md
+    treatment: PARAMETERIZE
+    rationale: "Brief structure and discipline rules port; substitution covers memo-index path, drafts dir, calibration prior-art reference (cold_start: skip handles first-run absence)."
+
+  - path: templates/subagent-pr-graph-brief.md
+    treatment: PARAMETERIZE
+    rationale: "gh invocation patterns port; substitution covers repo list, GitHub org prefix, attribution check items (drop F1/F4 invariant lines as VADE-specific governance), calibration prior-art reference."
+```

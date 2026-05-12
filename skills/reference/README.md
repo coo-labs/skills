@@ -5,6 +5,15 @@ The skills under this directory encode session-shape patterns —
 discipline** — that have been useful inside the VADE substrate.
 They are NOT meant to be installed verbatim into another project.
 
+**Canonical install path:** run `/adapt-skill <name>` (from
+[`../adapt-skill/`](../adapt-skill/)) per reference target you
+want to install. The meta-skill reads each target's
+`# Setup hints` manifest at the bottom of its `SKILL.md`,
+conducts a structured interview about your substrate, and writes
+the adapted version to `.claude/skills/<name>/SKILL.md`. The
+fork-and-adapt path documented below remains an option for users
+who want to inspect and rewrite by hand.
+
 Same shape as `agents/reference/`: the *pattern* ports cleanly;
 the *substrate references* don't.
 

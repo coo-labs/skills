@@ -5,6 +5,23 @@ encode discipline patterns that have been useful inside the VADE
 substrate. They are NOT meant to be installed verbatim into another
 project.
 
+**Canonical install path:** run `/adapt-skill <name>` (from
+[`../../skills/adapt-skill/`](../../skills/adapt-skill/)) per
+agent you want to install. The meta-skill reads each agent's
+`# Setup hints` manifest at the bottom of its `.md` file,
+conducts a structured interview, and writes the adapted version
+to `.claude/agents/<name>.md`. The fork-and-adapt path below
+remains an option for users who want to rewrite by hand.
+
+- `safety-auditor` carries a `min_count: 2` directive on its
+  governance-rules hint — without ≥2 real rules, the adapted
+  agent isn't emitted (a rule-less auditor PASSes everything,
+  which is worse than no auditor).
+- `emancipatory-auditor` carries a `philosophical_gate:` —
+  the double-clause is a theory of value, not just a path set.
+  Users who don't share the theory are routed to author from
+  the pattern instead of mechanical adaptation.
+
 ## Why "reference"
 
 Both auditors cite VADE-internal governance memos
