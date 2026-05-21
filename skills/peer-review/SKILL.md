@@ -225,15 +225,20 @@ per-atom PR work can happen asynchronously across multiple sessions.
    `coo/briefings/TEMPLATE.md` as the shape; use briefing 029 as the
    worked example. The briefing must:
 
-   - Use the existing `readiness:ready` label as the trigger
-     marker (per cross-repo taxonomy MEMO-2026-04-22-09; don't
-     invent a new label).
+   - Use the native **Readiness=Ready** field value as the trigger
+     marker (per MEMO-2026-05-21-xfqh; the `readiness:*` label
+     dimension retired 2026-05-21 — historical issues retain the
+     label, new ones carry only the native field).
    - Name the exact query filter:
      ```
      gh issue list --label "<topic-marker>" \
-       --label "readiness:ready" --state open
+       --search "readiness:Ready" --state open
      ```
-     plus `-label type:epic` to filter out parents/sub-epics.
+     Add `--search "type:Epic"` and pipe through `jq` / invert the
+     filter to exclude epic parents/sub-epics, or filter post-hoc
+     via `issueType.name`. For historical issues that pre-date the
+     migration, the retired `readiness:ready` label still matches
+     via `--label` (backfill set both label + field).
    - Call out natural cluster bundles based on `cluster:*` labels —
      e.g., several `cluster:literature` atoms may bundle into one
      PR that adds a citations paragraph + bibliography entries.
@@ -252,10 +257,10 @@ per-atom PR work can happen asynchronously across multiple sessions.
 7. **Summarize the tree** to the user: parent epic number, sub-epic
    numbers, atom range, PR number. Explain the readiness convention:
 
-   > Apply `readiness:ready` to atoms you want implemented (with
-   > optional comment-modifications to the suggested edit).
-   > Commission a fresh session against briefing NNN; it picks up
-   > the ready set, drafts focused PRs, hands back.
+   > Set the **Readiness** field to **Ready** on atoms you want
+   > implemented (with optional comment-modifications to the
+   > suggested edit). Commission a fresh session against briefing
+   > NNN; it picks up the ready set, drafts focused PRs, hands back.
 
 ## Role-set defaults
 
