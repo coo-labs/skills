@@ -1,4 +1,4 @@
-# vade-app/skills
+# coo-labs/skills
 
 Portable [Claude Code](https://www.anthropic.com/claude-code) skills
 and sub-agent definitions, extracted from the VADE substrate
@@ -123,15 +123,15 @@ Two patterns recur across the skills here:
 ### Option A — quick clone into a Claude Code project
 
 ```sh
-git clone https://github.com/vade-app/skills.git /tmp/vade-skills
-cp -r /tmp/vade-skills/skills/* /path/to/your-project/.claude/skills/
-cp /tmp/vade-skills/agents/*.md /path/to/your-project/.claude/agents/
+git clone https://github.com/coo-labs/skills.git /tmp/coo-skills
+cp -r /tmp/coo-skills/skills/* /path/to/your-project/.claude/skills/
+cp /tmp/coo-skills/agents/*.md /path/to/your-project/.claude/agents/
 ```
 
 ### Option B — setup script
 
 ```sh
-./setup/cloud-setup.sh /path/to/your-project
+./setup/install.sh /path/to/your-project
 ```
 
 Symlinks `skills/*` and `agents/*` into your project's `.claude/`
@@ -160,12 +160,12 @@ agent at `.claude/agents/<name>.md`).
 ### Option C — pin to a release
 
 ```sh
-git clone --branch v0.1.0 --depth 1 https://github.com/vade-app/skills.git
+git clone --branch v0.1.0 --depth 1 https://github.com/coo-labs/skills.git
 ```
 
 Releases follow semver: minor bumps when skills are added, patch
 bumps for in-place revisions. Tag releases on the
-[Releases page](https://github.com/vade-app/skills/releases).
+[Releases page](https://github.com/coo-labs/skills/releases).
 
 ## MCP servers
 
@@ -192,5 +192,5 @@ another public repo), it is named in [`VENDORED.md`](VENDORED.md).
 CC-BY-4.0. See [`LICENSE`](LICENSE).
 
 Attribution: link to this repository
-(<https://github.com/vade-app/skills>) and name the version you
+(<https://github.com/coo-labs/skills>) and name the version you
 copied from.

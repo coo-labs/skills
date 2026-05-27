@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# cloud-setup.sh — install vade-app/skills into a Claude Code project.
+# install.sh — install coo-labs/skills into a Claude Code project.
 #
 # Usage:
-#   ./setup/cloud-setup.sh <project-path>
-#   ./setup/cloud-setup.sh --user             # install into ~/.claude/
-#   ./setup/cloud-setup.sh --copy <path>      # copy instead of symlink
-#   ./setup/cloud-setup.sh --include-reference <path>  # also install agents/reference/
+#   ./setup/install.sh <project-path>
+#   ./setup/install.sh --user             # install into ~/.claude/
+#   ./setup/install.sh --copy <path>      # copy instead of symlink
+#   ./setup/install.sh --include-reference <path>  # also install agents/reference/
 
 set -euo pipefail
 
