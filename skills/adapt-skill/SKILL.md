@@ -1,6 +1,6 @@
 ---
 name: adapt-skill
-description: Adapt a reference skill or agent from this repo into a working installed primitive for the current substrate. Reads the target's `# Setup hints` manifest, conducts a structured interview, substitutes substrate-coupled surfaces with the user's answers, and writes the adapted skill to `.claude/skills/<name>/` (or agent to `.claude/agents/<name>.md`). Run once per reference skill the user wants to install. Don't invoke for substrate-agnostic skills under `skills/` proper — those install verbatim via `setup/cloud-setup.sh`.
+description: Adapt a reference skill or agent from this repo into a working installed primitive for the current substrate. Reads the target's `# Setup hints` manifest, conducts a structured interview, substitutes substrate-coupled surfaces with the user's answers, and writes the adapted skill to `.claude/skills/<name>/` (or agent to `.claude/agents/<name>.md`). Run once per reference skill the user wants to install. Don't invoke for substrate-agnostic skills under `skills/` proper — those install verbatim via `setup/install.sh`.
 argument-hint: <skill-or-agent-name> [--user] [--dry-run]
 disable-model-invocation: true
 allowed-tools: Bash, Read, Write, Edit, AskUserQuestion
@@ -42,7 +42,7 @@ Don't invoke for:
 
 - Substrate-agnostic skills under `skills/` proper (`quarto-docs`,
   `tldraw-docs`, `canvas-ui`, `peer-review`) — these install
-  verbatim via `setup/cloud-setup.sh`.
+  verbatim via `setup/install.sh`.
 - Re-adaptation of an already-installed skill. The interview
   baked answers into the skill body; to change them, edit the
   installed file directly or re-run `--dry-run` to see what would
@@ -290,6 +290,6 @@ with the offending hint key.
 - `skills/reference/README.md` — the fork-and-adapt path (manual
   alternative to this skill)
 - `agents/reference/README.md` — same for reference agents
-- `setup/cloud-setup.sh` — installs substrate-agnostic
+- `setup/install.sh` — installs substrate-agnostic
   `skills/*` and `agents/*` verbatim; reference targets are
   deliberately excluded and routed through this meta-skill

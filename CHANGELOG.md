@@ -5,6 +5,20 @@ All notable changes to this repository are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows [Semantic Versioning](https://semver.org/).
 
+## Unreleased
+
+### Changed
+
+- Repo org renamed `vade-app/skills` → `coo-labs/skills`. README install
+  commands updated; existing clones continue to work via GitHub's
+  automatic redirect on the old org/repo path.
+- `setup/cloud-setup.sh` renamed to `setup/install.sh`. The name
+  `cloud-setup` was a misleading artifact — the script installs skills
+  into any Claude Code project, not specifically a cloud one. Callers
+  must update their invocation paths. Internal references in
+  `README.md`, `setup/README.md`, and `skills/adapt-skill/SKILL.md`
+  updated.
+
 ## v0.4.0 — 2026-05-12
 
 Extends the `skills/reference/` tier with six substrate-discipline

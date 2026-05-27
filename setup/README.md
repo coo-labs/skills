@@ -3,14 +3,14 @@
 Install the skills and agents into a Claude Code project (or your
 user-global `~/.claude/` directory).
 
-## cloud-setup.sh
+## install.sh
 
 ```sh
 # Install into a specific project
-./setup/cloud-setup.sh /path/to/your-project
+./setup/install.sh /path/to/your-project
 
 # Install into ~/.claude (user-global)
-./setup/cloud-setup.sh --user
+./setup/install.sh --user
 ```
 
 The script symlinks (or copies, with `--copy`) the contents of
