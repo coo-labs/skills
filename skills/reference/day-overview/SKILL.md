@@ -1,7 +1,7 @@
 ---
 name: day-overview
 description: Produce a day-overview retrospective — briefing-shaped synthesis of a day's shipped work (memos, PRs, integrity-check state) grouped into lanes, with follow-ups and candidate next actions. Use at end-of-day or to summarize a window of work. Default flow ships (writes file, commits, opens PR); `--no-ship` stops at file write; `--post` also posts to vade-core Retrospectives Discussions. Don't invoke for routine status updates (use `/status-check`) or single-PR retrospectives (write a memo).
-argument-hint: [--date YYYY-MM-DD] [--end YYYY-MM-DD] [--no-ship] [--post]
+argument-hint: "[--date YYYY-MM-DD] [--end YYYY-MM-DD] [--no-ship] [--post]"
 disable-model-invocation: true
 allowed-tools: Bash, Read, Write, Edit
 ---

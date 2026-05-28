@@ -1,7 +1,7 @@
 ---
 name: request-briefing
-description: Author a session-handoff briefing per `coo/briefings/` procedure. Computes the next NNN, fills the template, commits to a fresh branch and opens a PR (or `--draft` to leave on disk for review-first workflows). Use when a session needs to hand a contextual problem off to another session and the handoff is too contextual for a plain issue body. Don't invoke for: single-PR-sized handoffs (use an issue), tasks the same session can finish (write code instead), or known-good plans that just need execution (write a plan, not a briefing). The recipient is expected to re-examine the framing — not rubber-stamp it.
-argument-hint: [short-slug] [--principal NAME] [--recipient ROLE] [--draft]
+description: "Author a session-handoff briefing per `coo/briefings/` procedure. Computes the next NNN, fills the template, commits to a fresh branch and opens a PR (or `--draft` to leave on disk for review-first workflows). Use when a session needs to hand a contextual problem off to another session and the handoff is too contextual for a plain issue body. Don't invoke for: single-PR-sized handoffs (use an issue), tasks the same session can finish (write code instead), or known-good plans that just need execution (write a plan, not a briefing). The recipient is expected to re-examine the framing — not rubber-stamp it."
+argument-hint: "[short-slug] [--principal NAME] [--recipient ROLE] [--draft]"
 disable-model-invocation: true
 allowed-tools: Bash, Read, Write
 ---
