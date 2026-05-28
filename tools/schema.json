@@ -50,13 +50,22 @@
     "summary": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["count_total", "by_repo", "by_kind", "by_type", "by_vendoring"],
+      "required": ["count_total", "by_repo", "by_kind", "by_type", "by_vendoring", "declared_share"],
       "properties": {
         "count_total":  {"type": "integer", "minimum": 0},
         "by_repo":      {"type": "object", "additionalProperties": {"type": "integer"}},
         "by_kind":      {"type": "object", "additionalProperties": {"type": "integer"}},
         "by_type":      {"type": "object", "additionalProperties": {"type": "integer"}},
-        "by_vendoring": {"type": "object", "additionalProperties": {"type": "integer"}}
+        "by_vendoring": {"type": "object", "additionalProperties": {"type": "integer"}},
+        "declared_share": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "vendoring"],
+          "properties": {
+            "type":      {"type": "integer", "minimum": 0, "description": "How many entries had a declared metadata.type"},
+            "vendoring": {"type": "integer", "minimum": 0, "description": "How many entries had a declared metadata.vendoring"}
+          }
+        }
       }
     }
   },
@@ -67,7 +76,8 @@
         "kind", "name", "repo", "repo_dir", "entry_path",
         "frontmatter", "description_chars", "body_chars",
         "total_bytes", "total_lines",
-        "vendoring", "type", "type_signals",
+        "vendoring", "vendoring_source",
+        "type", "type_source", "type_signals",
         "bundle", "git"
       ],
       "additionalProperties": false,
@@ -86,7 +96,14 @@
             "argument_hint": {"type": ["string", "null"]},
             "allowed_tools": {"type": ["string", "null"]},
             "tools":         {"type": ["string", "null"]},
-            "model":         {"type": ["string", "null"]}
+            "model":         {"type": ["string", "null"]},
+            "license":       {"type": ["string", "null"], "description": "agentskills.io spec field"},
+            "compatibility": {"type": ["string", "null"], "description": "agentskills.io spec field"},
+            "metadata": {
+              "type": ["object", "null"],
+              "additionalProperties": {"type": ["string", "number", "boolean", "null"]},
+              "description": "Free-form metadata block per agentskills.io. Recognized keys consumed by the inventory: type, vendoring, upstream, commit, snapshot_date, local_edits, version, author, deprecated, supersedes."
+            }
           }
         },
         "description_chars": {"type": "integer", "minimum": 0},
@@ -96,6 +113,10 @@
         "vendoring": {
           "enum": ["custom", "vendored", "vendored-customized", "unknown"],
           "description": "Provenance classification: custom = authored here; vendored = copied from upstream; vendored-customized = vendored + non-trivial local edits beyond name-rename"
+        },
+        "vendoring_source": {
+          "enum": ["declared", "heuristic"],
+          "description": "Where the vendoring value came from. 'declared' = read from frontmatter metadata.vendoring; 'heuristic' = derived from UPSTREAM.md/VENDORED.md marker"
         },
         "vendor_source": {
           "type": ["object", "null"],
@@ -111,7 +132,11 @@
         },
         "type": {
           "type": "string",
-          "description": "Heuristic functional type. Free-string in schema so new types can be added; renderer groups by current value. Conventional values: procedural, role, documentation, reference, api-service, meta, review, agent-auditor, agent-reviewer, agent-researcher, agent-specialist, agent-orchestrator, agent-general, unknown"
+          "description": "Functional type. Free-string in schema so new types can be added; renderer groups by current value. Conventional values: procedural, role, documentation, reference, api-service, meta, review, agent-auditor, agent-reviewer, agent-researcher, agent-specialist, agent-orchestrator, agent-general, unknown"
+        },
+        "type_source": {
+          "enum": ["declared", "heuristic"],
+          "description": "Where the type value came from. 'declared' = read from frontmatter metadata.type; 'heuristic' = derived from name/description/bundle rules"
         },
         "type_signals": {
           "type": "array",

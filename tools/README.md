@@ -55,15 +55,72 @@ discovered automatically.
 | `name` | Frontmatter `name:` (fallback: directory or filename) |
 | `repo` | `git remote get-url origin` → `owner/repo` slug |
 | `repo_dir`, `entry_path` | Paths relative to the repo root |
-| `frontmatter` | `name`, `description`, `argument-hint`, `allowed-tools`, `tools`, `model` |
+| `frontmatter` | `name`, `description`, `argument-hint`, `allowed-tools`, `tools`, `model`, `license`, `compatibility`, plus the full `metadata` block |
 | `description_chars`, `body_chars`, `total_bytes`, `total_lines` | File-size metrics |
-| `vendoring` | `custom` / `vendored` / `vendored-customized` / `unknown` — parsed from `UPSTREAM.md` / `VENDORED.md` markers at repo root, `.claude/skills/`, `.claude/agents/`, and per-skill directories |
-| `vendor_source` | `upstream` URL, `commit` SHA, `snapshot_date`, `local_edits` text, and the path of the marker file |
-| `type` | Heuristic classification: `procedural`, `role`, `documentation`, `reference`, `api-service`, `meta`, `review`, `agent-auditor`, `agent-reviewer`, `agent-researcher`, `agent-orchestrator`, `agent-specialist`, `agent-general`, `unknown` |
+| `vendoring` | `custom` / `vendored` / `vendored-customized` / `unknown` — declared (frontmatter `metadata.vendoring`) if present, otherwise parsed from `UPSTREAM.md` / `VENDORED.md` markers at the repo root, `.claude/skills/`, `.claude/agents/`, and per-skill directories |
+| `vendoring_source` | `declared` or `heuristic` — tells you which path produced the value |
+| `vendor_source` | `upstream` URL, `commit` SHA, `snapshot_date`, `local_edits` text, and the path of the marker file (or `frontmatter.metadata` if declared) |
+| `type` | `procedural`, `role`, `documentation`, `reference`, `api-service`, `meta`, `review`, `agent-auditor`, `agent-reviewer`, `agent-researcher`, `agent-orchestrator`, `agent-specialist`, `agent-general`, `unknown` — declared (frontmatter `metadata.type`) if present, otherwise classified by overrideable regex rules |
+| `type_source` | `declared` or `heuristic` |
 | `type_signals` | Human-readable reasons supporting the type label |
 | `bundle` | Subdirs found inside a skill bundle: `scripts`, `references`, `assets`, `agents`, `evals`, `templates`, `eval-viewer`, plus `LICENSE`, vendor markers, and any unrecognized files/dirs |
 | `git.first_commit_iso`, `last_commit_iso`, `commits_count` | `git log --follow` against the entry path |
 | `usage.invocations`, `unique_sessions`, `last_iso` | If `--transcripts DIR` is passed: counted from `<command-name>NAME</command-name>` tokens and `Skill` tool-use blocks in any `*.jsonl` under that directory |
+
+## Declared metadata (agentskills.io `metadata:` block)
+
+The script reads declared metadata from the SKILL.md `metadata:` block per the
+[agentskills.io open standard](https://agentskills.io/specification), which
+Claude Code's docs explicitly defer to. The standard describes `metadata` as
+"a map from string keys to string values" intended for "additional properties
+not defined by the Agent Skills spec." Declared values **override** the
+heuristic ones; the script records which path produced each value
+(`type_source`, `vendoring_source`).
+
+Recognized `metadata.*` keys:
+
+| Key | Effect on inventory |
+|---|---|
+| `type` | Sets `entry.type` directly; `type_source = "declared"` |
+| `vendoring` | Sets `entry.vendoring` directly; `vendoring_source = "declared"` |
+| `upstream`, `commit`, `snapshot_date`, `local_edits` | When `vendoring` is declared, these populate `vendor_source` (replacing the parsed-marker route) |
+| `version`, `author`, `deprecated`, `supersedes`, anything else | Passed through verbatim in `frontmatter.metadata` for the renderer to surface |
+
+The two **top-level** standard fields are also captured:
+
+| Field | Source |
+|---|---|
+| `license` | agentskills.io spec — name or bundled file reference |
+| `compatibility` | agentskills.io spec — environment requirements (max 500 chars per spec) |
+
+The inventory does not write to any SKILL.md — declaring metadata is a
+deliberate per-skill act by whoever maintains it. The renderer marks
+declared values with ★ in the per-repo tables and reports
+`Declared metadata coverage: type X/N (P%), vendoring Y/N (P%)` in the
+summary so the migration arc is visible.
+
+### Example SKILL.md frontmatter with declared metadata
+
+```yaml
+---
+name: cf-wrangler
+description: Cloudflare Workers CLI ...
+metadata:
+  type: api-service
+  vendoring: vendored
+  upstream: https://github.com/cloudflare/skills
+  commit: 7c449def4e0c63daa27212d853094e4c8e37bbe8
+  snapshot_date: "2026-04-28"
+  version: "1.0"
+  author: cloudflare
+license: Apache-2.0
+---
+```
+
+With the above, the inventory needs neither the `UPSTREAM.md` marker file
+nor the regex name-heuristic to land on `type=api-service, vendoring=vendored`
+with full provenance. The script reports `type_source: declared`,
+`vendoring_source: declared`, and the renderer marks both with ★.
 
 ## Vendoring detection
 

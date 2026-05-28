@@ -1,6 +1,6 @@
 # Claude Code skill & agent inventory
 
-_Generated `2026-05-28T01:37:51Z` · schema `v1.0.0`._
+_Generated `2026-05-28T02:05:27Z` · schema `v1.0.0`._
 
 ## Summary
 
@@ -9,14 +9,15 @@ _Generated `2026-05-28T01:37:51Z` · schema `v1.0.0`._
 - **By repo**: `coo-labs/coo-harness`=4, `coo-labs/coo-memory`=32, `coo-labs/skills`=12, `coo-labs/vade-canvas`=2
 - **By type**: procedural=15, agent-specialist=5, agent-auditor=4, documentation=4, reference=4, api-service=3, meta=3, role=3, agent-orchestrator=2, agent-researcher=2, agent-reviewer=2, review=2, agent-general=1
 - **By vendoring**: custom=46, vendored=4
+- **Declared metadata coverage**: type 0/50 (0%), vendoring 0/50 (0%) — remainder is derived heuristically. Migration goal: shrink the heuristic share over time.
 
-Transcripts scanned: `/root/.claude/projects` (2 files). Invocation counts are honest reports of what the scan saw — point the scanner at an archive for cross-session totals.
+Transcripts scanned: `/root/.claude/projects` (4 files). Invocation counts are honest reports of what the scan saw — point the scanner at an archive for cross-session totals.
 
 Repos scanned:
 - `coo-labs/coo-memory` @ `c4e1ea36` (/home/user/coo-memory)
 - `coo-labs/coo-harness` @ `25aeb525` (/home/user/coo-harness)
 - `coo-labs/vade-canvas` @ `baba412f` (/home/user/vade-canvas)
-- `coo-labs/skills` @ `fed7a287` (/home/user/skills)
+- `coo-labs/skills` @ `457d885f` (/home/user/skills)
 
 ## Inventory by repo
 
@@ -261,8 +262,8 @@ Repos scanned:
 
 ### `agentmail` — skill in `coo-labs/coo-harness`
 
-- **Type**: api-service _( named external-service skill )_
-- **Vendoring**: custom
+- **Type**: api-service _(source: heuristic; named external-service skill)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/agentmail/SKILL.md`
 - **Size**: 7281 bytes / 282 lines · description 344 chars · body 6898 chars
 - **Bundle**: references=2
@@ -273,8 +274,8 @@ Repos scanned:
 
 ### `skill-creator` — skill in `coo-labs/coo-harness`
 
-- **Type**: meta _( meta-skill name )_
-- **Vendoring**: vendored
+- **Type**: meta _(source: heuristic; meta-skill name)_
+- **Vendoring**: vendored _(source: heuristic)_
   - marker `.claude/skills/skill-creator/VENDORED.md`
 - **Path**: `.claude/skills/skill-creator/SKILL.md`
 - **Size**: 33168 bytes / 485 lines · description 319 chars · body 32625 chars
@@ -286,8 +287,8 @@ Repos scanned:
 
 ### `tagging-taxonomy` — skill in `coo-labs/coo-harness`
 
-- **Type**: procedural _( procedural-style name (memo/post/tag/request/status/end-session/tagging) )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/tagging-taxonomy/SKILL.md`
 - **Size**: 12188 bytes / 283 lines · description 418 chars · body 11659 chars
 - **Git**: first 2026-05-16, last 2026-05-25, 6 commits
@@ -297,8 +298,8 @@ Repos scanned:
 
 ### `trace-timeline` — skill in `coo-labs/coo-harness`
 
-- **Type**: procedural _( procedural verb at start of description )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; procedural verb at start of description)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/trace-timeline/SKILL.md`
 - **Size**: 9114 bytes / 172 lines · description 880 chars · body 8087 chars
 - **Frontmatter**: allowed-tools `Bash, Read, SendUserFile`
@@ -309,8 +310,8 @@ Repos scanned:
 
 ### `dispatching-parallel-agents` — agent in `coo-labs/coo-memory`
 
-- **Type**: agent-orchestrator _( orchestrator-style name )_
-- **Vendoring**: custom
+- **Type**: agent-orchestrator _(source: heuristic; orchestrator-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/agents/dispatching-parallel-agents.md`
 - **Size**: 5318 bytes / 140 lines · description 185 chars · body 5024 chars
 - **Frontmatter**: model `sonnet`
@@ -321,8 +322,8 @@ Repos scanned:
 
 ### `emancipatory-auditor` — agent in `coo-labs/coo-memory`
 
-- **Type**: agent-auditor _( auditor-style name )_
-- **Vendoring**: custom
+- **Type**: agent-auditor _(source: heuristic; auditor-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/agents/emancipatory-auditor.md`
 - **Size**: 4431 bytes / 58 lines · description 348 chars · body 3954 chars
 - **Frontmatter**: tools `Read, Bash, WebFetch, Agent`; model `sonnet`
@@ -333,8 +334,8 @@ Repos scanned:
 
 ### `lineage-interpreter` — agent in `coo-labs/coo-memory`
 
-- **Type**: agent-specialist _( specialist-style name )_
-- **Vendoring**: custom
+- **Type**: agent-specialist _(source: heuristic; specialist-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/agents/lineage-interpreter.md`
 - **Size**: 9246 bytes / 112 lines · description 756 chars · body 8309 chars
 - **Frontmatter**: tools `Read, Write, Edit, Bash, WebFetch, WebSearch, Agent`; model `opus`
@@ -345,8 +346,8 @@ Repos scanned:
 
 ### `oss-launch-issue-curator` — agent in `coo-labs/coo-memory`
 
-- **Type**: agent-specialist _( specialist-style name )_
-- **Vendoring**: custom
+- **Type**: agent-specialist _(source: heuristic; specialist-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/agents/oss-launch-issue-curator.md`
 - **Size**: 8412 bytes / 126 lines · description 709 chars · body 7526 chars
 - **Frontmatter**: tools `Read, Bash, Grep`; model `sonnet`
@@ -357,8 +358,8 @@ Repos scanned:
 
 ### `rationalization-discriminator` — agent in `coo-labs/coo-memory`
 
-- **Type**: agent-reviewer _( reviewer-style name )_
-- **Vendoring**: custom
+- **Type**: agent-reviewer _(source: heuristic; reviewer-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/agents/rationalization-discriminator.md`
 - **Size**: 7210 bytes / 76 lines · description 551 chars · body 6509 chars
 - **Frontmatter**: tools `Read, Bash, WebFetch, Agent`; model `sonnet`
@@ -369,8 +370,8 @@ Repos scanned:
 
 ### `research-investigator` — agent in `coo-labs/coo-memory`
 
-- **Type**: agent-researcher _( researcher-style name )_
-- **Vendoring**: custom
+- **Type**: agent-researcher _(source: heuristic; researcher-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/agents/research-investigator.md`
 - **Size**: 3137 bytes / 75 lines · description 211 chars · body 2804 chars
 - **Frontmatter**: tools `Read, Bash, WebFetch, Agent`; model `sonnet`
@@ -381,8 +382,8 @@ Repos scanned:
 
 ### `safety-auditor` — agent in `coo-labs/coo-memory`
 
-- **Type**: agent-auditor _( auditor-style name )_
-- **Vendoring**: custom
+- **Type**: agent-auditor _(source: heuristic; auditor-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/agents/safety-auditor.md`
 - **Size**: 4273 bytes / 49 lines · description 309 chars · body 3855 chars
 - **Frontmatter**: tools `Read, Bash, WebFetch, Agent`; model `sonnet`
@@ -393,8 +394,8 @@ Repos scanned:
 
 ### `session-closer` — agent in `coo-labs/coo-memory`
 
-- **Type**: agent-specialist _( specialist-style name )_
-- **Vendoring**: custom
+- **Type**: agent-specialist _(source: heuristic; specialist-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/agents/session-closer.md`
 - **Size**: 13295 bytes / 242 lines · description 465 chars · body 12672 chars
 - **Frontmatter**: tools `Read, Bash, mcp__mem0__add_memory`; model `sonnet`
@@ -405,8 +406,8 @@ Repos scanned:
 
 ### `transcript-analyzer` — agent in `coo-labs/coo-memory`
 
-- **Type**: agent-specialist _( specialist-style name )_
-- **Vendoring**: custom
+- **Type**: agent-specialist _(source: heuristic; specialist-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/agents/transcript-analyzer.md`
 - **Size**: 23376 bytes / 289 lines · description 408 chars · body 22757 chars
 - **Frontmatter**: tools `Read, Bash`; model `sonnet`
@@ -417,8 +418,8 @@ Repos scanned:
 
 ### `cf-workers-best-practices` — skill in `coo-labs/coo-memory`
 
-- **Type**: reference _( has references/ subdir )_
-- **Vendoring**: vendored
+- **Type**: reference _(source: heuristic; has references/ subdir)_
+- **Vendoring**: vendored _(source: heuristic)_
   - upstream `https://github.com/cloudflare/skills`; commit `7c449def`; snapshot 2026-04-28; marker `.claude/skills/UPSTREAM.md`
   - local edits: _only the `name:` field in each `SKILL.md` frontmatter,
   changed from `wrangler` / `workers-best-practices` to the namespaced
@@ -434,8 +435,8 @@ Repos scanned:
 
 ### `cf-wrangler` — skill in `coo-labs/coo-memory`
 
-- **Type**: api-service _( named external-service skill )_
-- **Vendoring**: vendored
+- **Type**: api-service _(source: heuristic; named external-service skill)_
+- **Vendoring**: vendored _(source: heuristic)_
   - upstream `https://github.com/cloudflare/skills`; commit `7c449def`; snapshot 2026-04-28; marker `.claude/skills/UPSTREAM.md`
   - local edits: _only the `name:` field in each `SKILL.md` frontmatter,
   changed from `wrangler` / `workers-best-practices` to the namespaced
@@ -450,8 +451,8 @@ Repos scanned:
 
 ### `chat-mode` — skill in `coo-labs/coo-memory`
 
-- **Type**: role _( name suffix -mode )_
-- **Vendoring**: custom
+- **Type**: role _(source: heuristic; name suffix -mode)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/chat-mode/SKILL.md`
 - **Size**: 5518 bytes / 94 lines · description 582 chars · body 4773 chars
 - **Frontmatter**: argument-hint `optional starting topic`
@@ -462,8 +463,8 @@ Repos scanned:
 
 ### `commission-retrospective` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( has scripts/ subdir )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; has scripts/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/commission-retrospective/SKILL.md`
 - **Size**: 9627 bytes / 208 lines · description 620 chars · body 8492 chars
 - **Frontmatter**: argument-hint `--since <YYYY-MM-DD> [--until <YYYY-MM-DD>] [--prs <list>] [--focus "<question>"] [--slug <slug>] [--open-pr] | --scope ...`; allowed-tools `Bash, Read, Write, Task`
@@ -475,8 +476,8 @@ Repos scanned:
 
 ### `day-overview` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( has scripts/ subdir )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; has scripts/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/day-overview/SKILL.md`
 - **Size**: 12192 bytes / 293 lines · description 493 chars · body 11431 chars
 - **Frontmatter**: argument-hint `[--date YYYY-MM-DD] [--end YYYY-MM-DD] [--no-ship] [--post]`; allowed-tools `Bash, Read, Write, Edit`
@@ -488,8 +489,8 @@ Repos scanned:
 
 ### `debug-mode` — skill in `coo-labs/coo-memory`
 
-- **Type**: role _( name suffix -mode )_
-- **Vendoring**: custom
+- **Type**: role _(source: heuristic; name suffix -mode)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/debug-mode/SKILL.md`
 - **Size**: 10538 bytes / 224 lines · description 804 chars · body 9549 chars
 - **Frontmatter**: argument-hint `optional starting hypothesis or surface name`
@@ -500,8 +501,8 @@ Repos scanned:
 
 ### `end-session` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( procedural-style name (memo/post/tag/request/status/end-session/tagging) )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/end-session/SKILL.md`
 - **Size**: 5598 bytes / 131 lines · description 542 chars · body 4926 chars
 - **Frontmatter**: allowed-tools `Bash, Read, Write, Edit, mcp__mem0__add_memory`
@@ -512,8 +513,8 @@ Repos scanned:
 
 ### `exec-mode` — skill in `coo-labs/coo-memory`
 
-- **Type**: role _( name suffix -mode )_
-- **Vendoring**: custom
+- **Type**: role _(source: heuristic; name suffix -mode)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/exec-mode/SKILL.md`
 - **Size**: 4444 bytes / 85 lines · description 990 chars · body 3305 chars
 - **Frontmatter**: argument-hint `optional scope hint, or --revise-persona`
@@ -524,8 +525,8 @@ Repos scanned:
 
 ### `manage-project` — skill in `coo-labs/coo-memory`
 
-- **Type**: api-service _( scripts/ + service description )_
-- **Vendoring**: custom
+- **Type**: api-service _(source: heuristic; scripts/ + service description)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/manage-project/SKILL.md`
 - **Size**: 4169 bytes / 83 lines · description 527 chars · body 3326 chars
 - **Frontmatter**: allowed-tools `Bash(gh *) Bash(python3 *) Read`
@@ -537,8 +538,8 @@ Repos scanned:
 
 ### `memo` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( procedural-style name (memo/post/tag/request/status/end-session/tagging) )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/memo/SKILL.md`
 - **Size**: 15336 bytes / 428 lines · description 655 chars · body 14469 chars
 - **Frontmatter**: argument-hint `["Title"] [--dir <path>] [--supersedes <id>]`; allowed-tools `Bash, Read, Write`
@@ -549,8 +550,8 @@ Repos scanned:
 
 ### `memo-audit` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( procedural-style name (memo/post/tag/request/status/end-session/tagging) )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/memo-audit/SKILL.md`
 - **Size**: 11026 bytes / 279 lines · description 505 chars · body 10343 chars
 - **Frontmatter**: argument-hint `--apply`; allowed-tools `Bash, Read, mcp__mem0__search_memories`
@@ -561,8 +562,8 @@ Repos scanned:
 
 ### `memo-query` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( has scripts/ subdir )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; has scripts/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/memo-query/SKILL.md`
 - **Size**: 7330 bytes / 174 lines · description 360 chars · body 6743 chars
 - **Frontmatter**: argument-hint `memo-id | keyword | YYYY-MM-DD..YYYY-MM-DD | --semantic "<query>"`; allowed-tools `Bash, Read, mcp__mem0__search_memories`
@@ -574,8 +575,8 @@ Repos scanned:
 
 ### `memo-search` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( procedural-style name (memo/post/tag/request/status/end-session/tagging) )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/memo-search/SKILL.md`
 - **Size**: 8208 bytes / 192 lines · description 669 chars · body 7450 chars
 - **Git**: first 2026-05-25, last 2026-05-27, 3 commits
@@ -585,8 +586,8 @@ Repos scanned:
 
 ### `memo-sync` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( procedural-style name (memo/post/tag/request/status/end-session/tagging) )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/memo-sync/SKILL.md`
 - **Size**: 10903 bytes / 259 lines · description 586 chars · body 10124 chars
 - **Frontmatter**: argument-hint `--dry-run`; allowed-tools `Bash, Read, mcp__mem0__search_memories`
@@ -597,8 +598,8 @@ Repos scanned:
 
 ### `peer-review` — skill in `coo-labs/coo-memory`
 
-- **Type**: review _( review-style name )_
-- **Vendoring**: custom
+- **Type**: review _(source: heuristic; review-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/peer-review/SKILL.md`
 - **Size**: 18219 bytes / 367 lines · description 1412 chars · body 16518 chars
 - **Frontmatter**: argument-hint `<file-path> [--roles "r1,r2,r3"] [--n <count>] [--no-decompose]`; allowed-tools `Read, Bash, Write, Task`
@@ -610,8 +611,8 @@ Repos scanned:
 
 ### `post-discussion` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( procedural-style name (memo/post/tag/request/status/end-session/tagging) )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/post-discussion/SKILL.md`
 - **Size**: 12148 bytes / 273 lines · description 509 chars · body 11484 chars
 - **Frontmatter**: allowed-tools `Bash, Read, Write`
@@ -622,8 +623,8 @@ Repos scanned:
 
 ### `postmerge-check` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( has scripts/ subdir )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; has scripts/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/postmerge-check/SKILL.md`
 - **Size**: 7763 bytes / 125 lines · description 398 chars · body 7154 chars
 - **Frontmatter**: argument-hint `[<num> | <repo>#<num> ...] [--since <duration>]`; allowed-tools `Bash, Read`
@@ -635,8 +636,8 @@ Repos scanned:
 
 ### `quarto-docs` — skill in `coo-labs/coo-memory`
 
-- **Type**: documentation _( name suffix -docs )_
-- **Vendoring**: custom
+- **Type**: documentation _(source: heuristic; name suffix -docs)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/quarto-docs/SKILL.md`
 - **Size**: 12332 bytes / 110 lines · description 1060 chars · body 11171 chars
 - **Git**: first 2026-05-25, last 2026-05-27, 2 commits
@@ -646,8 +647,8 @@ Repos scanned:
 
 ### `request-briefing` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( procedural-style name (memo/post/tag/request/status/end-session/tagging) )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/request-briefing/SKILL.md`
 - **Size**: 10206 bytes / 259 lines · description 607 chars · body 9360 chars
 - **Frontmatter**: argument-hint `[short-slug] [--principal NAME] [--recipient ROLE] [--draft]`; allowed-tools `Bash, Read, Write`
@@ -658,8 +659,8 @@ Repos scanned:
 
 ### `status-check` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( procedural-style name (memo/post/tag/request/status/end-session/tagging) )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/status-check/SKILL.md`
 - **Size**: 5856 bytes / 138 lines · description 478 chars · body 5223 chars
 - **Frontmatter**: allowed-tools `Read`
@@ -670,8 +671,8 @@ Repos scanned:
 
 ### `tag-milestone` — skill in `coo-labs/coo-memory`
 
-- **Type**: procedural _( procedural-style name (memo/post/tag/request/status/end-session/tagging) )_
-- **Vendoring**: custom
+- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/tag-milestone/SKILL.md`
 - **Size**: 8531 bytes / 256 lines · description 404 chars · body 7902 chars
 - **Frontmatter**: argument-hint `<nickname> [--date YYYY-MM-DD] [--annotation "..."] [--dry-run] [--yes]`; allowed-tools `Bash, Read`
@@ -682,8 +683,8 @@ Repos scanned:
 
 ### `tool-creator` — skill in `coo-labs/coo-memory`
 
-- **Type**: meta _( meta-skill name )_
-- **Vendoring**: custom
+- **Type**: meta _(source: heuristic; meta-skill name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/tool-creator/SKILL.md`
 - **Size**: 20779 bytes / 459 lines · description 705 chars · body 19796 chars
 - **Bundle**: templates=4
@@ -694,8 +695,8 @@ Repos scanned:
 
 ### `upstream-feedback` — skill in `coo-labs/coo-memory`
 
-- **Type**: reference _( has references/ subdir )_
-- **Vendoring**: custom
+- **Type**: reference _(source: heuristic; has references/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/upstream-feedback/SKILL.md`
 - **Size**: 3941 bytes / 46 lines · description 304 chars · body 3127 chars
 - **Frontmatter**: allowed-tools `Read, Bash, WebFetch, Write`
@@ -707,8 +708,8 @@ Repos scanned:
 
 ### `README` — agent in `coo-labs/skills`
 
-- **Type**: agent-general _( no heuristic matched · under reference/ subdir )_
-- **Vendoring**: custom
+- **Type**: agent-general _(source: heuristic; no heuristic matched · under reference/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `agents/reference/README.md`
 - **Size**: 2582 bytes / 57 lines · description 0 chars · body 2570 chars
 - **Git**: first 2026-05-11, last 2026-05-12, 2 commits
@@ -716,8 +717,8 @@ Repos scanned:
 
 ### `dispatching-parallel-agents` — agent in `coo-labs/skills`
 
-- **Type**: agent-orchestrator _( orchestrator-style name )_
-- **Vendoring**: vendored
+- **Type**: agent-orchestrator _(source: heuristic; orchestrator-style name)_
+- **Vendoring**: vendored _(source: heuristic)_
   - marker `VENDORED.md`
 - **Path**: `agents/dispatching-parallel-agents.md`
 - **Size**: 5318 bytes / 140 lines · description 185 chars · body 5024 chars
@@ -729,8 +730,8 @@ Repos scanned:
 
 ### `emancipatory-auditor` — agent in `coo-labs/skills`
 
-- **Type**: agent-auditor _( auditor-style name · under reference/ subdir )_
-- **Vendoring**: custom
+- **Type**: agent-auditor _(source: heuristic; auditor-style name · under reference/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `agents/reference/emancipatory-auditor.md`
 - **Size**: 8949 bytes / 153 lines · description 348 chars · body 8462 chars
 - **Frontmatter**: tools `Read, Bash, WebFetch, Agent`; model `sonnet`
@@ -741,8 +742,8 @@ Repos scanned:
 
 ### `lineage-interpreter` — agent in `coo-labs/skills`
 
-- **Type**: agent-specialist _( specialist-style name )_
-- **Vendoring**: custom
+- **Type**: agent-specialist _(source: heuristic; specialist-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `agents/lineage-interpreter.md`
 - **Size**: 9270 bytes / 112 lines · description 756 chars · body 8333 chars
 - **Frontmatter**: tools `Read, Write, Edit, Bash, WebFetch, WebSearch, Agent`; model `opus`
@@ -753,8 +754,8 @@ Repos scanned:
 
 ### `rationalization-discriminator` — agent in `coo-labs/skills`
 
-- **Type**: agent-reviewer _( reviewer-style name )_
-- **Vendoring**: custom
+- **Type**: agent-reviewer _(source: heuristic; reviewer-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `agents/rationalization-discriminator.md`
 - **Size**: 7244 bytes / 76 lines · description 551 chars · body 6543 chars
 - **Frontmatter**: tools `Read, Bash, WebFetch, Agent`; model `sonnet`
@@ -765,8 +766,8 @@ Repos scanned:
 
 ### `research-investigator` — agent in `coo-labs/skills`
 
-- **Type**: agent-researcher _( researcher-style name )_
-- **Vendoring**: custom
+- **Type**: agent-researcher _(source: heuristic; researcher-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `agents/research-investigator.md`
 - **Size**: 3123 bytes / 75 lines · description 211 chars · body 2790 chars
 - **Frontmatter**: tools `Read, Bash, WebFetch, Agent`; model `sonnet`
@@ -777,8 +778,8 @@ Repos scanned:
 
 ### `safety-auditor` — agent in `coo-labs/skills`
 
-- **Type**: agent-auditor _( auditor-style name · under reference/ subdir )_
-- **Vendoring**: custom
+- **Type**: agent-auditor _(source: heuristic; auditor-style name · under reference/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `agents/reference/safety-auditor.md`
 - **Size**: 8801 bytes / 124 lines · description 309 chars · body 8379 chars
 - **Frontmatter**: tools `Read, Bash, WebFetch, Agent`; model `sonnet`
@@ -789,8 +790,8 @@ Repos scanned:
 
 ### `adapt-skill` — skill in `coo-labs/skills`
 
-- **Type**: meta _( meta-skill name )_
-- **Vendoring**: custom
+- **Type**: meta _(source: heuristic; meta-skill name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `skills/adapt-skill/SKILL.md`
 - **Size**: 12355 bytes / 295 lines · description 521 chars · body 11584 chars
 - **Frontmatter**: argument-hint `<skill-or-agent-name> [--user] [--dry-run]`; allowed-tools `Bash, Read, Write, Edit, AskUserQuestion`
@@ -802,8 +803,8 @@ Repos scanned:
 
 ### `canvas-ui` — skill in `coo-labs/skills`
 
-- **Type**: reference _( has references/ subdir )_
-- **Vendoring**: custom
+- **Type**: reference _(source: heuristic; has references/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `skills/canvas-ui/SKILL.md`
 - **Size**: 19167 bytes / 181 lines · description 896 chars · body 18138 chars
 - **Bundle**: references=1
@@ -814,8 +815,8 @@ Repos scanned:
 
 ### `peer-review` — skill in `coo-labs/skills`
 
-- **Type**: review _( review-style name )_
-- **Vendoring**: custom
+- **Type**: review _(source: heuristic; review-style name)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `skills/peer-review/SKILL.md`
 - **Size**: 17797 bytes / 354 lines · description 1412 chars · body 16097 chars
 - **Frontmatter**: argument-hint `<file-path> [--roles "r1,r2,r3"] [--n <count>] [--no-decompose]`; allowed-tools `Read, Bash, Write, Task`
@@ -826,8 +827,8 @@ Repos scanned:
 
 ### `quarto-docs` — skill in `coo-labs/skills`
 
-- **Type**: documentation _( name suffix -docs )_
-- **Vendoring**: custom
+- **Type**: documentation _(source: heuristic; name suffix -docs)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `skills/quarto-docs/SKILL.md`
 - **Size**: 12034 bytes / 110 lines · description 762 chars · body 11171 chars
 - **Git**: first 2026-05-11, last 2026-05-11, 1 commits
@@ -837,8 +838,8 @@ Repos scanned:
 
 ### `tldraw-docs` — skill in `coo-labs/skills`
 
-- **Type**: documentation _( name suffix -docs )_
-- **Vendoring**: custom
+- **Type**: documentation _(source: heuristic; name suffix -docs)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `skills/tldraw-docs/SKILL.md`
 - **Size**: 11698 bytes / 96 lines · description 817 chars · body 10786 chars
 - **Git**: first 2026-05-11, last 2026-05-11, 1 commits
@@ -848,8 +849,8 @@ Repos scanned:
 
 ### `canvas-ui` — skill in `coo-labs/vade-canvas`
 
-- **Type**: reference _( has references/ subdir )_
-- **Vendoring**: custom
+- **Type**: reference _(source: heuristic; has references/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/canvas-ui/SKILL.md`
 - **Size**: 19218 bytes / 181 lines · description 949 chars · body 18138 chars
 - **Bundle**: references=1, evals=1
@@ -860,8 +861,8 @@ Repos scanned:
 
 ### `tldraw-docs` — skill in `coo-labs/vade-canvas`
 
-- **Type**: documentation _( name suffix -docs )_
-- **Vendoring**: custom
+- **Type**: documentation _(source: heuristic; name suffix -docs)_
+- **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/tldraw-docs/SKILL.md`
 - **Size**: 11770 bytes / 96 lines · description 889 chars · body 10786 chars
 - **Bundle**: references=1

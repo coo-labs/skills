@@ -88,6 +88,38 @@ def _stringify(v):
 
 
 # ---------------------------------------------------------------------------
+# Declared metadata (agentskills.io spec: metadata is a free-form map at the
+# top level of frontmatter, intended as the extension surface for host tools)
+# ---------------------------------------------------------------------------
+
+# Keys inside `metadata:` the inventory recognizes. Any other keys are passed
+# through verbatim in the `metadata` block but don't override anything.
+METADATA_KEYS_OVERRIDE_TYPE      = ("type",)
+METADATA_KEYS_OVERRIDE_VENDORING = ("vendoring",)
+METADATA_VENDOR_SOURCE_KEYS      = ("upstream", "commit", "snapshot_date", "local_edits")
+
+
+def _extract_metadata(fm):
+    """Pull the metadata block out of frontmatter, coercing to JSON-safe scalars.
+
+    The agentskills.io spec calls for a map of string keys to string values.
+    PyYAML autotypes some scalars (dates, timestamps) into Python objects
+    that aren't JSON-serializable, so we stringify anything that isn't a
+    primitive scalar.
+    """
+    md = fm.get("metadata")
+    if not isinstance(md, dict):
+        return {}
+    out = {}
+    for k, v in md.items():
+        if v is None or isinstance(v, (str, int, float, bool)):
+            out[k] = v
+        else:
+            out[k] = str(v)
+    return out
+
+
+# ---------------------------------------------------------------------------
 # Vendoring detection
 # ---------------------------------------------------------------------------
 
@@ -487,13 +519,39 @@ def discover_agents(repo_path):
 # Entry assembly
 # ---------------------------------------------------------------------------
 
+def _apply_declared_metadata(declared, heur_type, heur_signals, heur_vendoring, heur_vinfo):
+    """Apply declared metadata overrides; return resolved (type, type_source,
+    type_signals, vendoring, vendoring_source, vendor_source)."""
+    type_label, type_source, signals = heur_type, "heuristic", heur_signals
+    if declared.get("type"):
+        type_label = str(declared["type"])
+        type_source = "declared"
+        signals = [f"declared metadata.type = {type_label!r}"]
+
+    vendoring, vendoring_source = heur_vendoring, "heuristic"
+    vendor_source = heur_vinfo
+    if declared.get("vendoring"):
+        vendoring = str(declared["vendoring"])
+        vendoring_source = "declared"
+        # When vendoring is declared, build vendor_source from declared keys
+        declared_vendor = {k: declared[k] for k in METADATA_VENDOR_SOURCE_KEYS if k in declared}
+        if declared_vendor:
+            vendor_source = {**(heur_vinfo or {}), **declared_vendor, "vendor_file": "frontmatter.metadata"}
+        elif heur_vinfo is None:
+            vendor_source = {"vendor_file": "frontmatter.metadata"}
+    return type_label, type_source, signals, vendoring, vendoring_source, vendor_source
+
+
 def process_skill(skill_dir, skill_md, repo_path, repo_slug, vendor_index, type_rules):
     text = skill_md.read_text(encoding="utf-8", errors="replace")
     fm, body, _ = parse_frontmatter(text)
     name = fm.get("name") or skill_dir.name
     bundle = inspect_bundle(skill_dir)
-    vendoring, vinfo = classify_vendoring(name, vendor_index)
-    type_label, type_signals = classify_type(name, "skill", fm, bundle, type_rules)
+    heur_vendoring, heur_vinfo = classify_vendoring(name, vendor_index)
+    heur_type, heur_signals = classify_type(name, "skill", fm, bundle, type_rules)
+    declared = _extract_metadata(fm)
+    type_label, type_source, type_signals, vendoring, vendoring_source, vendor_source = \
+        _apply_declared_metadata(declared, heur_type, heur_signals, heur_vendoring, heur_vinfo)
     rel = skill_md.relative_to(repo_path).as_posix()
     rel_dir = skill_dir.relative_to(repo_path).as_posix()
     return {
@@ -509,14 +567,19 @@ def process_skill(skill_dir, skill_md, repo_path, repo_slug, vendor_index, type_
             "allowed_tools": _stringify(fm.get("allowed-tools") or fm.get("allowed_tools")),
             "tools":         _stringify(fm.get("tools")),
             "model":         _stringify(fm.get("model")),
+            "license":       _stringify(fm.get("license")),
+            "compatibility": _stringify(fm.get("compatibility")),
+            "metadata":      declared or None,
         },
         "description_chars": len(fm.get("description") or ""),
         "body_chars":        len(body),
         "total_bytes":       skill_md.stat().st_size,
         "total_lines":       text.count("\n") + (0 if text.endswith("\n") else 1),
         "vendoring":         vendoring,
-        "vendor_source":     vinfo,
+        "vendoring_source":  vendoring_source,
+        "vendor_source":     vendor_source,
         "type":              type_label,
+        "type_source":       type_source,
         "type_signals":      type_signals,
         "is_reference":      False,
         "bundle":            bundle,
@@ -532,8 +595,11 @@ def process_agent(agents_root, agent_md, repo_path, repo_slug, vendor_index, typ
     text = agent_md.read_text(encoding="utf-8", errors="replace")
     fm, body, _ = parse_frontmatter(text)
     name = fm.get("name") or agent_md.stem
-    vendoring, vinfo = classify_vendoring(name, vendor_index)
-    type_label, type_signals = classify_type(name, "agent", fm, {}, type_rules)
+    heur_vendoring, heur_vinfo = classify_vendoring(name, vendor_index)
+    heur_type, heur_signals = classify_type(name, "agent", fm, {}, type_rules)
+    declared = _extract_metadata(fm)
+    type_label, type_source, type_signals, vendoring, vendoring_source, vendor_source = \
+        _apply_declared_metadata(declared, heur_type, heur_signals, heur_vendoring, heur_vinfo)
     rel = agent_md.relative_to(repo_path).as_posix()
     parts = agent_md.relative_to(agents_root).parts
     is_reference = len(parts) > 1 and parts[0] == "reference"
@@ -552,14 +618,19 @@ def process_agent(agents_root, agent_md, repo_path, repo_slug, vendor_index, typ
             "allowed_tools": _stringify(fm.get("allowed-tools") or fm.get("allowed_tools")),
             "tools":         _stringify(fm.get("tools")),
             "model":         _stringify(fm.get("model")),
+            "license":       _stringify(fm.get("license")),
+            "compatibility": _stringify(fm.get("compatibility")),
+            "metadata":      declared or None,
         },
         "description_chars": len(fm.get("description") or ""),
         "body_chars":        len(body),
         "total_bytes":       agent_md.stat().st_size,
         "total_lines":       text.count("\n") + (0 if text.endswith("\n") else 1),
         "vendoring":         vendoring,
-        "vendor_source":     vinfo,
+        "vendoring_source":  vendoring_source,
+        "vendor_source":     vendor_source,
         "type":              type_label,
+        "type_source":       type_source,
         "type_signals":      type_signals,
         "is_reference":      is_reference,
         "bundle":            {},
@@ -642,17 +713,26 @@ def _typecheck(data, t):
 
 def _summarize(entries):
     by_repo, by_kind, by_type, by_vendoring = (defaultdict(int) for _ in range(4))
+    declared_type = declared_vendoring = 0
     for e in entries:
         by_repo[e["repo"]] += 1
         by_kind[e["kind"]] += 1
         by_type[e["type"]] += 1
         by_vendoring[e["vendoring"]] += 1
+        if e.get("type_source") == "declared":
+            declared_type += 1
+        if e.get("vendoring_source") == "declared":
+            declared_vendoring += 1
     return {
         "count_total": len(entries),
         "by_repo": dict(by_repo),
         "by_kind": dict(by_kind),
         "by_type": dict(by_type),
         "by_vendoring": dict(by_vendoring),
+        "declared_share": {
+            "type":      declared_type,
+            "vendoring": declared_vendoring,
+        },
     }
 
 

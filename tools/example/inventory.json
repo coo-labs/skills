@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-05-28T01:37:51Z",
+  "generated_at": "2026-05-28T02:05:27Z",
   "scan": {
     "repos": [
       {
@@ -21,12 +21,12 @@
       {
         "path": "/home/user/skills",
         "remote": "coo-labs/skills",
-        "head_sha": "fed7a287d70c5cffa5cf962c49e4fc06555e458c"
+        "head_sha": "457d885fe437779986a3bab48d9e2eeccaff0d05"
       }
     ],
     "transcripts": {
       "dir": "/root/.claude/projects",
-      "files_scanned": 2
+      "files_scanned": 4
     }
   },
   "entries": [
@@ -42,15 +42,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 344,
       "body_chars": 6898,
       "total_bytes": 7281,
       "total_lines": 282,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "api-service",
+      "type_source": "heuristic",
       "type_signals": [
         "named external-service skill"
       ],
@@ -87,17 +92,22 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 319,
       "body_chars": 32625,
       "total_bytes": 33168,
       "total_lines": 485,
       "vendoring": "vendored",
+      "vendoring_source": "heuristic",
       "vendor_source": {
         "vendor_file": ".claude/skills/skill-creator/VENDORED.md"
       },
       "type": "meta",
+      "type_source": "heuristic",
       "type_signals": [
         "meta-skill name"
       ],
@@ -170,15 +180,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 418,
       "body_chars": 11659,
       "total_bytes": 12188,
       "total_lines": 283,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
       ],
@@ -207,15 +222,20 @@
         "argument_hint": null,
         "allowed_tools": "Bash, Read, SendUserFile",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 880,
       "body_chars": 8087,
       "total_bytes": 9114,
       "total_lines": 172,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "procedural verb at start of description"
       ],
@@ -244,15 +264,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 185,
       "body_chars": 5024,
       "total_bytes": 5318,
       "total_lines": 140,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-orchestrator",
+      "type_source": "heuristic",
       "type_signals": [
         "orchestrator-style name"
       ],
@@ -281,15 +306,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Bash, WebFetch, Agent",
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 348,
       "body_chars": 3954,
       "total_bytes": 4431,
       "total_lines": 58,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-auditor",
+      "type_source": "heuristic",
       "type_signals": [
         "auditor-style name"
       ],
@@ -318,15 +348,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Write, Edit, Bash, WebFetch, WebSearch, Agent",
-        "model": "opus"
+        "model": "opus",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 756,
       "body_chars": 8309,
       "total_bytes": 9246,
       "total_lines": 112,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-specialist",
+      "type_source": "heuristic",
       "type_signals": [
         "specialist-style name"
       ],
@@ -355,15 +390,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Bash, Grep",
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 709,
       "body_chars": 7526,
       "total_bytes": 8412,
       "total_lines": 126,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-specialist",
+      "type_source": "heuristic",
       "type_signals": [
         "specialist-style name"
       ],
@@ -392,15 +432,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Bash, WebFetch, Agent",
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 551,
       "body_chars": 6509,
       "total_bytes": 7210,
       "total_lines": 76,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-reviewer",
+      "type_source": "heuristic",
       "type_signals": [
         "reviewer-style name"
       ],
@@ -429,15 +474,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Bash, WebFetch, Agent",
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 211,
       "body_chars": 2804,
       "total_bytes": 3137,
       "total_lines": 75,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-researcher",
+      "type_source": "heuristic",
       "type_signals": [
         "researcher-style name"
       ],
@@ -466,15 +516,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Bash, WebFetch, Agent",
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 309,
       "body_chars": 3855,
       "total_bytes": 4273,
       "total_lines": 49,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-auditor",
+      "type_source": "heuristic",
       "type_signals": [
         "auditor-style name"
       ],
@@ -503,15 +558,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Bash, mcp__mem0__add_memory",
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 465,
       "body_chars": 12672,
       "total_bytes": 13295,
       "total_lines": 242,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-specialist",
+      "type_source": "heuristic",
       "type_signals": [
         "specialist-style name"
       ],
@@ -540,15 +600,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Bash",
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 408,
       "body_chars": 22757,
       "total_bytes": 23376,
       "total_lines": 289,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-specialist",
+      "type_source": "heuristic",
       "type_signals": [
         "specialist-style name"
       ],
@@ -577,13 +642,17 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 359,
       "body_chars": 6633,
       "total_bytes": 7095,
       "total_lines": 127,
       "vendoring": "vendored",
+      "vendoring_source": "heuristic",
       "vendor_source": {
         "upstream": "https://github.com/cloudflare/skills",
         "commit": "7c449def4e0c63daa27212d853094e4c8e37bbe8",
@@ -593,6 +662,7 @@
         "vendor_file": ".claude/skills/UPSTREAM.md"
       },
       "type": "reference",
+      "type_source": "heuristic",
       "type_signals": [
         "has references/ subdir"
       ],
@@ -629,13 +699,17 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 336,
       "body_chars": 17983,
       "total_bytes": 18362,
       "total_lines": 922,
       "vendoring": "vendored",
+      "vendoring_source": "heuristic",
       "vendor_source": {
         "upstream": "https://github.com/cloudflare/skills",
         "commit": "7c449def4e0c63daa27212d853094e4c8e37bbe8",
@@ -645,6 +719,7 @@
         "vendor_file": ".claude/skills/UPSTREAM.md"
       },
       "type": "api-service",
+      "type_source": "heuristic",
       "type_signals": [
         "named external-service skill"
       ],
@@ -673,15 +748,20 @@
         "argument_hint": "optional starting topic",
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 582,
       "body_chars": 4773,
       "total_bytes": 5518,
       "total_lines": 94,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "role",
+      "type_source": "heuristic",
       "type_signals": [
         "name suffix -mode"
       ],
@@ -710,15 +790,20 @@
         "argument_hint": "--since <YYYY-MM-DD> [--until <YYYY-MM-DD>] [--prs <list>] [--focus \"<question>\"] [--slug <slug>] [--open-pr] | --scope ...",
         "allowed_tools": "Bash, Read, Write, Task",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 620,
       "body_chars": 8492,
       "total_bytes": 9627,
       "total_lines": 208,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "has scripts/ subdir"
       ],
@@ -762,15 +847,20 @@
         "argument_hint": "[--date YYYY-MM-DD] [--end YYYY-MM-DD] [--no-ship] [--post]",
         "allowed_tools": "Bash, Read, Write, Edit",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 493,
       "body_chars": 11431,
       "total_bytes": 12192,
       "total_lines": 293,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "has scripts/ subdir"
       ],
@@ -806,15 +896,20 @@
         "argument_hint": "optional starting hypothesis or surface name",
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 804,
       "body_chars": 9549,
       "total_bytes": 10538,
       "total_lines": 224,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "role",
+      "type_source": "heuristic",
       "type_signals": [
         "name suffix -mode"
       ],
@@ -843,15 +938,20 @@
         "argument_hint": null,
         "allowed_tools": "Bash, Read, Write, Edit, mcp__mem0__add_memory",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 542,
       "body_chars": 4926,
       "total_bytes": 5598,
       "total_lines": 131,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
       ],
@@ -880,15 +980,20 @@
         "argument_hint": "optional scope hint, or --revise-persona",
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 990,
       "body_chars": 3305,
       "total_bytes": 4444,
       "total_lines": 85,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "role",
+      "type_source": "heuristic",
       "type_signals": [
         "name suffix -mode"
       ],
@@ -917,15 +1022,20 @@
         "argument_hint": null,
         "allowed_tools": "Bash(gh *) Bash(python3 *) Read",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 527,
       "body_chars": 3326,
       "total_bytes": 4169,
       "total_lines": 83,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "api-service",
+      "type_source": "heuristic",
       "type_signals": [
         "scripts/ + service description"
       ],
@@ -969,15 +1079,20 @@
         "argument_hint": "[\"Title\"] [--dir <path>] [--supersedes <id>]",
         "allowed_tools": "Bash, Read, Write",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 655,
       "body_chars": 14469,
       "total_bytes": 15336,
       "total_lines": 428,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
       ],
@@ -1006,15 +1121,20 @@
         "argument_hint": "--apply",
         "allowed_tools": "Bash, Read, mcp__mem0__search_memories",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 505,
       "body_chars": 10343,
       "total_bytes": 11026,
       "total_lines": 279,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
       ],
@@ -1043,15 +1163,20 @@
         "argument_hint": "memo-id | keyword | YYYY-MM-DD..YYYY-MM-DD | --semantic \"<query>\"",
         "allowed_tools": "Bash, Read, mcp__mem0__search_memories",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 360,
       "body_chars": 6743,
       "total_bytes": 7330,
       "total_lines": 174,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "has scripts/ subdir"
       ],
@@ -1087,15 +1212,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 669,
       "body_chars": 7450,
       "total_bytes": 8208,
       "total_lines": 192,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
       ],
@@ -1124,15 +1254,20 @@
         "argument_hint": "--dry-run",
         "allowed_tools": "Bash, Read, mcp__mem0__search_memories",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 586,
       "body_chars": 10124,
       "total_bytes": 10903,
       "total_lines": 259,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
       ],
@@ -1161,15 +1296,20 @@
         "argument_hint": "<file-path> [--roles \"r1,r2,r3\"] [--n <count>] [--no-decompose]",
         "allowed_tools": "Read, Bash, Write, Task",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 1412,
       "body_chars": 16518,
       "total_bytes": 18219,
       "total_lines": 367,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "review",
+      "type_source": "heuristic",
       "type_signals": [
         "review-style name"
       ],
@@ -1205,15 +1345,20 @@
         "argument_hint": null,
         "allowed_tools": "Bash, Read, Write",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 509,
       "body_chars": 11484,
       "total_bytes": 12148,
       "total_lines": 273,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
       ],
@@ -1242,15 +1387,20 @@
         "argument_hint": "[<num> | <repo>#<num> ...] [--since <duration>]",
         "allowed_tools": "Bash, Read",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 398,
       "body_chars": 7154,
       "total_bytes": 7763,
       "total_lines": 125,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "has scripts/ subdir"
       ],
@@ -1286,15 +1436,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 1060,
       "body_chars": 11171,
       "total_bytes": 12332,
       "total_lines": 110,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "documentation",
+      "type_source": "heuristic",
       "type_signals": [
         "name suffix -docs"
       ],
@@ -1323,15 +1478,20 @@
         "argument_hint": "[short-slug] [--principal NAME] [--recipient ROLE] [--draft]",
         "allowed_tools": "Bash, Read, Write",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 607,
       "body_chars": 9360,
       "total_bytes": 10206,
       "total_lines": 259,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
       ],
@@ -1360,15 +1520,20 @@
         "argument_hint": null,
         "allowed_tools": "Read",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 478,
       "body_chars": 5223,
       "total_bytes": 5856,
       "total_lines": 138,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
       ],
@@ -1397,15 +1562,20 @@
         "argument_hint": "<nickname> [--date YYYY-MM-DD] [--annotation \"...\"] [--dry-run] [--yes]",
         "allowed_tools": "Bash, Read",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 404,
       "body_chars": 7902,
       "total_bytes": 8531,
       "total_lines": 256,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "procedural",
+      "type_source": "heuristic",
       "type_signals": [
         "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
       ],
@@ -1434,15 +1604,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 705,
       "body_chars": 19796,
       "total_bytes": 20779,
       "total_lines": 459,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "meta",
+      "type_source": "heuristic",
       "type_signals": [
         "meta-skill name"
       ],
@@ -1481,15 +1656,20 @@
         "argument_hint": null,
         "allowed_tools": "Read, Bash, WebFetch, Write",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 304,
       "body_chars": 3127,
       "total_bytes": 3941,
       "total_lines": 46,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "reference",
+      "type_source": "heuristic",
       "type_signals": [
         "has references/ subdir"
       ],
@@ -1525,15 +1705,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 0,
       "body_chars": 2570,
       "total_bytes": 2582,
       "total_lines": 57,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-general",
+      "type_source": "heuristic",
       "type_signals": [
         "no heuristic matched",
         "under reference/ subdir"
@@ -1563,19 +1748,24 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 185,
       "body_chars": 5024,
       "total_bytes": 5318,
       "total_lines": 140,
       "vendoring": "vendored",
+      "vendoring_source": "heuristic",
       "vendor_source": {
         "local_edits": "",
         "local_edits_significant": false,
         "vendor_file": "VENDORED.md"
       },
       "type": "agent-orchestrator",
+      "type_source": "heuristic",
       "type_signals": [
         "orchestrator-style name"
       ],
@@ -1604,15 +1794,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Bash, WebFetch, Agent",
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 348,
       "body_chars": 8462,
       "total_bytes": 8949,
       "total_lines": 153,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-auditor",
+      "type_source": "heuristic",
       "type_signals": [
         "auditor-style name",
         "under reference/ subdir"
@@ -1642,15 +1837,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Write, Edit, Bash, WebFetch, WebSearch, Agent",
-        "model": "opus"
+        "model": "opus",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 756,
       "body_chars": 8333,
       "total_bytes": 9270,
       "total_lines": 112,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-specialist",
+      "type_source": "heuristic",
       "type_signals": [
         "specialist-style name"
       ],
@@ -1679,15 +1879,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Bash, WebFetch, Agent",
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 551,
       "body_chars": 6543,
       "total_bytes": 7244,
       "total_lines": 76,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-reviewer",
+      "type_source": "heuristic",
       "type_signals": [
         "reviewer-style name"
       ],
@@ -1716,15 +1921,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Bash, WebFetch, Agent",
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 211,
       "body_chars": 2790,
       "total_bytes": 3123,
       "total_lines": 75,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-researcher",
+      "type_source": "heuristic",
       "type_signals": [
         "researcher-style name"
       ],
@@ -1753,15 +1963,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": "Read, Bash, WebFetch, Agent",
-        "model": "sonnet"
+        "model": "sonnet",
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 309,
       "body_chars": 8379,
       "total_bytes": 8801,
       "total_lines": 124,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "agent-auditor",
+      "type_source": "heuristic",
       "type_signals": [
         "auditor-style name",
         "under reference/ subdir"
@@ -1791,15 +2006,20 @@
         "argument_hint": "<skill-or-agent-name> [--user] [--dry-run]",
         "allowed_tools": "Bash, Read, Write, Edit, AskUserQuestion",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 521,
       "body_chars": 11584,
       "total_bytes": 12355,
       "total_lines": 295,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "meta",
+      "type_source": "heuristic",
       "type_signals": [
         "meta-skill name"
       ],
@@ -1839,15 +2059,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 896,
       "body_chars": 18138,
       "total_bytes": 19167,
       "total_lines": 181,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "reference",
+      "type_source": "heuristic",
       "type_signals": [
         "has references/ subdir"
       ],
@@ -1883,15 +2108,20 @@
         "argument_hint": "<file-path> [--roles \"r1,r2,r3\"] [--n <count>] [--no-decompose]",
         "allowed_tools": "Read, Bash, Write, Task",
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 1412,
       "body_chars": 16097,
       "total_bytes": 17797,
       "total_lines": 354,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "review",
+      "type_source": "heuristic",
       "type_signals": [
         "review-style name"
       ],
@@ -1920,15 +2150,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 762,
       "body_chars": 11171,
       "total_bytes": 12034,
       "total_lines": 110,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "documentation",
+      "type_source": "heuristic",
       "type_signals": [
         "name suffix -docs"
       ],
@@ -1957,15 +2192,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 817,
       "body_chars": 10786,
       "total_bytes": 11698,
       "total_lines": 96,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "documentation",
+      "type_source": "heuristic",
       "type_signals": [
         "name suffix -docs"
       ],
@@ -1994,15 +2234,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 949,
       "body_chars": 18138,
       "total_bytes": 19218,
       "total_lines": 181,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "reference",
+      "type_source": "heuristic",
       "type_signals": [
         "has references/ subdir"
       ],
@@ -2044,15 +2289,20 @@
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
-        "model": null
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
       },
       "description_chars": 889,
       "body_chars": 10786,
       "total_bytes": 11770,
       "total_lines": 96,
       "vendoring": "custom",
+      "vendoring_source": "heuristic",
       "vendor_source": null,
       "type": "documentation",
+      "type_source": "heuristic",
       "type_signals": [
         "name suffix -docs"
       ],
@@ -2107,6 +2357,10 @@
     "by_vendoring": {
       "custom": 46,
       "vendored": 4
+    },
+    "declared_share": {
+      "type": 0,
+      "vendoring": 0
     }
   }
 }

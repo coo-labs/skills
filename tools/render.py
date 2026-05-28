@@ -46,16 +46,16 @@ def _short_iso(s):
 
 def _vendor_cell(e):
     v = e["vendoring"]
+    star = " ★" if e.get("vendoring_source") == "declared" else ""
     if v == "custom":
-        return "—"
+        return "—" + star
     src = e.get("vendor_source") or {}
     upstream = src.get("upstream")
     if upstream:
-        # collapse https://github.com/owner/repo → owner/repo
         slug = upstream.rstrip("/").rsplit("/", 2)
         short = "/".join(slug[-2:]) if len(slug) >= 2 else upstream
-        return f"{v}<br>{short}"
-    return v
+        return f"{v}{star}<br>{short}"
+    return v + star
 
 
 def render_md(data):
@@ -76,6 +76,13 @@ def render_md(data):
     out += ["- **By repo**: " + ", ".join(f"`{k}`={v}" for k, v in sorted(s["by_repo"].items()))]
     out += ["- **By type**: " + ", ".join(f"{k}={v}" for k, v in sorted(s["by_type"].items(), key=lambda x: (-x[1], x[0])))]
     out += ["- **By vendoring**: " + ", ".join(f"{k}={v}" for k, v in sorted(s["by_vendoring"].items()))]
+    ds = s.get("declared_share", {})
+    if ds:
+        tot = s["count_total"] or 1
+        out += [f"- **Declared metadata coverage**: "
+                f"type {ds.get('type', 0)}/{s['count_total']} ({100*ds.get('type', 0)//tot}%), "
+                f"vendoring {ds.get('vendoring', 0)}/{s['count_total']} ({100*ds.get('vendoring', 0)//tot}%) — "
+                f"remainder is derived heuristically. Migration goal: shrink the heuristic share over time."]
     out += [""]
 
     tx = scan.get("transcripts")
@@ -110,13 +117,19 @@ def render_md(data):
                 inv = (e.get("usage") or {}).get("invocations")
                 inv_s = "—" if inv is None else str(inv)
                 bundle_s = _bundle_summary(e["bundle"])
+                # Mark declared values with a star
+                type_cell = e['type'] + (" ★" if e.get("type_source") == "declared" else "")
                 out += [
-                    f"| `{e['name']}` | {e['type']} | {_vendor_cell(e)} | "
+                    f"| `{e['name']}` | {type_cell} | {_vendor_cell(e)} | "
                     f"{e['total_bytes']} | {e['total_lines']} | {bundle_s} | "
                     f"{_short_iso(e['git'].get('first_commit_iso'))} | "
                     f"{_short_iso(e['git'].get('last_commit_iso'))} | {inv_s} |"
                 ]
             out += [""]
+            if any(e.get("type_source") == "declared" or e.get("vendoring_source") == "declared"
+                   for e in kentries):
+                out += ["_★ marks values declared in `metadata:` frontmatter; "
+                        "unmarked values are heuristic._", ""]
 
     # ---- Type cross-cut ----
     out += ["## Cross-cut by type", ""]
@@ -158,8 +171,9 @@ def render_md(data):
     for e in sorted(data["entries"], key=lambda x: (x["repo"], x["kind"], x["name"])):
         out += [f"### `{e['name']}` — {e['kind']} in `{e['repo']}`"]
         out += [""]
-        out += [f"- **Type**: {e['type']} _( {' · '.join(e.get('type_signals', []) or ['—'])} )_"]
-        out += [f"- **Vendoring**: {e['vendoring']}"]
+        out += [f"- **Type**: {e['type']} _(source: {e.get('type_source', 'heuristic')}; "
+                f"{' · '.join(e.get('type_signals', []) or ['—'])})_"]
+        out += [f"- **Vendoring**: {e['vendoring']} _(source: {e.get('vendoring_source', 'heuristic')})_"]
         if e.get("vendor_source"):
             src = e["vendor_source"]
             line = []
@@ -207,7 +221,7 @@ def render_md(data):
 # ---------------------------------------------------------------------------
 
 CSV_COLUMNS = [
-    "repo", "kind", "name", "type", "vendoring",
+    "repo", "kind", "name", "type", "type_source", "vendoring", "vendoring_source",
     "total_bytes", "total_lines", "description_chars",
     "first_commit_iso", "last_commit_iso", "commits_count",
     "invocations", "unique_sessions", "last_invocation_iso",
@@ -224,7 +238,9 @@ def render_csv(data):
         u = e.get("usage") or {}
         g = e["git"]
         w.writerow([
-            e["repo"], e["kind"], e["name"], e["type"], e["vendoring"],
+            e["repo"], e["kind"], e["name"],
+            e["type"], e.get("type_source", ""),
+            e["vendoring"], e.get("vendoring_source", ""),
             e["total_bytes"], e["total_lines"], e["description_chars"],
             g.get("first_commit_iso") or "", g.get("last_commit_iso") or "",
             g.get("commits_count", 0),
