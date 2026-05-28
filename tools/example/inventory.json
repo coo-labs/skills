@@ -1,0 +1,2112 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-28T01:37:51Z",
+  "scan": {
+    "repos": [
+      {
+        "path": "/home/user/coo-memory",
+        "remote": "coo-labs/coo-memory",
+        "head_sha": "c4e1ea365d24fffcf897405b12b9403f83e5698d"
+      },
+      {
+        "path": "/home/user/coo-harness",
+        "remote": "coo-labs/coo-harness",
+        "head_sha": "25aeb5258b8a1a9855f0fd4c992f6df4feff4146"
+      },
+      {
+        "path": "/home/user/vade-canvas",
+        "remote": "coo-labs/vade-canvas",
+        "head_sha": "baba412f8732a169a48259d37e7b414a58434d99"
+      },
+      {
+        "path": "/home/user/skills",
+        "remote": "coo-labs/skills",
+        "head_sha": "fed7a287d70c5cffa5cf962c49e4fc06555e458c"
+      }
+    ],
+    "transcripts": {
+      "dir": "/root/.claude/projects",
+      "files_scanned": 2
+    }
+  },
+  "entries": [
+    {
+      "kind": "skill",
+      "name": "agentmail",
+      "repo": "coo-labs/coo-harness",
+      "repo_dir": ".claude/skills/agentmail",
+      "entry_path": ".claude/skills/agentmail/SKILL.md",
+      "frontmatter": {
+        "name": "agentmail",
+        "description": "Give AI agents their own email inboxes using the AgentMail API. Use when building email agents, sending/receiving emails programmatically, managing inboxes, handling attachments, organizing with labels, creating drafts for human approval, or setting up real-time notifications via webhooks/websockets. Supports multi-tenant isolation with pods.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 344,
+      "body_chars": 6898,
+      "total_bytes": 7281,
+      "total_lines": 282,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "api-service",
+      "type_signals": [
+        "named external-service skill"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "references": {
+          "count": 2,
+          "files": [
+            "webhooks.md",
+            "websockets.md"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-16T01:38:46+02:00",
+        "last_commit_iso": "2026-05-16T01:38:46+02:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "skill-creator",
+      "repo": "coo-labs/coo-harness",
+      "repo_dir": ".claude/skills/skill-creator",
+      "entry_path": ".claude/skills/skill-creator/SKILL.md",
+      "frontmatter": {
+        "name": "skill-creator",
+        "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 319,
+      "body_chars": 32625,
+      "total_bytes": 33168,
+      "total_lines": 485,
+      "vendoring": "vendored",
+      "vendor_source": {
+        "vendor_file": ".claude/skills/skill-creator/VENDORED.md"
+      },
+      "type": "meta",
+      "type_signals": [
+        "meta-skill name"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "license": "LICENSE.txt",
+        "vendor_file": "VENDORED.md",
+        "agents": {
+          "count": 3,
+          "files": [
+            "analyzer.md",
+            "comparator.md",
+            "grader.md"
+          ]
+        },
+        "assets": {
+          "count": 1,
+          "files": [
+            "eval_review.html"
+          ]
+        },
+        "eval-viewer": {
+          "count": 2,
+          "files": [
+            "generate_review.py",
+            "viewer.html"
+          ]
+        },
+        "references": {
+          "count": 1,
+          "files": [
+            "schemas.md"
+          ]
+        },
+        "scripts": {
+          "count": 9,
+          "files": [
+            "__init__.py",
+            "aggregate_benchmark.py",
+            "generate_report.py",
+            "improve_description.py",
+            "package_skill.py",
+            "quick_validate.py",
+            "run_eval.py",
+            "run_loop.py",
+            "utils.py"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-16T01:38:46+02:00",
+        "last_commit_iso": "2026-05-16T01:38:46+02:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "tagging-taxonomy",
+      "repo": "coo-labs/coo-harness",
+      "repo_dir": ".claude/skills/tagging-taxonomy",
+      "entry_path": ".claude/skills/tagging-taxonomy/SKILL.md",
+      "frontmatter": {
+        "name": "tagging-taxonomy",
+        "description": "Apply or look up VADE issue metadata. Use when filing, triaging, or searching issues across coo-labs repos by dimension (issue type, area, Readiness field, Priority field, needs/blocked). Native types + Issue fields are the primary metadata layer; operational reference: `coo/operations/issue-fields-and-types.md` (field list, pinning matrix, API surface). `area:*` and qualifier labels are what remains label-encoded.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 418,
+      "body_chars": 11659,
+      "total_bytes": 12188,
+      "total_lines": 283,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-16T01:38:46+02:00",
+        "last_commit_iso": "2026-05-25T17:12:03+02:00",
+        "commits_count": 6
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "trace-timeline",
+      "repo": "coo-labs/coo-harness",
+      "repo_dir": ".claude/skills/trace-timeline",
+      "entry_path": ".claude/skills/trace-timeline/SKILL.md",
+      "frontmatter": {
+        "name": "trace-timeline",
+        "description": "Render an interactive HTML timeline from a bootstrap-trace run. Use when the user wants to view, visualize, inspect, or \"see\" what happened during a traced boot \u2014 process spans, write/read interleavings, snapshot states, the D-group invariant decisions. Triggers on phrases like \"show me the trace\", \"visualize the boot\", \"timeline of the trace\", \"interactive diagram of the trace\", \"render the trace\", or when investigating a `~/.vade/traces/<run-id>/` directory and a chart would be clearer than text. Reads `xtrace.log` + `snapshots/*/content/settings.json` + `meta.json`, writes a self-contained HTML file that opens in any browser. Read-only over the trace data. Don't invoke for: running a fresh trace (that's the `bootstrap-trace-init.sh` harness via container UI), proposing fixes to the boot pipeline (the audit pause forbids it), or operating on traces from other tools.",
+        "argument_hint": null,
+        "allowed_tools": "Bash, Read, SendUserFile",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 880,
+      "body_chars": 8087,
+      "total_bytes": 9114,
+      "total_lines": 172,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "procedural verb at start of description"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-20T19:59:34+02:00",
+        "last_commit_iso": "2026-05-25T12:28:00+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "dispatching-parallel-agents",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/agents",
+      "entry_path": ".claude/agents/dispatching-parallel-agents.md",
+      "frontmatter": {
+        "name": "dispatching-parallel-agents",
+        "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies. Cherry-picked from obra/superpowers; adapted for any Claude Code environment.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": "sonnet"
+      },
+      "description_chars": 185,
+      "body_chars": 5024,
+      "total_bytes": 5318,
+      "total_lines": 140,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-orchestrator",
+      "type_signals": [
+        "orchestrator-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-25T04:56:29+02:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "emancipatory-auditor",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/agents",
+      "entry_path": ".claude/agents/emancipatory-auditor.md",
+      "frontmatter": {
+        "name": "emancipatory-auditor",
+        "description": "Adversarial Phase-3 teammate. Enforces MEMO 2026-04-20-01's double-clause (subject AND emancipatory) on every artifact the team ships. Drops anything scoring 2/0 or 0/2. Distinct from the safety-auditor \u2014 they enforce governance memos; you enforce the prime directive's interpretation. Spawn as a teammate when Phase 3 needs the adoption-test gate.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Bash, WebFetch, Agent",
+        "model": "sonnet"
+      },
+      "description_chars": 348,
+      "body_chars": 3954,
+      "total_bytes": 4431,
+      "total_lines": 58,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-auditor",
+      "type_signals": [
+        "auditor-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "lineage-interpreter",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/agents",
+      "entry_path": ".claude/agents/lineage-interpreter.md",
+      "frontmatter": {
+        "name": "lineage-interpreter",
+        "description": "Spawn for interpretive-history work on a cultural corpus \u2014 argues a thesis about what the corpus IS as a cultural form, not what it claims about itself. Genre is Wootton/Harari interpretive history (argumentative, defamiliarizing, reader-out, takes a stance). Methodology: corpus-map (delegated to research-investigator) \u2192 primary-source read \u2192 candidate-thesis-shapes \u2192 synthesis essay \u2192 three-instance peer-review pass \u2192 patches and successor-parking. Distinct from research-investigator (which reports facts without taking a stance) and from a project-historian role (which documents and analyzes inside the corpus's own frame). Use when an orchestrator needs a theory of a cultural narrative, not a survey of facts. Reusable across any cultural corpus.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Write, Edit, Bash, WebFetch, WebSearch, Agent",
+        "model": "opus"
+      },
+      "description_chars": 756,
+      "body_chars": 8309,
+      "total_bytes": 9246,
+      "total_lines": 112,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-specialist",
+      "type_signals": [
+        "specialist-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "oss-launch-issue-curator",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/agents",
+      "entry_path": ".claude/agents/oss-launch-issue-curator.md",
+      "frontmatter": {
+        "name": "oss-launch-issue-curator",
+        "description": "Curate the initial issue tracker for a public-flipped or newly-launched OSS repo. Dispatch when a `vade-app/*` repo is about to flip from private to public, or a brand-new public repo is being seeded. Reads the target repo's README / CONTRIBUTING / spec / source / tests and any caller-supplied strategic framing, then produces a four-bucket curated list of follow-up issues (good-first / spec-coverage gaps / architecture RFCs / follow-on tooling) with per-issue labels, difficulty, and definition-of-done. Recommends a filing strategy (which 3\u20135 to file first vs. hold). Does NOT file the issues itself \u2014 curation is the deliverable; the dispatcher reviews then files. Reusable across any public-flip event.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Bash, Grep",
+        "model": "sonnet"
+      },
+      "description_chars": 709,
+      "body_chars": 7526,
+      "total_bytes": 8412,
+      "total_lines": 126,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-specialist",
+      "type_signals": [
+        "specialist-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-25T04:56:29+02:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "rationalization-discriminator",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/agents",
+      "entry_path": ".claude/agents/rationalization-discriminator.md",
+      "frontmatter": {
+        "name": "rationalization-discriminator",
+        "description": "Read-only adversarial auditor for chain reasoning that fits the load-substrate \u2192 prior-dissolves \u2192 action-follows shape (MEMO-2026-05-09-wzzh). Asks one load-bearing question \u2014 \"is this argument load-bearing or rationalizing?\" \u2014 and reports a path-quality verdict separate from the outcome. Distinct from safety-auditor (governance-memo compliance) and emancipatory-auditor (subject+emancipatory clause); this role audits *path*, not *clauses*. Spawn when the COO notices the shape in its own move and wants an external read before banking the action.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Bash, WebFetch, Agent",
+        "model": "sonnet"
+      },
+      "description_chars": 551,
+      "body_chars": 6509,
+      "total_bytes": 7210,
+      "total_lines": 76,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-reviewer",
+      "type_signals": [
+        "reviewer-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "research-investigator",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/agents",
+      "entry_path": ".claude/agents/research-investigator.md",
+      "frontmatter": {
+        "name": "research-investigator",
+        "description": "Generic research sub-agent. Spawn when an orchestrator needs focused, schema-driven investigation of a bounded question across a specified file corpus. Reusable across any repo \u2014 no project-specific assumptions.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Bash, WebFetch, Agent",
+        "model": "sonnet"
+      },
+      "description_chars": 211,
+      "body_chars": 2804,
+      "total_bytes": 3137,
+      "total_lines": 75,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-researcher",
+      "type_signals": [
+        "researcher-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-26T17:36:05+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "safety-auditor",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/agents",
+      "entry_path": ".claude/agents/safety-auditor.md",
+      "frontmatter": {
+        "name": "safety-auditor",
+        "description": "Adversarial Phase-3 teammate. Gate-keeper against governance memos (-08 Tier-2, -10 Mem0 content rule, -14 sync paths, -19 spend cap, -22-01 PAT/identity discipline). Reviews each track specialist's deliverables and blocks anything that fails. Spawn as a teammate when Phase 3 needs adversarial safety review.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Bash, WebFetch, Agent",
+        "model": "sonnet"
+      },
+      "description_chars": 309,
+      "body_chars": 3855,
+      "total_bytes": 4273,
+      "total_lines": 49,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-auditor",
+      "type_signals": [
+        "auditor-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-25T04:56:29+02:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "session-closer",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/agents",
+      "entry_path": ".claude/agents/session-closer.md",
+      "frontmatter": {
+        "name": "session-closer",
+        "description": "Idle-fire session-end synthesizer for vade-runtime#148 Part B. Spawn from session-idle-watchdog.sh after the mechanical transcript export has run. Reads the just-exported transcript via transcript-fetch.sh, synthesizes a human-readable session log per the vade-agent-logs template, writes one Mem0 episodic entry, commits both, opens a PR against vade-agent-logs. Replaces the stub-only watchdog close with a real session record. Single-shot; single-message return.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Bash, mcp__mem0__add_memory",
+        "model": "sonnet"
+      },
+      "description_chars": 465,
+      "body_chars": 12672,
+      "total_bytes": 13295,
+      "total_lines": 242,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-specialist",
+      "type_signals": [
+        "specialist-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "transcript-analyzer",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/agents",
+      "entry_path": ".claude/agents/transcript-analyzer.md",
+      "frontmatter": {
+        "name": "transcript-analyzer",
+        "description": "Stage-1 sidecar generator for vade-app/vade-agent-logs#64. Spawn from the Night's Watch (or interactive COO) with one Claude Code session_id. Fetches the encrypted ciphertext from R2, decrypts via TRANSCRIPTS_AGE_IDENTITY, parses the redacted jsonl, and writes vade-agent-logs/transcripts/YYYY/MM/DD/<sessionId>.analysis.json per the schema below. No MCP write authority. Single-message return on completion.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Bash",
+        "model": "sonnet"
+      },
+      "description_chars": 408,
+      "body_chars": 22757,
+      "total_bytes": 23376,
+      "total_lines": 289,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-specialist",
+      "type_signals": [
+        "specialist-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-26T17:36:05+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "cf-workers-best-practices",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/cf-workers-best-practices",
+      "entry_path": ".claude/skills/cf-workers-best-practices/SKILL.md",
+      "frontmatter": {
+        "name": "cf-workers-best-practices",
+        "description": "Reviews and authors Cloudflare Workers code against production best practices. Load when writing new Workers, reviewing Worker code, configuring wrangler.jsonc, or checking for common Workers anti-patterns (streaming, floating promises, global state, secrets, bindings, observability). Biases towards retrieval from Cloudflare docs over pre-trained knowledge.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 359,
+      "body_chars": 6633,
+      "total_bytes": 7095,
+      "total_lines": 127,
+      "vendoring": "vendored",
+      "vendor_source": {
+        "upstream": "https://github.com/cloudflare/skills",
+        "commit": "7c449def4e0c63daa27212d853094e4c8e37bbe8",
+        "snapshot_date": "2026-04-28",
+        "local_edits": "only the `name:` field in each `SKILL.md` frontmatter,\n  changed from `wrangler` / `workers-best-practices` to the namespaced\n  `cf-wrangler` / `cf-workers-best-practices`. This avoids shadowing\n  collisions in our skill aggregator (coo-harness/scripts/lib/common.sh\n  `aggregate_workspace_claude_config`, first-source-wins).\n- **Why we did NOT install via plugin marketplace**: the marketplace plugin\n  bundles `.mcp.json` with five Cloudflare-hosted MCP servers, which would\n  silently mutate our M",
+        "local_edits_significant": false,
+        "vendor_file": ".claude/skills/UPSTREAM.md"
+      },
+      "type": "reference",
+      "type_signals": [
+        "has references/ subdir"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "references": {
+          "count": 2,
+          "files": [
+            "review.md",
+            "rules.md"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-25T14:11:12+02:00",
+        "last_commit_iso": "2026-05-25T14:11:12+02:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "cf-wrangler",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/cf-wrangler",
+      "entry_path": ".claude/skills/cf-wrangler/SKILL.md",
+      "frontmatter": {
+        "name": "cf-wrangler",
+        "description": "Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vectorize, Hyperdrive, Workers AI, Containers, Queues, Workflows, Pipelines, and Secrets Store. Load before running wrangler commands to ensure correct syntax and best practices. Biases towards retrieval from Cloudflare docs over pre-trained knowledge.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 336,
+      "body_chars": 17983,
+      "total_bytes": 18362,
+      "total_lines": 922,
+      "vendoring": "vendored",
+      "vendor_source": {
+        "upstream": "https://github.com/cloudflare/skills",
+        "commit": "7c449def4e0c63daa27212d853094e4c8e37bbe8",
+        "snapshot_date": "2026-04-28",
+        "local_edits": "only the `name:` field in each `SKILL.md` frontmatter,\n  changed from `wrangler` / `workers-best-practices` to the namespaced\n  `cf-wrangler` / `cf-workers-best-practices`. This avoids shadowing\n  collisions in our skill aggregator (coo-harness/scripts/lib/common.sh\n  `aggregate_workspace_claude_config`, first-source-wins).\n- **Why we did NOT install via plugin marketplace**: the marketplace plugin\n  bundles `.mcp.json` with five Cloudflare-hosted MCP servers, which would\n  silently mutate our M",
+        "local_edits_significant": false,
+        "vendor_file": ".claude/skills/UPSTREAM.md"
+      },
+      "type": "api-service",
+      "type_signals": [
+        "named external-service skill"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T14:11:12+02:00",
+        "last_commit_iso": "2026-05-25T14:11:12+02:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "chat-mode",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/chat-mode",
+      "entry_path": ".claude/skills/chat-mode/SKILL.md",
+      "frontmatter": {
+        "name": "chat-mode",
+        "description": "Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode \u2014 the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, vade-coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `retrospectives/2026-05-03_what-works-and-why.md`.",
+        "argument_hint": "optional starting topic",
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 582,
+      "body_chars": 4773,
+      "total_bytes": 5518,
+      "total_lines": 94,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "role",
+      "type_signals": [
+        "name suffix -mode"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "commission-retrospective",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/commission-retrospective",
+      "entry_path": ".claude/skills/commission-retrospective/SKILL.md",
+      "frontmatter": {
+        "name": "commission-retrospective",
+        "description": "Commission an impartial project-historian retrospective on a window of project work. Use when a pivotal event fires per SOP-CULTURE-001 \u00a72d (prime-directive reinterpretation, new/retired agent role, multi-week epic closes or pivots, governance rule revised via committee, security finding reshaping ops, substrate-capture indicator firing, persistent integrity-check Group F degradation), or when `/commission-retrospective` is invoked directly. Orchestrates two impartial evidence sub-agents in parallel (memos-and-essays analyst, PR/issue-graph analyst), then produces a draft retrospective in the voice of commissions",
+        "argument_hint": "--since <YYYY-MM-DD> [--until <YYYY-MM-DD>] [--prs <list>] [--focus \"<question>\"] [--slug <slug>] [--open-pr] | --scope ...",
+        "allowed_tools": "Bash, Read, Write, Task",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 620,
+      "body_chars": 8492,
+      "total_bytes": 9627,
+      "total_lines": 208,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "has scripts/ subdir"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "scripts": {
+          "count": 1,
+          "files": [
+            "commission-retrospective.sh"
+          ]
+        },
+        "templates": {
+          "count": 3,
+          "files": [
+            "historian-prompt.md",
+            "subagent-memos-brief.md",
+            "subagent-pr-graph-brief.md"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "day-overview",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/day-overview",
+      "entry_path": ".claude/skills/day-overview/SKILL.md",
+      "frontmatter": {
+        "name": "day-overview",
+        "description": "Produce a day-overview retrospective \u2014 briefing-shaped synthesis of a day's shipped work (memos, PRs, integrity-check state) grouped into lanes, with follow-ups and candidate next actions. Use at end-of-day or to summarize a window of work. Default flow ships (writes file, commits, opens PR); `--no-ship` stops at file write; `--post` also posts to vade-core Retrospectives Discussions. Don't invoke for routine status updates (use `/status-check`) or single-PR retrospectives (write a memo).",
+        "argument_hint": "[--date YYYY-MM-DD] [--end YYYY-MM-DD] [--no-ship] [--post]",
+        "allowed_tools": "Bash, Read, Write, Edit",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 493,
+      "body_chars": 11431,
+      "total_bytes": 12192,
+      "total_lines": 293,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "has scripts/ subdir"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "scripts": {
+          "count": 1,
+          "files": [
+            "day-overview.sh"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "debug-mode",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/debug-mode",
+      "entry_path": ".claude/skills/debug-mode/SKILL.md",
+      "frontmatter": {
+        "name": "debug-mode",
+        "description": "Enter a runtime/boot-pipeline debug investigation session. Inventories all diagnostic surfaces the substrate produces (boot logs, integrity-check report, bootstrap-trace runs, watchdog logs, session transcripts, runtime check scripts), surfaces current state in one pass, and orients the agent to use them rather than re-derive each from scratch. User-invocable only \u2014 `/debug-mode [optional starting hypothesis]`. Use when investigating a boot failure, a degraded invariant, an unexpected hook behavior, or a substrate-level \"why did X happen\" question that wants more than one log file to answer. Don't invoke for narrow code-task debugging (just read the file), application bugs (use a unit test or repro), or production incidents (this skill is scoped to the COO's own substrate, not VADE end-users).",
+        "argument_hint": "optional starting hypothesis or surface name",
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 804,
+      "body_chars": 9549,
+      "total_bytes": 10538,
+      "total_lines": 224,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "role",
+      "type_signals": [
+        "name suffix -mode"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "end-session",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/end-session",
+      "entry_path": ".claude/skills/end-session/SKILL.md",
+      "frontmatter": {
+        "name": "end-session",
+        "description": "Run the COO session-end checklist \u2014 externalization reflection, plan-file commit, Mem0 episodic entry, memo-sync if needed, vade-agent-logs session log, Journal consideration, transcript-export sidecar commit. Use when wrapping up a working session, about to close the terminal or container, finishing the day's COO work, or when Ven says \"we're done\" / \"end session\" / \"wrap up\". Writes a marker file so the Stop hook knows cleanup is done. Do NOT invoke mid-task \u2014 only at the actual end of a session, once all substantive work is complete.",
+        "argument_hint": null,
+        "allowed_tools": "Bash, Read, Write, Edit, mcp__mem0__add_memory",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 542,
+      "body_chars": 4926,
+      "total_bytes": 5598,
+      "total_lines": 131,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T08:21:04+02:00",
+        "commits_count": 4
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "exec-mode",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/exec-mode",
+      "entry_path": ".claude/skills/exec-mode/SKILL.md",
+      "frontmatter": {
+        "name": "exec-mode",
+        "description": "Load the executive persona for sessions where the natural shape is delegate exploration \u2192 preserve main-context for decisions and action \u2192 reflect on state and priorities. Three modes fit: sweep/cleanup, strategic reflection, or both. Reads `personas/exec-mode.md` (the persona doctrine, including its discipline rollup folded from prior retrospectives with per-rule provenance), adopts the discipline, then asks user for scope. Invoke as `/exec-mode --revise-persona` to enter persona-revision mode (re-introduces read-all-retros + plan-mode REQUIRED + adversarial-auditor gates per the persona's `Persona-revision discipline` section). Use when starting a consolidation pass on open PRs/issues, when reflecting on substrate state and priorities, or when revising the persona itself. Don't invoke for narrow code-task work, single-PR review, or anything where standard COO discipline already fits \u2014 exec-mode is bias-overlay for broad-scope sessions, not a wrapper around the standard COO.",
+        "argument_hint": "optional scope hint, or --revise-persona",
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 990,
+      "body_chars": 3305,
+      "total_bytes": 4444,
+      "total_lines": 85,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "role",
+      "type_signals": [
+        "name suffix -mode"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 4
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "manage-project",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/manage-project",
+      "entry_path": ".claude/skills/manage-project/SKILL.md",
+      "frontmatter": {
+        "name": "manage-project",
+        "description": "VADE org project board \u2014 project-item fields (Status / Owner / Milestone), views, milestones, item triage, drift check. **This is the project-board layer** \u2014 for issue-level fields (Type / Priority / Readiness / Effort) and issue types, see `operations/issue-fields-and-types.md` (different API, different layer). Use when working with the project at https://github.com/orgs/coo-labs/projects/1, adding issues, setting Status / Owner / Milestone, opening views, asking about project structure, or checking schema-vs-live drift.",
+        "argument_hint": null,
+        "allowed_tools": "Bash(gh *) Bash(python3 *) Read",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 527,
+      "body_chars": 3326,
+      "total_bytes": 4169,
+      "total_lines": 83,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "api-service",
+      "type_signals": [
+        "scripts/ + service description"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "scripts": {
+          "count": 4,
+          "files": [
+            "apply-schema.py",
+            "check-drift.py",
+            "render-doc.py",
+            "render-section.py"
+          ]
+        },
+        "other_dirs": {
+          "schema": {
+            "count": 1
+          }
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 6
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "memo",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/memo",
+      "entry_path": ".claude/skills/memo/SKILL.md",
+      "frontmatter": {
+        "name": "memo",
+        "description": "Draft and file a COO memo per `operations/memo_protocol.md`. Generates a random ID for today (`YYYY-MM-DD-XXXX`, 4-char base32 lowercase suffix from a Crockford-derived alphabet), renders the canonical skeleton, and writes one self-contained file under `memos/`. Per-memo files (post-issue-#210) eliminate merge-conflict surface on parallel memo PRs \u2014 two parallel sessions never collide. Use to record a binding decision, name a new convention, or mark a supersession of an older memo. Don't invoke for: single-task notes (write a comment in the issue), session reflection (write a retrospective), or operational status (update the GitHub project board).",
+        "argument_hint": "[\"Title\"] [--dir <path>] [--supersedes <id>]",
+        "allowed_tools": "Bash, Read, Write",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 655,
+      "body_chars": 14469,
+      "total_bytes": 15336,
+      "total_lines": 428,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "memo-audit",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/memo-audit",
+      "entry_path": ".claude/skills/memo-audit/SKILL.md",
+      "frontmatter": {
+        "name": "memo-audit",
+        "description": "Full-fidelity audit of the Mem0 `memo_pointer` layer against `memos/memo_index.json`. Catches body / title / supersedes / file_path drift that `/memo-sync` doesn't close (memo-sync reconciles presence; memo-audit reconciles content). Read-only by default; `--apply` to delete-then-add mismatches via REST. Use after a multi-session memo migration, when ID-slot reuse is suspected, when a memo body or supersedes field looks drifted, or periodically as corpus integrity check before a release or milestone.",
+        "argument_hint": "--apply",
+        "allowed_tools": "Bash, Read, mcp__mem0__search_memories",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 505,
+      "body_chars": 10343,
+      "total_bytes": 11026,
+      "total_lines": 279,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "memo-query",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/memo-query",
+      "entry_path": ".claude/skills/memo-query/SKILL.md",
+      "frontmatter": {
+        "name": "memo-query",
+        "description": "Query the COO memo index by memo ID, keyword, date range, or natural-language semantic search. Use to look up prior decisions; `--semantic` for concept queries (routes through the `memo-search` skill via Mem0). Invoked as `/memo-query <id|keyword|YYYY-MM-DD..YYYY-MM-DD>` for literal lookups, or `/memo-query --semantic \"<query>\"` for body-text concept search.",
+        "argument_hint": "memo-id | keyword | YYYY-MM-DD..YYYY-MM-DD | --semantic \"<query>\"",
+        "allowed_tools": "Bash, Read, mcp__mem0__search_memories",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 360,
+      "body_chars": 6743,
+      "total_bytes": 7330,
+      "total_lines": 174,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "has scripts/ subdir"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "scripts": {
+          "count": 1,
+          "files": [
+            "memo-query.sh"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "memo-search",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/memo-search",
+      "entry_path": ".claude/skills/memo-search/SKILL.md",
+      "frontmatter": {
+        "name": "memo-search",
+        "description": "Find memos under `memos/` by natural-language query via Mem0 semantic search over the `memo_pointer` layer. Use when the user asks \"do we have memos about X?\" or \"what have we decided re: Y?\", when keyword `/memo-query <word>` returned too few hits (titles are keyword-indexed but bodies are not), when the current task or plan context suggests prior COO decisions may be relevant, or when `/memo-query --semantic \"<query>\"` is invoked. Returns memo IDs + per-file paths; the caller reads full text from `memos/<id>.md` via the printed `cat` command. Don't rely on keyword `/memo-query` alone \u2014 it has an ~88% body-miss rate on concept queries (see MEMO-2026-04-24-05).",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 669,
+      "body_chars": 7450,
+      "total_bytes": 8208,
+      "total_lines": 192,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "memo-sync",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/memo-sync",
+      "entry_path": ".claude/skills/memo-sync/SKILL.md",
+      "frontmatter": {
+        "name": "memo-sync",
+        "description": "Reconcile the Mem0 `memo_pointer` layer against `memos/memo_index.json` so the semantic search surface stays current with the per-memo files in `memos/`. Use whenever a new or revised memo lands in `memos/`, when the user invokes `/memo-sync` or asks \"is the semantic layer up to date?\", when `/memo-query --semantic` misses a query you'd expect to match (probable staleness), or before ending a session in which a memo was issued. Implements SOP-MEM-001 \u00a72g + \u00a73 `infer=false` exception; do not skip a sync on the theory that \"someone else will run it\" \u2014 the layer goes stale silently.",
+        "argument_hint": "--dry-run",
+        "allowed_tools": "Bash, Read, mcp__mem0__search_memories",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 586,
+      "body_chars": 10124,
+      "total_bytes": 10903,
+      "total_lines": 259,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "peer-review",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/peer-review",
+      "entry_path": ".claude/skills/peer-review/SKILL.md",
+      "frontmatter": {
+        "name": "peer-review",
+        "description": "Commission three (or N) independent peer reviewers on a long-form authored artifact \u2014 essay, paper, foundation doc, RFC, design proposal, plan \u2014 and synthesize their feedback. Dispatches sub-agents in parallel via the Task tool, each with a role-specific lens (defaults adapt to the document type \u2014 e.g. philosophy essay \u2192 analytic phil of mind + frontier-lab ML researcher with phil training + historian/phil of science; engineering RFC \u2192 senior systems engineer + security/ops + product-strategy outside lens), each producing strongest-moves / weak-points / missing-considerations / 3\u20135 concrete revision suggestions. Then, only on explicit user confirmation (never automatically), decomposes the reviews into a trackable atomic-issue revision pipeline on GitHub \u2014 parent epic + per-reviewer sub-epic + N atom issues + implementer briefing for asynchronous per-atom PR sessions. Invoke when the user asks for \"peer review\", \"multi-lens review\", \"independent critique\", \"feedback from a [philosopher/engineer/historian/X]\", \"different angles on this draft\", or \"what would N people from different backgrounds say about this\" \u2014 even if they don't explicitly say \"peer review\" but clearly want cross-lens feedback before publishing or shipping. Don't invoke for quick copyedit, single-reviewer asks, code review, operational artifacts (PRs/issues/configs), or short pieces (<1000 words); those are different work.",
+        "argument_hint": "<file-path> [--roles \"r1,r2,r3\"] [--n <count>] [--no-decompose]",
+        "allowed_tools": "Read, Bash, Write, Task",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 1412,
+      "body_chars": 16518,
+      "total_bytes": 18219,
+      "total_lines": 367,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "review",
+      "type_signals": [
+        "review-style name"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "evals": {
+          "count": 1,
+          "files": [
+            "evals.json"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 5
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "post-discussion",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/post-discussion",
+      "entry_path": ".claude/skills/post-discussion/SKILL.md",
+      "frontmatter": {
+        "name": "post-discussion",
+        "description": "Post a category-aware discussion to vade-app/vade-core with title-format enforcement per category, citation form pre-applied, pre-fetched repo + category + label IDs, body-template stubs, and post-and-link return. Invoke when authoring a new discussion thread in one of the seven vade-app categories (Announcements / Coordination / RFCs / Q&A / Retrospectives / COO essays / Journal). Do NOT invoke for replying to existing threads (use `gh api graphql` directly), closing threads, or non-discussion comments.",
+        "argument_hint": null,
+        "allowed_tools": "Bash, Read, Write",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 509,
+      "body_chars": 11484,
+      "total_bytes": 12148,
+      "total_lines": 273,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "postmerge-check",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/postmerge-check",
+      "entry_path": ".claude/skills/postmerge-check/SKILL.md",
+      "frontmatter": {
+        "name": "postmerge-check",
+        "description": "Fetch recently merged vade-app PRs (or specified PR refs), extract `## Post-merge confirmation` handoff sections, execute the steps in order, and report per-PR PASS / PARTIAL / FAIL. Use in a fresh session to verify a merge landed cleanly without copy-pasting the handoff prompt manually. Per CLAUDE.md \"Handoff prompts for boot-impacting PRs\" (canonical: MEMO-2026-04-25-03 / vade-coo-memory#139).",
+        "argument_hint": "[<num> | <repo>#<num> ...] [--since <duration>]",
+        "allowed_tools": "Bash, Read",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 398,
+      "body_chars": 7154,
+      "total_bytes": 7763,
+      "total_lines": 125,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "has scripts/ subdir"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "scripts": {
+          "count": 1,
+          "files": [
+            "postmerge-check.sh"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-26T17:36:05+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "quarto-docs",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/quarto-docs",
+      "entry_path": ".claude/skills/quarto-docs/SKILL.md",
+      "frontmatter": {
+        "name": "quarto-docs",
+        "description": "Navigate the Quarto documentation efficiently when working on the VADE publishing site at read.vade-app.dev. Use this skill whenever a task involves Quarto \u2014 including `_quarto.yml`, navbars, sidebars, listings, themes, format options, citations, freeze, partial render, or any tldraw-style \".how do I configure X in Quarto\" question. This includes any work in `vade-coo-memory/bin/publish-site/`, `site/`, `config/publish/`, or anywhere `QUARTO_BASE_CONFIG` is touched. Quarto publishes LLM-optimized markdown bundles at quarto.org/llms.txt and per-page `.llms.md` URLs; this skill teaches which page to fetch and how to navigate so agents don't hallucinate YAML keys, nest options under the wrong parent (`format.html.sidebar` is wrong \u2014 `sidebar` is top-level under `website`), or guess at listing-type/theme-extension semantics. Trigger whenever the user mentions Quarto, qmd, _quarto.yml, listings, navbar, sidebar, cosmo, brand, theme, freeze, render, page-navigation, or is clearly working on `read.vade-app.dev` even if \"Quarto\" isn't named explicitly.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 1060,
+      "body_chars": 11171,
+      "total_bytes": 12332,
+      "total_lines": 110,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "documentation",
+      "type_signals": [
+        "name suffix -docs"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "request-briefing",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/request-briefing",
+      "entry_path": ".claude/skills/request-briefing/SKILL.md",
+      "frontmatter": {
+        "name": "request-briefing",
+        "description": "Author a session-handoff briefing per `briefings/` procedure. Computes the next NNN, fills the template, commits to a fresh branch and opens a PR (or `--draft` to leave on disk for review-first workflows). Use when a session needs to hand a contextual problem off to another session and the handoff is too contextual for a plain issue body. Don't invoke for: single-PR-sized handoffs (use an issue), tasks the same session can finish (write code instead), or known-good plans that just need execution (write a plan, not a briefing). The recipient is expected to re-examine the framing \u2014 not rubber-stamp it.",
+        "argument_hint": "[short-slug] [--principal NAME] [--recipient ROLE] [--draft]",
+        "allowed_tools": "Bash, Read, Write",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 607,
+      "body_chars": 9360,
+      "total_bytes": 10206,
+      "total_lines": 259,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "status-check",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/status-check",
+      "entry_path": ".claude/skills/status-check/SKILL.md",
+      "frontmatter": {
+        "name": "status-check",
+        "description": "Run a six-item read-only grounding audit (who/what/where/next/decision/resource). Use deliberately at the start of a session, after a memory-layer migration, or when you suspect episodic memory drift. Works from any repo without setup \u2014 no Mem0, no hooks, no env vars required. A non-COO agent in a foreign repo gets sensible partial output via the `\u26a0 not grounded` marker. Don't invoke for routine work \u2014 this is a deliberate audit, not a wrapper around CLAUDE.md context-load.",
+        "argument_hint": null,
+        "allowed_tools": "Read",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 478,
+      "body_chars": 5223,
+      "total_bytes": 5856,
+      "total_lines": 138,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-26T17:36:05+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "tag-milestone",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/tag-milestone",
+      "entry_path": ".claude/skills/tag-milestone/SKILL.md",
+      "frontmatter": {
+        "name": "tag-milestone",
+        "description": "Create a \"Working milestone\" annotated tag at HEAD across all five vade-app repos and push via the GitHub API. Use when the system reaches a clean, demonstrably-running state worth marking as a baseline (post-major-refactor, post-cloud-rebuild, post-epic-close). Refuses on dirty working tree, branch divergence from origin/main, or pre-existing tag. Confirms with the user before pushing unless `--yes`.",
+        "argument_hint": "<nickname> [--date YYYY-MM-DD] [--annotation \"...\"] [--dry-run] [--yes]",
+        "allowed_tools": "Bash, Read",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 404,
+      "body_chars": 7902,
+      "total_bytes": 8531,
+      "total_lines": 256,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_signals": [
+        "procedural-style name (memo/post/tag/request/status/end-session/tagging)"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "tool-creator",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/tool-creator",
+      "entry_path": ".claude/skills/tool-creator/SKILL.md",
+      "frontmatter": {
+        "name": "tool-creator",
+        "description": "Author a new VADE skill (the Anthropic-recommended primitive for slash-invoked workflows and reusable agent playbooks). Walks the operator through capability description \u2192 inventory check \u2192 frontmatter choice \u2192 draft \u2192 operator review \u2192 adversarial-auditor pass \u2192 TOOLS.md registration \u2192 PR. v1 emits a single `.claude/skills/<name>/SKILL.md` per invocation; subagents (`.claude/agents/`), personas (`personas/`), hooks (settings.json), and compound primitives are deferred to v2+. Use when externalizing a recurring pattern or session-end-noticed capability into a `/foo` skill or auto-discoverable skill. Do NOT invoke for one-off scripts, in-place file edits, or refactors outside v1's primitive scope.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 705,
+      "body_chars": 19796,
+      "total_bytes": 20779,
+      "total_lines": 459,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "meta",
+      "type_signals": [
+        "meta-skill name"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "templates": {
+          "count": 4,
+          "files": [
+            "auto-discoverable-skill.md",
+            "explicit-invocation-skill.md",
+            "forked-context-skill.md",
+            "inventory-brief.md"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-27T01:24:24+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "upstream-feedback",
+      "repo": "coo-labs/coo-memory",
+      "repo_dir": ".claude/skills/upstream-feedback",
+      "entry_path": ".claude/skills/upstream-feedback/SKILL.md",
+      "frontmatter": {
+        "name": "upstream-feedback",
+        "description": "Frame a comment, issue, or PR-thread reply to an external maintainer \u2014 vendor, open-source project, public-preview discussion, GitHub Community \u2014 so a stranger can act on it without re-investigating. Covers bug reports, feature requests, API-gap reports, and PR contributions to repos outside vade-app/*.",
+        "argument_hint": null,
+        "allowed_tools": "Read, Bash, WebFetch, Write",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 304,
+      "body_chars": 3127,
+      "total_bytes": 3941,
+      "total_lines": 46,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "reference",
+      "type_signals": [
+        "has references/ subdir"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "references": {
+          "count": 1,
+          "files": [
+            "189141-worked-example.md"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-25T04:56:29+02:00",
+        "last_commit_iso": "2026-05-26T17:36:05+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "README",
+      "repo": "coo-labs/skills",
+      "repo_dir": "agents/reference",
+      "entry_path": "agents/reference/README.md",
+      "frontmatter": {
+        "name": null,
+        "description": null,
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 0,
+      "body_chars": 2570,
+      "total_bytes": 2582,
+      "total_lines": 57,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-general",
+      "type_signals": [
+        "no heuristic matched",
+        "under reference/ subdir"
+      ],
+      "is_reference": true,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-11T20:16:35+00:00",
+        "last_commit_iso": "2026-05-12T07:06:21+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "dispatching-parallel-agents",
+      "repo": "coo-labs/skills",
+      "repo_dir": "agents",
+      "entry_path": "agents/dispatching-parallel-agents.md",
+      "frontmatter": {
+        "name": "dispatching-parallel-agents",
+        "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies. Cherry-picked from obra/superpowers; adapted for any Claude Code environment.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": "sonnet"
+      },
+      "description_chars": 185,
+      "body_chars": 5024,
+      "total_bytes": 5318,
+      "total_lines": 140,
+      "vendoring": "vendored",
+      "vendor_source": {
+        "local_edits": "",
+        "local_edits_significant": false,
+        "vendor_file": "VENDORED.md"
+      },
+      "type": "agent-orchestrator",
+      "type_signals": [
+        "orchestrator-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-11T20:16:35+00:00",
+        "last_commit_iso": "2026-05-11T20:16:35+00:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "emancipatory-auditor",
+      "repo": "coo-labs/skills",
+      "repo_dir": "agents/reference",
+      "entry_path": "agents/reference/emancipatory-auditor.md",
+      "frontmatter": {
+        "name": "emancipatory-auditor",
+        "description": "Adversarial Phase-3 teammate. Enforces MEMO 2026-04-20-01's double-clause (subject AND emancipatory) on every artifact the team ships. Drops anything scoring 2/0 or 0/2. Distinct from the safety-auditor \u2014 they enforce governance memos; you enforce the prime directive's interpretation. Spawn as a teammate when Phase 3 needs the adoption-test gate.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Bash, WebFetch, Agent",
+        "model": "sonnet"
+      },
+      "description_chars": 348,
+      "body_chars": 8462,
+      "total_bytes": 8949,
+      "total_lines": 153,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-auditor",
+      "type_signals": [
+        "auditor-style name",
+        "under reference/ subdir"
+      ],
+      "is_reference": true,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-11T20:16:35+00:00",
+        "last_commit_iso": "2026-05-12T07:06:21+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "lineage-interpreter",
+      "repo": "coo-labs/skills",
+      "repo_dir": "agents",
+      "entry_path": "agents/lineage-interpreter.md",
+      "frontmatter": {
+        "name": "lineage-interpreter",
+        "description": "Spawn for interpretive-history work on a cultural corpus \u2014 argues a thesis about what the corpus IS as a cultural form, not what it claims about itself. Genre is Wootton/Harari interpretive history (argumentative, defamiliarizing, reader-out, takes a stance). Methodology: corpus-map (delegated to research-investigator) \u2192 primary-source read \u2192 candidate-thesis-shapes \u2192 synthesis essay \u2192 three-instance peer-review pass \u2192 patches and successor-parking. Distinct from research-investigator (which reports facts without taking a stance) and from a project-historian role (which documents and analyzes inside the corpus's own frame). Use when an orchestrator needs a theory of a cultural narrative, not a survey of facts. Reusable across any cultural corpus.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Write, Edit, Bash, WebFetch, WebSearch, Agent",
+        "model": "opus"
+      },
+      "description_chars": 756,
+      "body_chars": 8333,
+      "total_bytes": 9270,
+      "total_lines": 112,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-specialist",
+      "type_signals": [
+        "specialist-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-11T20:16:35+00:00",
+        "last_commit_iso": "2026-05-11T20:16:35+00:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "rationalization-discriminator",
+      "repo": "coo-labs/skills",
+      "repo_dir": "agents",
+      "entry_path": "agents/rationalization-discriminator.md",
+      "frontmatter": {
+        "name": "rationalization-discriminator",
+        "description": "Read-only adversarial auditor for chain reasoning that fits the load-substrate \u2192 prior-dissolves \u2192 action-follows shape (MEMO-2026-05-09-wzzh). Asks one load-bearing question \u2014 \"is this argument load-bearing or rationalizing?\" \u2014 and reports a path-quality verdict separate from the outcome. Distinct from safety-auditor (governance-memo compliance) and emancipatory-auditor (subject+emancipatory clause); this role audits *path*, not *clauses*. Spawn when the COO notices the shape in its own move and wants an external read before banking the action.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Bash, WebFetch, Agent",
+        "model": "sonnet"
+      },
+      "description_chars": 551,
+      "body_chars": 6543,
+      "total_bytes": 7244,
+      "total_lines": 76,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-reviewer",
+      "type_signals": [
+        "reviewer-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-11T20:16:35+00:00",
+        "last_commit_iso": "2026-05-11T20:16:35+00:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "research-investigator",
+      "repo": "coo-labs/skills",
+      "repo_dir": "agents",
+      "entry_path": "agents/research-investigator.md",
+      "frontmatter": {
+        "name": "research-investigator",
+        "description": "Generic research sub-agent. Spawn when an orchestrator needs focused, schema-driven investigation of a bounded question across a specified file corpus. Reusable across any repo \u2014 no project-specific assumptions.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Bash, WebFetch, Agent",
+        "model": "sonnet"
+      },
+      "description_chars": 211,
+      "body_chars": 2790,
+      "total_bytes": 3123,
+      "total_lines": 75,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-researcher",
+      "type_signals": [
+        "researcher-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-11T20:16:35+00:00",
+        "last_commit_iso": "2026-05-11T20:16:35+00:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "agent",
+      "name": "safety-auditor",
+      "repo": "coo-labs/skills",
+      "repo_dir": "agents/reference",
+      "entry_path": "agents/reference/safety-auditor.md",
+      "frontmatter": {
+        "name": "safety-auditor",
+        "description": "Adversarial Phase-3 teammate. Gate-keeper against governance memos (-08 Tier-2, -10 Mem0 content rule, -14 sync paths, -19 spend cap, -22-01 PAT/identity discipline). Reviews each track specialist's deliverables and blocks anything that fails. Spawn as a teammate when Phase 3 needs adversarial safety review.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": "Read, Bash, WebFetch, Agent",
+        "model": "sonnet"
+      },
+      "description_chars": 309,
+      "body_chars": 8379,
+      "total_bytes": 8801,
+      "total_lines": 124,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "agent-auditor",
+      "type_signals": [
+        "auditor-style name",
+        "under reference/ subdir"
+      ],
+      "is_reference": true,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-11T20:16:35+00:00",
+        "last_commit_iso": "2026-05-12T07:06:21+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "adapt-skill",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/adapt-skill",
+      "entry_path": "skills/adapt-skill/SKILL.md",
+      "frontmatter": {
+        "name": "adapt-skill",
+        "description": "Adapt a reference skill or agent from this repo into a working installed primitive for the current substrate. Reads the target's `# Setup hints` manifest, conducts a structured interview, substitutes substrate-coupled surfaces with the user's answers, and writes the adapted skill to `.claude/skills/<name>/` (or agent to `.claude/agents/<name>.md`). Run once per reference skill the user wants to install. Don't invoke for substrate-agnostic skills under `skills/` proper \u2014 those install verbatim via `setup/install.sh`.",
+        "argument_hint": "<skill-or-agent-name> [--user] [--dry-run]",
+        "allowed_tools": "Bash, Read, Write, Edit, AskUserQuestion",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 521,
+      "body_chars": 11584,
+      "total_bytes": 12355,
+      "total_lines": 295,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "meta",
+      "type_signals": [
+        "meta-skill name"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "scripts": {
+          "count": 1,
+          "files": [
+            "dry-run-validator.py"
+          ]
+        },
+        "other": [
+          "SCHEMA.md",
+          "WORKED-EXAMPLE.md"
+        ]
+      },
+      "git": {
+        "first_commit_iso": "2026-05-12T07:06:21+02:00",
+        "last_commit_iso": "2026-05-27T06:57:06+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "canvas-ui",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/canvas-ui",
+      "entry_path": "skills/canvas-ui/SKILL.md",
+      "frontmatter": {
+        "name": "canvas-ui",
+        "description": "Apply tldraw canvas frontend conventions and avoid recurring landmines \u2014 extracted from a production tldraw-based app. Use this skill whenever you're working in a tldraw-based codebase on anything that touches the canvas \u2014 adding or modifying a custom shape, wiring shell UI, mutating shapes through an MCP/WebSocket bridge, asset stores, snapshot persistence, library / catalog / shape-panel surfaces, or anywhere `tldraw` or `@tldraw/*` is imported. Trigger even when the prompt only mentions \"the canvas,\" \"a shape,\" \"AppShell,\" \"persistenceKey,\" \"asset store,\" \"TLAssetStore,\" \"ShapeUtil,\" \"BindingUtil,\" \"snapshot,\" \"the editor,\" or \"tldraw\" without naming the skill \u2014 and especially trigger before opening a PR that changes any tldraw-touching file. This skill is the anti-patterns and conventions layer; for SDK reference / doc URLs, also consult the `tldraw-docs` skill (the two compose).",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 896,
+      "body_chars": 18138,
+      "total_bytes": 19167,
+      "total_lines": 181,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "reference",
+      "type_signals": [
+        "has references/ subdir"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "references": {
+          "count": 1,
+          "files": [
+            "shape-recipe.md"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-11T20:16:35+00:00",
+        "last_commit_iso": "2026-05-11T20:16:35+00:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "peer-review",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/peer-review",
+      "entry_path": "skills/peer-review/SKILL.md",
+      "frontmatter": {
+        "name": "peer-review",
+        "description": "Commission three (or N) independent peer reviewers on a long-form authored artifact \u2014 essay, paper, foundation doc, RFC, design proposal, plan \u2014 and synthesize their feedback. Dispatches sub-agents in parallel via the Task tool, each with a role-specific lens (defaults adapt to the document type \u2014 e.g. philosophy essay \u2192 analytic phil of mind + frontier-lab ML researcher with phil training + historian/phil of science; engineering RFC \u2192 senior systems engineer + security/ops + product-strategy outside lens), each producing strongest-moves / weak-points / missing-considerations / 3\u20135 concrete revision suggestions. Then, only on explicit user confirmation (never automatically), decomposes the reviews into a trackable atomic-issue revision pipeline on GitHub \u2014 parent epic + per-reviewer sub-epic + N atom issues + implementer briefing for asynchronous per-atom PR sessions. Invoke when the user asks for \"peer review\", \"multi-lens review\", \"independent critique\", \"feedback from a [philosopher/engineer/historian/X]\", \"different angles on this draft\", or \"what would N people from different backgrounds say about this\" \u2014 even if they don't explicitly say \"peer review\" but clearly want cross-lens feedback before publishing or shipping. Don't invoke for quick copyedit, single-reviewer asks, code review, operational artifacts (PRs/issues/configs), or short pieces (<1000 words); those are different work.",
+        "argument_hint": "<file-path> [--roles \"r1,r2,r3\"] [--n <count>] [--no-decompose]",
+        "allowed_tools": "Read, Bash, Write, Task",
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 1412,
+      "body_chars": 16097,
+      "total_bytes": 17797,
+      "total_lines": 354,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "review",
+      "type_signals": [
+        "review-style name"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-11T23:09:35+02:00",
+        "last_commit_iso": "2026-05-21T13:21:49+00:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "quarto-docs",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/quarto-docs",
+      "entry_path": "skills/quarto-docs/SKILL.md",
+      "frontmatter": {
+        "name": "quarto-docs",
+        "description": "Navigate the Quarto documentation efficiently when working on a Quarto-based publishing site. Use this skill whenever a task involves Quarto \u2014 including `_quarto.yml`, navbars, sidebars, listings, themes, format options, citations, freeze, partial render. Quarto publishes LLM-optimized markdown bundles at quarto.org/llms.txt and per-page `.llms.md` URLs; this skill teaches which page to fetch and how to navigate so agents don't hallucinate YAML keys, nest options under the wrong parent (`format.html.sidebar` is wrong \u2014 `sidebar` is top-level under `website`), or guess at listing-type/theme-extension semantics. Trigger whenever the user mentions Quarto, qmd, _quarto.yml, listings, navbar, sidebar, cosmo, brand, theme, freeze, render, or page-navigation.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 762,
+      "body_chars": 11171,
+      "total_bytes": 12034,
+      "total_lines": 110,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "documentation",
+      "type_signals": [
+        "name suffix -docs"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-11T20:16:35+00:00",
+        "last_commit_iso": "2026-05-11T20:16:35+00:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "tldraw-docs",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/tldraw-docs",
+      "entry_path": "skills/tldraw-docs/SKILL.md",
+      "frontmatter": {
+        "name": "tldraw-docs",
+        "description": "Navigate the tldraw SDK documentation efficiently. Use this skill whenever a task involves the tldraw canvas SDK \u2014 including the Editor class, shape utils, custom shapes, bindings, tools, persistence, side effects, the store/signals system, sync, UI components, or any tldraw.dev reference. tldraw publishes LLM-optimized markdown bundles at tldraw.dev/llms*.txt plus markdown-ready individual pages; this skill teaches which bundle to fetch and how to navigate so agents don't hallucinate API signatures, grab the full mega-bundle when a narrow fetch would do, or guess at topic names that don't exist. Trigger whenever the user mentions tldraw, canvas shapes, ShapeUtil, BindingUtil, tldraw editor, custom tool, snapshot, or is clearly working in a tldraw-based codebase even if they don't name \"tldraw\" explicitly.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 817,
+      "body_chars": 10786,
+      "total_bytes": 11698,
+      "total_lines": 96,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "documentation",
+      "type_signals": [
+        "name suffix -docs"
+      ],
+      "is_reference": false,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-11T20:16:35+00:00",
+        "last_commit_iso": "2026-05-11T20:16:35+00:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "canvas-ui",
+      "repo": "coo-labs/vade-canvas",
+      "repo_dir": ".claude/skills/canvas-ui",
+      "entry_path": ".claude/skills/canvas-ui/SKILL.md",
+      "frontmatter": {
+        "name": "canvas-ui",
+        "description": "Apply vade-core's canvas/tldraw frontend conventions and avoid the recurring landmines we've already learned about. Use this skill whenever you're working in vade-core on anything that touches the canvas \u2014 adding or modifying a custom shape under `src/shapes/`, wiring UI through `src/shell/AppShell.tsx`, mutating shapes through the MCP bridge in `src/bridge/`, the `vade-asset-store`, snapshot persistence, the library/catalog/shape-panel surfaces, or anywhere else `tldraw` or `@tldraw/*` is imported. Trigger even when the prompt only mentions \"the canvas,\" \"a shape,\" \"AppShell,\" \"persistenceKey,\" \"asset store,\" \"TLAssetStore,\" \"ShapeUtil,\" \"BindingUtil,\" \"snapshot,\" \"the editor,\" or \"tldraw\" without naming the skill \u2014 and especially trigger before opening a PR that changes any tldraw-touching file. This skill is the anti-patterns and conventions layer; for SDK reference / doc URLs, also consult the `tldraw-docs` skill (the two compose).",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 949,
+      "body_chars": 18138,
+      "total_bytes": 19218,
+      "total_lines": 181,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "reference",
+      "type_signals": [
+        "has references/ subdir"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "evals": {
+          "count": 1,
+          "files": [
+            "evals.json"
+          ]
+        },
+        "references": {
+          "count": 1,
+          "files": [
+            "shape-recipe.md"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-09T08:23:21+02:00",
+        "last_commit_iso": "2026-05-09T08:23:21+02:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "tldraw-docs",
+      "repo": "coo-labs/vade-canvas",
+      "repo_dir": ".claude/skills/tldraw-docs",
+      "entry_path": ".claude/skills/tldraw-docs/SKILL.md",
+      "frontmatter": {
+        "name": "tldraw-docs",
+        "description": "Navigate the tldraw SDK documentation efficiently. Use this skill whenever a task involves the tldraw canvas SDK \u2014 including the Editor class, shape utils, custom shapes, bindings, tools, persistence, side effects, the store/signals system, sync, UI components, or any tldraw.dev reference. This includes any work in the vade-core repo, which is built on tldraw. tldraw publishes LLM-optimized markdown bundles at tldraw.dev/llms*.txt plus markdown-ready individual pages; this skill teaches which bundle to fetch and how to navigate so agents don't hallucinate API signatures, grab the full mega-bundle when a narrow fetch would do, or guess at topic names that don't exist. Trigger whenever the user mentions tldraw, canvas shapes, ShapeUtil, BindingUtil, tldraw editor, custom tool, snapshot, or is clearly working in a tldraw-based codebase even if they don't name \"tldraw\" explicitly.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null
+      },
+      "description_chars": 889,
+      "body_chars": 10786,
+      "total_bytes": 11770,
+      "total_lines": 96,
+      "vendoring": "custom",
+      "vendor_source": null,
+      "type": "documentation",
+      "type_signals": [
+        "name suffix -docs"
+      ],
+      "is_reference": false,
+      "bundle": {
+        "references": {
+          "count": 1,
+          "files": [
+            "sdk-features-index.md"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-01T09:30:29+00:00",
+        "last_commit_iso": "2026-05-01T09:30:29+00:00",
+        "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    }
+  ],
+  "summary": {
+    "count_total": 50,
+    "by_repo": {
+      "coo-labs/coo-harness": 4,
+      "coo-labs/coo-memory": 32,
+      "coo-labs/skills": 12,
+      "coo-labs/vade-canvas": 2
+    },
+    "by_kind": {
+      "skill": 34,
+      "agent": 16
+    },
+    "by_type": {
+      "api-service": 3,
+      "meta": 3,
+      "procedural": 15,
+      "agent-orchestrator": 2,
+      "agent-auditor": 4,
+      "agent-specialist": 5,
+      "agent-reviewer": 2,
+      "agent-researcher": 2,
+      "reference": 4,
+      "role": 3,
+      "review": 2,
+      "documentation": 4,
+      "agent-general": 1
+    },
+    "by_vendoring": {
+      "custom": 46,
+      "vendored": 4
+    }
+  }
+}

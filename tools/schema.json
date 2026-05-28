@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/coo-labs/skills/blob/main/tools/schema.json",
+  "title": "Claude Code skill & agent inventory",
+  "description": "Inventory of Claude Code skills (SKILL.md + bundle) and agents (.md) discovered across one or more repos. Produced by tools/inventory.py; rendered by tools/render.py.",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "scan", "entries", "summary"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Semver of this schema. Bumped when entry shape changes incompatibly."
+    },
+    "generated_at": {
+      "type": "string",
+      "description": "ISO-8601 UTC timestamp of the inventory run."
+    },
+    "scan": {
+      "type": "object",
+      "required": ["repos"],
+      "additionalProperties": false,
+      "properties": {
+        "repos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "remote", "head_sha"],
+            "additionalProperties": false,
+            "properties": {
+              "path":     {"type": "string"},
+              "remote":   {"type": "string", "description": "owner/repo slug from origin remote, or directory basename if no remote"},
+              "head_sha": {"type": ["string", "null"]}
+            }
+          }
+        },
+        "transcripts": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "dir":           {"type": ["string", "null"]},
+            "files_scanned": {"type": "integer", "minimum": 0}
+          }
+        }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/entry"}
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count_total", "by_repo", "by_kind", "by_type", "by_vendoring"],
+      "properties": {
+        "count_total":  {"type": "integer", "minimum": 0},
+        "by_repo":      {"type": "object", "additionalProperties": {"type": "integer"}},
+        "by_kind":      {"type": "object", "additionalProperties": {"type": "integer"}},
+        "by_type":      {"type": "object", "additionalProperties": {"type": "integer"}},
+        "by_vendoring": {"type": "object", "additionalProperties": {"type": "integer"}}
+      }
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "required": [
+        "kind", "name", "repo", "repo_dir", "entry_path",
+        "frontmatter", "description_chars", "body_chars",
+        "total_bytes", "total_lines",
+        "vendoring", "type", "type_signals",
+        "bundle", "git"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind":              {"enum": ["skill", "agent"]},
+        "name":              {"type": "string"},
+        "repo":              {"type": "string"},
+        "repo_dir":          {"type": "string", "description": "Path of the skill/agent dir or file's parent relative to the repo root"},
+        "entry_path":        {"type": "string", "description": "Path of SKILL.md or agent .md relative to the repo root"},
+        "frontmatter": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "name":          {"type": ["string", "null"]},
+            "description":   {"type": ["string", "null"]},
+            "argument_hint": {"type": ["string", "null"]},
+            "allowed_tools": {"type": ["string", "null"]},
+            "tools":         {"type": ["string", "null"]},
+            "model":         {"type": ["string", "null"]}
+          }
+        },
+        "description_chars": {"type": "integer", "minimum": 0},
+        "body_chars":        {"type": "integer", "minimum": 0},
+        "total_bytes":       {"type": "integer", "minimum": 0},
+        "total_lines":       {"type": "integer", "minimum": 0},
+        "vendoring": {
+          "enum": ["custom", "vendored", "vendored-customized", "unknown"],
+          "description": "Provenance classification: custom = authored here; vendored = copied from upstream; vendored-customized = vendored + non-trivial local edits beyond name-rename"
+        },
+        "vendor_source": {
+          "type": ["object", "null"],
+          "additionalProperties": true,
+          "properties": {
+            "upstream":      {"type": ["string", "null"]},
+            "commit":        {"type": ["string", "null"]},
+            "snapshot_date": {"type": ["string", "null"]},
+            "local_edits":   {"type": ["string", "null"]},
+            "local_edits_significant": {"type": ["boolean", "null"]},
+            "vendor_file":   {"type": ["string", "null"], "description": "Path to the vendor-marker file that classified this entry"}
+          }
+        },
+        "type": {
+          "type": "string",
+          "description": "Heuristic functional type. Free-string in schema so new types can be added; renderer groups by current value. Conventional values: procedural, role, documentation, reference, api-service, meta, review, agent-auditor, agent-reviewer, agent-researcher, agent-specialist, agent-orchestrator, agent-general, unknown"
+        },
+        "type_signals": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Human-readable reasons supporting the type classification"
+        },
+        "is_reference": {
+          "type": "boolean",
+          "description": "True if the entry lives under a reference/ subdirectory (canonical-source registry pattern)"
+        },
+        "bundle": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Map of bundle-subdir names (scripts/references/assets/agents/evals/templates/eval-viewer/other_dirs) to { count, files[] } objects, plus optional vendor_file/license/other keys"
+        },
+        "git": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["first_commit_iso", "last_commit_iso", "commits_count"],
+          "properties": {
+            "first_commit_iso": {"type": ["string", "null"]},
+            "last_commit_iso":  {"type": ["string", "null"]},
+            "commits_count":    {"type": "integer", "minimum": 0}
+          }
+        },
+        "usage": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "invocations":     {"type": "integer", "minimum": 0},
+            "unique_sessions": {"type": "integer", "minimum": 0},
+            "last_iso":        {"type": ["string", "null"]}
+          }
+        }
+      }
+    }
+  }
+}
