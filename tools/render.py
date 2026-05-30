@@ -46,16 +46,16 @@ def _short_iso(s):
 
 def _vendor_cell(e):
     v = e["vendoring"]
-    star = " ★" if e.get("vendoring_source") == "declared" else ""
+    drift = " ⚠" if e.get("vendoring_source") == "heuristic" else ""
     if v == "custom":
-        return "—" + star
+        return "—" + drift
     src = e.get("vendor_source") or {}
     upstream = src.get("upstream")
     if upstream:
         slug = upstream.rstrip("/").rsplit("/", 2)
         short = "/".join(slug[-2:]) if len(slug) >= 2 else upstream
-        return f"{v}{star}<br>{short}"
-    return v + star
+        return f"{v}{drift}<br>{short}"
+    return v + drift
 
 
 def render_md(data):
@@ -117,8 +117,9 @@ def render_md(data):
                 inv = (e.get("usage") or {}).get("invocations")
                 inv_s = "—" if inv is None else str(inv)
                 bundle_s = _bundle_summary(e["bundle"])
-                # Mark declared values with a star
-                type_cell = e['type'] + (" ★" if e.get("type_source") == "declared" else "")
+                # Flag heuristic values as drift — once 100% declared,
+                # the absence of a `metadata:` block is the anomaly.
+                type_cell = e['type'] + (" ⚠" if e.get("type_source") == "heuristic" else "")
                 out += [
                     f"| `{e['name']}` | {type_cell} | {_vendor_cell(e)} | "
                     f"{e['total_bytes']} | {e['total_lines']} | {bundle_s} | "
@@ -126,10 +127,11 @@ def render_md(data):
                     f"{_short_iso(e['git'].get('last_commit_iso'))} | {inv_s} |"
                 ]
             out += [""]
-            if any(e.get("type_source") == "declared" or e.get("vendoring_source") == "declared"
+            if any(e.get("type_source") == "heuristic" or e.get("vendoring_source") == "heuristic"
                    for e in kentries):
-                out += ["_★ marks values declared in `metadata:` frontmatter; "
-                        "unmarked values are heuristic._", ""]
+                out += ["_⚠ marks values still derived heuristically; the "
+                        "remediation is to add a `metadata:` block to the "
+                        "entry's frontmatter per agentskills.io._", ""]
 
     # ---- Type cross-cut ----
     out += ["## Cross-cut by type", ""]
