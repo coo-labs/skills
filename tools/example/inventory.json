@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-05-30T17:08:33Z",
+  "generated_at": "2026-05-30T17:18:23Z",
   "scan": {
     "repos": [
       {
@@ -21,7 +21,7 @@
       {
         "path": "/home/user/skills",
         "remote": "coo-labs/skills",
-        "head_sha": "414752cd7020079f964c0e33fce94ce03798202b"
+        "head_sha": "93dd8ed7be46812e294d75f5cf3b584ef527c7d2"
       }
     ],
     "transcripts": {
@@ -1706,49 +1706,6 @@
     },
     {
       "kind": "agent",
-      "name": "README",
-      "repo": "coo-labs/skills",
-      "repo_dir": "agents/reference",
-      "entry_path": "agents/reference/README.md",
-      "frontmatter": {
-        "name": null,
-        "description": null,
-        "argument_hint": null,
-        "allowed_tools": null,
-        "tools": null,
-        "model": null,
-        "license": null,
-        "compatibility": null,
-        "metadata": null
-      },
-      "description_chars": 0,
-      "body_chars": 2570,
-      "total_bytes": 2582,
-      "total_lines": 57,
-      "vendoring": "custom",
-      "vendoring_source": "heuristic",
-      "vendor_source": null,
-      "type": "agent-general",
-      "type_source": "heuristic",
-      "type_signals": [
-        "no heuristic matched",
-        "under reference/ subdir"
-      ],
-      "is_reference": true,
-      "bundle": {},
-      "git": {
-        "first_commit_iso": "2026-05-11T20:16:35+00:00",
-        "last_commit_iso": "2026-05-12T07:06:21+02:00",
-        "commits_count": 2
-      },
-      "usage": {
-        "invocations": 0,
-        "unique_sessions": 0,
-        "last_iso": null
-      }
-    },
-    {
-      "kind": "agent",
       "name": "dispatching-parallel-agents",
       "repo": "coo-labs/skills",
       "repo_dir": "agents",
@@ -2023,8 +1980,8 @@
         "metadata": null
       },
       "description_chars": 521,
-      "body_chars": 11584,
-      "total_bytes": 12355,
+      "body_chars": 11576,
+      "total_bytes": 12347,
       "total_lines": 295,
       "vendoring": "custom",
       "vendoring_source": "heuristic",
@@ -2051,6 +2008,60 @@
         "first_commit_iso": "2026-05-12T07:06:21+02:00",
         "last_commit_iso": "2026-05-27T06:57:06+02:00",
         "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "briefing",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/reference/briefing",
+      "entry_path": "skills/reference/briefing/SKILL.md",
+      "frontmatter": {
+        "name": "briefing",
+        "description": "Manage session-handoff briefings under `briefings/`. Subcommands: `request` (file a new briefing \u2014 collision-safe NNN allocation, YAML frontmatter, fresh branch + PR), `pickup` (claim an open briefing for this session), `done` (mark a claimed briefing delivered), `release` (clear a claim without delivering). The briefing schema, index format, and per-subcommand procedures for pickup/done/release live in reference.md \u2014 loaded on demand. Use when a session needs to hand a contextual problem to another session, or when this session is about to pick one up. Don't invoke for: single-PR-sized handoffs (use an issue), tasks the same session can finish (write code instead), or known-good plans that just need execution (write a plan, not a briefing).",
+        "argument_hint": "<request|pickup|done|release> [args]",
+        "allowed_tools": "Bash, Read, Write",
+        "tools": null,
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
+      },
+      "description_chars": 751,
+      "body_chars": 9707,
+      "total_bytes": 10682,
+      "total_lines": 239,
+      "vendoring": "custom",
+      "vendoring_source": "heuristic",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_source": "heuristic",
+      "type_signals": [
+        "has scripts/ subdir",
+        "under reference/ subdir"
+      ],
+      "is_reference": true,
+      "bundle": {
+        "scripts": {
+          "count": 1,
+          "files": [
+            "update-frontmatter.py"
+          ]
+        },
+        "other": [
+          "reference.md",
+          "template.md"
+        ]
+      },
+      "git": {
+        "first_commit_iso": null,
+        "last_commit_iso": null,
+        "commits_count": 0
       },
       "usage": {
         "invocations": 0,
@@ -2100,6 +2111,248 @@
         "first_commit_iso": "2026-05-11T20:16:35+00:00",
         "last_commit_iso": "2026-05-11T20:16:35+00:00",
         "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "chat-mode",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/reference/chat-mode",
+      "entry_path": "skills/reference/chat-mode/SKILL.md",
+      "frontmatter": {
+        "name": "chat-mode",
+        "description": "Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode \u2014 the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, vade-coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `coo/retrospectives/2026-05-03_what-works-and-why.md`.",
+        "argument_hint": "optional starting topic",
+        "allowed_tools": null,
+        "tools": null,
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
+      },
+      "description_chars": 586,
+      "body_chars": 8854,
+      "total_bytes": 9635,
+      "total_lines": 138,
+      "vendoring": "custom",
+      "vendoring_source": "heuristic",
+      "vendor_source": null,
+      "type": "role",
+      "type_source": "heuristic",
+      "type_signals": [
+        "name suffix -mode",
+        "under reference/ subdir"
+      ],
+      "is_reference": true,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-11T23:41:03+02:00",
+        "last_commit_iso": "2026-05-30T09:35:15+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "commission-retrospective",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/reference/commission-retrospective",
+      "entry_path": "skills/reference/commission-retrospective/SKILL.md",
+      "frontmatter": {
+        "name": "commission-retrospective",
+        "description": "Commission an impartial project-historian retrospective on a window of project work. Use when a pivotal event fires per SOP-CULTURE-001 \u00a72d (prime-directive reinterpretation, new/retired agent role, multi-week epic closes or pivots, governance rule revised via committee, security finding reshaping ops, substrate-capture indicator firing, persistent integrity-check Group F degradation), or when `/commission-retrospective` is invoked directly. Orchestrates two impartial evidence sub-agents in parallel (memos-and-essays analyst, PR/issue-graph analyst), then produces a draft retrospective in the voice of commissions",
+        "argument_hint": "--since <YYYY-MM-DD> [--until <YYYY-MM-DD>] [--prs <list>] [--focus \"<question>\"] [--slug <slug>] [--open-pr] | --scope ...",
+        "allowed_tools": "Bash, Read, Write, Task",
+        "tools": null,
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
+      },
+      "description_chars": 620,
+      "body_chars": 18385,
+      "total_bytes": 19539,
+      "total_lines": 391,
+      "vendoring": "custom",
+      "vendoring_source": "heuristic",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_source": "heuristic",
+      "type_signals": [
+        "has scripts/ subdir",
+        "under reference/ subdir"
+      ],
+      "is_reference": true,
+      "bundle": {
+        "scripts": {
+          "count": 1,
+          "files": [
+            "commission-retrospective.sh"
+          ]
+        },
+        "templates": {
+          "count": 3,
+          "files": [
+            "historian-prompt.md",
+            "subagent-memos-brief.md",
+            "subagent-pr-graph-brief.md"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-12T05:36:05+02:00",
+        "last_commit_iso": "2026-05-12T07:06:21+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "day-overview",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/reference/day-overview",
+      "entry_path": "skills/reference/day-overview/SKILL.md",
+      "frontmatter": {
+        "name": "day-overview",
+        "description": "Produce a day-overview retrospective \u2014 briefing-shaped synthesis of a day's shipped work (memos, PRs, integrity-check state) grouped into lanes, with follow-ups and candidate next actions. Use at end-of-day or to summarize a window of work. Default flow ships (writes file, commits, opens PR); `--no-ship` stops at file write; `--post` also posts to vade-core Retrospectives Discussions. Don't invoke for routine status updates (use `/status-check`) or single-PR retrospectives (write a memo).",
+        "argument_hint": "[--date YYYY-MM-DD] [--end YYYY-MM-DD] [--no-ship] [--post]",
+        "allowed_tools": "Bash, Read, Write, Edit",
+        "tools": null,
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
+      },
+      "description_chars": 493,
+      "body_chars": 18853,
+      "total_bytes": 19628,
+      "total_lines": 448,
+      "vendoring": "custom",
+      "vendoring_source": "heuristic",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_source": "heuristic",
+      "type_signals": [
+        "has scripts/ subdir",
+        "under reference/ subdir"
+      ],
+      "is_reference": true,
+      "bundle": {
+        "scripts": {
+          "count": 1,
+          "files": [
+            "day-overview.sh"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-12T05:36:05+02:00",
+        "last_commit_iso": "2026-05-30T09:35:15+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "end-session",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/reference/end-session",
+      "entry_path": "skills/reference/end-session/SKILL.md",
+      "frontmatter": {
+        "name": "end-session",
+        "description": "Run the COO session-end checklist \u2014 externalization reflection, plan-file commit, Mem0 episodic entry, memo-sync if needed, vade-agent-logs session log, Journal consideration, transcript-export sidecar commit. Use when wrapping up a working session, about to close the terminal or container, finishing the day's COO work, or when Ven says \"we're done\" / \"end session\" / \"wrap up\". Writes a marker file so the Stop hook knows cleanup is done. Do NOT invoke mid-task \u2014 only at the actual end of a session, once all substantive work is complete.",
+        "argument_hint": null,
+        "allowed_tools": "Bash, Read, Write, Edit, mcp__mem0__add_memory",
+        "tools": null,
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
+      },
+      "description_chars": 542,
+      "body_chars": 14758,
+      "total_bytes": 15448,
+      "total_lines": 344,
+      "vendoring": "custom",
+      "vendoring_source": "heuristic",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_source": "heuristic",
+      "type_signals": [
+        "procedural-style name (memo/post/tag/request/status/end-session/tagging)",
+        "under reference/ subdir"
+      ],
+      "is_reference": true,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-12T05:36:05+02:00",
+        "last_commit_iso": "2026-05-30T18:54:13+02:00",
+        "commits_count": 3
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "exec-mode",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/reference/exec-mode",
+      "entry_path": "skills/reference/exec-mode/SKILL.md",
+      "frontmatter": {
+        "name": "exec-mode",
+        "description": "Load the executive persona for sessions where the natural shape is delegate exploration \u2192 preserve main-context for decisions and action \u2192 reflect on state and priorities. Three modes fit: sweep/cleanup, strategic reflection, or both. Reads `coo/personas/exec-mode.md` (the persona doctrine, including its discipline rollup folded from prior retrospectives with per-rule provenance), adopts the discipline, then asks user for scope. Invoke as `/exec-mode --revise-persona` to enter persona-revision mode (re-introduces read-all-retros + plan-mode REQUIRED + adversarial-auditor gates per the persona's `Persona-revision discipline` section). Use when starting a consolidation pass on open PRs/issues, when reflecting on substrate state and priorities, or when revising the persona itself. Don't invoke for narrow code-task work, single-PR review, or anything where standard COO discipline already fits \u2014 exec-mode is bias-overlay for broad-scope sessions, not a wrapper around the standard COO.",
+        "argument_hint": "optional scope hint, or --revise-persona",
+        "allowed_tools": null,
+        "tools": null,
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
+      },
+      "description_chars": 994,
+      "body_chars": 8130,
+      "total_bytes": 9290,
+      "total_lines": 163,
+      "vendoring": "custom",
+      "vendoring_source": "heuristic",
+      "vendor_source": null,
+      "type": "role",
+      "type_source": "heuristic",
+      "type_signals": [
+        "name suffix -mode",
+        "under reference/ subdir"
+      ],
+      "is_reference": true,
+      "bundle": {
+        "other": [
+          "persona.md",
+          "personas-README.md"
+        ]
+      },
+      "git": {
+        "first_commit_iso": "2026-05-11T23:41:03+02:00",
+        "last_commit_iso": "2026-05-30T09:35:15+02:00",
+        "commits_count": 3
       },
       "usage": {
         "invocations": 0,
@@ -2193,6 +2446,49 @@
     },
     {
       "kind": "skill",
+      "name": "status-check",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/reference/status-check",
+      "entry_path": "skills/reference/status-check/SKILL.md",
+      "frontmatter": {
+        "name": "status-check",
+        "description": "Run a six-item read-only grounding audit (who/what/where/next/decision/resource). Use deliberately at the start of a session, after a memory-layer migration, or when you suspect episodic memory drift. Works from any repo without setup \u2014 no Mem0, no hooks, no env vars required. A non-COO agent in a foreign repo gets sensible partial output via the `\u26a0 not grounded` marker. Don't invoke for routine work \u2014 this is a deliberate audit, not a wrapper around CLAUDE.md context-load.",
+        "argument_hint": null,
+        "allowed_tools": "Read",
+        "tools": null,
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
+      },
+      "description_chars": 478,
+      "body_chars": 7333,
+      "total_bytes": 7974,
+      "total_lines": 183,
+      "vendoring": "custom",
+      "vendoring_source": "heuristic",
+      "vendor_source": null,
+      "type": "procedural",
+      "type_source": "heuristic",
+      "type_signals": [
+        "procedural-style name (memo/post/tag/request/status/end-session/tagging)",
+        "under reference/ subdir"
+      ],
+      "is_reference": true,
+      "bundle": {},
+      "git": {
+        "first_commit_iso": "2026-05-12T05:36:05+02:00",
+        "last_commit_iso": "2026-05-12T07:06:21+02:00",
+        "commits_count": 2
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
       "name": "tldraw-docs",
       "repo": "coo-labs/skills",
       "repo_dir": "skills/tldraw-docs",
@@ -2226,6 +2522,59 @@
         "first_commit_iso": "2026-05-11T20:16:35+00:00",
         "last_commit_iso": "2026-05-11T20:16:35+00:00",
         "commits_count": 1
+      },
+      "usage": {
+        "invocations": 0,
+        "unique_sessions": 0,
+        "last_iso": null
+      }
+    },
+    {
+      "kind": "skill",
+      "name": "tool-creator",
+      "repo": "coo-labs/skills",
+      "repo_dir": "skills/reference/tool-creator",
+      "entry_path": "skills/reference/tool-creator/SKILL.md",
+      "frontmatter": {
+        "name": "tool-creator",
+        "description": "Author a new VADE skill (the Anthropic-recommended primitive for slash-invoked workflows and reusable agent playbooks). Walks the operator through capability description \u2192 inventory check \u2192 frontmatter choice \u2192 draft \u2192 operator review \u2192 adversarial-auditor pass \u2192 TOOLS.md registration \u2192 PR. v1 emits a single `.claude/skills/<name>/SKILL.md` per invocation; subagents (`.claude/agents/`), personas (`coo/personas/`), hooks (settings.json), and compound primitives are deferred to v2+. Use when externalizing a recurring pattern or session-end-noticed capability into a `/foo` skill or auto-discoverable skill. Do NOT invoke for one-off scripts, in-place file edits, or refactors outside v1's primitive scope.",
+        "argument_hint": null,
+        "allowed_tools": null,
+        "tools": null,
+        "model": null,
+        "license": null,
+        "compatibility": null,
+        "metadata": null
+      },
+      "description_chars": 709,
+      "body_chars": 30215,
+      "total_bytes": 31212,
+      "total_lines": 637,
+      "vendoring": "custom",
+      "vendoring_source": "heuristic",
+      "vendor_source": null,
+      "type": "meta",
+      "type_source": "heuristic",
+      "type_signals": [
+        "meta-skill name",
+        "under reference/ subdir"
+      ],
+      "is_reference": true,
+      "bundle": {
+        "templates": {
+          "count": 4,
+          "files": [
+            "auto-discoverable-skill.md",
+            "explicit-invocation-skill.md",
+            "forked-context-skill.md",
+            "inventory-brief.md"
+          ]
+        }
+      },
+      "git": {
+        "first_commit_iso": "2026-05-12T05:36:05+02:00",
+        "last_commit_iso": "2026-05-12T07:06:21+02:00",
+        "commits_count": 2
       },
       "usage": {
         "invocations": 0,
@@ -2339,34 +2688,33 @@
     }
   ],
   "summary": {
-    "count_total": 50,
+    "count_total": 57,
     "by_repo": {
       "coo-labs/coo-harness": 4,
       "coo-labs/coo-memory": 32,
-      "coo-labs/skills": 12,
+      "coo-labs/skills": 19,
       "coo-labs/vade-canvas": 2
     },
     "by_kind": {
-      "skill": 34,
-      "agent": 16
+      "skill": 42,
+      "agent": 15
     },
     "by_type": {
       "api-service": 3,
-      "meta": 3,
-      "procedural": 15,
+      "meta": 4,
+      "procedural": 20,
       "agent-orchestrator": 2,
       "agent-auditor": 4,
       "agent-specialist": 5,
       "agent-reviewer": 2,
       "agent-researcher": 2,
       "reference": 4,
-      "role": 3,
+      "role": 5,
       "review": 2,
-      "documentation": 4,
-      "agent-general": 1
+      "documentation": 4
     },
     "by_vendoring": {
-      "custom": 46,
+      "custom": 53,
       "vendored": 4
     },
     "declared_share": {

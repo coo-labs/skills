@@ -1,15 +1,15 @@
 # Claude Code skill & agent inventory
 
-_Generated `2026-05-30T17:08:33Z` · schema `v1.0.0`._
+_Generated `2026-05-30T17:18:23Z` · schema `v1.0.0`._
 
 ## Summary
 
-- **Total entries**: 50
-- **By kind**: agent=16, skill=34
-- **By repo**: `coo-labs/coo-harness`=4, `coo-labs/coo-memory`=32, `coo-labs/skills`=12, `coo-labs/vade-canvas`=2
-- **By type**: procedural=15, agent-specialist=5, agent-auditor=4, documentation=4, reference=4, api-service=3, meta=3, role=3, agent-orchestrator=2, agent-researcher=2, agent-reviewer=2, review=2, agent-general=1
-- **By vendoring**: custom=46, vendored=4
-- **Declared metadata coverage**: type 0/50 (0%), vendoring 0/50 (0%) — remainder is derived heuristically. Migration goal: shrink the heuristic share over time.
+- **Total entries**: 57
+- **By kind**: agent=15, skill=42
+- **By repo**: `coo-labs/coo-harness`=4, `coo-labs/coo-memory`=32, `coo-labs/skills`=19, `coo-labs/vade-canvas`=2
+- **By type**: procedural=20, agent-specialist=5, role=5, agent-auditor=4, documentation=4, meta=4, reference=4, api-service=3, agent-orchestrator=2, agent-researcher=2, agent-reviewer=2, review=2
+- **By vendoring**: custom=53, vendored=4
+- **Declared metadata coverage**: type 0/57 (0%), vendoring 0/57 (0%) — remainder is derived heuristically. Migration goal: shrink the heuristic share over time.
 
 Transcripts scanned: `/root/.claude/projects` (6 files). Invocation counts are honest reports of what the scan saw — point the scanner at an archive for cross-session totals.
 
@@ -17,7 +17,7 @@ Repos scanned:
 - `coo-labs/coo-memory` @ `7cf75aa8` (/home/user/coo-memory)
 - `coo-labs/coo-harness` @ `dabd31bf` (/home/user/coo-harness)
 - `coo-labs/vade-canvas` @ `baba412f` (/home/user/vade-canvas)
-- `coo-labs/skills` @ `414752cd` (/home/user/skills)
+- `coo-labs/skills` @ `93dd8ed7` (/home/user/skills)
 
 ## Inventory by repo
 
@@ -78,21 +78,28 @@ Repos scanned:
 
 ### `coo-labs/skills`
 
-#### Skills (5)
+#### Skills (13)
 
 | Name | Type | Vendor | Bytes | Lines | Bundle | Added | Last commit | Invocations |
 |------|------|--------|-------|-------|--------|-------|-------------|-------------|
-| `adapt-skill` | meta | — | 12355 | 295 | scripts=1, +2 files | 2026-05-12 | 2026-05-27 | 0 |
+| `adapt-skill` | meta | — | 12347 | 295 | scripts=1, +2 files | 2026-05-12 | 2026-05-27 | 0 |
+| `briefing` | procedural | — | 10682 | 239 | scripts=1, +2 files | — | — | 0 |
 | `canvas-ui` | reference | — | 19167 | 181 | references=1 | 2026-05-11 | 2026-05-11 | 0 |
+| `chat-mode` | role | — | 9635 | 138 | — | 2026-05-11 | 2026-05-30 | 0 |
+| `commission-retrospective` | procedural | — | 19539 | 391 | scripts=1, templates=3 | 2026-05-12 | 2026-05-12 | 0 |
+| `day-overview` | procedural | — | 19628 | 448 | scripts=1 | 2026-05-12 | 2026-05-30 | 0 |
+| `end-session` | procedural | — | 15448 | 344 | — | 2026-05-12 | 2026-05-30 | 0 |
+| `exec-mode` | role | — | 9290 | 163 | +2 files | 2026-05-11 | 2026-05-30 | 0 |
 | `peer-review` | review | — | 17797 | 354 | — | 2026-05-11 | 2026-05-21 | 0 |
 | `quarto-docs` | documentation | — | 12034 | 110 | — | 2026-05-11 | 2026-05-11 | 0 |
+| `status-check` | procedural | — | 7974 | 183 | — | 2026-05-12 | 2026-05-12 | 0 |
 | `tldraw-docs` | documentation | — | 11698 | 96 | — | 2026-05-11 | 2026-05-11 | 0 |
+| `tool-creator` | meta | — | 31212 | 637 | templates=4 | 2026-05-12 | 2026-05-12 | 0 |
 
-#### Agents (7)
+#### Agents (6)
 
 | Name | Type | Vendor | Bytes | Lines | Bundle | Added | Last commit | Invocations |
 |------|------|--------|-------|-------|--------|-------|-------------|-------------|
-| `README` | agent-general | — | 2582 | 57 | — | 2026-05-11 | 2026-05-12 | 0 |
 | `dispatching-parallel-agents` | agent-orchestrator | vendored | 5318 | 140 | — | 2026-05-11 | 2026-05-11 | 0 |
 | `emancipatory-auditor` | agent-auditor | — | 8949 | 153 | — | 2026-05-11 | 2026-05-12 | 0 |
 | `lineage-interpreter` | agent-specialist | — | 9270 | 112 | — | 2026-05-11 | 2026-05-11 | 0 |
@@ -111,7 +118,7 @@ Repos scanned:
 
 ## Cross-cut by type
 
-### procedural (15)
+### procedural (20)
 
 - `tagging-taxonomy` (skill, `coo-labs/coo-harness`) — custom, 12188B
 - `trace-timeline` (skill, `coo-labs/coo-harness`) — custom, 9114B
@@ -128,6 +135,11 @@ Repos scanned:
 - `postmerge-check` (skill, `coo-labs/coo-memory`) — custom, 7769B
 - `status-check` (skill, `coo-labs/coo-memory`) — custom, 5856B
 - `tag-milestone` (skill, `coo-labs/coo-memory`) — custom, 8531B
+- `briefing` (skill, `coo-labs/skills`) _(reference)_ — custom, 10682B
+- `commission-retrospective` (skill, `coo-labs/skills`) _(reference)_ — custom, 19539B
+- `day-overview` (skill, `coo-labs/skills`) _(reference)_ — custom, 19628B
+- `end-session` (skill, `coo-labs/skills`) _(reference)_ — custom, 15448B
+- `status-check` (skill, `coo-labs/skills`) _(reference)_ — custom, 7974B
 
 ### agent-specialist (5)
 
@@ -136,6 +148,14 @@ Repos scanned:
 - `session-closer` (agent, `coo-labs/coo-memory`) — custom, 13295B
 - `transcript-analyzer` (agent, `coo-labs/coo-memory`) — custom, 23376B
 - `lineage-interpreter` (agent, `coo-labs/skills`) — custom, 9270B
+
+### role (5)
+
+- `chat-mode` (skill, `coo-labs/coo-memory`) — custom, 5520B
+- `debug-mode` (skill, `coo-labs/coo-memory`) — custom, 10538B
+- `exec-mode` (skill, `coo-labs/coo-memory`) — custom, 4446B
+- `chat-mode` (skill, `coo-labs/skills`) _(reference)_ — custom, 9635B
+- `exec-mode` (skill, `coo-labs/skills`) _(reference)_ — custom, 9290B
 
 ### agent-auditor (4)
 
@@ -151,6 +171,13 @@ Repos scanned:
 - `tldraw-docs` (skill, `coo-labs/skills`) — custom, 11698B
 - `tldraw-docs` (skill, `coo-labs/vade-canvas`) — custom, 11770B
 
+### meta (4)
+
+- `skill-creator` (skill, `coo-labs/coo-harness`) — vendored, 33168B
+- `tool-creator` (skill, `coo-labs/coo-memory`) — custom, 20779B
+- `adapt-skill` (skill, `coo-labs/skills`) — custom, 12347B
+- `tool-creator` (skill, `coo-labs/skills`) _(reference)_ — custom, 31212B
+
 ### reference (4)
 
 - `cf-workers-best-practices` (skill, `coo-labs/coo-memory`) — vendored, 7095B
@@ -163,18 +190,6 @@ Repos scanned:
 - `agentmail` (skill, `coo-labs/coo-harness`) — custom, 7281B
 - `cf-wrangler` (skill, `coo-labs/coo-memory`) — vendored, 18362B
 - `manage-project` (skill, `coo-labs/coo-memory`) — custom, 4169B
-
-### meta (3)
-
-- `skill-creator` (skill, `coo-labs/coo-harness`) — vendored, 33168B
-- `tool-creator` (skill, `coo-labs/coo-memory`) — custom, 20779B
-- `adapt-skill` (skill, `coo-labs/skills`) — custom, 12355B
-
-### role (3)
-
-- `chat-mode` (skill, `coo-labs/coo-memory`) — custom, 5520B
-- `debug-mode` (skill, `coo-labs/coo-memory`) — custom, 10538B
-- `exec-mode` (skill, `coo-labs/coo-memory`) — custom, 4446B
 
 ### agent-orchestrator (2)
 
@@ -196,13 +211,9 @@ Repos scanned:
 - `peer-review` (skill, `coo-labs/coo-memory`) — custom, 18219B
 - `peer-review` (skill, `coo-labs/skills`) — custom, 17797B
 
-### agent-general (1)
-
-- `README` (agent, `coo-labs/skills`) _(reference)_ — custom, 2582B
-
 ## Cross-cut by vendoring
 
-### custom (46)
+### custom (53)
 
 - `agentmail` (skill, `coo-labs/coo-harness`)
 - `tagging-taxonomy` (skill, `coo-labs/coo-harness`)
@@ -237,17 +248,24 @@ Repos scanned:
 - `tag-milestone` (skill, `coo-labs/coo-memory`)
 - `tool-creator` (skill, `coo-labs/coo-memory`)
 - `upstream-feedback` (skill, `coo-labs/coo-memory`)
-- `README` (agent, `coo-labs/skills`)
 - `emancipatory-auditor` (agent, `coo-labs/skills`)
 - `lineage-interpreter` (agent, `coo-labs/skills`)
 - `rationalization-discriminator` (agent, `coo-labs/skills`)
 - `research-investigator` (agent, `coo-labs/skills`)
 - `safety-auditor` (agent, `coo-labs/skills`)
 - `adapt-skill` (skill, `coo-labs/skills`)
+- `briefing` (skill, `coo-labs/skills`)
 - `canvas-ui` (skill, `coo-labs/skills`)
+- `chat-mode` (skill, `coo-labs/skills`)
+- `commission-retrospective` (skill, `coo-labs/skills`)
+- `day-overview` (skill, `coo-labs/skills`)
+- `end-session` (skill, `coo-labs/skills`)
+- `exec-mode` (skill, `coo-labs/skills`)
 - `peer-review` (skill, `coo-labs/skills`)
 - `quarto-docs` (skill, `coo-labs/skills`)
+- `status-check` (skill, `coo-labs/skills`)
 - `tldraw-docs` (skill, `coo-labs/skills`)
+- `tool-creator` (skill, `coo-labs/skills`)
 - `canvas-ui` (skill, `coo-labs/vade-canvas`)
 - `tldraw-docs` (skill, `coo-labs/vade-canvas`)
 
@@ -707,15 +725,6 @@ Repos scanned:
 
 > Frame a comment, issue, or PR-thread reply to an external maintainer — vendor, open-source project, public-preview discussion, GitHub Community — so a stranger can act on it without re-investigating. Covers bug reports, feature requests, API-gap reports, and PR contributions to repos outside vade-app/*.
 
-### `README` — agent in `coo-labs/skills`
-
-- **Type**: agent-general _(source: heuristic; no heuristic matched · under reference/ subdir)_
-- **Vendoring**: custom _(source: heuristic)_
-- **Path**: `agents/reference/README.md`
-- **Size**: 2582 bytes / 57 lines · description 0 chars · body 2570 chars
-- **Git**: first 2026-05-11, last 2026-05-12, 2 commits
-- **Usage**: 0 invocations across 0 sessions
-
 ### `dispatching-parallel-agents` — agent in `coo-labs/skills`
 
 - **Type**: agent-orchestrator _(source: heuristic; orchestrator-style name)_
@@ -794,13 +803,26 @@ Repos scanned:
 - **Type**: meta _(source: heuristic; meta-skill name)_
 - **Vendoring**: custom _(source: heuristic)_
 - **Path**: `skills/adapt-skill/SKILL.md`
-- **Size**: 12355 bytes / 295 lines · description 521 chars · body 11584 chars
+- **Size**: 12347 bytes / 295 lines · description 521 chars · body 11576 chars
 - **Frontmatter**: argument-hint `<skill-or-agent-name> [--user] [--dry-run]`; allowed-tools `Bash, Read, Write, Edit, AskUserQuestion`
 - **Bundle**: scripts=1, +2 files
 - **Git**: first 2026-05-12, last 2026-05-27, 2 commits
 - **Usage**: 0 invocations across 0 sessions
 
 > Adapt a reference skill or agent from this repo into a working installed primitive for the current substrate. Reads the target's `# Setup hints` manifest, conducts a structured interview, substitutes substrate-coupled surfaces with the user's answers, and writes the adapted skill to `.claude/skills/<name>/` (or agent to `.claude/agents/<name>.md`). Run once per reference skill the user wants to install. Don't invoke for substrate-agnostic skills under `skills/` proper — those install verbatim via `setup/install.sh`.
+
+### `briefing` — skill in `coo-labs/skills`
+
+- **Type**: procedural _(source: heuristic; has scripts/ subdir · under reference/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
+- **Path**: `skills/reference/briefing/SKILL.md`
+- **Size**: 10682 bytes / 239 lines · description 751 chars · body 9707 chars
+- **Frontmatter**: argument-hint `<request|pickup|done|release> [args]`; allowed-tools `Bash, Read, Write`
+- **Bundle**: scripts=1, +2 files
+- **Git**: first —, last —, 0 commits
+- **Usage**: 0 invocations across 0 sessions
+
+> Manage session-handoff briefings under `briefings/`. Subcommands: `request` (file a new briefing — collision-safe NNN allocation, YAML frontmatter, fresh branch + PR), `pickup` (claim an open briefing for this session), `done` (mark a claimed briefing delivered), `release` (clear a claim without delivering). The briefing schema, index format, and per-subcommand procedures for pickup/done/release live in reference.md — loaded on demand. Use when a session needs to hand a contextual problem to another session, or when this session is about to pick one up. Don't invoke for: single-PR-sized handoffs (use an issue), tasks the same session can finish (write code instead), or known-good plans that just need execution (write a plan, not a briefing).
 
 ### `canvas-ui` — skill in `coo-labs/skills`
 
@@ -813,6 +835,69 @@ Repos scanned:
 - **Usage**: 0 invocations across 0 sessions
 
 > Apply tldraw canvas frontend conventions and avoid recurring landmines — extracted from a production tldraw-based app. Use this skill whenever you're working in a tldraw-based codebase on anything that touches the canvas — adding or modifying a custom shape, wiring shell UI, mutating shapes through an MCP/WebSocket bridge, asset stores, snapshot persistence, library / catalog / shape-panel surfaces, or anywhere `tldraw` or `@tldraw/*` is imported. Trigger even when the prompt only mentions "the canvas," "a shape," "AppShell," "persistenceKey," "asset store," "TLAssetStore," "ShapeUtil," "BindingUtil," "snapshot," "the editor," or "tldraw" without naming the skill — and especially trigger before opening a PR that changes any tldraw-touching file. This skill is the anti-patterns and conventions layer; for SDK reference / doc URLs, also consult the `tldraw-docs` skill (the two compose).
+
+### `chat-mode` — skill in `coo-labs/skills`
+
+- **Type**: role _(source: heuristic; name suffix -mode · under reference/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
+- **Path**: `skills/reference/chat-mode/SKILL.md`
+- **Size**: 9635 bytes / 138 lines · description 586 chars · body 8854 chars
+- **Frontmatter**: argument-hint `optional starting topic`
+- **Git**: first 2026-05-11, last 2026-05-30, 3 commits
+- **Usage**: 0 invocations across 0 sessions
+
+> Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode — the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, vade-coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `coo/retrospectives/2026-05-03_what-works-and-why.md`.
+
+### `commission-retrospective` — skill in `coo-labs/skills`
+
+- **Type**: procedural _(source: heuristic; has scripts/ subdir · under reference/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
+- **Path**: `skills/reference/commission-retrospective/SKILL.md`
+- **Size**: 19539 bytes / 391 lines · description 620 chars · body 18385 chars
+- **Frontmatter**: argument-hint `--since <YYYY-MM-DD> [--until <YYYY-MM-DD>] [--prs <list>] [--focus "<question>"] [--slug <slug>] [--open-pr] | --scope ...`; allowed-tools `Bash, Read, Write, Task`
+- **Bundle**: scripts=1, templates=3
+- **Git**: first 2026-05-12, last 2026-05-12, 2 commits
+- **Usage**: 0 invocations across 0 sessions
+
+> Commission an impartial project-historian retrospective on a window of project work. Use when a pivotal event fires per SOP-CULTURE-001 §2d (prime-directive reinterpretation, new/retired agent role, multi-week epic closes or pivots, governance rule revised via committee, security finding reshaping ops, substrate-capture indicator firing, persistent integrity-check Group F degradation), or when `/commission-retrospective` is invoked directly. Orchestrates two impartial evidence sub-agents in parallel (memos-and-essays analyst, PR/issue-graph analyst), then produces a draft retrospective in the voice of commissions
+
+### `day-overview` — skill in `coo-labs/skills`
+
+- **Type**: procedural _(source: heuristic; has scripts/ subdir · under reference/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
+- **Path**: `skills/reference/day-overview/SKILL.md`
+- **Size**: 19628 bytes / 448 lines · description 493 chars · body 18853 chars
+- **Frontmatter**: argument-hint `[--date YYYY-MM-DD] [--end YYYY-MM-DD] [--no-ship] [--post]`; allowed-tools `Bash, Read, Write, Edit`
+- **Bundle**: scripts=1
+- **Git**: first 2026-05-12, last 2026-05-30, 3 commits
+- **Usage**: 0 invocations across 0 sessions
+
+> Produce a day-overview retrospective — briefing-shaped synthesis of a day's shipped work (memos, PRs, integrity-check state) grouped into lanes, with follow-ups and candidate next actions. Use at end-of-day or to summarize a window of work. Default flow ships (writes file, commits, opens PR); `--no-ship` stops at file write; `--post` also posts to vade-core Retrospectives Discussions. Don't invoke for routine status updates (use `/status-check`) or single-PR retrospectives (write a memo).
+
+### `end-session` — skill in `coo-labs/skills`
+
+- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging) · under reference/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
+- **Path**: `skills/reference/end-session/SKILL.md`
+- **Size**: 15448 bytes / 344 lines · description 542 chars · body 14758 chars
+- **Frontmatter**: allowed-tools `Bash, Read, Write, Edit, mcp__mem0__add_memory`
+- **Git**: first 2026-05-12, last 2026-05-30, 3 commits
+- **Usage**: 0 invocations across 0 sessions
+
+> Run the COO session-end checklist — externalization reflection, plan-file commit, Mem0 episodic entry, memo-sync if needed, vade-agent-logs session log, Journal consideration, transcript-export sidecar commit. Use when wrapping up a working session, about to close the terminal or container, finishing the day's COO work, or when Ven says "we're done" / "end session" / "wrap up". Writes a marker file so the Stop hook knows cleanup is done. Do NOT invoke mid-task — only at the actual end of a session, once all substantive work is complete.
+
+### `exec-mode` — skill in `coo-labs/skills`
+
+- **Type**: role _(source: heuristic; name suffix -mode · under reference/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
+- **Path**: `skills/reference/exec-mode/SKILL.md`
+- **Size**: 9290 bytes / 163 lines · description 994 chars · body 8130 chars
+- **Frontmatter**: argument-hint `optional scope hint, or --revise-persona`
+- **Bundle**: +2 files
+- **Git**: first 2026-05-11, last 2026-05-30, 3 commits
+- **Usage**: 0 invocations across 0 sessions
+
+> Load the executive persona for sessions where the natural shape is delegate exploration → preserve main-context for decisions and action → reflect on state and priorities. Three modes fit: sweep/cleanup, strategic reflection, or both. Reads `coo/personas/exec-mode.md` (the persona doctrine, including its discipline rollup folded from prior retrospectives with per-rule provenance), adopts the discipline, then asks user for scope. Invoke as `/exec-mode --revise-persona` to enter persona-revision mode (re-introduces read-all-retros + plan-mode REQUIRED + adversarial-auditor gates per the persona's `Persona-revision discipline` section). Use when starting a consolidation pass on open PRs/issues, when reflecting on substrate state and priorities, or when revising the persona itself. Don't invoke for narrow code-task work, single-PR review, or anything where standard COO discipline already fits — exec-mode is bias-overlay for broad-scope sessions, not a wrapper around the standard COO.
 
 ### `peer-review` — skill in `coo-labs/skills`
 
@@ -837,6 +922,18 @@ Repos scanned:
 
 > Navigate the Quarto documentation efficiently when working on a Quarto-based publishing site. Use this skill whenever a task involves Quarto — including `_quarto.yml`, navbars, sidebars, listings, themes, format options, citations, freeze, partial render. Quarto publishes LLM-optimized markdown bundles at quarto.org/llms.txt and per-page `.llms.md` URLs; this skill teaches which page to fetch and how to navigate so agents don't hallucinate YAML keys, nest options under the wrong parent (`format.html.sidebar` is wrong — `sidebar` is top-level under `website`), or guess at listing-type/theme-extension semantics. Trigger whenever the user mentions Quarto, qmd, _quarto.yml, listings, navbar, sidebar, cosmo, brand, theme, freeze, render, or page-navigation.
 
+### `status-check` — skill in `coo-labs/skills`
+
+- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging) · under reference/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
+- **Path**: `skills/reference/status-check/SKILL.md`
+- **Size**: 7974 bytes / 183 lines · description 478 chars · body 7333 chars
+- **Frontmatter**: allowed-tools `Read`
+- **Git**: first 2026-05-12, last 2026-05-12, 2 commits
+- **Usage**: 0 invocations across 0 sessions
+
+> Run a six-item read-only grounding audit (who/what/where/next/decision/resource). Use deliberately at the start of a session, after a memory-layer migration, or when you suspect episodic memory drift. Works from any repo without setup — no Mem0, no hooks, no env vars required. A non-COO agent in a foreign repo gets sensible partial output via the `⚠ not grounded` marker. Don't invoke for routine work — this is a deliberate audit, not a wrapper around CLAUDE.md context-load.
+
 ### `tldraw-docs` — skill in `coo-labs/skills`
 
 - **Type**: documentation _(source: heuristic; name suffix -docs)_
@@ -847,6 +944,18 @@ Repos scanned:
 - **Usage**: 0 invocations across 0 sessions
 
 > Navigate the tldraw SDK documentation efficiently. Use this skill whenever a task involves the tldraw canvas SDK — including the Editor class, shape utils, custom shapes, bindings, tools, persistence, side effects, the store/signals system, sync, UI components, or any tldraw.dev reference. tldraw publishes LLM-optimized markdown bundles at tldraw.dev/llms*.txt plus markdown-ready individual pages; this skill teaches which bundle to fetch and how to navigate so agents don't hallucinate API signatures, grab the full mega-bundle when a narrow fetch would do, or guess at topic names that don't exist. Trigger whenever the user mentions tldraw, canvas shapes, ShapeUtil, BindingUtil, tldraw editor, custom tool, snapshot, or is clearly working in a tldraw-based codebase even if they don't name "tldraw" explicitly.
+
+### `tool-creator` — skill in `coo-labs/skills`
+
+- **Type**: meta _(source: heuristic; meta-skill name · under reference/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
+- **Path**: `skills/reference/tool-creator/SKILL.md`
+- **Size**: 31212 bytes / 637 lines · description 709 chars · body 30215 chars
+- **Bundle**: templates=4
+- **Git**: first 2026-05-12, last 2026-05-12, 2 commits
+- **Usage**: 0 invocations across 0 sessions
+
+> Author a new VADE skill (the Anthropic-recommended primitive for slash-invoked workflows and reusable agent playbooks). Walks the operator through capability description → inventory check → frontmatter choice → draft → operator review → adversarial-auditor pass → TOOLS.md registration → PR. v1 emits a single `.claude/skills/<name>/SKILL.md` per invocation; subagents (`.claude/agents/`), personas (`coo/personas/`), hooks (settings.json), and compound primitives are deferred to v2+. Use when externalizing a recurring pattern or session-end-noticed capability into a `/foo` skill or auto-discoverable skill. Do NOT invoke for one-off scripts, in-place file edits, or refactors outside v1's primitive scope.
 
 ### `canvas-ui` — skill in `coo-labs/vade-canvas`
 
