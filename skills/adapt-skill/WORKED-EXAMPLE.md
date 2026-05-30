@@ -105,7 +105,7 @@ want to do post-install.)
     follow-up.
 - The `# Setup hints` section is stripped.
 - The `## Cross-references` section before the hints block is
-  preserved (with `vade-coo-memory#NNN` references intact — a
+  preserved (with `coo-memory#NNN` references intact — a
   setup-report candidate cleanup item).
 
 ## The setup report
@@ -120,7 +120,7 @@ Substitutions applied:
 
 Not covered by hints (candidate follow-up):
   - "COO" and "non-COO" agent references in body
-  - vade-coo-memory#NNN cross-references in `## Cross-references`
+  - coo-memory#NNN cross-references in `## Cross-references`
   - The emancipatory-clause memo citation in the Governance section
 
 Next: run /status-check to test. Edit the installed SKILL.md directly to clean up the candidate-follow-up items.

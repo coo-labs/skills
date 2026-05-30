@@ -16,9 +16,9 @@ directory. Per-run retrospectives live alongside in
 `<name>-retrospectives/`, one file per run, dated.
 
 Loaded by an explicit-invocation skill at
-`vade-coo-memory/.claude/skills/<name>/SKILL.md`
+`coo-memory/.claude/skills/<name>/SKILL.md`
 (`disable-model-invocation: true`). Per Anthropic skill-primitive
-guidance + vade-coo-memory#321, the skill is the canonical surface
+guidance + coo-labs/coo-memory#321, the skill is the canonical surface
 for new tool authoring; the persona migrated from a `.claude/commands/`
 slash command to a skill in v3 (2026-04-30).
 
@@ -52,7 +52,7 @@ discipline-rollup additions) land on normal PR review.
    retrospectives, with `(vN-from-<retro-slug>)` provenance) /
    constraints / `--revise-persona` submode / recursive-self-
    modification discipline.
-2. Author `vade-coo-memory/.claude/skills/<name>/SKILL.md`
+2. Author `coo-memory/.claude/skills/<name>/SKILL.md`
    explicit-invocation skill (`disable-model-invocation: true`) per
    `/tool-creator`'s `templates/explicit-invocation-skill.md`. The
    skill body holds the boot procedure (Step 0 standard COO boot,

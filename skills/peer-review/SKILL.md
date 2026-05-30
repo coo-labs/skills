@@ -16,17 +16,17 @@ synthesis, optional atomic-issue tracker for asynchronous per-atom
 revision via a re-runnable implementer briefing.
 
 Canonical reference artifacts — read these to ground in the shape.
-The originating substrate (`vade-coo-memory`) is private, so the
+The originating substrate (`coo-memory`) is private, so the
 issue links below aren't directly fetchable; treat them as
 shape-templates for the kind of decomposition this skill produces,
 not as docs a reader can open:
 
-- `vade-coo-memory#635` — parent epic with cross-cutting findings
-- `vade-coo-memory#636`, `#637`, `#638` — sub-epic shape (TL;DR +
+- `coo-labs/coo-memory#635` — parent epic with cross-cutting findings
+- `coo-labs/coo-memory#636`, `#637`, `#638` — sub-epic shape (TL;DR +
   paired-file reference + atom checklist)
-- `vade-coo-memory#639`–`#673` — atomic issue shape (quote + section
+- `coo-labs/coo-memory#639`–`#673` — atomic issue shape (quote + section
   + suggested edit + scope/cluster/cross-cut labels)
-- `vade-coo-memory/coo/briefings/029-decentering-mind-revision-implementer.md`
+- `coo-memory/coo/briefings/029-decentering-mind-revision-implementer.md`
   — re-runnable per-atom PR session briefing (the template to adapt)
 
 A consumer adapting this skill into their own repository should
@@ -347,11 +347,11 @@ implementer briefing, opens the landing PR. Subscribes.
 
 ---
 
-*v1.1 — iteration-1 eval fixes (vade-coo-memory#675; iter-1 in
+*v1.1 — iteration-1 eval fixes (coo-labs/coo-memory#675; iter-1 in
 `peer-review-workspace/iteration-1/`). Added: cost note + Task-tool
 fallback paragraph. Eval surfaced that subagent contexts can't
 recurse Task; the skill now instructs sequential authorship as a
 documented fallback rather than letting the agent improvise.*
 
 *v1.0 — initial packaging from the May 2026 De-centering Mind
-workflow (vade-coo-memory#635 / #674 / briefing 029).*
+workflow (coo-labs/coo-memory#635 / #674 / briefing 029).*

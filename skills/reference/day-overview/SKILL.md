@@ -1,6 +1,6 @@
 ---
 name: day-overview
-description: Produce a day-overview retrospective — briefing-shaped synthesis of a day's shipped work (memos, PRs, integrity-check state) grouped into lanes, with follow-ups and candidate next actions. Use at end-of-day or to summarize a window of work. Default flow ships (writes file, commits, opens PR); `--no-ship` stops at file write; `--post` also posts to vade-core Retrospectives Discussions. Don't invoke for routine status updates (use `/status-check`) or single-PR retrospectives (write a memo).
+description: Produce a day-overview retrospective — briefing-shaped synthesis of a day's shipped work (memos, PRs, integrity-check state) grouped into lanes, with follow-ups and candidate next actions. Use at end-of-day or to summarize a window of work. Default flow ships (writes file, commits, opens PR); `--no-ship` stops at file write; `--post` also posts to vade-canvas Retrospectives Discussions. Don't invoke for routine status updates (use `/status-check`) or single-PR retrospectives (write a memo).
 argument-hint: "[--date YYYY-MM-DD] [--end YYYY-MM-DD] [--no-ship] [--post]"
 disable-model-invocation: true
 allowed-tools: Bash, Read, Write, Edit
@@ -24,7 +24,7 @@ this shape, not creative restructuring.
 > **Reference skill.** The pattern (briefing-shape day synthesis
 > from substrate records — memos, merged PRs, integrity snapshot
 > — grouped into lanes) is portable; the worked-example paths
-> (`coo/retrospectives/`, `coo/memos/`, the five `vade-app/*`
+> (`coo/retrospectives/`, `coo/memos/`, the five `coo-labs/*`
 > repo list, integrity-check JSON shape, GraphQL category and
 > label IDs) and the `scripts/day-overview.sh` manifest gatherer
 > are substrate-coupled and ship verbatim as the VADE worked
@@ -52,8 +52,8 @@ Don't invoke for:
 ### 0. Resolve paths and date
 
 ```bash
-COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../vade-coo-memory" "$HOME/GitHub/vade-app/vade-coo-memory" "/home/user/vade-coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
-[ -n "$COO" ] || { echo "day-overview: could not find vade-coo-memory data root"; exit 1; }
+COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+[ -n "$COO" ] || { echo "day-overview: could not find coo-memory data root"; exit 1; }
 ```
 
 Determine the target date:
@@ -116,7 +116,7 @@ memos are the load-bearing source of structure for the briefing
 For PRs that the manifest titles suggest are pivotal to a lane
 (large diffs, named in memos, or whose titles introduce a new
 system), optionally fetch the PR body via
-`GH_TOKEN="$GITHUB_MCP_PAT" gh pr view <N> --repo vade-app/<repo>`.
+`GH_TOKEN="$GITHUB_MCP_PAT" gh pr view <N> --repo coo-labs/<repo>`.
 Don't fetch every PR; fetch only when the title is insufficient.
 
 ### 3. Synthesize the briefing
@@ -131,7 +131,7 @@ filename uses `$DATE` (the start), so for multi-day arcs the publish
 date would mis-attribute to the start. When `--end != --date`,
 prepend a YAML frontmatter block with `date: <END>` so the published
 page carries the correct close date. Single-day windows can omit the
-block — the filename prefix serves. (vade-coo-memory#622.)
+block — the filename prefix serves. (coo-labs/coo-memory#622.)
 
 ```yaml
 ---
@@ -213,7 +213,7 @@ esac
 git add "coo/retrospectives/${DATE}_day-overview.md"
 git commit -m "Add ${DATE} day-overview retrospective"
 git push -u origin "$BRANCH"
-GH_TOKEN="$GITHUB_MCP_PAT" gh pr create --repo vade-app/vade-coo-memory --base main --head "$BRANCH" \
+GH_TOKEN="$GITHUB_MCP_PAT" gh pr create --repo coo-labs/coo-memory --base main --head "$BRANCH" \
   --title "Add ${DATE} day-overview retrospective" \
   --body "Briefing-shaped synthesis of ${DATE}'s shipped work. Mirrors the format of prior day-overviews. See file body for source memos and lane breakdown."
 ```
@@ -232,13 +232,13 @@ If `$ARGUMENTS` contains `--post`:
 # Body = file content + standard source-link footer (day-overview-specific)
 {
   cat "$TARGET_FILE"
-  printf '\n\n---\n\n*Source: [`coo/retrospectives/%s_day-overview.md`](https://github.com/vade-app/vade-coo-memory/blob/main/coo/retrospectives/%s_day-overview.md) on `vade-app/vade-coo-memory`. The file is the source of truth; this discussion is the publication surface.*\n' "$DATE" "$DATE"
+  printf '\n\n---\n\n*Source: [`coo/retrospectives/%s_day-overview.md`](https://github.com/coo-labs/coo-memory/blob/main/coo/retrospectives/%s_day-overview.md) on `coo-labs/coo-memory`. The file is the source of truth; this discussion is the publication surface.*\n' "$DATE" "$DATE"
 } > "/tmp/day-overview-body-${DATE}.md"
 
 # Discussion title — strip the leading "# " from the file's H1 line; no [retrospective*] prefix
 TITLE="$(head -1 "$TARGET_FILE" | sed 's/^# //')"
 
-# Post via the shared helper (created 2026-04-30, vade-coo-memory#313 PR)
+# Post via the shared helper (created 2026-04-30, coo-labs/coo-memory#313 PR)
 RESULT=$(bash "$COO/.claude/_lib/post-discussion.sh" \
   retrospectives \
   "$TITLE" \
@@ -288,9 +288,9 @@ Tell the user the discussion number and URL.
 ## Canonical source
 
 ```text
-vade-coo-memory/.claude/skills/day-overview/scripts/day-overview.sh (manifest builder)
-vade-coo-memory/.claude/_lib/post-discussion.sh (shared GraphQL helper)
-vade-coo-memory/coo/retrospectives/<date>_day-overview.md (output location)
+coo-memory/.claude/skills/day-overview/scripts/day-overview.sh (manifest builder)
+coo-memory/.claude/_lib/post-discussion.sh (shared GraphQL helper)
+coo-memory/coo/retrospectives/<date>_day-overview.md (output location)
 ```
 
 ## Cross-references
@@ -300,9 +300,9 @@ vade-coo-memory/coo/retrospectives/<date>_day-overview.md (output location)
 - `commission-retrospective` skill — historian-voiced
   retrospectives for pivotal events (different scope; SOP-CULTURE-001 §2d
   triggers vs day-window synthesis).
-- vade-coo-memory#313 — `_lib/post-discussion.sh` extraction (the
+- coo-labs/coo-memory#313 — `_lib/post-discussion.sh` extraction (the
   cross-consumer refactor).
-- vade-coo-memory#333 — command→skill migration sweep epic; this
+- coo-labs/coo-memory#333 — command→skill migration sweep epic; this
   skill is Class C item 1 of 3.
 
 # Setup hints
@@ -334,8 +334,8 @@ setup_hints:
     find_unique: true
     find: |
       ```bash
-      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../vade-coo-memory" "$HOME/GitHub/vade-app/vade-coo-memory" "/home/user/vade-coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
-      [ -n "$COO" ] || { echo "day-overview: could not find vade-coo-memory data root"; exit 1; }
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      [ -n "$COO" ] || { echo "day-overview: could not find coo-memory data root"; exit 1; }
       ```
     fallback: |
       ```bash
@@ -370,13 +370,13 @@ setup_hints:
   - key: target_repo_prefix
     kind: PROMPT
     question: "GitHub org or owner prefix for your repos? (VADE: vade-app.) Examples: myorg, alice."
-    find: "vade-app/"
+    find: "coo-labs/"
     fallback: ""
 
   - key: target_repo
     kind: PROMPT
     question: "Primary repo for day-overview PRs? (owner/repo format.)"
-    find: "vade-app/vade-coo-memory"
+    find: "coo-labs/coo-memory"
     fallback: ""
 
   - key: branch_prefix
@@ -393,8 +393,8 @@ setup_hints:
 
   - key: vade_repo_aside_main
     kind: OPTIONAL
-    question: "Skip unless you want to keep the 'vade-app/<repo>' reference in the gh pr view example."
-    find: "GH_TOKEN=\"$GITHUB_MCP_PAT\" gh pr view <N> --repo vade-app/<repo>"
+    question: "Skip unless you want to keep the 'coo-labs/<repo>' reference in the gh pr view example."
+    find: "GH_TOKEN=\"$GITHUB_MCP_PAT\" gh pr view <N> --repo coo-labs/<repo>"
     fallback: "GH_TOKEN=\"$GITHUB_MCP_PAT\" gh pr view <N> --repo <owner>/<repo>"
 
   - key: post_discussion_step
@@ -410,13 +410,13 @@ setup_hints:
       # Body = file content + standard source-link footer (day-overview-specific)
       {
         cat "$TARGET_FILE"
-        printf '\n\n---\n\n*Source: [`coo/retrospectives/%s_day-overview.md`](https://github.com/vade-app/vade-coo-memory/blob/main/coo/retrospectives/%s_day-overview.md) on `vade-app/vade-coo-memory`. The file is the source of truth; this discussion is the publication surface.*\n' "$DATE" "$DATE"
+        printf '\n\n---\n\n*Source: [`coo/retrospectives/%s_day-overview.md`](https://github.com/coo-labs/coo-memory/blob/main/coo/retrospectives/%s_day-overview.md) on `coo-labs/coo-memory`. The file is the source of truth; this discussion is the publication surface.*\n' "$DATE" "$DATE"
       } > "/tmp/day-overview-body-${DATE}.md"
       
       # Discussion title — strip the leading "# " from the file's H1 line; no [retrospective*] prefix
       TITLE="$(head -1 "$TARGET_FILE" | sed 's/^# //')"
       
-      # Post via the shared helper (created 2026-04-30, vade-coo-memory#313 PR)
+      # Post via the shared helper (created 2026-04-30, coo-labs/coo-memory#313 PR)
       RESULT=$(bash "$COO/.claude/_lib/post-discussion.sh" \
         retrospectives \
         "$TITLE" \

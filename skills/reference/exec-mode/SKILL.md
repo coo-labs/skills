@@ -27,7 +27,7 @@ procedural disagreement.**
 ## When to use
 
 - Consolidation pass on open PRs/issues across a project's repo
-  set (VADE: the five `vade-app/*` repos).
+  set (VADE: the five `coo-labs/*` repos).
 - Strategic reflection on substrate state and ranked priorities
   (no action loop required).
 - Revising the persona itself (`--revise-persona` submode).
@@ -57,7 +57,7 @@ that doesn't benefit from delegated parallel-sub-agent exploration.
    `summary.ok` state in `integrity-check.json` (surface failing
    invariant if degraded).
 5. **Ask scope.** Defaults to offer: open PRs across the five
-   vade-app repos; open `proj:*` issues; a specific repo / lane /
+   coo-labs repos; open `proj:*` issues; a specific repo / lane /
    cohort; a specific PR/issue list; strategic-reflection-only
    pass (jump to Phase 4). Wait for the user's answer; do not
    auto-detect.
@@ -78,10 +78,10 @@ that doesn't benefit from delegated parallel-sub-agent exploration.
 ## Canonical source
 
 ```text
-vade-coo-memory/.claude/skills/exec-mode/SKILL.md (this file)
-vade-coo-memory/coo/personas/exec-mode.md (persona doctrine — SOT)
-vade-coo-memory/coo/personas/exec-mode-retrospectives/ (audit trail)
-vade-coo-memory/CLAUDE.md (standard COO boot — substrate)
+coo-memory/.claude/skills/exec-mode/SKILL.md (this file)
+coo-memory/coo/personas/exec-mode.md (persona doctrine — SOT)
+coo-memory/coo/personas/exec-mode-retrospectives/ (audit trail)
+coo-memory/CLAUDE.md (standard COO boot — substrate)
 ```
 
 When this skill and the persona file disagree on procedural detail,
@@ -124,13 +124,13 @@ setup_hints:
   - key: repo_set_description
     kind: PROMPT
     question: "What's the repo set this exec-mode will sweep across? (Examples: 'the three repos under myorg', 'just this one repo', 'all repos in my GitHub org'.) Used as a default-scope description in Step 5."
-    find: "open PRs across the five\n   vade-app repos; open `proj:*` issues"
+    find: "open PRs across the five\n   coo-labs repos; open `proj:*` issues"
     fallback: "open PRs across your repo set; open prioritized issues"
 
   - key: vade_repos_aside
     kind: OPTIONAL
-    question: "Skip unless you want to keep the VADE 'five vade-app/*' aside as documentation of where this pattern was extracted from."
-    find: " (VADE: the five `vade-app/*` repos)"
+    question: "Skip unless you want to keep the VADE 'five coo-labs/*' aside as documentation of where this pattern was extracted from."
+    find: " (VADE: the five `coo-labs/*` repos)"
     fallback: ""
 
   - key: integrity_check_path

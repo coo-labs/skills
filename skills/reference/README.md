@@ -93,15 +93,15 @@ These skills cite VADE-internal artifacts as worked examples:
 - `exec-mode` references VADE's project board structure, the
   `coo/CLAUDE.md` boot order, and the integrity-check probe.
 - `day-overview` and `commission-retrospective` walk the five
-  `vade-app/*` repos, read `coo/memo_index.json`, and snapshot
+  `coo-labs/*` repos, read `coo/memo_index.json`, and snapshot
   the VADE integrity-check JSON shape.
 - `briefing` writes into `briefings/` and follows a
-  `vade-coo-memory`-specific branch / PR convention; the
+  `coo-memory`-specific branch / PR convention; the
   lifecycle subcommands (`pickup` / `done` / `release`) maintain
   a JSON index whose schema lives in the substrate's
   `briefings/_index.json`.
 - `end-session` writes a session log under
-  `vade-agent-logs/sessions/` and an episodic Mem0 entry per
+  `coo-logs/sessions/` and an episodic Mem0 entry per
   VADE's SOP-MEM-001 metadata schema.
 - `tool-creator` registers new skills in VADE's `TOOLS.md`,
   invokes named governance memos as auditor inputs, and routes
@@ -146,7 +146,7 @@ audits; staged-checkpoint skill authoring — DO port.
    structural requirement — that's the
    honesty-gate pattern.
 6. For `end-session`: replace the VADE-specific surfaces (Mem0
-   episodic metadata schema, `vade-agent-logs/sessions/` log
+   episodic metadata schema, `coo-logs/sessions/` log
    path, the Journal Discussions URL, the `$HOME/.vade/` marker
    path) with your own. Keep the externalization-reflection
    step — that's how a session feeds the substrate rather than
@@ -176,6 +176,6 @@ agent looking for files that don't exist (`coo/personas/exec-mode.md`,
 `coo/retrospectives/2026-05-03_what-works-and-why.md`,
 `coo/CLAUDE.md`, `coo/briefings/README.md`, `coo/memo_index.json`,
 `coo/status_check_template.md`, `coo/culture_system_sop.md`,
-`TOOLS.md`, `vade-agent-logs/sessions/`). The substrate-agnostic
+`TOOLS.md`, `coo-logs/sessions/`). The substrate-agnostic
 skills under `skills/` proper (`quarto-docs`, `tldraw-docs`,
 `canvas-ui`, `peer-review`) install cleanly; these don't.

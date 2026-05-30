@@ -122,7 +122,7 @@ need to validate that:
 If you're authoring the first forked-context vade skill, treat it
 as a research spike — drop a paired issue to capture findings
 back into this template. **File findings as a follow-up to
-vade-coo-memory#322 (or a successor issue)** so this template
+coo-labs/coo-memory#322 (or a successor issue)** so this template
 can be updated with the validated assumptions; otherwise the
 caveat bitrots.
 

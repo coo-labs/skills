@@ -5,7 +5,7 @@ Prior art for what you are producing lives at `coo/foundations/2026-04-22_agent-
 ## Materials provided
 
 - **Scope manifest** (JSON): date window, list of merged PRs in scope (with numbers, titles, authors, merged_at, and URLs), optional `--prs` extension for cross-repo PRs, and the commissioning focus question if any.
-- **`gh` CLI** available with `GH_TOKEN="$GITHUB_MCP_PAT"`. Use it for PR bodies, comments, review threads, commit messages, and issue linkages. Repo scope: `vade-app/vade-coo-memory`, `vade-app/vade-core`, `vade-app/vade-runtime`, `vade-app/vade-governance`, `vade-app/vade-agent-logs`.
+- **`gh` CLI** available with `GH_TOKEN="$GITHUB_MCP_PAT"`. Use it for PR bodies, comments, review threads, commit messages, and issue linkages. Repo scope: `coo-labs/coo-memory`, `coo-labs/vade-canvas`, `coo-labs/coo-harness`, `coo-labs/vade-governance`, `coo-labs/coo-logs`.
 
 ## Your task
 
@@ -18,7 +18,7 @@ Produce a report at the path the skill passed you (of the form `coo/_drafts/<dat
 3. **Issue graph.** All linked issues: who opened them, what labels they carry, what the commissioned "Next action — COO" said, whether they closed in-window. Note any issue opened in-window but not yet closed.
 4. **Authorship and attribution graph.** Which commits/PRs resolved to `vade-coo`, which to `venpopov`, which carried `ven-human-action:`. Any silent attribution mismatches (PR opened as `venpopov` when it should be `vade-coo`) are F4-relevant — flag them with details.
 5. **Citation graph.** For every PR in scope, note whether the body or first commit cites a memo ID or issue number (F1 invariant). Absences are decision-bearing.
-6. **Cross-repo linkage.** If the commissioning focus or manifest mentions multiple repos, report on cross-repo PRs (e.g. vade-runtime + vade-coo-memory landing together for integrity-check changes).
+6. **Cross-repo linkage.** If the commissioning focus or manifest mentions multiple repos, report on cross-repo PRs (e.g. coo-harness + coo-memory landing together for integrity-check changes).
 7. **Absences flagged.** PRs that merged without memo citation, without linked issue, or without a clearly decision-bearing body. Review threads that unresolved. Committee-quorum cycles that stalled.
 8. **Raw-quote appendix.** Up to ~10 load-bearing quotes from PR bodies or review comments, with PR number and line/URL.
 

@@ -87,9 +87,9 @@ For VADE's publishing-site work, these are the doc pages worth memorizing:
 
 ## VADE-specific context
 
-This skill is used heavily inside `vade-coo-memory` for the publishing site at **https://read.vade-app.dev**. A few things worth knowing when doing Quarto work here:
+This skill is used heavily inside `coo-memory` for the publishing site at **https://read.vade-app.dev**. A few things worth knowing when doing Quarto work here:
 
-- **Current Quarto version: 1.9.37.** Pinned by the CI workflow and by `vade-runtime/scripts/lib/common.sh::ensure_quarto_cli`. Local Macs typically have a similar or newer 1.9.x via brew.
+- **Current Quarto version: 1.9.37.** Pinned by the CI workflow and by `coo-harness/scripts/lib/common.sh::ensure_quarto_cli`. Local Macs typically have a similar or newer 1.9.x via brew.
 - **Authoritative config lives in `bin/publish-site/build.py` as `QUARTO_BASE_CONFIG`** (~line 61). It's a Python dict that's dumped to `_quarto.yml` per build via `yaml.safe_dump`. **Edit there, not in a static `_quarto.yml` file** — there is no checked-in `_quarto.yml`; it's generated each render.
 - **Build harness agent doc: `bin/publish-site/CLAUDE.md`.** Read it before any non-trivial harness change. Covers the stage → frontmatter → preprocess → render → verify pipeline.
 - **Source-substrate paths get normalized at stage time:** `.md` → `.qmd`, `README.qmd` → `index.qmd`, body-level `---` → `***` (to avoid Pandoc YAML metadata-block misparsing). Don't fight these; they're load-bearing.

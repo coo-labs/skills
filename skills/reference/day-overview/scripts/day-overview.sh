@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # day-overview: manifest gatherer for the `/day-overview` slash command.
 #
-# Lives at <vade-coo-memory>/.claude/skills/day-overview/scripts/day-overview.sh; resolves
+# Lives at <coo-memory>/.claude/skills/day-overview/scripts/day-overview.sh; resolves
 # its data root via SCRIPT_DIR. Travels with the data.
 #
 # Emits a single JSON manifest covering:
 #   - the UTC arc (start_iso, end_iso)
 #   - memos issued in the arc (id, title, date, status, supersedes, file_path)
-#   - merged PRs in the arc across the five vade-app repos
+#   - merged PRs in the arc across the five coo-labs repos
 #   - integrity-check summary snapshot (if available)
 #   - whether the target retrospective file already exists
 #
@@ -26,7 +26,7 @@ COO_REPO="$(cd "$SCRIPT_DIR/../../../.." && pwd -P)"
 
 DATE=""
 END=""
-REPOS=(vade-coo-memory vade-runtime vade-core vade-governance vade-agent-logs)
+REPOS=(coo-memory coo-harness vade-canvas vade-governance coo-logs)
 
 usage() {
   cat >&2 <<EOF
@@ -65,7 +65,7 @@ echo '{}' > "$PRS_FILE"
 if command -v gh >/dev/null 2>&1 && [[ -n "${GITHUB_MCP_PAT:-${GITHUB_TOKEN:-${GH_TOKEN:-}}}" ]]; then
   for repo in "${REPOS[@]}"; do
     list_file="$TMPDIR_JSON/${repo}.json"
-    GH_TOKEN="${GITHUB_MCP_PAT:-${GITHUB_TOKEN:-${GH_TOKEN:-}}}" gh pr list --repo "vade-app/$repo" --state merged \
+    GH_TOKEN="${GITHUB_MCP_PAT:-${GITHUB_TOKEN:-${GH_TOKEN:-}}}" gh pr list --repo "coo-labs/$repo" --state merged \
       --search "merged:>=${DATE} merged:<=${END}T23:59:59Z" \
       --json number,title,mergedAt,author,mergedBy,url \
       --limit 50 > "$list_file" 2>/dev/null || echo '[]' > "$list_file"

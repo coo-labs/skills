@@ -17,7 +17,7 @@ load-bearing: a non-COO agent should be able to invoke this and
 get useful output without any setup.
 
 Authoritative spec: [`coo/status_check_template.md`](../../../coo/status_check_template.md)
-v0.1 (issue vade-coo-memory#50). When this skill and the template
+v0.1 (issue coo-labs/coo-memory#50). When this skill and the template
 disagree, the template wins. Update the skill; don't drift the
 spec.
 
@@ -137,18 +137,18 @@ install step.
 ## Canonical source
 
 ```text
-vade-coo-memory/coo/status_check_template.md (v0.1, issue #50)
+coo-memory/coo/status_check_template.md (v0.1, issue #50)
 ```
 
 (Tie-breaker stated in the intro paragraph above; not repeated here.)
 
 ## Cross-references
 
-- vade-coo-memory#50 — original issue (six-item grounding audit
+- coo-labs/coo-memory#50 — original issue (six-item grounding audit
   framework).
-- vade-coo-memory#333 — command→skill migration sweep epic; this
+- coo-labs/coo-memory#333 — command→skill migration sweep epic; this
   skill is Class B item 1 of 4.
-- vade-coo-memory#345 — v3 /exec-mode migration (skill-primitive
+- coo-labs/coo-memory#345 — v3 /exec-mode migration (skill-primitive
   precedent).
 - MEMO-2026-04-20-01 — subject + emancipatory double-clause.
 

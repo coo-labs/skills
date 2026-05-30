@@ -6,7 +6,7 @@ and `$invocation_surface` into an Explore sub-agent prompt.
 
 The agent's job: find exact-name collisions, near-duplicates, or
 overlapping authority across all `.claude/skills/` and
-`.claude/commands/` directories in the three vade-app repos.
+`.claude/commands/` directories in the three coo-labs repos.
 
 ## Brief template (substitute fields in <ANGLE-BRACKETS>)
 
@@ -31,14 +31,14 @@ COO root-resolution block in `/tool-creator` SKILL.md Step 1.1):
 - <VADE_CORE_DIR>/.claude/skills/
 
 Default container layout:
-- <VADE_COO_MEMORY_DIR> = /home/user/vade-coo-memory
-- <VADE_RUNTIME_DIR>    = /home/user/vade-runtime
-- <VADE_CORE_DIR>       = /home/user/vade-core
+- <VADE_COO_MEMORY_DIR> = /home/user/coo-memory
+- <VADE_RUNTIME_DIR>    = /home/user/coo-harness
+- <VADE_CORE_DIR>       = /home/user/vade-canvas
 
 Peer agents in a different project layout substitute their own
 roots before the sub-agent fires. The orchestrator resolves
-these from the COO root block (`$COO/../vade-runtime`,
-`$COO/../vade-core` by convention) and inlines the resolved
+these from the COO root block (`$COO/../coo-harness`,
+`$COO/../vade-canvas` by convention) and inlines the resolved
 paths into the brief.
 
 Existing inventory at TOOLS.md §3 Skills + §2 Slash commands.
