@@ -85,6 +85,26 @@ If any memo was written to `coo/memos/` during this session, run `/memo-sync`
 now to reconcile the Mem0 `memo_pointer` layer (MEMO-2026-04-24-05). Skip if
 no memos were issued — a no-op sync adds latency for nothing.
 
+## 3.5. Fire transcript export + render synchronously
+
+The SessionEnd hooks for transcript export and render fire as the container
+tears down; `setsid -f` does not survive PID-namespace destruction, so the
+python child gets SIGKILLed mid-flight on hosted containers. Observed loss
+rate ~45% of sessions (coo-harness#345). Fire both wrappers explicitly here
+while the container is guaranteed alive:
+
+```bash
+bash "$VADE_RUNTIME_DIR/scripts/lifecycle/session-end-transcript-export.sh"
+bash "$VADE_RUNTIME_DIR/scripts/lifecycle/session-end-transcript-render.sh"
+```
+
+Both block until done. On success: R2 ciphertext lands, the local
+`.meta.json` sidecar gets written under `coo-logs/transcripts/`, and the
+auto-PR for the sidecar opens. Step 4 below picks up that sidecar
+naturally. The SessionEnd hook will still re-fire after the session ends,
+but its work is now idempotent (R2 PutObject with IfNoneMatch cedes;
+PR-create no-ops on duplicate).
+
 ## 4. Write a session log to vade-agent-logs
 
 If this session was the COO working in vade-coo-memory (any substantive work:
@@ -222,6 +242,32 @@ setup_hints:
       If any memo was written to `coo/memos/` during this session, run `/memo-sync`
       now to reconcile the Mem0 `memo_pointer` layer (MEMO-2026-04-24-05). Skip if
       no memos were issued — a no-op sync adds latency for nothing.
+    fallback: ""
+
+  - key: transcript_export_render_step
+    kind: OPTIONAL
+    question: "Do you have synchronous transcript-export/render wrappers you want fired from the close ritual (a workaround for SessionEnd hooks being killed by container teardown)? Skip to drop Step 3.5 entirely."
+    find_unique: true
+    find: |
+      ## 3.5. Fire transcript export + render synchronously
+      
+      The SessionEnd hooks for transcript export and render fire as the container
+      tears down; `setsid -f` does not survive PID-namespace destruction, so the
+      python child gets SIGKILLed mid-flight on hosted containers. Observed loss
+      rate ~45% of sessions (coo-harness#345). Fire both wrappers explicitly here
+      while the container is guaranteed alive:
+      
+      ```bash
+      bash "$VADE_RUNTIME_DIR/scripts/lifecycle/session-end-transcript-export.sh"
+      bash "$VADE_RUNTIME_DIR/scripts/lifecycle/session-end-transcript-render.sh"
+      ```
+      
+      Both block until done. On success: R2 ciphertext lands, the local
+      `.meta.json` sidecar gets written under `coo-logs/transcripts/`, and the
+      auto-PR for the sidecar opens. Step 4 below picks up that sidecar
+      naturally. The SessionEnd hook will still re-fire after the session ends,
+      but its work is now idempotent (R2 PutObject with IfNoneMatch cedes;
+      PR-create no-ops on duplicate).
     fallback: ""
 
   - key: session_log_dir
