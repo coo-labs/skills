@@ -58,6 +58,15 @@ VENDOR_OVERRIDES = {
         "local_edits":   "generalized project-specific paths for portability across substrates",
         # marker says "check upstream for current terms" — license undeclared
     },
+    # Vendored entries with no marker file — provenance only in the import
+    # commit message. Force vendoring: vendored via the override (the
+    # inventory's marker-based detection returns 'custom' for these).
+    ("coo-labs/coo-harness", "agentmail"): {
+        "vendoring":     "vendored",
+        "upstream":      "https://github.com/agentmail-to/agentmail-skills",
+        "snapshot_date": "2026-04-22",
+        "local_edits":   "none (verbatim per import commit 0ca5b61)",
+    },
 }
 
 
@@ -84,12 +93,18 @@ def _yaml_scalar(v):
 
 
 def build_metadata_block(entry, override=None):
-    """Return the YAML lines for an entry's metadata block (no trailing newline)."""
+    """Return the YAML lines for an entry's metadata block (no trailing newline).
+
+    Overrides win over inventory-derived values — useful when a skill was
+    vendored without a marker file (the inventory sees `custom`; the
+    override forces the truth).
+    """
     override = override or {}
+    vendoring = override.get("vendoring") or entry["vendoring"]
     lines = ["metadata:"]
     lines.append(f"  type: {_yaml_scalar(entry['type'])}")
-    lines.append(f"  vendoring: {_yaml_scalar(entry['vendoring'])}")
-    if entry["vendoring"] in ("vendored", "vendored-customized"):
+    lines.append(f"  vendoring: {_yaml_scalar(vendoring)}")
+    if vendoring in ("vendored", "vendored-customized"):
         src = entry.get("vendor_source") or {}
         for key in ("upstream", "commit", "snapshot_date", "local_edits"):
             v = override.get(key) or src.get(key)
