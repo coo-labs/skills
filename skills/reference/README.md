@@ -42,11 +42,21 @@ the *substrate references* don't.
   follow-ups, and ranks next actions. Ships with the
   `scripts/day-overview.sh` manifest-gatherer as the worked
   reference implementation.
-- `request-briefing/` — author an NNN-numbered session-handoff
-  briefing. The load-bearing structural requirement is a
-  mandatory "Known bounds of this briefing" section where the
-  author names their own blind spots so the recipient can
-  re-examine the framing rather than rubber-stamp it.
+- `briefing/` — manage NNN-numbered session-handoff briefings as a
+  lifecycle: `request` (file a new briefing — collision-safe NNN
+  allocation, YAML frontmatter, fresh branch + PR), `pickup`
+  (claim an open briefing for the current session), `done` (mark
+  delivered), `release` (clear a claim without delivering). The
+  load-bearing structural requirement is a mandatory "Known
+  bounds of this briefing" section where the author names their
+  own blind spots so the recipient re-examines the framing rather
+  than rubber-stamps it. Ships with `reference.md` (schema,
+  index format, per-subcommand procedures), `template.md`, and
+  `scripts/update-frontmatter.py`. **Setup hints are not yet
+  rewritten for the lifecycle shape — the canonical bundle is
+  mirrored verbatim from the originating substrate as a worked
+  example; install via fork-and-adapt until a `# Setup hints`
+  block lands (see follow-up issue in this PR).**
 - `commission-retrospective/` — commission an impartial
   project-historian retrospective on a window of project work.
   Two evidence sub-agents in parallel (memos-and-essays analyst,
@@ -85,8 +95,11 @@ These skills cite VADE-internal artifacts as worked examples:
 - `day-overview` and `commission-retrospective` walk the five
   `vade-app/*` repos, read `coo/memo_index.json`, and snapshot
   the VADE integrity-check JSON shape.
-- `request-briefing` writes into `coo/briefings/` and follows a
-  `vade-coo-memory`-specific branch / PR convention.
+- `briefing` writes into `briefings/` and follows a
+  `vade-coo-memory`-specific branch / PR convention; the
+  lifecycle subcommands (`pickup` / `done` / `release`) maintain
+  a JSON index whose schema lives in the substrate's
+  `briefings/_index.json`.
 - `end-session` writes a session log under
   `vade-agent-logs/sessions/` and an episodic Mem0 entry per
   VADE's SOP-MEM-001 metadata schema.
@@ -122,11 +135,15 @@ audits; staged-checkpoint skill authoring — DO port.
    VADE-specific integrity-check probe or replace with your
    project's equivalent. Adjust the discussion-post step
    (category IDs, label IDs) for your platform — or drop it.
-5. For `request-briefing`: decide where briefings live in your
-   substrate (default in VADE: `coo/briefings/`), author your
-   own `README.md` + `TEMPLATE.md` there, and update the
-   skill's path references. Keep the **Known bounds** gate as
-   the load-bearing structural requirement — that's the
+5. For `briefing`: decide where briefings live in your substrate
+   (default in VADE: `briefings/`), author your own `README.md`
+   + `TEMPLATE.md` there, and update the skill's path references
+   and the `reference.md` schema doc. Decide whether your project
+   needs the full lifecycle (`request` / `pickup` / `done` /
+   `release` with a JSON index) or just the `request` half;
+   strip the lifecycle bits from `SKILL.md` and `reference.md`
+   if not. Keep the **Known bounds** gate as the load-bearing
+   structural requirement — that's the
    honesty-gate pattern.
 6. For `end-session`: replace the VADE-specific surfaces (Mem0
    episodic metadata schema, `vade-agent-logs/sessions/` log

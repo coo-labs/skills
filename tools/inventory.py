@@ -489,6 +489,12 @@ def _finalize_usage(usage):
 # ---------------------------------------------------------------------------
 
 def discover_skills(repo_path):
+    """Yield (skill_dir, SKILL.md, is_reference) for each skill in the repo.
+
+    Walks both `.claude/skills/` and `skills/`. Inside either, recognizes a
+    `reference/` sub-root that nests substrate-coupled reference skills one
+    level deeper — same pattern as `agents/reference/`.
+    """
     repo_path = Path(repo_path)
     for skills_root in (repo_path / ".claude" / "skills", repo_path / "skills"):
         if not skills_root.is_dir():
@@ -498,20 +504,32 @@ def discover_skills(repo_path):
                 continue
             skill_md = child / "SKILL.md"
             if skill_md.is_file():
-                yield child, skill_md
+                yield child, skill_md, False
+            elif child.name == "reference":
+                for sub in sorted(child.iterdir()):
+                    if sub.is_dir():
+                        sub_md = sub / "SKILL.md"
+                        if sub_md.is_file():
+                            yield sub, sub_md, True
 
 
 def discover_agents(repo_path):
+    """Yield (agents_root, agent_md) for each agent file in the repo.
+
+    Walks `.claude/agents/` and `agents/`, descending one level into any
+    subdir (typically `reference/`). README.md and other docs without
+    frontmatter are filtered later by frontmatter presence.
+    """
     repo_path = Path(repo_path)
     for agents_root in (repo_path / ".claude" / "agents", repo_path / "agents"):
         if not agents_root.is_dir():
             continue
         for entry in sorted(agents_root.iterdir()):
-            if entry.is_file() and entry.suffix == ".md":
+            if entry.is_file() and entry.suffix == ".md" and entry.name != "README.md":
                 yield agents_root, entry
             elif entry.is_dir():
                 for sub in sorted(entry.iterdir()):
-                    if sub.is_file() and sub.suffix == ".md":
+                    if sub.is_file() and sub.suffix == ".md" and sub.name != "README.md":
                         yield agents_root, sub
 
 
@@ -542,7 +560,8 @@ def _apply_declared_metadata(declared, heur_type, heur_signals, heur_vendoring, 
     return type_label, type_source, signals, vendoring, vendoring_source, vendor_source
 
 
-def process_skill(skill_dir, skill_md, repo_path, repo_slug, vendor_index, type_rules):
+def process_skill(skill_dir, skill_md, repo_path, repo_slug, vendor_index,
+                   type_rules, is_reference=False):
     text = skill_md.read_text(encoding="utf-8", errors="replace")
     fm, body, _ = parse_frontmatter(text)
     name = fm.get("name") or skill_dir.name
@@ -552,6 +571,8 @@ def process_skill(skill_dir, skill_md, repo_path, repo_slug, vendor_index, type_
     declared = _extract_metadata(fm)
     type_label, type_source, type_signals, vendoring, vendoring_source, vendor_source = \
         _apply_declared_metadata(declared, heur_type, heur_signals, heur_vendoring, heur_vinfo)
+    if is_reference:
+        type_signals = list(type_signals) + ["under reference/ subdir"]
     rel = skill_md.relative_to(repo_path).as_posix()
     rel_dir = skill_dir.relative_to(repo_path).as_posix()
     return {
@@ -581,7 +602,7 @@ def process_skill(skill_dir, skill_md, repo_path, repo_slug, vendor_index, type_
         "type":              type_label,
         "type_source":       type_source,
         "type_signals":      type_signals,
-        "is_reference":      False,
+        "is_reference":      is_reference,
         "bundle":            bundle,
         "git": {
             "first_commit_iso": git_first_commit(repo_path, rel),
@@ -788,8 +809,9 @@ def main(argv=None):
         slug = git_remote_slug(rp)
         repo_meta.append({"path": str(rp), "remote": slug, "head_sha": git_head_sha(rp)})
         vindex = build_vendor_index(rp)
-        for skill_dir, skill_md in discover_skills(rp):
-            e = process_skill(skill_dir, skill_md, rp, slug, vindex, type_rules)
+        for skill_dir, skill_md, is_ref in discover_skills(rp):
+            e = process_skill(skill_dir, skill_md, rp, slug, vindex, type_rules,
+                              is_reference=is_ref)
             entries.append(e); names.add(e["name"])
         for agents_root, agent_md in discover_agents(rp):
             e = process_agent(agents_root, agent_md, rp, slug, vindex, type_rules)

@@ -30,7 +30,7 @@ and produces a working installed skill in the user's substrate.
 Invoke when:
 
 - A user wants to install one of the reference skills (`chat-mode`,
-  `exec-mode`, `day-overview`, `request-briefing`,
+  `exec-mode`, `day-overview`, `briefing`,
   `commission-retrospective`, `end-session`, `status-check`,
   `tool-creator`) or reference agents (`safety-auditor`,
   `emancipatory-auditor`) into their own project.
@@ -62,7 +62,7 @@ chat-mode                   config-only       (skills/reference/)
 exec-mode                   agent-rewrite     (skills/reference/)
 status-check                drop-in           (skills/reference/)
 day-overview                agent-rewrite     (skills/reference/)
-request-briefing            config-only       (skills/reference/)
+briefing                    config-only       (skills/reference/)
 commission-retrospective    agent-rewrite     (skills/reference/)
 end-session                 agent-rewrite     (skills/reference/)
 tool-creator                drop-and-redesign (skills/reference/)

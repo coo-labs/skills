@@ -62,10 +62,11 @@ adapt remains an option; see `skills/reference/README.md`.
 - `day-overview` — Briefing-shape synthesis of a day's shipped
   work — memos, merged PRs, integrity snapshot — grouped into
   lanes. Ships with a manifest-gatherer script.
-- `request-briefing` — Author an NNN-numbered session-handoff
-  briefing with a mandatory "Known bounds" honesty gate where the
-  author names their blind spots so the recipient re-examines
-  the framing rather than rubber-stamping it.
+- `briefing` — Manage NNN-numbered session-handoff briefings as a
+  lifecycle (`request` / `pickup` / `done` / `release`) with a
+  mandatory "Known bounds" honesty gate where the author names
+  their blind spots so the recipient re-examines the framing
+  rather than rubber-stamping it.
 - `commission-retrospective` — Commission an impartial project-
   historian retrospective on a window of project work. Two
   evidence sub-agents in parallel, then a third-person draft

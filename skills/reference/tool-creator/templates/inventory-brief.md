@@ -53,7 +53,7 @@ Existing inventory at TOOLS.md §3 Skills + §2 Slash commands.
    command whose name overlaps lexically OR whose category seems
    adjacent (e.g., a new `/post-discussion` should check existing
    `/discussion-*`, `/post-*`, anything in `commission-retrospective`
-   or `request-briefing` lineage).
+   or `briefing` lineage).
 4. **For each candidate**: does its description overlap
    substantively with `<CAPABILITY_DESCRIPTION>`? Score the
    overlap as: NONE / WEAK / SUBSTANTIAL.
