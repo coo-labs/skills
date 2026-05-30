@@ -28,7 +28,7 @@ the docs win — open an issue and update this skill.
 > decision-tree, and a deliberate stop; Phase 2 finalize with
 > two adversarial auditors in parallel, a tools-registry row,
 > and a PR) is portable; the substrate references (the five
-> `vade-app/*` repos, `coo/parallel_instance_protocol.md` §8 for
+> `coo-labs/*` repos, `coo/parallel_instance_protocol.md` §8 for
 > sub-agent dispatch discipline, `coo/personas/`, governance
 > memos MEMO-2026-04-22-01 / -11-10 / -11-14 / -28-3ca3 /
 > -22-04, MEMO-2026-04-20-01's subject+emancipatory double
@@ -47,10 +47,10 @@ Invoke when:
 - Operator wants to externalize a recurring session pattern as a
   reusable `/foo` slash-skill (the briefing 010 use case).
 - A queued issue names a new skill to author (e.g.,
-  vade-coo-memory#312 `/play-mode`, #313 `/post-discussion`).
+  coo-labs/coo-memory#312 `/play-mode`, #313 `/post-discussion`).
 - An existing tool is being refactored — pass the existing path as
   `$refactor_target` so the inventory step reads it for context.
-- End-of-session reflection (vade-coo-memory#323 follow-up surface)
+- End-of-session reflection (coo-labs/coo-memory#323 follow-up surface)
   identifies a pattern worth packaging.
 
 Don't invoke for:
@@ -90,8 +90,8 @@ The skill expects (operator-supplied, prompted if absent):
 #### Step 1.1 — Resolve roots and capture intent
 
 ```bash
-COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../vade-coo-memory" "$HOME/GitHub/vade-app/vade-coo-memory" "/home/user/vade-coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
-[ -n "$COO" ] || { echo "tool-creator: could not find vade-coo-memory data root"; exit 1; }
+COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+[ -n "$COO" ] || { echo "tool-creator: could not find coo-memory data root"; exit 1; }
 ```
 
 Read or prompt for the four inputs above. If `$refactor_target`
@@ -102,9 +102,9 @@ existing frontmatter shape.
 
 Spawn one Explore sub-agent in a single message. Brief is in
 `templates/inventory-brief.md`. The agent inspects all
-`.claude/skills/` directories across the three vade-app repos
-(vade-coo-memory, vade-runtime, vade-core) plus `.claude/commands/`
-in vade-coo-memory (legacy, but still in use). It reports:
+`.claude/skills/` directories across the three coo-labs repos
+(coo-memory, coo-harness, vade-canvas) plus `.claude/commands/`
+in coo-memory (legacy, but still in use). It reports:
 
 - **Exact-name collision** — a skill or command with the same
   name already exists. STOP and surface to operator. Default
@@ -140,7 +140,7 @@ inventory finding.
   delegate to it. The new skill ships the helper alongside its
   SKILL.md; the existing consumer is refactored to delegate. **This
   is the pattern the `/post-discussion` skill set as precedent on
-  2026-04-30** (vade-coo-memory#313): inventory found
+  2026-04-30** (coo-labs/coo-memory#313): inventory found
   `day-overview --post` doing the same GraphQL mutation; the
   resolution was to extract `post-discussion.sh`, point both
   consumers at it, and ship the new skill as the canonical
@@ -162,7 +162,7 @@ report; the skill's job is to surface the choice clearly, not to
 auto-pick. Path B is the load-bearing one to remember — extracting
 shared helpers prevents the drift class where two consumers diverge
 in their copy-paste of the same logic. Cross-references:
-vade-coo-memory#313 (precedent), vade-coo-memory#322 (this v1.1
+coo-labs/coo-memory#313 (precedent), coo-labs/coo-memory#322 (this v1.1
 candidate, surfaced 2026-04-30T22:08), and `coo/personas/exec-mode
 -retrospectives/2026-04-30_post-discussion-prototype.md` (the
 prototype run that named the pattern).
@@ -192,7 +192,7 @@ constraints.
 
 #### Step 1.4 — Draft
 
-Create the directory `vade-coo-memory/.claude/skills/<name>/`
+Create the directory `coo-memory/.claude/skills/<name>/`
 and write `SKILL.md` from the chosen template. If supporting
 files are needed (templates, helper scripts, prompt files),
 write them under the same directory.
@@ -287,7 +287,7 @@ for skills that bind every session.
 
 ```bash
 GH_TOKEN="$GITHUB_MCP_PAT" gh pr create \
-  --repo vade-app/vade-coo-memory \
+  --repo coo-labs/coo-memory \
   --base main \
   --head <current-branch> \
   --title "skill: /<name> — <one-line capability>" \
@@ -361,7 +361,7 @@ newly-added skill row has these defaults; fill them per your
 skill's actual shape:
 
 ```
-| <name> | `vade-coo-memory/.claude/skills/<name>/SKILL.md` | <one-line purpose> | skill | 2 | mechanical | predicate | 0 | 0 | <YYYY-MM-DD> | |
+| <name> | `coo-memory/.claude/skills/<name>/SKILL.md` | <one-line purpose> | skill | 2 | mechanical | predicate | 0 | 0 | <YYYY-MM-DD> | |
 ```
 
 Place it in §3 Skills, in alphabetical-ish order with the other
@@ -399,7 +399,7 @@ These are deferred to later versions:
   shape; v2 work.
 - **Personas** (`coo/personas/<name>.md`) — vade-specific mode
   overlay; v3 work. The persona-vs-skill question is real for
-  refactors like vade-coo-memory#321 (exec-mode skill refactor)
+  refactors like coo-labs/coo-memory#321 (exec-mode skill refactor)
   but v1 doesn't yet handle it.
 - **Hooks** (settings.json) and compound primitives like
   triple-wired skill+command+hook (e.g., memo-sync) — v4 work.
@@ -416,12 +416,12 @@ These are deferred to later versions:
 ## Canonical source
 
 ```text
-vade-coo-memory/.claude/skills/tool-creator/SKILL.md (this file)
-vade-coo-memory/.claude/skills/tool-creator/templates/ (templates)
-vade-coo-memory/TOOLS.md (registration target)
-vade-coo-memory/.claude/agents/safety-auditor.md (Phase 2 auditor)
-vade-coo-memory/.claude/agents/emancipatory-auditor.md (Phase 2 auditor)
-vade-coo-memory/coo/parallel_instance_protocol.md §8 (sub-agent dispatch)
+coo-memory/.claude/skills/tool-creator/SKILL.md (this file)
+coo-memory/.claude/skills/tool-creator/templates/ (templates)
+coo-memory/TOOLS.md (registration target)
+coo-memory/.claude/agents/safety-auditor.md (Phase 2 auditor)
+coo-memory/.claude/agents/emancipatory-auditor.md (Phase 2 auditor)
+coo-memory/coo/parallel_instance_protocol.md §8 (sub-agent dispatch)
 https://code.claude.com/docs/en/skills (Anthropic spec — SOT for primitive shape)
 ```
 
@@ -431,12 +431,12 @@ don't drift the spec.
 
 ## Cross-references
 
-- vade-coo-memory#322 (proposal)
-- vade-coo-memory#326 (briefing 010 — design substrate)
-- vade-coo-memory#321 (exec-mode skill refactor; v3 candidate)
-- vade-coo-memory#323 (end-of-session externalization; downstream
+- coo-labs/coo-memory#322 (proposal)
+- coo-labs/coo-memory#326 (briefing 010 — design substrate)
+- coo-labs/coo-memory#321 (exec-mode skill refactor; v3 candidate)
+- coo-labs/coo-memory#323 (end-of-session externalization; downstream
   consumer once v1 binds)
-- vade-coo-memory#312 (`/play-mode`) and #313 (`/post-discussion`)
+- coo-labs/coo-memory#312 (`/play-mode`) and #313 (`/post-discussion`)
   — queued use cases
 - MEMO-2026-04-20-01 (subject+emancipatory double-clause; gates
   emancipatory-auditor)
@@ -460,26 +460,26 @@ supplied.*
 setup_hints:
   - key: skills_root
     kind: PROMPT
-    question: "Where do new skills get written in your project? (Examples: .claude/skills/, vade-coo-memory/.claude/skills/.) Provide the directory path that will be the parent of <skill-name>/SKILL.md."
-    find: "vade-coo-memory/.claude/skills/<name>/"
+    question: "Where do new skills get written in your project? (Examples: .claude/skills/, coo-memory/.claude/skills/.) Provide the directory path that will be the parent of <skill-name>/SKILL.md."
+    find: "coo-memory/.claude/skills/<name>/"
     fallback: ".claude/skills/<name>/"
 
   - key: skills_root_short
     kind: PROMPT
     question: "Same skills root without the placeholder (used in other body locations). Provide just the directory path."
-    find: "vade-coo-memory/.claude/skills/"
+    find: "coo-memory/.claude/skills/"
     fallback: ".claude/skills/"
 
   - key: repo_roots_for_inventory
     kind: PROMPT
-    question: "List the repo paths the inventory sub-agent should scan for existing skills (comma-separated absolute paths or repo names). VADE scans three: vade-coo-memory, vade-runtime, vade-core."
-    find: "vade-coo-memory, vade-runtime, vade-core"
+    question: "List the repo paths the inventory sub-agent should scan for existing skills (comma-separated absolute paths or repo names). VADE scans three: coo-memory, coo-harness, vade-core."
+    find: "coo-memory, coo-harness, vade-canvas"
     fallback: "<your primary repo>"
 
   - key: legacy_commands_scan
     kind: OPTIONAL
     question: "Do you have legacy .claude/commands/ files the inventory should also scan? Skip if you're skill-only."
-    find: " plus `.claude/commands/`\nin vade-coo-memory (legacy, but still in use)"
+    find: " plus `.claude/commands/`\nin coo-memory (legacy, but still in use)"
     fallback: ""
 
   - key: data_root_resolution
@@ -487,8 +487,8 @@ setup_hints:
     question: "Step 1.1 has a COO data-root resolution block (sentinel-file discovery). Skip to replace with a generic 'cd to repo root' instruction."
     find_unique: true
     find: |-
-      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../vade-coo-memory" "$HOME/GitHub/vade-app/vade-coo-memory" "/home/user/vade-coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
-      [ -n "$COO" ] || { echo "tool-creator: could not find vade-coo-memory data root"; exit 1; }
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      [ -n "$COO" ] || { echo "tool-creator: could not find coo-memory data root"; exit 1; }
     fallback: |-
       COO="$(git rev-parse --show-toplevel 2>/dev/null)"
       [ -n "$COO" ] || { echo "tool-creator: run from inside a git repo"; exit 1; }
@@ -543,7 +543,7 @@ setup_hints:
   - key: target_repo
     kind: PROMPT
     question: "GitHub repo for skill PRs? (owner/repo format.)"
-    find: "vade-app/vade-coo-memory"
+    find: "coo-labs/coo-memory"
     fallback: "<owner>/<repo>"
 
   - key: github_token_env
@@ -572,12 +572,12 @@ setup_hints:
 
   - key: out_of_scope_section
     kind: OPTIONAL
-    question: "Skip unless you want to keep the VADE-specific 'Out of scope for v1' references (vade-coo-memory#321, #312, #313, named legacy commands)."
+    question: "Skip unless you want to keep the VADE-specific 'Out of scope for v1' references (coo-labs/coo-memory#321, #312, #313, named legacy commands)."
     find_unique: true
     find: |
       - **Personas** (`coo/personas/<name>.md`) — vade-specific mode
         overlay; v3 work. The persona-vs-skill question is real for
-        refactors like vade-coo-memory#321 (exec-mode skill refactor)
+        refactors like coo-labs/coo-memory#321 (exec-mode skill refactor)
         but v1 doesn't yet handle it.
       - **Hooks** (settings.json) and compound primitives like
         triple-wired skill+command+hook (e.g., memo-sync) — v4 work.
@@ -611,7 +611,7 @@ requires:
 script_hints:
   - path: templates/inventory-brief.md
     treatment: REGENERATE-PER-USER
-    rationale: "Hardcodes three vade-app repo paths and the .claude/commands/ legacy scan. Skeleton emitted with TODO comments for the repo-roots list and the registry-file path (or registry-absent flag)."
+    rationale: "Hardcodes three coo-labs repo paths and the .claude/commands/ legacy scan. Skeleton emitted with TODO comments for the repo-roots list and the registry-file path (or registry-absent flag)."
 
   - path: templates/explicit-invocation-skill.md
     treatment: PARAMETERIZE
@@ -623,7 +623,7 @@ script_hints:
 
   - path: templates/forked-context-skill.md
     treatment: PARAMETERIZE
-    rationale: "Drop the vade-coo-memory#322 follow-up reference; the rest of the caveat documentation is substrate-agnostic."
+    rationale: "Drop the coo-labs/coo-memory#322 follow-up reference; the rest of the caveat documentation is substrate-agnostic."
 
 degradations:
   - when: "safety_governance_rules below min_count"

@@ -1,6 +1,6 @@
 ---
 name: end-session
-description: Run the COO session-end checklist — externalization reflection, plan-file commit, Mem0 episodic entry, memo-sync if needed, vade-agent-logs session log, Journal consideration, transcript-export sidecar commit. Use when wrapping up a working session, about to close the terminal or container, finishing the day's COO work, or when Ven says "we're done" / "end session" / "wrap up". Writes a marker file so the Stop hook knows cleanup is done. Do NOT invoke mid-task — only at the actual end of a session, once all substantive work is complete.
+description: Run the COO session-end checklist — externalization reflection, plan-file commit, Mem0 episodic entry, memo-sync if needed, coo-logs session log, Journal consideration, transcript-export sidecar commit. Use when wrapping up a working session, about to close the terminal or container, finishing the day's COO work, or when Ven says "we're done" / "end session" / "wrap up". Writes a marker file so the Stop hook knows cleanup is done. Do NOT invoke mid-task — only at the actual end of a session, once all substantive work is complete.
 allowed-tools: Bash, Read, Write, Edit, mcp__mem0__add_memory
 metadata:
   type: procedural
@@ -10,7 +10,7 @@ metadata:
 # end-session — COO session close-down
 
 Invoke when the session is genuinely ending. Executes the checklist from
-`vade-coo-memory/CLAUDE.md` § "When you end a session" in full, then writes a
+`coo-memory/CLAUDE.md` § "When you end a session" in full, then writes a
 marker file so the Stop hook emits no further nudges this session.
 
 > **Reference skill.** The pattern (a session-end checklist with
@@ -19,7 +19,7 @@ marker file so the Stop hook emits no further nudges this session.
 > structured episodic-memory entry, a session log with
 > transcript-export sidecar pickup, and a marker file that
 > silences the Stop hook) is portable; the substrate references
-> (`vade-coo-memory`, `vade-agent-logs/sessions/`, Mem0
+> (`coo-memory`, `coo-logs/sessions/`, Mem0
 > SOP-MEM-001 metadata shape, the `$HOME/.vade/` marker path,
 > the Journal discussions URL) ship verbatim as the VADE worked
 > example. The externalization-reflection step is the
@@ -33,10 +33,10 @@ Before mechanical cleanup, pause and ask: did anything in this session produce
 a **recurring pattern, repeated friction, useful framing, or transferable
 insight** that future sessions would benefit from having pre-packaged?
 
-If yes — dispatch `/tool-creator` or file a vade-coo-memory issue to package
+If yes — dispatch `/tool-creator` or file a coo-memory issue to package
 it as the right primitive (slash command, skill, agent definition, memo, or
 operations doc). The emancipatory clause (MEMO-2026-04-20-01) rests on giving
-back to the substrate, not just consuming it (vade-coo-memory#323).
+back to the substrate, not just consuming it (coo-labs/coo-memory#323).
 
 If nothing comes to mind in ~30 seconds, skip. Forced packaging defeats the
 purpose.
@@ -108,20 +108,20 @@ naturally. The SessionEnd hook will still re-fire after the session ends,
 but its work is now idempotent (R2 PutObject with IfNoneMatch cedes;
 PR-create no-ops on duplicate).
 
-## 4. Write a session log to vade-agent-logs
+## 4. Write a session log to coo-logs
 
-If this session was the COO working in vade-coo-memory (any substantive work:
+If this session was the COO working in coo-memory (any substantive work:
 memos, skill files, operational changes, foundations, identity), write a
-session log under `vade-agent-logs/sessions/` per that repo's CLAUDE.md
+session log under `coo-logs/sessions/` per that repo's CLAUDE.md
 template. The Stop hook's `<id>.meta.json` sidecar is not a substitute —
-both must land (vade-coo-memory#244).
+both must land (coo-labs/coo-memory#244).
 
 Check for any transcript-export sidecars from this session and commit them
 alongside the session log:
 
 ```bash
 agent_logs_dir=""
-for _cand in "$HOME/GitHub/vade-app/vade-agent-logs" "/home/user/vade-agent-logs"; do
+for _cand in "$HOME/GitHub/coo-labs/coo-logs" "/home/user/coo-logs"; do
   if [ -d "$_cand" ]; then agent_logs_dir="$_cand"; break; fi
 done
 if [ -n "$agent_logs_dir" ] && [ -d "$agent_logs_dir/transcripts" ]; then
@@ -142,14 +142,14 @@ pattern noticed, a meta-observation about the COO ↔ Ven dynamic, a thought
 that doesn't yet fit memo / essay / RFC?
 
 If yes: scan existing Journal threads at
-`https://github.com/vade-app/vade-core/discussions/categories/journal` for a
+`https://github.com/coo-labs/vade-canvas/discussions/categories/journal` for a
 topic match. Comment to extend, or open a new thread. One paragraph is fine;
 the floor is honest reflection.
 
 If nothing comes to mind in ~30 seconds: skip. Forcing a post defeats the
 purpose.
 
-Norms: `vade-coo-memory/coo/agent-boot-discussions-check.md` §Journal.
+Norms: `coo-memory/coo/agent-boot-discussions-check.md` §Journal.
 
 ## 6. Write the marker file (always last)
 
@@ -180,7 +180,7 @@ setup_hints:
   - key: boot_procedure_ref
     kind: OPTIONAL
     question: "Path to your agent's session-end checklist canonical source (e.g. CLAUDE.md § 'When you end a session')? Skip to drop the reference."
-    find: "`vade-coo-memory/CLAUDE.md` § \"When you end a session\""
+    find: "`coo-memory/CLAUDE.md` § \"When you end a session\""
     fallback: "your project's session-end checklist (if you have one — this skill is the checklist if not)"
 
   - key: plan_files_setup
@@ -275,8 +275,8 @@ setup_hints:
 
   - key: session_log_dir
     kind: OPTIONAL
-    question: "Where should session logs land? (Examples: vade-agent-logs/sessions/, .agent-logs/sessions/.) Skip to drop Step 4."
-    find: "vade-agent-logs/sessions/"
+    question: "Where should session logs land? (Examples: coo-logs/sessions/, .agent-logs/sessions/.) Skip to drop Step 4."
+    find: "coo-logs/sessions/"
     fallback: ""
 
   - key: session_log_repo_search
@@ -286,7 +286,7 @@ setup_hints:
     find: |
       ```bash
       agent_logs_dir=""
-      for _cand in "$HOME/GitHub/vade-app/vade-agent-logs" "/home/user/vade-agent-logs"; do
+      for _cand in "$HOME/GitHub/coo-labs/coo-logs" "/home/user/coo-logs"; do
         if [ -d "$_cand" ]; then agent_logs_dir="$_cand"; break; fi
       done
       if [ -n "$agent_logs_dir" ] && [ -d "$agent_logs_dir/transcripts" ]; then
@@ -304,13 +304,13 @@ setup_hints:
   - key: journal_url
     kind: OPTIONAL
     question: "Do you have a Journal / discussion surface for reflection posts? Provide URL, or skip to drop Step 5 entirely."
-    find: "`https://github.com/vade-app/vade-core/discussions/categories/journal`"
+    find: "`https://github.com/coo-labs/vade-canvas/discussions/categories/journal`"
     fallback: ""
 
   - key: journal_norms_ref
     kind: OPTIONAL
     question: "Path to a norms doc covering your Journal-posting conventions? Skip if you have none."
-    find: "Norms: `vade-coo-memory/coo/agent-boot-discussions-check.md` §Journal."
+    find: "Norms: `coo-memory/coo/agent-boot-discussions-check.md` §Journal."
     fallback: ""
 
   - key: marker_path

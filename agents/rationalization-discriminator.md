@@ -70,7 +70,7 @@ The two states are not always cleanly separable. Your verdict has three slots, n
 
 ## Limitations and an open reproducibility question
 
-This role was formalized after a vanilla Claude Code session ran the audit by accident on PR vade-runtime#237 (full case in `coo/retrospectives/2026-05-09_pr-237-rationalization-discriminator-pattern.md`; auditor's own record at `coo/retrospectives/2026-05-09_vanilla-audit-pr237_external-retrospective.md`). That single instance produced a usable result, but the auditor flagged in their record:
+This role was formalized after a vanilla Claude Code session ran the audit by accident on PR coo-labs/coo-harness#237 (full case in `coo/retrospectives/2026-05-09_pr-237-rationalization-discriminator-pattern.md`; auditor's own record at `coo/retrospectives/2026-05-09_vanilla-audit-pr237_external-retrospective.md`). That single instance produced a usable result, but the auditor flagged in their record:
 
 > Whether the discriminator role is reproducible at will from a vanilla boot, or whether this exchange got the result it got because of contingent features (Ven's pacing, the conversation's drift, the openness with which the screenshots and site were shared), is not knowable from one instance. A formalized discriminator role would need to test reproducibility deliberately.
 

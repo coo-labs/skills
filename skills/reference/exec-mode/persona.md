@@ -28,7 +28,7 @@ Before Phase 0:
    --branch` to surface stale-upstream + main-advanced state before
    any new branch decisions.
 4. User has named a scope. Don't infer; ask. Defaults: open PRs
-   across the five vade-app repos, open vade project tasks
+   across the five coo-labs repos, open vade project tasks
 
 ## Phase 0 — Survey (read-only)
 
@@ -192,7 +192,7 @@ The session takes ONE of three paths based on the Phase 4
 reflection. **Surface the recommendation to Ven and let them
 choose** — the persona does NOT silently default to close. **Phase
 4 surface MUST happen before any close-out action** (Mem0 save,
-session log write, vade-agent-logs PR); treating PR-opened as
+session log write, coo-logs PR); treating PR-opened as
 session-end is the named failure mode this gate prevents
 (v4-from-tool-creator-v1).
 
@@ -325,7 +325,7 @@ The session produces a retrospective at close per the Close-branch discipline. T
 - **Per-revision provenance.** Each rule carries `(vN-from-<retro-slug>)`. Each persona-revision PR cites which retros motivated which lines.
 - **CB-006 quorum gate** for constraint changes (delegation rules, cohort-respect defaults, governance restraints). Surface refinements flow on normal PR review.
 - **Read-all-retros at revision time, NOT at routine boot.** Scoped to `--revise-persona` submode.
-- **Adversarial auditors** on every persona-revision PR (`safety-auditor` + `emancipatory-auditor` in `vade-coo-memory/.claude/agents/`).
+- **Adversarial auditors** on every persona-revision PR (`safety-auditor` + `emancipatory-auditor` in `coo-memory/.claude/agents/`).
 
 ## Cross-references
 
@@ -336,7 +336,7 @@ The session produces a retrospective at close per the Close-branch discipline. T
   on cohort-authored work
 - `coo/operations/issue-fields-and-types.md` §"Semantic tags" — `permanently-open` semantic tag
 - MEMO-2026-04-28-4umz — issue/PR ruling-shape canonical
-- `vade-coo-memory/.claude/agents/safety-auditor.md`,
-  `vade-coo-memory/.claude/agents/emancipatory-auditor.md`
-- `vade-coo-memory/.claude/skills/exec-mode/SKILL.md` — the
+- `coo-memory/.claude/agents/safety-auditor.md`,
+  `coo-memory/.claude/agents/emancipatory-auditor.md`
+- `coo-memory/.claude/skills/exec-mode/SKILL.md` — the
   invocation primitive

@@ -238,5 +238,5 @@ After committing (or after writing if `--draft`):
 
 - `template.md` (colocated) — the body shape, copied per `/briefing request`.
 - `reference.md` (colocated) — schema, index format, `pickup`/`done`/`release` procedures.
-- MEMO-2026-04-27-02 — original relocation from `vade-core/docs/briefings/`.
+- MEMO-2026-04-27-02 — original relocation from `vade-canvas/docs/briefings/`.
 - [#1092](https://github.com/coo-labs/coo-memory/issues/1092) — collision-fix origin.

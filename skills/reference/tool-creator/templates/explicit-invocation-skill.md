@@ -113,6 +113,6 @@ The /memo-sync command body shows the canonical shape for a
 - Procedure uses bash code blocks with COO root resolution.
 - Failure modes section names known issues + recovery paths.
 
-`vade-coo-memory/.claude/skills/memo-sync/SKILL.md` is a
+`coo-memory/.claude/skills/memo-sync/SKILL.md` is a
 reasonable model to copy structure from when authoring a new
 explicit-invocation skill.

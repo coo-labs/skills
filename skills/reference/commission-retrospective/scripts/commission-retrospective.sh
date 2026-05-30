@@ -2,17 +2,17 @@
 # commission-retrospective: pre-flight and optional PR opener for the
 # `/commission-retrospective` slash command.
 #
-# Lives at <vade-coo-memory>/.claude/skills/commission-retrospective/scripts/commission-retrospective.sh;
+# Lives at <coo-memory>/.claude/skills/commission-retrospective/scripts/commission-retrospective.sh;
 # resolves its data root via SCRIPT_DIR. Travels with the data.
 #
 # Modes:
 #   --scope      Emit a JSON scope manifest on stdout (no side effects).
-#   --open-pr    Open a PR on vade-coo-memory for a completed draft.
+#   --open-pr    Open a PR on coo-memory for a completed draft.
 #   --manual     Fallback orchestrator when in-session Task is unavailable;
 #                sequences two `claude -p` invocations using the briefs.
 #
-# See <vade-coo-memory>/coo/culture_system_sop.md (SOP-CULTURE-001) for spec.
-# See <vade-coo-memory>/.claude/skills/commission-retrospective/SKILL.md for procedure.
+# See <coo-memory>/coo/culture_system_sop.md (SOP-CULTURE-001) for spec.
+# See <coo-memory>/.claude/skills/commission-retrospective/SKILL.md for procedure.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
@@ -32,7 +32,7 @@ Usage:
   commission-retrospective.sh --open-pr --slug <slug> [--body-file PATH]
   commission-retrospective.sh --manual  --since YYYY-MM-DD [--until YYYY-MM-DD] --slug <slug>
 
-The skill at <vade-coo-memory>/.claude/skills/commission-retrospective/
+The skill at <coo-memory>/.claude/skills/commission-retrospective/
 drives the historian flow; this shell helper handles only the plumbing.
 EOF
 }
@@ -90,7 +90,7 @@ emit_scope() {
   local prs_json='[]'
   if ensure_gh; then
     prs_json=$(GH_TOKEN="$GITHUB_MCP_PAT" gh pr list \
-      --repo vade-app/vade-coo-memory \
+      --repo coo-labs/coo-memory \
       --state merged \
       --search "merged:$SINCE..$until_resolved" \
       --json number,title,author,mergedAt,url \
@@ -172,7 +172,7 @@ open_pr() {
 
   # shellcheck disable=SC2086
   GH_TOKEN="$GITHUB_MCP_PAT" gh pr create \
-    --repo vade-app/vade-coo-memory \
+    --repo coo-labs/coo-memory \
     --base main \
     --head "$branch" \
     --title "[retrospective-draft] $safe_slug" \
@@ -191,7 +191,7 @@ implemented. Expected shape:
 Each invocation writes to a coo/_drafts/ path matching the slug. Ship
 this when the in-session Task-subagent surface is proven unavailable on
 a supported harness — until then, manual orchestration is the workaround.
-See <vade-coo-memory>/coo/culture_system_sop.md §3c.
+See <coo-memory>/coo/culture_system_sop.md §3c.
 EOF
   exit 6
 }

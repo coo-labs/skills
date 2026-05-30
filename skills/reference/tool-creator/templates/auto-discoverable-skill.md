@@ -99,7 +99,7 @@ where authoritative content lives so it can fetch on demand.>
 
 ## Worked example
 
-`vade-coo-memory/.claude/skills/memo-search/SKILL.md` is a good
+`coo-memory/.claude/skills/memo-search/SKILL.md` is a good
 example. The description names: "Find memos under `coo/memos/` by
 natural-language query via Mem0 semantic search over the
 `memo_pointer` layer. Use when the user asks 'do we have memos

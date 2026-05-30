@@ -8,7 +8,7 @@ metadata:
 
 # canvas-ui
 
-This skill encodes what the `vade-core` codebase has already learned about working with tldraw — the conventions that exist, and the same-day hot-fix patterns we've burned cycles on. It is the *patterns* layer; the sister skill `tldraw-docs` is the *docs URL navigation* layer. Use both: this one tells you what shape good code takes here and which mistakes to pre-empt; `tldraw-docs` tells you exactly which page to fetch when you need an API signature or feature mental model.
+This skill encodes what the `vade-canvas` codebase has already learned about working with tldraw — the conventions that exist, and the same-day hot-fix patterns we've burned cycles on. It is the *patterns* layer; the sister skill `tldraw-docs` is the *docs URL navigation* layer. Use both: this one tells you what shape good code takes here and which mistakes to pre-empt; `tldraw-docs` tells you exactly which page to fetch when you need an API signature or feature mental model.
 
 The repo runs `tldraw ^4.5.10`, React 18, TypeScript strict. The core architectural commitment is canvas as primary surface, with a Cloudflare Worker hosting the SPA and an MCP bridge mutating shapes via WebSocket on `:7600`. That commitment shapes every decision below.
 
@@ -180,5 +180,5 @@ When in doubt about a method signature or the current shape of an API, anchor th
 ## What this skill is *not*
 
 - Not a tldraw tutorial — read the SDK feature pages or the `tldraw-docs` skill for that.
-- Not a substitute for reading the code in `src/`. Patterns evolve; the live code is authoritative. When you find a divergence between this skill and current `src/`, the skill is stale and should be patched (open a PR to `vade-core` updating this file).
+- Not a substitute for reading the code in `src/`. Patterns evolve; the live code is authoritative. When you find a divergence between this skill and current `src/`, the skill is stale and should be patched (open a PR to `vade-canvas` updating this file).
 - Not a list of every convention in the codebase — just the ones with concrete failure modes already in our PR history. New patterns earn a section here once they've cost us a hot-fix.

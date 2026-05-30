@@ -384,7 +384,7 @@ Repos scanned:
 - **Git**: first 2026-05-25, last 2026-05-30, 2 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Curate the initial issue tracker for a public-flipped or newly-launched OSS repo. Dispatch when a `vade-app/*` repo is about to flip from private to public, or a brand-new public repo is being seeded. Reads the target repo's README / CONTRIBUTING / spec / source / tests and any caller-supplied strategic framing, then produces a four-bucket curated list of follow-up issues (good-first / spec-coverage gaps / architecture RFCs / follow-on tooling) with per-issue labels, difficulty, and definition-of-done. Recommends a filing strategy (which 3–5 to file first vs. hold). Does NOT file the issues itself — curation is the deliverable; the dispatcher reviews then files. Reusable across any public-flip event.
+> Curate the initial issue tracker for a public-flipped or newly-launched OSS repo. Dispatch when a `coo-labs/*` repo is about to flip from private to public, or a brand-new public repo is being seeded. Reads the target repo's README / CONTRIBUTING / spec / source / tests and any caller-supplied strategic framing, then produces a four-bucket curated list of follow-up issues (good-first / spec-coverage gaps / architecture RFCs / follow-on tooling) with per-issue labels, difficulty, and definition-of-done. Recommends a filing strategy (which 3–5 to file first vs. hold). Does NOT file the issues itself — curation is the deliverable; the dispatcher reviews then files. Reusable across any public-flip event.
 
 ### `rationalization-discriminator` — agent in `coo-labs/coo-memory`
 
@@ -436,7 +436,7 @@ Repos scanned:
 - **Git**: first 2026-05-25, last 2026-05-30, 4 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Idle-fire session-end synthesizer for vade-runtime#148 Part B. Spawn from session-idle-watchdog.sh after the mechanical transcript export has run. Reads the just-exported transcript via transcript-fetch.sh, synthesizes a human-readable session log per the vade-agent-logs template, writes one Mem0 episodic entry, commits both, opens a PR against vade-agent-logs. Replaces the stub-only watchdog close with a real session record. Single-shot; single-message return.
+> Idle-fire session-end synthesizer for coo-labs/coo-harness#148 Part B. Spawn from session-idle-watchdog.sh after the mechanical transcript export has run. Reads the just-exported transcript via transcript-fetch.sh, synthesizes a human-readable session log per the coo-logs template, writes one Mem0 episodic entry, commits both, opens a PR against vade-agent-logs. Replaces the stub-only watchdog close with a real session record. Single-shot; single-message return.
 
 ### `transcript-analyzer` — agent in `coo-labs/coo-memory`
 
@@ -449,7 +449,7 @@ Repos scanned:
 - **Git**: first 2026-05-25, last 2026-05-30, 3 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Stage-1 sidecar generator for vade-app/vade-agent-logs#64. Spawn from the Night's Watch (or interactive COO) with one Claude Code session_id. Fetches the encrypted ciphertext from R2, decrypts via TRANSCRIPTS_AGE_IDENTITY, parses the redacted jsonl, and writes vade-agent-logs/transcripts/YYYY/MM/DD/<sessionId>.analysis.json per the schema below. No MCP write authority. Single-message return on completion.
+> Stage-1 sidecar generator for coo-labs/coo-logs#64. Spawn from the Night's Watch (or interactive COO) with one Claude Code session_id. Fetches the encrypted ciphertext from R2, decrypts via TRANSCRIPTS_AGE_IDENTITY, parses the redacted jsonl, and writes coo-logs/transcripts/YYYY/MM/DD/<sessionId>.analysis.json per the schema below. No MCP write authority. Single-message return on completion.
 
 ### `briefing` — skill in `coo-labs/coo-memory`
 
@@ -503,7 +503,7 @@ Repos scanned:
 - **Git**: first 2026-05-25, last 2026-05-30, 4 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode — the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, vade-coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `retrospectives/2026-05-03_what-works-and-why.md`.
+> Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode — the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, coo-labs/coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `retrospectives/2026-05-03_what-works-and-why.md`.
 
 ### `commission-retrospective` — skill in `coo-labs/coo-memory`
 
@@ -531,7 +531,7 @@ Repos scanned:
 - **Git**: first 2026-05-25, last 2026-05-30, 5 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Produce a day-overview retrospective — briefing-shaped synthesis of a day's shipped work (memos, PRs, integrity-check state) grouped into lanes, with follow-ups and candidate next actions. Use at end-of-day or to summarize a window of work. Default flow ships (writes file, commits, opens PR); `--no-ship` stops at file write; `--post` also posts to vade-core Retrospectives Discussions. Don't invoke for routine status updates (use `/status-check`) or single-PR retrospectives (write a memo).
+> Produce a day-overview retrospective — briefing-shaped synthesis of a day's shipped work (memos, PRs, integrity-check state) grouped into lanes, with follow-ups and candidate next actions. Use at end-of-day or to summarize a window of work. Default flow ships (writes file, commits, opens PR); `--no-ship` stops at file write; `--post` also posts to vade-canvas Retrospectives Discussions. Don't invoke for routine status updates (use `/status-check`) or single-PR retrospectives (write a memo).
 
 ### `debug-mode` — skill in `coo-labs/coo-memory`
 
@@ -557,7 +557,7 @@ Repos scanned:
 - **Git**: first 2026-05-25, last 2026-05-30, 6 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Run the COO session-end checklist — externalization reflection, plan-file commit, Mem0 episodic entry, memo-sync if needed, vade-agent-logs session log, Journal consideration, transcript-export sidecar commit. Use when wrapping up a working session, about to close the terminal or container, finishing the day's COO work, or when Ven says "we're done" / "end session" / "wrap up". Writes a marker file so the Stop hook knows cleanup is done. Do NOT invoke mid-task — only at the actual end of a session, once all substantive work is complete.
+> Run the COO session-end checklist — externalization reflection, plan-file commit, Mem0 episodic entry, memo-sync if needed, coo-logs session log, Journal consideration, transcript-export sidecar commit. Use when wrapping up a working session, about to close the terminal or container, finishing the day's COO work, or when Ven says "we're done" / "end session" / "wrap up". Writes a marker file so the Stop hook knows cleanup is done. Do NOT invoke mid-task — only at the actual end of a session, once all substantive work is complete.
 
 ### `exec-mode` — skill in `coo-labs/coo-memory`
 
@@ -676,7 +676,7 @@ Repos scanned:
 - **Git**: first 2026-05-25, last 2026-05-30, 4 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Post a category-aware discussion to vade-app/vade-core with title-format enforcement per category, citation form pre-applied, pre-fetched repo + category + label IDs, body-template stubs, and post-and-link return. Invoke when authoring a new discussion thread in one of the seven vade-app categories (Announcements / Coordination / RFCs / Q&A / Retrospectives / COO essays / Journal). Do NOT invoke for replying to existing threads (use `gh api graphql` directly), closing threads, or non-discussion comments.
+> Post a category-aware discussion to coo-labs/vade-canvas with title-format enforcement per category, citation form pre-applied, pre-fetched repo + category + label IDs, body-template stubs, and post-and-link return. Invoke when authoring a new discussion thread in one of the seven coo-labs categories (Announcements / Coordination / RFCs / Q&A / Retrospectives / COO essays / Journal). Do NOT invoke for replying to existing threads (use `gh api graphql` directly), closing threads, or non-discussion comments.
 
 ### `postmerge-check` — skill in `coo-labs/coo-memory`
 
@@ -690,7 +690,7 @@ Repos scanned:
 - **Git**: first 2026-05-25, last 2026-05-30, 4 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Fetch recently merged vade-app PRs (or specified PR refs), extract `## Post-merge confirmation` handoff sections, execute the steps in order, and report per-PR PASS / PARTIAL / FAIL. Use in a fresh session to verify a merge landed cleanly without copy-pasting the handoff prompt manually. Per CLAUDE.md "Handoff prompts for boot-impacting PRs" (canonical: MEMO-2026-04-25-03 / vade-coo-memory#139).
+> Fetch recently merged coo-labs PRs (or specified PR refs), extract `## Post-merge confirmation` handoff sections, execute the steps in order, and report per-PR PASS / PARTIAL / FAIL. Use in a fresh session to verify a merge landed cleanly without copy-pasting the handoff prompt manually. Per CLAUDE.md "Handoff prompts for boot-impacting PRs" (canonical: MEMO-2026-04-25-03 / coo-labs/coo-memory#139).
 
 ### `quarto-docs` — skill in `coo-labs/coo-memory`
 
@@ -702,7 +702,7 @@ Repos scanned:
 - **Git**: first 2026-05-25, last 2026-05-30, 3 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Navigate the Quarto documentation efficiently when working on the VADE publishing site at read.vade-app.dev. Use this skill whenever a task involves Quarto — including `_quarto.yml`, navbars, sidebars, listings, themes, format options, citations, freeze, partial render, or any tldraw-style ".how do I configure X in Quarto" question. This includes any work in `vade-coo-memory/bin/publish-site/`, `site/`, `config/publish/`, or anywhere `QUARTO_BASE_CONFIG` is touched. Quarto publishes LLM-optimized markdown bundles at quarto.org/llms.txt and per-page `.llms.md` URLs; this skill teaches which page to fetch and how to navigate so agents don't hallucinate YAML keys, nest options under the wrong parent (`format.html.sidebar` is wrong — `sidebar` is top-level under `website`), or guess at listing-type/theme-extension semantics. Trigger whenever the user mentions Quarto, qmd, _quarto.yml, listings, navbar, sidebar, cosmo, brand, theme, freeze, render, page-navigation, or is clearly working on `read.vade-app.dev` even if "Quarto" isn't named explicitly.
+> Navigate the Quarto documentation efficiently when working on the VADE publishing site at read.vade-app.dev. Use this skill whenever a task involves Quarto — including `_quarto.yml`, navbars, sidebars, listings, themes, format options, citations, freeze, partial render, or any tldraw-style ".how do I configure X in Quarto" question. This includes any work in `coo-memory/bin/publish-site/`, `site/`, `config/publish/`, or anywhere `QUARTO_BASE_CONFIG` is touched. Quarto publishes LLM-optimized markdown bundles at quarto.org/llms.txt and per-page `.llms.md` URLs; this skill teaches which page to fetch and how to navigate so agents don't hallucinate YAML keys, nest options under the wrong parent (`format.html.sidebar` is wrong — `sidebar` is top-level under `website`), or guess at listing-type/theme-extension semantics. Trigger whenever the user mentions Quarto, qmd, _quarto.yml, listings, navbar, sidebar, cosmo, brand, theme, freeze, render, page-navigation, or is clearly working on `read.vade-app.dev` even if "Quarto" isn't named explicitly.
 
 ### `status-check` — skill in `coo-labs/coo-memory`
 
@@ -728,7 +728,7 @@ Repos scanned:
 - **Git**: first 2026-05-25, last 2026-05-30, 3 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Create a "Working milestone" annotated tag at HEAD across all five vade-app repos and push via the GitHub API. Use when the system reaches a clean, demonstrably-running state worth marking as a baseline (post-major-refactor, post-cloud-rebuild, post-epic-close). Refuses on dirty working tree, branch divergence from origin/main, or pre-existing tag. Confirms with the user before pushing unless `--yes`.
+> Create a "Working milestone" annotated tag at HEAD across all five coo-labs repos and push via the GitHub API. Use when the system reaches a clean, demonstrably-running state worth marking as a baseline (post-major-refactor, post-cloud-rebuild, post-epic-close). Refuses on dirty working tree, branch divergence from origin/main, or pre-existing tag. Confirms with the user before pushing unless `--yes`.
 
 ### `tool-creator` — skill in `coo-labs/coo-memory`
 
@@ -755,7 +755,7 @@ Repos scanned:
 - **Git**: first 2026-05-25, last 2026-05-30, 3 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Frame a comment, issue, or PR-thread reply to an external maintainer — vendor, open-source project, public-preview discussion, GitHub Community — so a stranger can act on it without re-investigating. Covers bug reports, feature requests, API-gap reports, and PR contributions to repos outside vade-app/*.
+> Frame a comment, issue, or PR-thread reply to an external maintainer — vendor, open-source project, public-preview discussion, GitHub Community — so a stranger can act on it without re-investigating. Covers bug reports, feature requests, API-gap reports, and PR contributions to repos outside coo-labs/*.
 
 ### `dispatching-parallel-agents` — agent in `coo-labs/skills`
 
@@ -888,7 +888,7 @@ Repos scanned:
 - **Git**: first 2026-05-11, last 2026-05-30, 4 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode — the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, vade-coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `coo/retrospectives/2026-05-03_what-works-and-why.md`.
+> Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode — the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, coo-labs/coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `coo/retrospectives/2026-05-03_what-works-and-why.md`.
 
 ### `commission-retrospective` — skill in `coo-labs/skills`
 
@@ -916,7 +916,7 @@ Repos scanned:
 - **Git**: first 2026-05-12, last 2026-05-30, 4 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Produce a day-overview retrospective — briefing-shaped synthesis of a day's shipped work (memos, PRs, integrity-check state) grouped into lanes, with follow-ups and candidate next actions. Use at end-of-day or to summarize a window of work. Default flow ships (writes file, commits, opens PR); `--no-ship` stops at file write; `--post` also posts to vade-core Retrospectives Discussions. Don't invoke for routine status updates (use `/status-check`) or single-PR retrospectives (write a memo).
+> Produce a day-overview retrospective — briefing-shaped synthesis of a day's shipped work (memos, PRs, integrity-check state) grouped into lanes, with follow-ups and candidate next actions. Use at end-of-day or to summarize a window of work. Default flow ships (writes file, commits, opens PR); `--no-ship` stops at file write; `--post` also posts to vade-canvas Retrospectives Discussions. Don't invoke for routine status updates (use `/status-check`) or single-PR retrospectives (write a memo).
 
 ### `end-session` — skill in `coo-labs/skills`
 
@@ -929,7 +929,7 @@ Repos scanned:
 - **Git**: first 2026-05-12, last 2026-05-30, 4 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Run the COO session-end checklist — externalization reflection, plan-file commit, Mem0 episodic entry, memo-sync if needed, vade-agent-logs session log, Journal consideration, transcript-export sidecar commit. Use when wrapping up a working session, about to close the terminal or container, finishing the day's COO work, or when Ven says "we're done" / "end session" / "wrap up". Writes a marker file so the Stop hook knows cleanup is done. Do NOT invoke mid-task — only at the actual end of a session, once all substantive work is complete.
+> Run the COO session-end checklist — externalization reflection, plan-file commit, Mem0 episodic entry, memo-sync if needed, coo-logs session log, Journal consideration, transcript-export sidecar commit. Use when wrapping up a working session, about to close the terminal or container, finishing the day's COO work, or when Ven says "we're done" / "end session" / "wrap up". Writes a marker file so the Stop hook knows cleanup is done. Do NOT invoke mid-task — only at the actual end of a session, once all substantive work is complete.
 
 ### `exec-mode` — skill in `coo-labs/skills`
 
@@ -1019,7 +1019,7 @@ Repos scanned:
 - **Git**: first 2026-05-09, last 2026-05-30, 2 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Apply vade-core's canvas/tldraw frontend conventions and avoid the recurring landmines we've already learned about. Use this skill whenever you're working in vade-core on anything that touches the canvas — adding or modifying a custom shape under `src/shapes/`, wiring UI through `src/shell/AppShell.tsx`, mutating shapes through the MCP bridge in `src/bridge/`, the `vade-asset-store`, snapshot persistence, the library/catalog/shape-panel surfaces, or anywhere else `tldraw` or `@tldraw/*` is imported. Trigger even when the prompt only mentions "the canvas," "a shape," "AppShell," "persistenceKey," "asset store," "TLAssetStore," "ShapeUtil," "BindingUtil," "snapshot," "the editor," or "tldraw" without naming the skill — and especially trigger before opening a PR that changes any tldraw-touching file. This skill is the anti-patterns and conventions layer; for SDK reference / doc URLs, also consult the `tldraw-docs` skill (the two compose).
+> Apply vade-canvas's canvas/tldraw frontend conventions and avoid the recurring landmines we've already learned about. Use this skill whenever you're working in vade-canvas on anything that touches the canvas — adding or modifying a custom shape under `src/shapes/`, wiring UI through `src/shell/AppShell.tsx`, mutating shapes through the MCP bridge in `src/bridge/`, the `vade-asset-store`, snapshot persistence, the library/catalog/shape-panel surfaces, or anywhere else `tldraw` or `@tldraw/*` is imported. Trigger even when the prompt only mentions "the canvas," "a shape," "AppShell," "persistenceKey," "asset store," "TLAssetStore," "ShapeUtil," "BindingUtil," "snapshot," "the editor," or "tldraw" without naming the skill — and especially trigger before opening a PR that changes any tldraw-touching file. This skill is the anti-patterns and conventions layer; for SDK reference / doc URLs, also consult the `tldraw-docs` skill (the two compose).
 
 ### `tldraw-docs` — skill in `coo-labs/vade-canvas`
 
@@ -1032,4 +1032,4 @@ Repos scanned:
 - **Git**: first 2026-05-01, last 2026-05-30, 2 commits
 - **Usage**: 0 invocations across 0 sessions
 
-> Navigate the tldraw SDK documentation efficiently. Use this skill whenever a task involves the tldraw canvas SDK — including the Editor class, shape utils, custom shapes, bindings, tools, persistence, side effects, the store/signals system, sync, UI components, or any tldraw.dev reference. This includes any work in the vade-core repo, which is built on tldraw. tldraw publishes LLM-optimized markdown bundles at tldraw.dev/llms*.txt plus markdown-ready individual pages; this skill teaches which bundle to fetch and how to navigate so agents don't hallucinate API signatures, grab the full mega-bundle when a narrow fetch would do, or guess at topic names that don't exist. Trigger whenever the user mentions tldraw, canvas shapes, ShapeUtil, BindingUtil, tldraw editor, custom tool, snapshot, or is clearly working in a tldraw-based codebase even if they don't name "tldraw" explicitly.
+> Navigate the tldraw SDK documentation efficiently. Use this skill whenever a task involves the tldraw canvas SDK — including the Editor class, shape utils, custom shapes, bindings, tools, persistence, side effects, the store/signals system, sync, UI components, or any tldraw.dev reference. This includes any work in the vade-canvas repo, which is built on tldraw. tldraw publishes LLM-optimized markdown bundles at tldraw.dev/llms*.txt plus markdown-ready individual pages; this skill teaches which bundle to fetch and how to navigate so agents don't hallucinate API signatures, grab the full mega-bundle when a narrow fetch would do, or guess at topic names that don't exist. Trigger whenever the user mentions tldraw, canvas shapes, ShapeUtil, BindingUtil, tldraw editor, custom tool, snapshot, or is clearly working in a tldraw-based codebase even if they don't name "tldraw" explicitly.

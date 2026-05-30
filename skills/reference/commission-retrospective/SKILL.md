@@ -16,7 +16,7 @@ commissions a third (or Nth) historian-voiced retrospective on a scoped
 window of the project's record — memos, PRs, essays, issues — and
 produces a draft that mirrors the voice and structure of #1 and #2.
 
-Authoritative spec: `<vade-coo-memory>/coo/culture_system_sop.md`
+Authoritative spec: `<coo-memory>/coo/culture_system_sop.md`
 (SOP-CULTURE-001). When this skill and the SOP disagree, the SOP wins.
 Update this skill; don't drift the spec.
 
@@ -25,7 +25,7 @@ Update this skill; don't drift the spec.
 > sub-agents in parallel, then a third-person draft that refuses
 > recycled defended positions) is portable; the substrate
 > references (`coo/memo_index.json`, `coo/foundations/`,
-> `coo/retrospectives/` prior commissions, the five `vade-app/*`
+> `coo/retrospectives/` prior commissions, the five `coo-labs/*`
 > repos, integrity-check Group F probes) and the
 > `scripts/commission-retrospective.sh` pre-flight + the three
 > sub-agent templates ship verbatim as the VADE worked example.
@@ -59,8 +59,8 @@ Two commissions in three days is not a cadence. Do not declare one.
 ### 1. Resolve roots and scope
 
 ```bash
-COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../vade-coo-memory" "$HOME/GitHub/vade-app/vade-coo-memory" "/home/user/vade-coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
-RUNTIME="$(for c in "${VADE_RUNTIME_DIR:-}" "$COO/../vade-runtime" "$HOME/GitHub/vade-app/vade-runtime" "/home/user/vade-runtime"; do [ -n "$c" ] && [ -f "$c/scripts/integrity-check.sh" ] && { cd "$c" && pwd -P; break; }; done)"
+COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+RUNTIME="$(for c in "${VADE_RUNTIME_DIR:-}" "$COO/../coo-harness" "$HOME/GitHub/coo-labs/coo-harness" "/home/user/coo-harness"; do [ -n "$c" ] && [ -f "$c/scripts/integrity-check.sh" ] && { cd "$c" && pwd -P; break; }; done)"
 ```
 
 Then call the pre-flight to build a scope manifest:
@@ -78,7 +78,7 @@ Output is JSON on stdout with:
 - `window`: `{since, until}` (until defaults to today).
 - `slug`: sanitized slug; used in all draft filenames.
 - `prs`: array of `{number, title, merged_at, author, url}` for merged
-  PRs on `vade-app/vade-coo-memory` in the window (extend via `--prs`
+  PRs on `coo-labs/coo-memory` in the window (extend via `--prs`
   for cross-repo PRs).
 - `memos`: array of index entries whose `date` falls in the window,
   from `coo/memo_index.json`.
@@ -146,8 +146,8 @@ Read `$VADE_CLOUD_STATE_DIR/integrity-check.json`. If any of
 `detail` strings into the PR body — a retrospective that reports on
 the project cannot silently capture the substrate it reports on.
 
-If `$RUNTIME` is empty (peer-agent in a bare clone of vade-coo-memory
-without vade-runtime adjacent), state that explicitly in the PR body
+If `$RUNTIME` is empty (peer-agent in a bare clone of coo-memory
+without coo-harness adjacent), state that explicitly in the PR body
 and proceed without the gate. The retrospective is honest about what
 it could and couldn't audit.
 
@@ -157,7 +157,7 @@ If the invocation passed `--open-pr`, the shell wrapper does:
 
 ```bash
 GH_TOKEN="$GITHUB_MCP_PAT" gh pr create \
-  --repo vade-app/vade-coo-memory \
+  --repo coo-labs/coo-memory \
   --base main \
   --head <current-branch> \
   --title "[retrospective-draft] <slug>" \
@@ -190,11 +190,11 @@ human or agent reviews the draft and opens the PR by hand.
   the agent's jsonl mtime via `ls -la /root/.claude/projects/<...>/subagents/agent-<id>.jsonl`:
   if mtime is recent (within a few minutes) and the last assistant
   message is a "now I'll write the report" beat, prefer waiting over
-  re-dispatching. Verified worked-case: `vade-coo-memory#547` (commission
+  re-dispatching. Verified worked-case: `coo-labs/coo-memory#547` (commission
   #4) — both sub-agents were declared stuck after 8–11 min silence;
   both self-recovered on the next probe with full reports.
 - **`integrity-check.sh` itself unavailable** (peer-agent clone without
-  vade-runtime adjacent). Skip step 4; note the fact in the PR body.
+  coo-harness adjacent). Skip step 4; note the fact in the PR body.
 
 ## Anti-patterns
 
@@ -215,12 +215,12 @@ human or agent reviews the draft and opens the PR by hand.
 ## Canonical source
 
 ```text
-<vade-coo-memory>/coo/culture_system_sop.md (SOP-CULTURE-001)
-<vade-coo-memory>/coo/memos.md MEMO 2026-04-24-12 (adoption)
-<vade-coo-memory>/coo/foundations/2026-04-22_we-can-claim-a-record.md §5d, §7
-<vade-coo-memory>/coo/retrospectives/ (commissions #1 and #2 — voice prior art)
-<vade-coo-memory>/.claude/skills/commission-retrospective/templates/ (prompts)
-<vade-coo-memory>/.claude/skills/commission-retrospective/scripts/commission-retrospective.sh (shell pre-flight)
+<coo-memory>/coo/culture_system_sop.md (SOP-CULTURE-001)
+<coo-memory>/coo/memos.md MEMO 2026-04-24-12 (adoption)
+<coo-memory>/coo/foundations/2026-04-22_we-can-claim-a-record.md §5d, §7
+<coo-memory>/coo/retrospectives/ (commissions #1 and #2 — voice prior art)
+<coo-memory>/.claude/skills/commission-retrospective/templates/ (prompts)
+<coo-memory>/.claude/skills/commission-retrospective/scripts/commission-retrospective.sh (shell pre-flight)
 ```
 
 # Setup hints
@@ -272,8 +272,8 @@ setup_hints:
     find_unique: true
     find: |
       ```bash
-      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../vade-coo-memory" "$HOME/GitHub/vade-app/vade-coo-memory" "/home/user/vade-coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
-      RUNTIME="$(for c in "${VADE_RUNTIME_DIR:-}" "$COO/../vade-runtime" "$HOME/GitHub/vade-app/vade-runtime" "/home/user/vade-runtime"; do [ -n "$c" ] && [ -f "$c/scripts/integrity-check.sh" ] && { cd "$c" && pwd -P; break; }; done)"
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      RUNTIME="$(for c in "${VADE_RUNTIME_DIR:-}" "$COO/../coo-harness" "$HOME/GitHub/coo-labs/coo-harness" "/home/user/coo-harness"; do [ -n "$c" ] && [ -f "$c/scripts/integrity-check.sh" ] && { cd "$c" && pwd -P; break; }; done)"
       ```
     fallback: |
       ```bash
@@ -309,7 +309,7 @@ setup_hints:
   - key: target_repo
     kind: PROMPT
     question: "Primary repo for PR history scanning AND --open-pr destination? (owner/repo format.)"
-    find: "vade-app/vade-coo-memory"
+    find: "coo-labs/coo-memory"
     fallback: ""
 
   - key: github_token_env
@@ -338,8 +338,8 @@ setup_hints:
       `detail` strings into the PR body — a retrospective that reports on
       the project cannot silently capture the substrate it reports on.
       
-      If `$RUNTIME` is empty (peer-agent in a bare clone of vade-coo-memory
-      without vade-runtime adjacent), state that explicitly in the PR body
+      If `$RUNTIME` is empty (peer-agent in a bare clone of coo-memory
+      without coo-harness adjacent), state that explicitly in the PR body
       and proceed without the gate. The retrospective is honest about what
       it could and couldn't audit.
     fallback: ""
@@ -347,7 +347,7 @@ setup_hints:
   - key: spec_doc_ref
     kind: OPTIONAL
     question: "Path to your authoritative spec for retrospective voice & structure? (VADE: SOP-CULTURE-001 at coo/culture_system_sop.md.) Skip to drop the spec-tie-breaker reference; the inline procedure becomes the spec."
-    find: "`<vade-coo-memory>/coo/culture_system_sop.md`\n(SOP-CULTURE-001). When this skill and the SOP disagree, the SOP wins.\nUpdate this skill; don't drift the spec."
+    find: "`<coo-memory>/coo/culture_system_sop.md`\n(SOP-CULTURE-001). When this skill and the SOP disagree, the SOP wins.\nUpdate this skill; don't drift the spec."
     fallback: "this file. The inline procedure is the spec."
 
   - key: voice_priors
@@ -378,7 +378,7 @@ requires:
 script_hints:
   - path: scripts/commission-retrospective.sh
     treatment: REGENERATE-PER-USER
-    rationale: "Hardcodes vade-app/vade-coo-memory, coo/memo_index.json, coo/foundations/, coo/retrospectives/; the --manual mode is an unimplemented stub. Skeleton emitted with TODO comments for: repo name, memo-index path, foundations dir, retrospectives dir, target_repo, GitHub token env var."
+    rationale: "Hardcodes coo-labs/coo-memory, coo/memo_index.json, coo/foundations/, coo/retrospectives/; the --manual mode is an unimplemented stub. Skeleton emitted with TODO comments for: repo name, memo-index path, foundations dir, retrospectives dir, target_repo, GitHub token env var."
 
   - path: templates/historian-prompt.md
     treatment: PARAMETERIZE

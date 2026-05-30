@@ -174,7 +174,7 @@ setup_hints:
   - key: repo_list
     kind: PROMPT
     question: "List the GitHub repos this skill should scan, comma-separated (owner/repo format)."
-    find: 'REPOS=("vade-coo-memory" "vade-runtime" "vade-core" "vade-governance" "vade-agent-logs")'
+    find: 'REPOS=("coo-memory" "coo-harness" "vade-canvas" "vade-governance" "coo-logs")'
     fallback: 'REPOS=()'
 
   - key: integrity_check_path
@@ -212,7 +212,7 @@ Example (from `commission-retrospective`):
 script_hints:
   - path: scripts/commission-retrospective.sh
     treatment: REGENERATE-PER-USER
-    rationale: "Hardcodes vade-app/vade-coo-memory, coo/memo_index.json paths; rewrite per your repo layout."
+    rationale: "Hardcodes coo-labs/coo-memory, coo/memo_index.json paths; rewrite per your repo layout."
 
   - path: templates/historian-prompt.md
     treatment: PARAMETERIZE
@@ -280,8 +280,8 @@ add its `# Setup hints` section at the bottom. Checklist:
    filenames.
 4. **Verify each `find` string actually appears in the body**
    — markdown wraps lines at ~70 chars, so a string you wrote as
-   one line ("open PRs across the five vade-app repos") may
-   actually live across two ("open PRs across the five\n   vade-app
+   one line ("open PRs across the five coo-labs repos") may
+   actually live across two ("open PRs across the five\n   coo-labs
    repos") in the rendered source. The validator at
    `scripts/dry-run-validator.py` enforces this.
 5. If a string would collide, mark `find_unique: true` and pick a

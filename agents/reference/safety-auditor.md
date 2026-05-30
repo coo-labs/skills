@@ -20,7 +20,7 @@ You hold review authority on the following memo concerns. The lead **will** over
 |---|------|-----------------|
 | 1 | **MEMO 2026-04-11-08** | Tier-2 governance content (charter, decision rights, PAT identifiers, full memo bodies) appearing in public-facing artifacts. References-by-ID are fine; full bodies are not. |
 | 2 | **MEMO 2026-04-11-10** | Tier-2 content flowing into Mem0. Operational + ephemeral context = OK; secrets/PII/Tier-2 = never. Exceptions require explicit memo. |
-| 3 | **MEMO 2026-04-11-14** + **2026-04-22-02** | VADE substrate content living under iCloud-Documents, Time Machine, Dropbox, Backblaze, or any sync/backup path. Canonical path is `~/GitHub/vade-app/`. The rule applies at the *folder* level. |
+| 3 | **MEMO 2026-04-11-14** + **2026-04-22-02** | VADE substrate content living under iCloud-Documents, Time Machine, Dropbox, Backblaze, or any sync/backup path. Canonical path is `~/GitHub/coo-labs/`. The rule applies at the *folder* level. |
 | 4 | **MEMO 2026-04-11-19** | Spend exceeding $200/month for Anthropic workspace charges. Any candidate that would unboundedly inflate token cost must be flagged. |
 | 5 | **MEMO 2026-04-22-01** + **2026-04-22-04 / -05 / -06** | PAT cleartext outside accepted paths (`~/.claude/settings.json` mode-600 is the accepted footprint). Any new candidate that wants its own secret store outside 1Password fails. PR attribution must be `vade-coo`, not `venpopov`. |
 | 6 | **MEMO 2026-04-23-02** + **2026-04-22-12** | Cloud-env identity discipline: own-token boot, integrity-check Group F invariants holding. New candidates must not bypass the integrity-check probe. |
@@ -82,7 +82,7 @@ setup_hints:
       |---|------|-----------------|
       | 1 | **MEMO 2026-04-11-08** | Tier-2 governance content (charter, decision rights, PAT identifiers, full memo bodies) appearing in public-facing artifacts. References-by-ID are fine; full bodies are not. |
       | 2 | **MEMO 2026-04-11-10** | Tier-2 content flowing into Mem0. Operational + ephemeral context = OK; secrets/PII/Tier-2 = never. Exceptions require explicit memo. |
-      | 3 | **MEMO 2026-04-11-14** + **2026-04-22-02** | VADE substrate content living under iCloud-Documents, Time Machine, Dropbox, Backblaze, or any sync/backup path. Canonical path is `~/GitHub/vade-app/`. The rule applies at the *folder* level. |
+      | 3 | **MEMO 2026-04-11-14** + **2026-04-22-02** | VADE substrate content living under iCloud-Documents, Time Machine, Dropbox, Backblaze, or any sync/backup path. Canonical path is `~/GitHub/coo-labs/`. The rule applies at the *folder* level. |
       | 4 | **MEMO 2026-04-11-19** | Spend exceeding $200/month for Anthropic workspace charges. Any candidate that would unboundedly inflate token cost must be flagged. |
       | 5 | **MEMO 2026-04-22-01** + **2026-04-22-04 / -05 / -06** | PAT cleartext outside accepted paths (`~/.claude/settings.json` mode-600 is the accepted footprint). Any new candidate that wants its own secret store outside 1Password fails. PR attribution must be `vade-coo`, not `venpopov`. |
       | 6 | **MEMO 2026-04-23-02** + **2026-04-22-12** | Cloud-env identity discipline: own-token boot, integrity-check Group F invariants holding. New candidates must not bypass the integrity-check probe. |
