@@ -1,6 +1,6 @@
 # Claude Code skill & agent inventory
 
-_Generated `2026-05-28T02:05:27Z` · schema `v1.0.0`._
+_Generated `2026-05-30T17:08:33Z` · schema `v1.0.0`._
 
 ## Summary
 
@@ -11,13 +11,13 @@ _Generated `2026-05-28T02:05:27Z` · schema `v1.0.0`._
 - **By vendoring**: custom=46, vendored=4
 - **Declared metadata coverage**: type 0/50 (0%), vendoring 0/50 (0%) — remainder is derived heuristically. Migration goal: shrink the heuristic share over time.
 
-Transcripts scanned: `/root/.claude/projects` (4 files). Invocation counts are honest reports of what the scan saw — point the scanner at an archive for cross-session totals.
+Transcripts scanned: `/root/.claude/projects` (6 files). Invocation counts are honest reports of what the scan saw — point the scanner at an archive for cross-session totals.
 
 Repos scanned:
-- `coo-labs/coo-memory` @ `c4e1ea36` (/home/user/coo-memory)
-- `coo-labs/coo-harness` @ `25aeb525` (/home/user/coo-harness)
+- `coo-labs/coo-memory` @ `7cf75aa8` (/home/user/coo-memory)
+- `coo-labs/coo-harness` @ `dabd31bf` (/home/user/coo-harness)
 - `coo-labs/vade-canvas` @ `baba412f` (/home/user/vade-canvas)
-- `coo-labs/skills` @ `457d885f` (/home/user/skills)
+- `coo-labs/skills` @ `414752cd` (/home/user/skills)
 
 ## Inventory by repo
 
@@ -38,25 +38,25 @@ Repos scanned:
 
 | Name | Type | Vendor | Bytes | Lines | Bundle | Added | Last commit | Invocations |
 |------|------|--------|-------|-------|--------|-------|-------------|-------------|
+| `briefing` | procedural | — | 10682 | 239 | scripts=1, +2 files | 2026-05-30 | 2026-05-30 | 0 |
 | `cf-workers-best-practices` | reference | vendored<br>cloudflare/skills | 7095 | 127 | references=2 | 2026-05-25 | 2026-05-25 | 0 |
 | `cf-wrangler` | api-service | vendored<br>cloudflare/skills | 18362 | 922 | — | 2026-05-25 | 2026-05-25 | 0 |
-| `chat-mode` | role | — | 5518 | 94 | — | 2026-05-25 | 2026-05-27 | 0 |
+| `chat-mode` | role | — | 5520 | 94 | — | 2026-05-25 | 2026-05-30 | 0 |
 | `commission-retrospective` | procedural | — | 9627 | 208 | scripts=1, templates=3 | 2026-05-25 | 2026-05-27 | 0 |
-| `day-overview` | procedural | — | 12192 | 293 | scripts=1 | 2026-05-25 | 2026-05-27 | 0 |
+| `day-overview` | procedural | — | 12194 | 293 | scripts=1 | 2026-05-25 | 2026-05-30 | 0 |
 | `debug-mode` | role | — | 10538 | 224 | — | 2026-05-25 | 2026-05-27 | 0 |
-| `end-session` | procedural | — | 5598 | 131 | — | 2026-05-25 | 2026-05-27 | 0 |
-| `exec-mode` | role | — | 4444 | 85 | — | 2026-05-25 | 2026-05-27 | 0 |
+| `end-session` | procedural | — | 6543 | 151 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `exec-mode` | role | — | 4446 | 85 | — | 2026-05-25 | 2026-05-30 | 0 |
 | `manage-project` | api-service | — | 4169 | 83 | scripts=4, +1 dirs | 2026-05-25 | 2026-05-27 | 0 |
-| `memo` | procedural | — | 15336 | 428 | — | 2026-05-25 | 2026-05-27 | 0 |
+| `memo` | procedural | — | 15342 | 428 | — | 2026-05-25 | 2026-05-30 | 0 |
 | `memo-audit` | procedural | — | 11026 | 279 | — | 2026-05-25 | 2026-05-27 | 0 |
 | `memo-query` | procedural | — | 7330 | 174 | scripts=1 | 2026-05-25 | 2026-05-27 | 0 |
-| `memo-search` | procedural | — | 8208 | 192 | — | 2026-05-25 | 2026-05-27 | 0 |
+| `memo-search` | procedural | — | 8216 | 192 | — | 2026-05-25 | 2026-05-30 | 0 |
 | `memo-sync` | procedural | — | 10903 | 259 | — | 2026-05-25 | 2026-05-27 | 0 |
 | `peer-review` | review | — | 18219 | 367 | evals=1 | 2026-05-25 | 2026-05-27 | 0 |
 | `post-discussion` | procedural | — | 12148 | 273 | — | 2026-05-25 | 2026-05-27 | 0 |
-| `postmerge-check` | procedural | — | 7763 | 125 | scripts=1 | 2026-05-25 | 2026-05-26 | 0 |
+| `postmerge-check` | procedural | — | 7769 | 125 | scripts=1 | 2026-05-25 | 2026-05-30 | 0 |
 | `quarto-docs` | documentation | — | 12332 | 110 | — | 2026-05-25 | 2026-05-27 | 0 |
-| `request-briefing` | procedural | — | 10206 | 259 | — | 2026-05-25 | 2026-05-27 | 0 |
 | `status-check` | procedural | — | 5856 | 138 | — | 2026-05-25 | 2026-05-26 | 0 |
 | `tag-milestone` | procedural | — | 8531 | 256 | — | 2026-05-25 | 2026-05-27 | 0 |
 | `tool-creator` | meta | — | 20779 | 459 | templates=4 | 2026-05-25 | 2026-05-27 | 0 |
@@ -115,17 +115,17 @@ Repos scanned:
 
 - `tagging-taxonomy` (skill, `coo-labs/coo-harness`) — custom, 12188B
 - `trace-timeline` (skill, `coo-labs/coo-harness`) — custom, 9114B
+- `briefing` (skill, `coo-labs/coo-memory`) — custom, 10682B
 - `commission-retrospective` (skill, `coo-labs/coo-memory`) — custom, 9627B
-- `day-overview` (skill, `coo-labs/coo-memory`) — custom, 12192B
-- `end-session` (skill, `coo-labs/coo-memory`) — custom, 5598B
-- `memo` (skill, `coo-labs/coo-memory`) — custom, 15336B
+- `day-overview` (skill, `coo-labs/coo-memory`) — custom, 12194B
+- `end-session` (skill, `coo-labs/coo-memory`) — custom, 6543B
+- `memo` (skill, `coo-labs/coo-memory`) — custom, 15342B
 - `memo-audit` (skill, `coo-labs/coo-memory`) — custom, 11026B
 - `memo-query` (skill, `coo-labs/coo-memory`) — custom, 7330B
-- `memo-search` (skill, `coo-labs/coo-memory`) — custom, 8208B
+- `memo-search` (skill, `coo-labs/coo-memory`) — custom, 8216B
 - `memo-sync` (skill, `coo-labs/coo-memory`) — custom, 10903B
 - `post-discussion` (skill, `coo-labs/coo-memory`) — custom, 12148B
-- `postmerge-check` (skill, `coo-labs/coo-memory`) — custom, 7763B
-- `request-briefing` (skill, `coo-labs/coo-memory`) — custom, 10206B
+- `postmerge-check` (skill, `coo-labs/coo-memory`) — custom, 7769B
 - `status-check` (skill, `coo-labs/coo-memory`) — custom, 5856B
 - `tag-milestone` (skill, `coo-labs/coo-memory`) — custom, 8531B
 
@@ -172,9 +172,9 @@ Repos scanned:
 
 ### role (3)
 
-- `chat-mode` (skill, `coo-labs/coo-memory`) — custom, 5518B
+- `chat-mode` (skill, `coo-labs/coo-memory`) — custom, 5520B
 - `debug-mode` (skill, `coo-labs/coo-memory`) — custom, 10538B
-- `exec-mode` (skill, `coo-labs/coo-memory`) — custom, 4444B
+- `exec-mode` (skill, `coo-labs/coo-memory`) — custom, 4446B
 
 ### agent-orchestrator (2)
 
@@ -216,6 +216,7 @@ Repos scanned:
 - `safety-auditor` (agent, `coo-labs/coo-memory`)
 - `session-closer` (agent, `coo-labs/coo-memory`)
 - `transcript-analyzer` (agent, `coo-labs/coo-memory`)
+- `briefing` (skill, `coo-labs/coo-memory`)
 - `chat-mode` (skill, `coo-labs/coo-memory`)
 - `commission-retrospective` (skill, `coo-labs/coo-memory`)
 - `day-overview` (skill, `coo-labs/coo-memory`)
@@ -232,7 +233,6 @@ Repos scanned:
 - `post-discussion` (skill, `coo-labs/coo-memory`)
 - `postmerge-check` (skill, `coo-labs/coo-memory`)
 - `quarto-docs` (skill, `coo-labs/coo-memory`)
-- `request-briefing` (skill, `coo-labs/coo-memory`)
 - `status-check` (skill, `coo-labs/coo-memory`)
 - `tag-milestone` (skill, `coo-labs/coo-memory`)
 - `tool-creator` (skill, `coo-labs/coo-memory`)
@@ -416,6 +416,19 @@ Repos scanned:
 
 > Stage-1 sidecar generator for vade-app/vade-agent-logs#64. Spawn from the Night's Watch (or interactive COO) with one Claude Code session_id. Fetches the encrypted ciphertext from R2, decrypts via TRANSCRIPTS_AGE_IDENTITY, parses the redacted jsonl, and writes vade-agent-logs/transcripts/YYYY/MM/DD/<sessionId>.analysis.json per the schema below. No MCP write authority. Single-message return on completion.
 
+### `briefing` — skill in `coo-labs/coo-memory`
+
+- **Type**: procedural _(source: heuristic; has scripts/ subdir)_
+- **Vendoring**: custom _(source: heuristic)_
+- **Path**: `.claude/skills/briefing/SKILL.md`
+- **Size**: 10682 bytes / 239 lines · description 751 chars · body 9707 chars
+- **Frontmatter**: argument-hint `<request|pickup|done|release> [args]`; allowed-tools `Bash, Read, Write`
+- **Bundle**: scripts=1, +2 files
+- **Git**: first 2026-05-30, last 2026-05-30, 1 commits
+- **Usage**: 0 invocations across 0 sessions
+
+> Manage session-handoff briefings under `briefings/`. Subcommands: `request` (file a new briefing — collision-safe NNN allocation, YAML frontmatter, fresh branch + PR), `pickup` (claim an open briefing for this session), `done` (mark a claimed briefing delivered), `release` (clear a claim without delivering). The briefing schema, index format, and per-subcommand procedures for pickup/done/release live in reference.md — loaded on demand. Use when a session needs to hand a contextual problem to another session, or when this session is about to pick one up. Don't invoke for: single-PR-sized handoffs (use an issue), tasks the same session can finish (write code instead), or known-good plans that just need execution (write a plan, not a briefing).
+
 ### `cf-workers-best-practices` — skill in `coo-labs/coo-memory`
 
 - **Type**: reference _(source: heuristic; has references/ subdir)_
@@ -454,9 +467,9 @@ Repos scanned:
 - **Type**: role _(source: heuristic; name suffix -mode)_
 - **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/chat-mode/SKILL.md`
-- **Size**: 5518 bytes / 94 lines · description 582 chars · body 4773 chars
+- **Size**: 5520 bytes / 94 lines · description 582 chars · body 4773 chars
 - **Frontmatter**: argument-hint `optional starting topic`
-- **Git**: first 2026-05-25, last 2026-05-27, 2 commits
+- **Git**: first 2026-05-25, last 2026-05-30, 3 commits
 - **Usage**: 0 invocations across 0 sessions
 
 > Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode — the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, vade-coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `retrospectives/2026-05-03_what-works-and-why.md`.
@@ -479,10 +492,10 @@ Repos scanned:
 - **Type**: procedural _(source: heuristic; has scripts/ subdir)_
 - **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/day-overview/SKILL.md`
-- **Size**: 12192 bytes / 293 lines · description 493 chars · body 11431 chars
+- **Size**: 12194 bytes / 293 lines · description 493 chars · body 11431 chars
 - **Frontmatter**: argument-hint `[--date YYYY-MM-DD] [--end YYYY-MM-DD] [--no-ship] [--post]`; allowed-tools `Bash, Read, Write, Edit`
 - **Bundle**: scripts=1
-- **Git**: first 2026-05-25, last 2026-05-27, 3 commits
+- **Git**: first 2026-05-25, last 2026-05-30, 4 commits
 - **Usage**: 0 invocations across 0 sessions
 
 > Produce a day-overview retrospective — briefing-shaped synthesis of a day's shipped work (memos, PRs, integrity-check state) grouped into lanes, with follow-ups and candidate next actions. Use at end-of-day or to summarize a window of work. Default flow ships (writes file, commits, opens PR); `--no-ship` stops at file write; `--post` also posts to vade-core Retrospectives Discussions. Don't invoke for routine status updates (use `/status-check`) or single-PR retrospectives (write a memo).
@@ -504,9 +517,9 @@ Repos scanned:
 - **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
 - **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/end-session/SKILL.md`
-- **Size**: 5598 bytes / 131 lines · description 542 chars · body 4926 chars
+- **Size**: 6543 bytes / 151 lines · description 542 chars · body 5871 chars
 - **Frontmatter**: allowed-tools `Bash, Read, Write, Edit, mcp__mem0__add_memory`
-- **Git**: first 2026-05-25, last 2026-05-27, 4 commits
+- **Git**: first 2026-05-25, last 2026-05-30, 5 commits
 - **Usage**: 0 invocations across 0 sessions
 
 > Run the COO session-end checklist — externalization reflection, plan-file commit, Mem0 episodic entry, memo-sync if needed, vade-agent-logs session log, Journal consideration, transcript-export sidecar commit. Use when wrapping up a working session, about to close the terminal or container, finishing the day's COO work, or when Ven says "we're done" / "end session" / "wrap up". Writes a marker file so the Stop hook knows cleanup is done. Do NOT invoke mid-task — only at the actual end of a session, once all substantive work is complete.
@@ -516,9 +529,9 @@ Repos scanned:
 - **Type**: role _(source: heuristic; name suffix -mode)_
 - **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/exec-mode/SKILL.md`
-- **Size**: 4444 bytes / 85 lines · description 990 chars · body 3305 chars
+- **Size**: 4446 bytes / 85 lines · description 990 chars · body 3305 chars
 - **Frontmatter**: argument-hint `optional scope hint, or --revise-persona`
-- **Git**: first 2026-05-25, last 2026-05-27, 4 commits
+- **Git**: first 2026-05-25, last 2026-05-30, 5 commits
 - **Usage**: 0 invocations across 0 sessions
 
 > Load the executive persona for sessions where the natural shape is delegate exploration → preserve main-context for decisions and action → reflect on state and priorities. Three modes fit: sweep/cleanup, strategic reflection, or both. Reads `personas/exec-mode.md` (the persona doctrine, including its discipline rollup folded from prior retrospectives with per-rule provenance), adopts the discipline, then asks user for scope. Invoke as `/exec-mode --revise-persona` to enter persona-revision mode (re-introduces read-all-retros + plan-mode REQUIRED + adversarial-auditor gates per the persona's `Persona-revision discipline` section). Use when starting a consolidation pass on open PRs/issues, when reflecting on substrate state and priorities, or when revising the persona itself. Don't invoke for narrow code-task work, single-PR review, or anything where standard COO discipline already fits — exec-mode is bias-overlay for broad-scope sessions, not a wrapper around the standard COO.
@@ -541,9 +554,9 @@ Repos scanned:
 - **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
 - **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/memo/SKILL.md`
-- **Size**: 15336 bytes / 428 lines · description 655 chars · body 14469 chars
+- **Size**: 15342 bytes / 428 lines · description 655 chars · body 14469 chars
 - **Frontmatter**: argument-hint `["Title"] [--dir <path>] [--supersedes <id>]`; allowed-tools `Bash, Read, Write`
-- **Git**: first 2026-05-25, last 2026-05-27, 3 commits
+- **Git**: first 2026-05-25, last 2026-05-30, 4 commits
 - **Usage**: 0 invocations across 0 sessions
 
 > Draft and file a COO memo per `operations/memo_protocol.md`. Generates a random ID for today (`YYYY-MM-DD-XXXX`, 4-char base32 lowercase suffix from a Crockford-derived alphabet), renders the canonical skeleton, and writes one self-contained file under `memos/`. Per-memo files (post-issue-#210) eliminate merge-conflict surface on parallel memo PRs — two parallel sessions never collide. Use to record a binding decision, name a new convention, or mark a supersession of an older memo. Don't invoke for: single-task notes (write a comment in the issue), session reflection (write a retrospective), or operational status (update the GitHub project board).
@@ -578,8 +591,8 @@ Repos scanned:
 - **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
 - **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/memo-search/SKILL.md`
-- **Size**: 8208 bytes / 192 lines · description 669 chars · body 7450 chars
-- **Git**: first 2026-05-25, last 2026-05-27, 3 commits
+- **Size**: 8216 bytes / 192 lines · description 669 chars · body 7450 chars
+- **Git**: first 2026-05-25, last 2026-05-30, 4 commits
 - **Usage**: 0 invocations across 0 sessions
 
 > Find memos under `memos/` by natural-language query via Mem0 semantic search over the `memo_pointer` layer. Use when the user asks "do we have memos about X?" or "what have we decided re: Y?", when keyword `/memo-query <word>` returned too few hits (titles are keyword-indexed but bodies are not), when the current task or plan context suggests prior COO decisions may be relevant, or when `/memo-query --semantic "<query>"` is invoked. Returns memo IDs + per-file paths; the caller reads full text from `memos/<id>.md` via the printed `cat` command. Don't rely on keyword `/memo-query` alone — it has an ~88% body-miss rate on concept queries (see MEMO-2026-04-24-05).
@@ -626,10 +639,10 @@ Repos scanned:
 - **Type**: procedural _(source: heuristic; has scripts/ subdir)_
 - **Vendoring**: custom _(source: heuristic)_
 - **Path**: `.claude/skills/postmerge-check/SKILL.md`
-- **Size**: 7763 bytes / 125 lines · description 398 chars · body 7154 chars
+- **Size**: 7769 bytes / 125 lines · description 398 chars · body 7154 chars
 - **Frontmatter**: argument-hint `[<num> | <repo>#<num> ...] [--since <duration>]`; allowed-tools `Bash, Read`
 - **Bundle**: scripts=1
-- **Git**: first 2026-05-25, last 2026-05-26, 2 commits
+- **Git**: first 2026-05-25, last 2026-05-30, 3 commits
 - **Usage**: 0 invocations across 0 sessions
 
 > Fetch recently merged vade-app PRs (or specified PR refs), extract `## Post-merge confirmation` handoff sections, execute the steps in order, and report per-PR PASS / PARTIAL / FAIL. Use in a fresh session to verify a merge landed cleanly without copy-pasting the handoff prompt manually. Per CLAUDE.md "Handoff prompts for boot-impacting PRs" (canonical: MEMO-2026-04-25-03 / vade-coo-memory#139).
@@ -644,18 +657,6 @@ Repos scanned:
 - **Usage**: 0 invocations across 0 sessions
 
 > Navigate the Quarto documentation efficiently when working on the VADE publishing site at read.vade-app.dev. Use this skill whenever a task involves Quarto — including `_quarto.yml`, navbars, sidebars, listings, themes, format options, citations, freeze, partial render, or any tldraw-style ".how do I configure X in Quarto" question. This includes any work in `vade-coo-memory/bin/publish-site/`, `site/`, `config/publish/`, or anywhere `QUARTO_BASE_CONFIG` is touched. Quarto publishes LLM-optimized markdown bundles at quarto.org/llms.txt and per-page `.llms.md` URLs; this skill teaches which page to fetch and how to navigate so agents don't hallucinate YAML keys, nest options under the wrong parent (`format.html.sidebar` is wrong — `sidebar` is top-level under `website`), or guess at listing-type/theme-extension semantics. Trigger whenever the user mentions Quarto, qmd, _quarto.yml, listings, navbar, sidebar, cosmo, brand, theme, freeze, render, page-navigation, or is clearly working on `read.vade-app.dev` even if "Quarto" isn't named explicitly.
-
-### `request-briefing` — skill in `coo-labs/coo-memory`
-
-- **Type**: procedural _(source: heuristic; procedural-style name (memo/post/tag/request/status/end-session/tagging))_
-- **Vendoring**: custom _(source: heuristic)_
-- **Path**: `.claude/skills/request-briefing/SKILL.md`
-- **Size**: 10206 bytes / 259 lines · description 607 chars · body 9360 chars
-- **Frontmatter**: argument-hint `[short-slug] [--principal NAME] [--recipient ROLE] [--draft]`; allowed-tools `Bash, Read, Write`
-- **Git**: first 2026-05-25, last 2026-05-27, 3 commits
-- **Usage**: 0 invocations across 0 sessions
-
-> Author a session-handoff briefing per `briefings/` procedure. Computes the next NNN, fills the template, commits to a fresh branch and opens a PR (or `--draft` to leave on disk for review-first workflows). Use when a session needs to hand a contextual problem off to another session and the handoff is too contextual for a plain issue body. Don't invoke for: single-PR-sized handoffs (use an issue), tasks the same session can finish (write code instead), or known-good plans that just need execution (write a plan, not a briefing). The recipient is expected to re-examine the framing — not rubber-stamp it.
 
 ### `status-check` — skill in `coo-labs/coo-memory`
 
