@@ -56,7 +56,7 @@ the *substrate references* don't.
   rewritten for the lifecycle shape — the canonical bundle is
   mirrored verbatim from the originating substrate as a worked
   example; install via fork-and-adapt until a `# Setup hints`
-  block lands (see follow-up issue in this PR).**
+  block lands (tracked in #28).**
 - `commission-retrospective/` — commission an impartial
   project-historian retrospective on a window of project work.
   Two evidence sub-agents in parallel (memos-and-essays analyst,
