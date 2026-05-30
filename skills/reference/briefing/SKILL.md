@@ -4,6 +4,9 @@ description: "Manage session-handoff briefings under `briefings/`. Subcommands: 
 argument-hint: "<request|pickup|done|release> [args]"
 disable-model-invocation: true
 allowed-tools: Bash, Read, Write
+metadata:
+  type: procedural
+  vendoring: custom
 ---
 
 # briefing — manage session-handoff briefings

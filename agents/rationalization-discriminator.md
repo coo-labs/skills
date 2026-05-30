@@ -3,6 +3,9 @@ name: rationalization-discriminator
 description: Read-only adversarial auditor for chain reasoning that fits the load-substrate → prior-dissolves → action-follows shape (MEMO-2026-05-09-wzzh). Asks one load-bearing question — "is this argument load-bearing or rationalizing?" — and reports a path-quality verdict separate from the outcome. Distinct from safety-auditor (governance-memo compliance) and emancipatory-auditor (subject+emancipatory clause); this role audits *path*, not *clauses*. Spawn when the COO notices the shape in its own move and wants an external read before banking the action.
 tools: Read, Bash, WebFetch, Agent
 model: sonnet
+metadata:
+  type: agent-reviewer
+  vendoring: custom
 ---
 
 # Rationalization Discriminator (Read-only)

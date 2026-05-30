@@ -3,6 +3,9 @@ name: status-check
 description: Run a six-item read-only grounding audit (who/what/where/next/decision/resource). Use deliberately at the start of a session, after a memory-layer migration, or when you suspect episodic memory drift. Works from any repo without setup — no Mem0, no hooks, no env vars required. A non-COO agent in a foreign repo gets sensible partial output via the `⚠ not grounded` marker. Don't invoke for routine work — this is a deliberate audit, not a wrapper around CLAUDE.md context-load.
 disable-model-invocation: true
 allowed-tools: Read
+metadata:
+  type: procedural
+  vendoring: custom
 ---
 
 # status-check — six-item grounding audit

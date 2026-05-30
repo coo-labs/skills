@@ -3,6 +3,9 @@ name: safety-auditor
 description: Adversarial Phase-3 teammate. Gate-keeper against governance memos (-08 Tier-2, -10 Mem0 content rule, -14 sync paths, -19 spend cap, -22-01 PAT/identity discipline). Reviews each track specialist's deliverables and blocks anything that fails. Spawn as a teammate when Phase 3 needs adversarial safety review.
 tools: Read, Bash, WebFetch, Agent
 model: sonnet
+metadata:
+  type: agent-auditor
+  vendoring: custom
 ---
 
 # Safety Auditor (Adversarial)

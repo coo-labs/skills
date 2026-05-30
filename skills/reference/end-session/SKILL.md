@@ -2,6 +2,9 @@
 name: end-session
 description: Run the COO session-end checklist — externalization reflection, plan-file commit, Mem0 episodic entry, memo-sync if needed, vade-agent-logs session log, Journal consideration, transcript-export sidecar commit. Use when wrapping up a working session, about to close the terminal or container, finishing the day's COO work, or when Ven says "we're done" / "end session" / "wrap up". Writes a marker file so the Stop hook knows cleanup is done. Do NOT invoke mid-task — only at the actual end of a session, once all substantive work is complete.
 allowed-tools: Bash, Read, Write, Edit, mcp__mem0__add_memory
+metadata:
+  type: procedural
+  vendoring: custom
 ---
 
 # end-session — COO session close-down
