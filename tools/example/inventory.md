@@ -1,6 +1,6 @@
 # Claude Code skill & agent inventory
 
-_Generated `2026-05-30T17:50:32Z` · schema `v1.0.0`._
+_Generated `2026-05-30T18:01:37Z` · schema `v1.0.0`._
 
 ## Summary
 
@@ -17,7 +17,7 @@ Repos scanned:
 - `coo-labs/coo-memory` @ `94fd06c5` (/home/user/coo-memory)
 - `coo-labs/coo-harness` @ `f4047718` (/home/user/coo-harness)
 - `coo-labs/vade-canvas` @ `7b88a64e` (/home/user/vade-canvas)
-- `coo-labs/skills` @ `69606c48` (/home/user/skills)
+- `coo-labs/skills` @ `f30cd026` (/home/user/skills)
 
 ## Inventory by repo
 
@@ -27,12 +27,10 @@ Repos scanned:
 
 | Name | Type | Vendor | Bytes | Lines | Bundle | Added | Last commit | Invocations |
 |------|------|--------|-------|-------|--------|-------|-------------|-------------|
-| `agentmail` | api-service ★ | vendored ★<br>agentmail-to/agentmail-skills | 7483 | 288 | references=2 | 2026-05-16 | 2026-05-30 | 0 |
-| `skill-creator` | meta ★ | vendored ★ | 33299 | 490 | scripts=9, references=1, assets=1, agents=3, LICENSE, vendor=VENDORED.md | 2026-05-16 | 2026-05-30 | 0 |
-| `tagging-taxonomy` | procedural ★ | — ★ | 12237 | 286 | — | 2026-05-16 | 2026-05-30 | 0 |
-| `trace-timeline` | procedural ★ | — ★ | 9177 | 175 | — | 2026-05-20 | 2026-05-30 | 0 |
-
-_★ marks values declared in `metadata:` frontmatter; unmarked values are heuristic._
+| `agentmail` | api-service | vendored<br>agentmail-to/agentmail-skills | 7483 | 288 | references=2 | 2026-05-16 | 2026-05-30 | 0 |
+| `skill-creator` | meta | vendored | 33299 | 490 | scripts=9, references=1, assets=1, agents=3, LICENSE, vendor=VENDORED.md | 2026-05-16 | 2026-05-30 | 0 |
+| `tagging-taxonomy` | procedural | — | 12237 | 286 | — | 2026-05-16 | 2026-05-30 | 0 |
+| `trace-timeline` | procedural | — | 9177 | 175 | — | 2026-05-20 | 2026-05-30 | 0 |
 
 ### `coo-labs/coo-memory`
 
@@ -40,47 +38,43 @@ _★ marks values declared in `metadata:` frontmatter; unmarked values are heuri
 
 | Name | Type | Vendor | Bytes | Lines | Bundle | Added | Last commit | Invocations |
 |------|------|--------|-------|-------|--------|-------|-------------|-------------|
-| `briefing` | procedural ★ | — ★ | 10731 | 242 | scripts=1, +2 files | 2026-05-30 | 2026-05-30 | 0 |
-| `cf-workers-best-practices` | reference ★ | vendored ★<br>cloudflare/skills | 7368 | 135 | references=2 | 2026-05-25 | 2026-05-30 | 0 |
-| `cf-wrangler` | api-service ★ | vendored ★<br>cloudflare/skills | 18637 | 930 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `chat-mode` | role ★ | — ★ | 5563 | 97 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `commission-retrospective` | procedural ★ | — ★ | 9676 | 211 | scripts=1, templates=3 | 2026-05-25 | 2026-05-30 | 0 |
-| `day-overview` | procedural ★ | — ★ | 12243 | 296 | scripts=1 | 2026-05-25 | 2026-05-30 | 0 |
-| `debug-mode` | role ★ | — ★ | 10581 | 227 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `end-session` | procedural ★ | — ★ | 6592 | 154 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `exec-mode` | role ★ | — ★ | 4489 | 88 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `manage-project` | api-service ★ | — ★ | 4219 | 86 | scripts=4, +1 dirs | 2026-05-25 | 2026-05-30 | 0 |
-| `memo` | procedural ★ | — ★ | 15391 | 431 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `memo-audit` | procedural ★ | — ★ | 11075 | 282 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `memo-query` | procedural ★ | — ★ | 7379 | 177 | scripts=1 | 2026-05-25 | 2026-05-30 | 0 |
-| `memo-search` | procedural ★ | — ★ | 8265 | 195 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `memo-sync` | procedural ★ | — ★ | 10952 | 262 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `peer-review` | review ★ | — ★ | 18264 | 370 | evals=1 | 2026-05-25 | 2026-05-30 | 0 |
-| `post-discussion` | procedural ★ | — ★ | 12197 | 276 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `postmerge-check` | procedural ★ | — ★ | 7818 | 128 | scripts=1 | 2026-05-25 | 2026-05-30 | 0 |
-| `quarto-docs` | documentation ★ | — ★ | 12384 | 113 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `status-check` | procedural ★ | — ★ | 5905 | 141 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `tag-milestone` | procedural ★ | — ★ | 8580 | 259 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `tool-creator` | meta ★ | — ★ | 20822 | 462 | templates=4 | 2026-05-25 | 2026-05-30 | 0 |
-| `upstream-feedback` | reference ★ | — ★ | 3989 | 49 | references=1 | 2026-05-25 | 2026-05-30 | 0 |
-
-_★ marks values declared in `metadata:` frontmatter; unmarked values are heuristic._
+| `briefing` | procedural | — | 10731 | 242 | scripts=1, +2 files | 2026-05-30 | 2026-05-30 | 0 |
+| `cf-workers-best-practices` | reference | vendored<br>cloudflare/skills | 7368 | 135 | references=2 | 2026-05-25 | 2026-05-30 | 0 |
+| `cf-wrangler` | api-service | vendored<br>cloudflare/skills | 18637 | 930 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `chat-mode` | role | — | 5563 | 97 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `commission-retrospective` | procedural | — | 9676 | 211 | scripts=1, templates=3 | 2026-05-25 | 2026-05-30 | 0 |
+| `day-overview` | procedural | — | 12243 | 296 | scripts=1 | 2026-05-25 | 2026-05-30 | 0 |
+| `debug-mode` | role | — | 10581 | 227 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `end-session` | procedural | — | 6592 | 154 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `exec-mode` | role | — | 4489 | 88 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `manage-project` | api-service | — | 4219 | 86 | scripts=4, +1 dirs | 2026-05-25 | 2026-05-30 | 0 |
+| `memo` | procedural | — | 15391 | 431 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `memo-audit` | procedural | — | 11075 | 282 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `memo-query` | procedural | — | 7379 | 177 | scripts=1 | 2026-05-25 | 2026-05-30 | 0 |
+| `memo-search` | procedural | — | 8265 | 195 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `memo-sync` | procedural | — | 10952 | 262 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `peer-review` | review | — | 18264 | 370 | evals=1 | 2026-05-25 | 2026-05-30 | 0 |
+| `post-discussion` | procedural | — | 12197 | 276 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `postmerge-check` | procedural | — | 7818 | 128 | scripts=1 | 2026-05-25 | 2026-05-30 | 0 |
+| `quarto-docs` | documentation | — | 12384 | 113 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `status-check` | procedural | — | 5905 | 141 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `tag-milestone` | procedural | — | 8580 | 259 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `tool-creator` | meta | — | 20822 | 462 | templates=4 | 2026-05-25 | 2026-05-30 | 0 |
+| `upstream-feedback` | reference | — | 3989 | 49 | references=1 | 2026-05-25 | 2026-05-30 | 0 |
 
 #### Agents (9)
 
 | Name | Type | Vendor | Bytes | Lines | Bundle | Added | Last commit | Invocations |
 |------|------|--------|-------|-------|--------|-------|-------------|-------------|
-| `dispatching-parallel-agents` | agent-orchestrator ★ | — ★ | 5375 | 143 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `emancipatory-auditor` | agent-auditor ★ | — ★ | 4483 | 61 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `lineage-interpreter` | agent-specialist ★ | — ★ | 9303 | 115 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `oss-launch-issue-curator` | agent-specialist ★ | — ★ | 8467 | 129 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `rationalization-discriminator` | agent-reviewer ★ | — ★ | 7263 | 79 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `research-investigator` | agent-researcher ★ | — ★ | 3192 | 78 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `safety-auditor` | agent-auditor ★ | — ★ | 4325 | 52 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `session-closer` | agent-specialist ★ | — ★ | 13350 | 245 | — | 2026-05-25 | 2026-05-30 | 0 |
-| `transcript-analyzer` | agent-specialist ★ | — ★ | 23431 | 292 | — | 2026-05-25 | 2026-05-30 | 0 |
-
-_★ marks values declared in `metadata:` frontmatter; unmarked values are heuristic._
+| `dispatching-parallel-agents` | agent-orchestrator | — | 5375 | 143 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `emancipatory-auditor` | agent-auditor | — | 4483 | 61 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `lineage-interpreter` | agent-specialist | — | 9303 | 115 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `oss-launch-issue-curator` | agent-specialist | — | 8467 | 129 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `rationalization-discriminator` | agent-reviewer | — | 7263 | 79 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `research-investigator` | agent-researcher | — | 3192 | 78 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `safety-auditor` | agent-auditor | — | 4325 | 52 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `session-closer` | agent-specialist | — | 13350 | 245 | — | 2026-05-25 | 2026-05-30 | 0 |
+| `transcript-analyzer` | agent-specialist | — | 23431 | 292 | — | 2026-05-25 | 2026-05-30 | 0 |
 
 ### `coo-labs/skills`
 
@@ -88,34 +82,30 @@ _★ marks values declared in `metadata:` frontmatter; unmarked values are heuri
 
 | Name | Type | Vendor | Bytes | Lines | Bundle | Added | Last commit | Invocations |
 |------|------|--------|-------|-------|--------|-------|-------------|-------------|
-| `adapt-skill` | meta ★ | — ★ | 12390 | 298 | scripts=1, +2 files | 2026-05-12 | 2026-05-30 | 0 |
-| `briefing` | procedural ★ | — ★ | 10731 | 242 | scripts=1, +2 files | 2026-05-30 | 2026-05-30 | 0 |
-| `canvas-ui` | reference ★ | — ★ | 19215 | 184 | references=1 | 2026-05-11 | 2026-05-30 | 0 |
-| `chat-mode` | role ★ | — ★ | 9678 | 141 | — | 2026-05-11 | 2026-05-30 | 0 |
-| `commission-retrospective` | procedural ★ | — ★ | 19588 | 394 | scripts=1, templates=3 | 2026-05-12 | 2026-05-30 | 0 |
-| `day-overview` | procedural ★ | — ★ | 19677 | 451 | scripts=1 | 2026-05-12 | 2026-05-30 | 0 |
-| `end-session` | procedural ★ | — ★ | 15497 | 347 | — | 2026-05-12 | 2026-05-30 | 0 |
-| `exec-mode` | role ★ | — ★ | 9333 | 166 | +2 files | 2026-05-11 | 2026-05-30 | 0 |
-| `peer-review` | review ★ | — ★ | 17842 | 357 | — | 2026-05-11 | 2026-05-30 | 0 |
-| `quarto-docs` | documentation ★ | — ★ | 12086 | 113 | — | 2026-05-11 | 2026-05-30 | 0 |
-| `status-check` | procedural ★ | — ★ | 8023 | 186 | — | 2026-05-12 | 2026-05-30 | 0 |
-| `tldraw-docs` | documentation ★ | — ★ | 11750 | 99 | — | 2026-05-11 | 2026-05-30 | 0 |
-| `tool-creator` | meta ★ | — ★ | 31255 | 640 | templates=4 | 2026-05-12 | 2026-05-30 | 0 |
-
-_★ marks values declared in `metadata:` frontmatter; unmarked values are heuristic._
+| `adapt-skill` | meta | — | 12390 | 298 | scripts=1, +2 files | 2026-05-12 | 2026-05-30 | 0 |
+| `briefing` | procedural | — | 10731 | 242 | scripts=1, +2 files | 2026-05-30 | 2026-05-30 | 0 |
+| `canvas-ui` | reference | — | 19215 | 184 | references=1 | 2026-05-11 | 2026-05-30 | 0 |
+| `chat-mode` | role | — | 9678 | 141 | — | 2026-05-11 | 2026-05-30 | 0 |
+| `commission-retrospective` | procedural | — | 19588 | 394 | scripts=1, templates=3 | 2026-05-12 | 2026-05-30 | 0 |
+| `day-overview` | procedural | — | 19677 | 451 | scripts=1 | 2026-05-12 | 2026-05-30 | 0 |
+| `end-session` | procedural | — | 15497 | 347 | — | 2026-05-12 | 2026-05-30 | 0 |
+| `exec-mode` | role | — | 9333 | 166 | +2 files | 2026-05-11 | 2026-05-30 | 0 |
+| `peer-review` | review | — | 17842 | 357 | — | 2026-05-11 | 2026-05-30 | 0 |
+| `quarto-docs` | documentation | — | 12086 | 113 | — | 2026-05-11 | 2026-05-30 | 0 |
+| `status-check` | procedural | — | 8023 | 186 | — | 2026-05-12 | 2026-05-30 | 0 |
+| `tldraw-docs` | documentation | — | 11750 | 99 | — | 2026-05-11 | 2026-05-30 | 0 |
+| `tool-creator` | meta | — | 31255 | 640 | templates=4 | 2026-05-12 | 2026-05-30 | 0 |
 
 #### Agents (6)
 
 | Name | Type | Vendor | Bytes | Lines | Bundle | Added | Last commit | Invocations |
 |------|------|--------|-------|-------|--------|-------|-------------|-------------|
-| `dispatching-parallel-agents` | agent-orchestrator ★ | vendored-customized ★<br>obra/superpowers | 5604 | 147 | — | 2026-05-11 | 2026-05-30 | 0 |
-| `emancipatory-auditor` | agent-auditor ★ | — ★ | 9001 | 156 | — | 2026-05-11 | 2026-05-30 | 0 |
-| `lineage-interpreter` | agent-specialist ★ | — ★ | 9327 | 115 | — | 2026-05-11 | 2026-05-30 | 0 |
-| `rationalization-discriminator` | agent-reviewer ★ | — ★ | 7297 | 79 | — | 2026-05-11 | 2026-05-30 | 0 |
-| `research-investigator` | agent-researcher ★ | — ★ | 3178 | 78 | — | 2026-05-11 | 2026-05-30 | 0 |
-| `safety-auditor` | agent-auditor ★ | — ★ | 8853 | 127 | — | 2026-05-11 | 2026-05-30 | 0 |
-
-_★ marks values declared in `metadata:` frontmatter; unmarked values are heuristic._
+| `dispatching-parallel-agents` | agent-orchestrator | vendored-customized<br>obra/superpowers | 5604 | 147 | — | 2026-05-11 | 2026-05-30 | 0 |
+| `emancipatory-auditor` | agent-auditor | — | 9001 | 156 | — | 2026-05-11 | 2026-05-30 | 0 |
+| `lineage-interpreter` | agent-specialist | — | 9327 | 115 | — | 2026-05-11 | 2026-05-30 | 0 |
+| `rationalization-discriminator` | agent-reviewer | — | 7297 | 79 | — | 2026-05-11 | 2026-05-30 | 0 |
+| `research-investigator` | agent-researcher | — | 3178 | 78 | — | 2026-05-11 | 2026-05-30 | 0 |
+| `safety-auditor` | agent-auditor | — | 8853 | 127 | — | 2026-05-11 | 2026-05-30 | 0 |
 
 ### `coo-labs/vade-canvas`
 
@@ -123,10 +113,8 @@ _★ marks values declared in `metadata:` frontmatter; unmarked values are heuri
 
 | Name | Type | Vendor | Bytes | Lines | Bundle | Added | Last commit | Invocations |
 |------|------|--------|-------|-------|--------|-------|-------------|-------------|
-| `canvas-ui` | reference ★ | — ★ | 19266 | 184 | references=1, evals=1 | 2026-05-09 | 2026-05-30 | 0 |
-| `tldraw-docs` | documentation ★ | — ★ | 11822 | 99 | references=1 | 2026-05-01 | 2026-05-30 | 0 |
-
-_★ marks values declared in `metadata:` frontmatter; unmarked values are heuristic._
+| `canvas-ui` | reference | — | 19266 | 184 | references=1, evals=1 | 2026-05-09 | 2026-05-30 | 0 |
+| `tldraw-docs` | documentation | — | 11822 | 99 | references=1 | 2026-05-01 | 2026-05-30 | 0 |
 
 ## Cross-cut by type
 

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-05-30T17:50:32Z",
+  "generated_at": "2026-05-30T18:01:37Z",
   "scan": {
     "repos": [
       {
@@ -21,7 +21,7 @@
       {
         "path": "/home/user/skills",
         "remote": "coo-labs/skills",
-        "head_sha": "69606c48fc71d142646b9d8b723fcf75eb6ccbcf"
+        "head_sha": "f30cd02669b74e0e03722e5ed208acc525410a35"
       }
     ],
     "transcripts": {
@@ -1943,7 +1943,7 @@
       "bundle": {},
       "git": {
         "first_commit_iso": "2026-05-11T20:16:35+00:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 2
       },
       "usage": {
@@ -1991,7 +1991,7 @@
       "bundle": {},
       "git": {
         "first_commit_iso": "2026-05-11T20:16:35+00:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 3
       },
       "usage": {
@@ -2038,7 +2038,7 @@
       "bundle": {},
       "git": {
         "first_commit_iso": "2026-05-11T20:16:35+00:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 2
       },
       "usage": {
@@ -2085,7 +2085,7 @@
       "bundle": {},
       "git": {
         "first_commit_iso": "2026-05-11T20:16:35+00:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 2
       },
       "usage": {
@@ -2132,7 +2132,7 @@
       "bundle": {},
       "git": {
         "first_commit_iso": "2026-05-11T20:16:35+00:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 2
       },
       "usage": {
@@ -2180,7 +2180,7 @@
       "bundle": {},
       "git": {
         "first_commit_iso": "2026-05-11T20:16:35+00:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 3
       },
       "usage": {
@@ -2238,7 +2238,7 @@
       },
       "git": {
         "first_commit_iso": "2026-05-12T07:06:21+02:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 4
       },
       "usage": {
@@ -2297,7 +2297,7 @@
       },
       "git": {
         "first_commit_iso": "2026-05-30T19:31:35+02:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 2
       },
       "usage": {
@@ -2351,7 +2351,7 @@
       },
       "git": {
         "first_commit_iso": "2026-05-11T20:16:35+00:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 2
       },
       "usage": {
@@ -2399,7 +2399,7 @@
       "bundle": {},
       "git": {
         "first_commit_iso": "2026-05-11T23:41:03+02:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 4
       },
       "usage": {
@@ -2462,7 +2462,7 @@
       },
       "git": {
         "first_commit_iso": "2026-05-12T05:36:05+02:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 3
       },
       "usage": {
@@ -2517,7 +2517,7 @@
       },
       "git": {
         "first_commit_iso": "2026-05-12T05:36:05+02:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 4
       },
       "usage": {
@@ -2565,7 +2565,7 @@
       "bundle": {},
       "git": {
         "first_commit_iso": "2026-05-12T05:36:05+02:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 4
       },
       "usage": {
@@ -2618,7 +2618,7 @@
       },
       "git": {
         "first_commit_iso": "2026-05-11T23:41:03+02:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 4
       },
       "usage": {
@@ -2665,7 +2665,7 @@
       "bundle": {},
       "git": {
         "first_commit_iso": "2026-05-11T23:09:35+02:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 3
       },
       "usage": {
@@ -2712,7 +2712,7 @@
       "bundle": {},
       "git": {
         "first_commit_iso": "2026-05-11T20:16:35+00:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 2
       },
       "usage": {
@@ -2760,7 +2760,7 @@
       "bundle": {},
       "git": {
         "first_commit_iso": "2026-05-12T05:36:05+02:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 3
       },
       "usage": {
@@ -2807,7 +2807,7 @@
       "bundle": {},
       "git": {
         "first_commit_iso": "2026-05-11T20:16:35+00:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 2
       },
       "usage": {
@@ -2865,7 +2865,7 @@
       },
       "git": {
         "first_commit_iso": "2026-05-12T05:36:05+02:00",
-        "last_commit_iso": "2026-05-30T17:42:07+00:00",
+        "last_commit_iso": "2026-05-30T19:58:10+02:00",
         "commits_count": 3
       },
       "usage": {
