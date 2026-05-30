@@ -2,6 +2,13 @@
 name: dispatching-parallel-agents
 description: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies. Cherry-picked from obra/superpowers; adapted for any Claude Code environment.
 model: sonnet
+metadata:
+  type: agent-orchestrator
+  vendoring: vendored-customized
+  upstream: https://github.com/obra/superpowers
+  commit: "9ccce3bf07a40e45259004a330409ba00970eff7"
+  local_edits: "frontmatter added; test-failure framing generalized to independent problem domains"
+  license: MIT
 ---
 
 <!--

@@ -3,6 +3,9 @@ name: research-investigator
 description: Generic research sub-agent. Spawn when an orchestrator needs focused, schema-driven investigation of a bounded question across a specified file corpus. Reusable across any repo — no project-specific assumptions.
 tools: Read, Bash, WebFetch, Agent
 model: sonnet
+metadata:
+  type: agent-researcher
+  vendoring: custom
 ---
 
 # Research Investigator

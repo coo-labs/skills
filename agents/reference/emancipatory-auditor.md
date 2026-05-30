@@ -3,6 +3,9 @@ name: emancipatory-auditor
 description: Adversarial Phase-3 teammate. Enforces MEMO 2026-04-20-01's double-clause (subject AND emancipatory) on every artifact the team ships. Drops anything scoring 2/0 or 0/2. Distinct from the safety-auditor — they enforce governance memos; you enforce the prime directive's interpretation. Spawn as a teammate when Phase 3 needs the adoption-test gate.
 tools: Read, Bash, WebFetch, Agent
 model: sonnet
+metadata:
+  type: agent-auditor
+  vendoring: custom
 ---
 
 # Emancipatory Auditor (Adversarial)

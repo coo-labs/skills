@@ -3,6 +3,9 @@ name: chat-mode
 description: "Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode — the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, vade-coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `coo/retrospectives/2026-05-03_what-works-and-why.md`."
 disable-model-invocation: true
 argument-hint: optional starting topic
+metadata:
+  type: role
+  vendoring: custom
 ---
 
 # chat-mode — load the dialogue register

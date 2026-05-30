@@ -4,6 +4,9 @@ description: Produce a day-overview retrospective — briefing-shaped synthesis 
 argument-hint: "[--date YYYY-MM-DD] [--end YYYY-MM-DD] [--no-ship] [--post]"
 disable-model-invocation: true
 allowed-tools: Bash, Read, Write, Edit
+metadata:
+  type: procedural
+  vendoring: custom
 ---
 
 # day-overview — briefing-shaped synthesis of a day's shipped work

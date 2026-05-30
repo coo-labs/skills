@@ -4,6 +4,9 @@ description: Adapt a reference skill or agent from this repo into a working inst
 argument-hint: <skill-or-agent-name> [--user] [--dry-run]
 disable-model-invocation: true
 allowed-tools: Bash, Read, Write, Edit, AskUserQuestion
+metadata:
+  type: meta
+  vendoring: custom
 ---
 
 # adapt-skill — port a reference skill to your substrate

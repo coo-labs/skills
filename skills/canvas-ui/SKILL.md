@@ -1,6 +1,9 @@
 ---
 name: canvas-ui
 description: Apply tldraw canvas frontend conventions and avoid recurring landmines — extracted from a production tldraw-based app. Use this skill whenever you're working in a tldraw-based codebase on anything that touches the canvas — adding or modifying a custom shape, wiring shell UI, mutating shapes through an MCP/WebSocket bridge, asset stores, snapshot persistence, library / catalog / shape-panel surfaces, or anywhere `tldraw` or `@tldraw/*` is imported. Trigger even when the prompt only mentions "the canvas," "a shape," "AppShell," "persistenceKey," "asset store," "TLAssetStore," "ShapeUtil," "BindingUtil," "snapshot," "the editor," or "tldraw" without naming the skill — and especially trigger before opening a PR that changes any tldraw-touching file. This skill is the anti-patterns and conventions layer; for SDK reference / doc URLs, also consult the `tldraw-docs` skill (the two compose).
+metadata:
+  type: reference
+  vendoring: custom
 ---
 
 # canvas-ui

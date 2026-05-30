@@ -192,17 +192,25 @@ def parse_vendor_marker(content):
                 names.append(rn)
         body = "\n".join(lines[1:])
         info = {}
-        for field, pat in (
-            ("upstream", r"\*\*(?:Source repo|Upstream)\*\*:\s*<?([^\s>]+)>?"),
-            ("commit", r"\*\*Source commit\*\*:\s*`?([0-9a-f]{7,40})`?"),
-            ("snapshot_date", r"\*\*Snapshot date\*\*:\s*([0-9-]+)"),
+        # Accept both `**Label**:` and `**Label:**` (colon inside or outside
+        # the bold markers — both forms appear in the wild).
+        for field, label in (
+            ("upstream",      r"(?:Source repo|Upstream)"),
+            ("commit",        r"Source commit"),
+            ("snapshot_date", r"Snapshot date"),
         ):
+            pat_value = {
+                "upstream":      r"<?([^\s>]+)>?",
+                "commit":        r"`?([0-9a-f]{7,40})`?",
+                "snapshot_date": r"([0-9-]+)",
+            }[field]
+            pat = rf"\*\*{label}(?:\*\*:|:\*\*)\s*{pat_value}"
             m = re.search(pat, body, re.IGNORECASE)
             if m:
                 info[field] = m.group(1)
         if re.search(r"local\s*edits", body, re.IGNORECASE):
             le = re.search(
-                r"\*\*Local edits\*\*:\s*(.+?)(?:\n\n|\n\*\*|\Z)",
+                r"\*\*Local edits(?:\*\*:|:\*\*)\s*(.+?)(?:\n\n|\n\*\*|\Z)",
                 body, re.DOTALL | re.IGNORECASE,
             )
             edits_text = (le.group(1).strip() if le else "")

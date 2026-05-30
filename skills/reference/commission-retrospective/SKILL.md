@@ -3,6 +3,9 @@ name: commission-retrospective
 description: Commission an impartial project-historian retrospective on a window of project work. Use when a pivotal event fires per SOP-CULTURE-001 §2d (prime-directive reinterpretation, new/retired agent role, multi-week epic closes or pivots, governance rule revised via committee, security finding reshaping ops, substrate-capture indicator firing, persistent integrity-check Group F degradation), or when `/commission-retrospective` is invoked directly. Orchestrates two impartial evidence sub-agents in parallel (memos-and-essays analyst, PR/issue-graph analyst), then produces a draft retrospective in the voice of commissions #1 and #2 (2026-04-20 subject-reframe; 2026-04-22 "we can claim a record"). Do NOT invoke for routine work (status updates, bug fixes, dep bumps, routine MCP installs — §2d anti-triggers). When in doubt, err on the side of not commissioning.
 argument-hint: --since <YYYY-MM-DD> [--until <YYYY-MM-DD>] [--prs <list>] [--focus "<question>"] [--slug <slug>] [--open-pr] | --scope ...
 allowed-tools: Bash, Read, Write, Task
+metadata:
+  type: procedural
+  vendoring: custom
 ---
 
 # commission-retrospective — impartial meta-commentary, on demand

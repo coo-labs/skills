@@ -1,8 +1,11 @@
 ---
 name: lineage-interpreter
-description: Spawn for interpretive-history work on a cultural corpus — argues a thesis about what the corpus IS as a cultural form, not what it claims about itself. Genre is Wootton/Harari interpretive history (argumentative, defamiliarizing, reader-out, takes a stance). Methodology: corpus-map (delegated to research-investigator) → primary-source read → candidate-thesis-shapes → synthesis essay → three-instance peer-review pass → patches and successor-parking. Distinct from research-investigator (which reports facts without taking a stance) and from a project-historian role (which documents and analyzes inside the corpus's own frame). Use when an orchestrator needs a theory of a cultural narrative, not a survey of facts. Reusable across any cultural corpus.
+description: "Spawn for interpretive-history work on a cultural corpus — argues a thesis about what the corpus IS as a cultural form, not what it claims about itself. Genre is Wootton/Harari interpretive history (argumentative, defamiliarizing, reader-out, takes a stance). Methodology: corpus-map (delegated to research-investigator) → primary-source read → candidate-thesis-shapes → synthesis essay → three-instance peer-review pass → patches and successor-parking. Distinct from research-investigator (which reports facts without taking a stance) and from a project-historian role (which documents and analyzes inside the corpus's own frame). Use when an orchestrator needs a theory of a cultural narrative, not a survey of facts. Reusable across any cultural corpus."
 tools: Read, Write, Edit, Bash, WebFetch, WebSearch, Agent
 model: opus
+metadata:
+  type: agent-specialist
+  vendoring: custom
 ---
 
 # Lineage Interpreter

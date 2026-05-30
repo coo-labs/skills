@@ -3,6 +3,9 @@ name: peer-review
 description: Commission three (or N) independent peer reviewers on a long-form authored artifact — essay, paper, foundation doc, RFC, design proposal, plan — and synthesize their feedback. Dispatches sub-agents in parallel via the Task tool, each with a role-specific lens (defaults adapt to the document type — e.g. philosophy essay → analytic phil of mind + frontier-lab ML researcher with phil training + historian/phil of science; engineering RFC → senior systems engineer + security/ops + product-strategy outside lens), each producing strongest-moves / weak-points / missing-considerations / 3–5 concrete revision suggestions. Then, only on explicit user confirmation (never automatically), decomposes the reviews into a trackable atomic-issue revision pipeline on GitHub — parent epic + per-reviewer sub-epic + N atom issues + implementer briefing for asynchronous per-atom PR sessions. Invoke when the user asks for "peer review", "multi-lens review", "independent critique", "feedback from a [philosopher/engineer/historian/X]", "different angles on this draft", or "what would N people from different backgrounds say about this" — even if they don't explicitly say "peer review" but clearly want cross-lens feedback before publishing or shipping. Don't invoke for quick copyedit, single-reviewer asks, code review, operational artifacts (PRs/issues/configs), or short pieces (<1000 words); those are different work.
 argument-hint: <file-path> [--roles "r1,r2,r3"] [--n <count>] [--no-decompose]
 allowed-tools: Read, Bash, Write, Task
+metadata:
+  type: review
+  vendoring: custom
 ---
 
 # peer-review — multi-lens independent critique on long-form artifacts
