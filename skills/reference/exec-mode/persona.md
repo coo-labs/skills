@@ -204,7 +204,7 @@ session-end is the named failure mode this gate prevents
 - **Close** when the session output is complete and reflection has
   identified no immediate next loop. Most sessions.
 - **Both can fire in one session** — Hand off the in-flight problem
-  via `/request-briefing`, then Close. The v2-revision session did
+  via `/briefing request`, then Close. The v2-revision session did
   exactly this (briefing 010 = Hand-off; v2-revision retrospective
   = Close).
 
@@ -227,9 +227,9 @@ session-end is the named failure mode this gate prevents
   open-PR addenda; merged-then-extend goes on its own branch.
 
 - **Hand off.** Write a session-handoff briefing via
-  `/request-briefing` (per `coo/briefings/` procedure). The
-  briefing carries the Phase-4 reflection as its main payload plus
-  any in-flight artifact references. Commit + push the briefing.
+  `/briefing request` (per `briefings/` procedure). The briefing
+  carries the Phase-4 reflection as its main payload plus any
+  in-flight artifact references. Commit + push the briefing.
   Then close per the next branch.
 
 - **Close.** Standard end-of-session, with the persona's
