@@ -63,7 +63,7 @@ Existing inventory at TOOLS.md §3 Skills + §2 Slash commands.
 
 Do NOT re-Read CLAUDE.md, identity files, episodic_memory.md,
 parallel_instance_protocol.md, this brief, or
-`coo/briefings/010-tool-creator-design.md`. The substrate is
+`briefings/010-tool-creator-design.md`. The substrate is
 already loaded in main context.
 
 ## Output schema (≤300 words)

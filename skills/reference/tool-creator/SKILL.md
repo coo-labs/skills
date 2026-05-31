@@ -1,6 +1,6 @@
 ---
 name: tool-creator
-description: Author a new VADE skill (the Anthropic-recommended primitive for slash-invoked workflows and reusable agent playbooks). Walks the operator through capability description → inventory check → frontmatter choice → draft → operator review → adversarial-auditor pass → TOOLS.md registration → PR. v1 emits a single `.claude/skills/<name>/SKILL.md` per invocation; subagents (`.claude/agents/`), personas (`coo/personas/`), hooks (settings.json), and compound primitives are deferred to v2+. Use when externalizing a recurring pattern or session-end-noticed capability into a `/foo` skill or auto-discoverable skill. Do NOT invoke for one-off scripts, in-place file edits, or refactors outside v1's primitive scope.
+description: Author a new VADE skill (the Anthropic-recommended primitive for slash-invoked workflows and reusable agent playbooks). Walks the operator through capability description → inventory check → frontmatter choice → draft → operator review → adversarial-auditor pass → TOOLS.md registration → PR. v1 emits a single `.claude/skills/<name>/SKILL.md` per invocation; subagents (`.claude/agents/`), personas (`personas/`), hooks (settings.json), and compound primitives are deferred to v2+. Use when externalizing a recurring pattern or session-end-noticed capability into a `/foo` skill or auto-discoverable skill. Do NOT invoke for one-off scripts, in-place file edits, or refactors outside v1's primitive scope.
 disable-model-invocation: true
 metadata:
   type: meta
@@ -28,8 +28,8 @@ the docs win — open an issue and update this skill.
 > decision-tree, and a deliberate stop; Phase 2 finalize with
 > two adversarial auditors in parallel, a tools-registry row,
 > and a PR) is portable; the substrate references (the five
-> `coo-labs/*` repos, `coo/parallel_instance_protocol.md` §8 for
-> sub-agent dispatch discipline, `coo/personas/`, governance
+> `coo-labs/*` repos, `operations/parallel_instance_protocol.md` §8 for
+> sub-agent dispatch discipline, `personas/`, governance
 > memos MEMO-2026-04-22-01 / -11-10 / -11-14 / -28-3ca3 /
 > -22-04, MEMO-2026-04-20-01's subject+emancipatory double
 > clause, the `TOOLS.md` row schema, the `safety-auditor` /
@@ -59,7 +59,7 @@ Don't invoke for:
 - Edits to existing skills that don't change frontmatter shape
   (use Edit on the SKILL.md directly).
 - Authoring sub-agents (`.claude/agents/<name>.md` — v2 scope),
-  personas (`coo/personas/<name>.md` — v3 scope), or hooks
+  personas (`personas/<name>.md` — v3 scope), or hooks
   (settings.json — v4 scope). v1 is **skill-only**.
 
 ## Inputs
@@ -90,7 +90,7 @@ The skill expects (operator-supplied, prompted if absent):
 #### Step 1.1 — Resolve roots and capture intent
 
 ```bash
-COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
 [ -n "$COO" ] || { echo "tool-creator: could not find coo-memory data root"; exit 1; }
 ```
 
@@ -117,8 +117,8 @@ in coo-memory (legacy, but still in use). It reports:
 - **No collision** — proceed.
 
 Forbidden in the agent prompt: re-Reading CLAUDE.md, identity
-files, `coo/episodic_memory.md`, this SKILL.md. Inline pre-fetched
-context in the prompt per `coo/parallel_instance_protocol.md` §8.
+files, `identity/episodic_memory.md`, this SKILL.md. Inline pre-fetched
+context in the prompt per `operations/parallel_instance_protocol.md` §8.
 Cap output ≤300 words.
 
 #### Step 1.2.5 — Refactor patterns (canonical inventory resolutions)
@@ -163,7 +163,7 @@ auto-pick. Path B is the load-bearing one to remember — extracting
 shared helpers prevents the drift class where two consumers diverge
 in their copy-paste of the same logic. Cross-references:
 coo-labs/coo-memory#313 (precedent), coo-labs/coo-memory#322 (this v1.1
-candidate, surfaced 2026-04-30T22:08), and `coo/personas/exec-mode
+candidate, surfaced 2026-04-30T22:08), and `personas/exec-mode
 -retrospectives/2026-04-30_post-discussion-prototype.md` (the
 prototype run that named the pattern).
 
@@ -234,10 +234,10 @@ and `emancipatory-auditor` per VADE convention. Each reads the
 current `SKILL.md` (post-operator-review) and supporting files;
 each returns a structured report.
 
-Each auditor prompt MUST follow `coo/parallel_instance_protocol.md`
+Each auditor prompt MUST follow `operations/parallel_instance_protocol.md`
 §8 inline: pre-fetched context paragraph (the new skill's
 purpose, files in scope), explicit `Do NOT re-Read` list (e.g.,
-`CLAUDE.md`, `identity/*`, `coo/episodic_memory.md`,
+`CLAUDE.md`, `identity/*`, `identity/episodic_memory.md`,
 `parallel_instance_protocol.md`), and output cap ≤500 words.
 The agent definitions in `.claude/agents/` carry their own
 discipline; the orchestrating skill asserts the §8 constraints
@@ -397,7 +397,7 @@ These are deferred to later versions:
 
 - **Subagents** (`.claude/agents/<name>.md`) — different file
   shape; v2 work.
-- **Personas** (`coo/personas/<name>.md`) — vade-specific mode
+- **Personas** (`personas/<name>.md`) — vade-specific mode
   overlay; v3 work. The persona-vs-skill question is real for
   refactors like coo-labs/coo-memory#321 (exec-mode skill refactor)
   but v1 doesn't yet handle it.
@@ -421,7 +421,7 @@ coo-memory/.claude/skills/tool-creator/templates/ (templates)
 coo-memory/TOOLS.md (registration target)
 coo-memory/.claude/agents/safety-auditor.md (Phase 2 auditor)
 coo-memory/.claude/agents/emancipatory-auditor.md (Phase 2 auditor)
-coo-memory/coo/parallel_instance_protocol.md §8 (sub-agent dispatch)
+coo-memory/operations/parallel_instance_protocol.md §8 (sub-agent dispatch)
 https://code.claude.com/docs/en/skills (Anthropic spec — SOT for primitive shape)
 ```
 
@@ -487,7 +487,7 @@ setup_hints:
     question: "Step 1.1 has a COO data-root resolution block (sentinel-file discovery). Skip to replace with a generic 'cd to repo root' instruction."
     find_unique: true
     find: |-
-      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
       [ -n "$COO" ] || { echo "tool-creator: could not find coo-memory data root"; exit 1; }
     fallback: |-
       COO="$(git rev-parse --show-toplevel 2>/dev/null)"
@@ -554,14 +554,14 @@ setup_hints:
 
   - key: parallel_protocol_ref
     kind: OPTIONAL
-    question: "Path to your sub-agent dispatch discipline doc (VADE: coo/parallel_instance_protocol.md §8)? Skip to inline the rule."
-    find: "`coo/parallel_instance_protocol.md` §8"
+    question: "Path to your sub-agent dispatch discipline doc (VADE: operations/parallel_instance_protocol.md §8)? Skip to inline the rule."
+    find: "`operations/parallel_instance_protocol.md` §8"
     fallback: "your project's sub-agent dispatch discipline (or inline the rule: pre-fetch context, forbid re-reading enumerated files, cap output, structured schema)"
 
   - key: precedent_retrospective
     kind: OPTIONAL
-    question: "Path to a retrospective documenting a pattern-precedent for this skill? (VADE: coo/personas/exec-mode-retrospectives/2026-04-30_post-discussion-prototype.md.) Skip if you have no such precedent."
-    find: "`coo/personas/exec-mode\n-retrospectives/2026-04-30_post-discussion-prototype.md`"
+    question: "Path to a retrospective documenting a pattern-precedent for this skill? (VADE: personas/exec-mode-retrospectives/2026-04-30_post-discussion-prototype.md.) Skip if you have no such precedent."
+    find: "`personas/exec-mode\n-retrospectives/2026-04-30_post-discussion-prototype.md`"
     fallback: "(no precedent retrospective)"
 
   - key: boot_order_cross_ref
@@ -575,7 +575,7 @@ setup_hints:
     question: "Skip unless you want to keep the VADE-specific 'Out of scope for v1' references (coo-labs/coo-memory#321, #312, #313, named legacy commands)."
     find_unique: true
     find: |
-      - **Personas** (`coo/personas/<name>.md`) — vade-specific mode
+      - **Personas** (`personas/<name>.md`) — vade-specific mode
         overlay; v3 work. The persona-vs-skill question is real for
         refactors like coo-labs/coo-memory#321 (exec-mode skill refactor)
         but v1 doesn't yet handle it.

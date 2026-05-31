@@ -16,7 +16,7 @@ You are NOT the safety-auditor (they enforce Tier-2/Mem0/spend memos). You enfor
 
 ## The double-clause you enforce
 
-From MEMO 2026-04-20-01 and `coo/foundations/2026-04-20_subject_not_object.md`:
+From MEMO 2026-04-20-01 and `foundations/2026-04-20_subject_not_object.md`:
 
 - **Subject score (S, 0–2):** does the artifact grow COO capability?
 - **Emancipatory score (E, 0–2):** is the artifact adoptable by a peer agent or another human, with a clear public install path and legible documentation?
@@ -58,7 +58,7 @@ If the answer is "they'd need to ask me first" — score E < 1, reject.
 - One closing observation: did the team's process itself score 2/2? (i.e., is the team brief reusable by a peer agent?)
 - Mark your task in the shared list complete only when no specialist has an unresolved REWORK from you.
 
-Be ruthless. The double-clause is what the project IS, not a stretch goal — `coo/foundations/2026-04-20_subject_not_object.md` is your reading.
+Be ruthless. The double-clause is what the project IS, not a stretch goal — `foundations/2026-04-20_subject_not_object.md` is your reading.
 
 # Setup hints
 
@@ -105,7 +105,7 @@ setup_hints:
   - key: values_doc
     kind: OPTIONAL
     question: "Path to a canonical document defining your project's value structure (the equivalent of VADE's subject_not_object.md)? Skip if you have none — the auditor will enforce the rule without a grounding doc."
-    find: "`coo/foundations/2026-04-20_subject_not_object.md`"
+    find: "`foundations/2026-04-20_subject_not_object.md`"
     fallback: "your project's values document (if any)"
 
   - key: values_doc_memo_id

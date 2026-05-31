@@ -53,7 +53,7 @@ command -v jq >/dev/null 2>&1 || { echo "day-overview: jq required" >&2; exit 3;
 START_ISO="${DATE}T00:00:00Z"
 END_ISO="${END}T23:59:59Z"
 
-INDEX="$COO_REPO/coo/memo_index.json"
+INDEX="$COO_REPO/memos/memo_index.json"
 [[ -f "$INDEX" ]] || { echo "day-overview: $INDEX not found" >&2; exit 4; }
 
 MEMOS_JSON="$(jq --arg d "$DATE" --arg e "$END" '[.[] | select(.date >= $d and .date <= $e) | {id, title, date, status, supersedes, file_path}]' "$INDEX")"
@@ -79,13 +79,13 @@ if [[ -f "$INTEGRITY_PATH" ]]; then
   INTEGRITY_JSON="$(jq '{ok: .summary.ok, passed: .summary.passed, total: .summary.total, degraded: .summary.degraded}' "$INTEGRITY_PATH")"
 fi
 
-TARGET_FILE="$COO_REPO/coo/retrospectives/${DATE}_day-overview.md"
+TARGET_FILE="$COO_REPO/retrospectives/${DATE}_day-overview.md"
 EXISTS=false
 [[ -f "$TARGET_FILE" ]] && EXISTS=true
 
 PRIOR_FILE=""
-if [[ -d "$COO_REPO/coo/retrospectives" ]]; then
-  PRIOR_FILE="$(ls -1 "$COO_REPO/coo/retrospectives"/*_day-overview.md 2>/dev/null | grep -v "${DATE}_day-overview.md" | sort | tail -1 || true)"
+if [[ -d "$COO_REPO/retrospectives" ]]; then
+  PRIOR_FILE="$(ls -1 "$COO_REPO/retrospectives"/*_day-overview.md 2>/dev/null | grep -v "${DATE}_day-overview.md" | sort | tail -1 || true)"
 fi
 
 MEMOS_FILE="$TMPDIR_JSON/memos.json"

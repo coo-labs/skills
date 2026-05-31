@@ -140,7 +140,7 @@ setup_hints:
 - `find_unique: true` — assert the `find` string appears exactly
   once. If 0 or 2+, abort with a diagnostic. Use when the literal
   would collide with unrelated occurrences (e.g. the path
-  `coo/retrospectives/` may appear both as an output dir and in a
+  `retrospectives/` may appear both as an output dir and in a
   cross-reference).
 - `fallback` — what to substitute if the user skips, detection
   fails, or the answer is empty. Required for `OPTIONAL` and
@@ -162,13 +162,13 @@ setup_hints:
   - key: retrospectives_dir
     kind: PROMPT
     question: "Where should day-overview files land? (e.g. docs/retrospectives/, logs/daily/)"
-    find: "coo/retrospectives/"
+    find: "retrospectives/"
     fallback: "docs/retrospectives/"
 
   - key: memo_index_path
     kind: OPTIONAL
     question: "Path to your memo/record index file (JSON array), or 'skip' if you have no such index."
-    find: "coo/memo_index.json"
+    find: "memos/memo_index.json"
     fallback: ""  # empty string means "skill will skip the memos step at runtime"
 
   - key: repo_list
@@ -212,7 +212,7 @@ Example (from `commission-retrospective`):
 script_hints:
   - path: scripts/commission-retrospective.sh
     treatment: REGENERATE-PER-USER
-    rationale: "Hardcodes coo-labs/coo-memory, coo/memo_index.json paths; rewrite per your repo layout."
+    rationale: "Hardcodes coo-labs/coo-memory, memos/memo_index.json paths; rewrite per your repo layout."
 
   - path: templates/historian-prompt.md
     treatment: PARAMETERIZE
@@ -276,7 +276,7 @@ add its `# Setup hints` section at the bottom. Checklist:
 2. For each, decide kind: PROMPT (user must supply), DETECT
    (probe), OPTIONAL (skip is fine).
 3. Write `find` strings that are unambiguous. Prefer paths with
-   leading directory context (`coo/retrospectives/`) over bare
+   leading directory context (`retrospectives/`) over bare
    filenames.
 4. **Verify each `find` string actually appears in the body**
    — markdown wraps lines at ~70 chars, so a string you wrote as

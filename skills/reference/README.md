@@ -91,9 +91,9 @@ These skills cite VADE-internal artifacts as worked examples:
 - `chat-mode` references a specific memo and retrospective as the
   binding-lens and originating session.
 - `exec-mode` references VADE's project board structure, the
-  `coo/CLAUDE.md` boot order, and the integrity-check probe.
+  `CLAUDE.md` boot order, and the integrity-check probe.
 - `day-overview` and `commission-retrospective` walk the five
-  `coo-labs/*` repos, read `coo/memo_index.json`, and snapshot
+  `coo-labs/*` repos, read `memos/memo_index.json`, and snapshot
   the VADE integrity-check JSON shape.
 - `briefing` writes into `briefings/` and follows a
   `coo-memory`-specific branch / PR convention; the
@@ -163,7 +163,7 @@ audits; staged-checkpoint skill authoring — DO port.
    refactor in place / abort) — those are the load-bearing
    parts.
 9. Per-run retrospectives in
-   `coo/personas/exec-mode-retrospectives/` (or your equivalent)
+   `personas/exec-mode-retrospectives/` (or your equivalent)
    compound discipline over time; the persona file's
    "Discipline rollup" section is where you fold standing
    lessons with provenance citations.
@@ -172,10 +172,10 @@ audits; staged-checkpoint skill authoring — DO port.
 
 The SKILL.md files reference doctrine files and worked-example
 substrate by path. Installing them unchanged leaves the consumer's
-agent looking for files that don't exist (`coo/personas/exec-mode.md`,
-`coo/retrospectives/2026-05-03_what-works-and-why.md`,
-`coo/CLAUDE.md`, `coo/briefings/README.md`, `coo/memo_index.json`,
-`coo/status_check_template.md`, `coo/culture_system_sop.md`,
+agent looking for files that don't exist (`personas/exec-mode.md`,
+`retrospectives/2026-05-03_what-works-and-why.md`,
+`CLAUDE.md`, `briefings/README.md`, `memos/memo_index.json`,
+`coo/status_check_template.md`, `operations/culture_system_sop.md`,
 `TOOLS.md`, `coo-logs/sessions/`). The substrate-agnostic
 skills under `skills/` proper (`quarto-docs`, `tldraw-docs`,
 `canvas-ui`, `peer-review`) install cleanly; these don't.

@@ -1,4 +1,4 @@
-# coo/personas/
+# personas/
 
 *Loaded-on-demand COO personas. A persona is a bias-overlay invoked
 by an explicit slash command — distinct from the standard COO
@@ -46,7 +46,7 @@ discipline-rollup additions) land on normal PR review.
 
 ## Adding a persona
 
-1. Author `coo/personas/<name>.md` following the structure of an
+1. Author `personas/<name>.md` following the structure of an
    existing persona — clear `What this is` / `When this applies` /
    phase shape / **discipline rollup** (folded from any pre-existing
    retrospectives, with `(vN-from-<retro-slug>)` provenance) /

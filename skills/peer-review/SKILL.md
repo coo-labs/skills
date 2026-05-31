@@ -26,7 +26,7 @@ not as docs a reader can open:
   paired-file reference + atom checklist)
 - `coo-labs/coo-memory#639`–`#673` — atomic issue shape (quote + section
   + suggested edit + scope/cluster/cross-cut labels)
-- `coo-memory/coo/briefings/029-decentering-mind-revision-implementer.md`
+- `coo-memory/briefings/029-decentering-mind-revision-implementer.md`
   — re-runnable per-atom PR session briefing (the template to adapt)
 
 A consumer adapting this skill into their own repository should
@@ -176,12 +176,12 @@ Run only on explicit user request. The decomposition produces a
 trackable issue tree plus a re-runnable implementer briefing so the
 per-atom PR work can happen asynchronously across multiple sessions.
 
-1. **Land the artifact + reviews to `coo/_drafts/<topic>/`:**
+1. **Land the artifact + reviews to `_drafts/<topic>/`:**
 
    - `<topic>.md` (the artifact itself, working file for PRs)
    - `review_<role>.md` per reviewer (paired files; long-form review
      text doesn't belong in issue bodies — issue-shape-lint per
-     `coo/operations/issue-pr-hygiene.md`)
+     `operations/issue-pr-hygiene.md`)
 
 2. **Create labels** (reuse existing if present; create otherwise):
 
@@ -224,8 +224,8 @@ per-atom PR work can happen asynchronously across multiple sessions.
    atoms are filed and IDs are known.
 
 5. **Write the implementer briefing** under
-   `coo/briefings/NNN-<topic>-revision-implementer.md`. Use
-   `coo/briefings/TEMPLATE.md` as the shape; use briefing 029 as the
+   `briefings/NNN-<topic>-revision-implementer.md`. Use
+   `briefings/TEMPLATE.md` as the shape; use briefing 029 as the
    worked example. The briefing must:
 
    - Use the native **Readiness=Ready** field value as the trigger
