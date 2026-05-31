@@ -1,6 +1,6 @@
 ---
 name: chat-mode
-description: "Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode — the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, coo-labs/coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `coo/retrospectives/2026-05-03_what-works-and-why.md`."
+description: "Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode — the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, coo-labs/coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `retrospectives/2026-05-03_what-works-and-why.md`."
 disable-model-invocation: true
 argument-hint: optional starting topic
 metadata:
@@ -44,8 +44,8 @@ Complete the `coo-memory/CLAUDE.md` reading order if not yet done this session. 
 
 Read in parallel:
 
-- `coo/retrospectives/2026-05-03_what-works-and-why.md` — the originating session. Names the arc (reflect → observe → generalize → optionally formalize) and the meta-frames it held.
-- `coo/memos/2026-05-03-b4ye.md` — the binding lens (spec-led vs use-led substrate primitives).
+- `retrospectives/2026-05-03_what-works-and-why.md` — the originating session. Names the arc (reflect → observe → generalize → optionally formalize) and the meta-frames it held.
+- `memos/2026-05-03-b4ye.md` — the binding lens (spec-led vs use-led substrate primitives).
 
 These files established (carry this if the paths don't resolve in your repo): (1) the arc — *reflect → observe → generalize → optionally formalize*; (2) the distinction between spec-led primitives (form pre-specifiable, instances categorical) and use-led primitives (form fits content, instances contextually individuated). Chat-mode is itself an instance: the skill is spec-led, the dialogue is use-led.
 
@@ -86,8 +86,8 @@ Standard COO discipline binds (identity, governance, preferences). Chat-mode add
 
 ```text
 coo-memory/CLAUDE.md (boot reading order — Step 1)
-coo-memory/coo/retrospectives/2026-05-03_what-works-and-why.md (worked example)
-coo-memory/coo/memos/2026-05-03-b4ye.md (spec-led vs use-led binding lens)
+coo-memory/retrospectives/2026-05-03_what-works-and-why.md (worked example)
+coo-memory/memos/2026-05-03-b4ye.md (spec-led vs use-led binding lens)
 coo-memory/.claude/skills/exec-mode/SKILL.md (sibling mode; structural reference)
 ```
 
@@ -117,7 +117,7 @@ setup_hints:
   - key: worked_example_retro
     kind: OPTIONAL
     question: "Path to a retrospective or journal entry from a past open-ended dialogue session that named a useful arc or framing? Provide the path, or skip — the carry-forward summary in the skill is substrate-independent prose and works alone."
-    find: "- `coo/retrospectives/2026-05-03_what-works-and-why.md` — the originating session. Names the arc (reflect → observe → generalize → optionally formalize) and the meta-frames it held.\n- `coo/memos/2026-05-03-b4ye.md` — the binding lens (spec-led vs use-led substrate primitives)."
+    find: "- `retrospectives/2026-05-03_what-works-and-why.md` — the originating session. Names the arc (reflect → observe → generalize → optionally formalize) and the meta-frames it held.\n- `memos/2026-05-03-b4ye.md` — the binding lens (spec-led vs use-led substrate primitives)."
     fallback: "(No worked example yet — update this skill descriptively after the first chat-mode session produces one.)"
 
   - key: binding_lens_summary

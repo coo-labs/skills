@@ -11,7 +11,7 @@
 #   --manual     Fallback orchestrator when in-session Task is unavailable;
 #                sequences two `claude -p` invocations using the briefs.
 #
-# See <coo-memory>/coo/culture_system_sop.md (SOP-CULTURE-001) for spec.
+# See <coo-memory>/operations/culture_system_sop.md (SOP-CULTURE-001) for spec.
 # See <coo-memory>/.claude/skills/commission-retrospective/SKILL.md for procedure.
 set -euo pipefail
 
@@ -98,15 +98,15 @@ emit_scope() {
   fi
 
   local memos_json='[]'
-  local index_path="$COO_REPO/coo/memo_index.json"
+  local index_path="$COO_REPO/memos/memo_index.json"
   if [ -f "$index_path" ]; then
     memos_json=$(jq --arg s "$SINCE" --arg u "$until_resolved" \
       '[.[] | select(.date >= $s and .date <= $u)]' "$index_path" 2>/dev/null || echo '[]')
   fi
 
   local foundations_json='[]'
-  if [ -d "$COO_REPO/coo/foundations" ]; then
-    foundations_json=$(cd "$COO_REPO/coo/foundations" 2>/dev/null \
+  if [ -d "$COO_REPO/foundations" ]; then
+    foundations_json=$(cd "$COO_REPO/foundations" 2>/dev/null \
       && ls -1 2>/dev/null \
       | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}_' \
       | grep -vE '_transcript\.md$|_agent-reports' \
@@ -118,8 +118,8 @@ emit_scope() {
   fi
 
   local prior_json='[]'
-  if [ -d "$COO_REPO/coo/retrospectives" ]; then
-    prior_json=$(cd "$COO_REPO/coo/retrospectives" 2>/dev/null \
+  if [ -d "$COO_REPO/retrospectives" ]; then
+    prior_json=$(cd "$COO_REPO/retrospectives" 2>/dev/null \
       && ls -1 2>/dev/null \
       | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}[_-]' \
       | jq -R -s 'split("\n") | map(select(length > 0))' 2>/dev/null \
@@ -164,7 +164,7 @@ open_pr() {
   if [ -n "${BODY_FILE:-}" ] && [ -f "${BODY_FILE}" ]; then
     body_arg="--body-file ${BODY_FILE}"
   else
-    body_arg="--body 'Draft retrospective; see coo/_drafts/ for the artifact and sub-agent reports.'"
+    body_arg="--body 'Draft retrospective; see _drafts/ for the artifact and sub-agent reports.'"
   fi
   local branch
   branch=$(git -C "$COO_REPO" branch --show-current 2>/dev/null || echo "")
@@ -188,10 +188,10 @@ implemented. Expected shape:
   claude -p --brief templates/subagent-pr-graph-brief.md ...
   claude -p --brief templates/historian-prompt.md ...
 
-Each invocation writes to a coo/_drafts/ path matching the slug. Ship
+Each invocation writes to a _drafts/ path matching the slug. Ship
 this when the in-session Task-subagent surface is proven unavailable on
 a supported harness — until then, manual orchestration is the workaround.
-See <coo-memory>/coo/culture_system_sop.md §3c.
+See <coo-memory>/operations/culture_system_sop.md §3c.
 EOF
   exit 6
 }

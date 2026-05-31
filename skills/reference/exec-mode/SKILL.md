@@ -1,6 +1,6 @@
 ---
 name: exec-mode
-description: "Load the executive persona for sessions where the natural shape is delegate exploration → preserve main-context for decisions and action → reflect on state and priorities. Three modes fit: sweep/cleanup, strategic reflection, or both. Reads `coo/personas/exec-mode.md` (the persona doctrine, including its discipline rollup folded from prior retrospectives with per-rule provenance), adopts the discipline, then asks user for scope. Invoke as `/exec-mode --revise-persona` to enter persona-revision mode (re-introduces read-all-retros + plan-mode REQUIRED + adversarial-auditor gates per the persona's `Persona-revision discipline` section). Use when starting a consolidation pass on open PRs/issues, when reflecting on substrate state and priorities, or when revising the persona itself. Don't invoke for narrow code-task work, single-PR review, or anything where standard COO discipline already fits — exec-mode is bias-overlay for broad-scope sessions, not a wrapper around the standard COO."
+description: "Load the executive persona for sessions where the natural shape is delegate exploration → preserve main-context for decisions and action → reflect on state and priorities. Three modes fit: sweep/cleanup, strategic reflection, or both. Reads `personas/exec-mode.md` (the persona doctrine, including its discipline rollup folded from prior retrospectives with per-rule provenance), adopts the discipline, then asks user for scope. Invoke as `/exec-mode --revise-persona` to enter persona-revision mode (re-introduces read-all-retros + plan-mode REQUIRED + adversarial-auditor gates per the persona's `Persona-revision discipline` section). Use when starting a consolidation pass on open PRs/issues, when reflecting on substrate state and priorities, or when revising the persona itself. Don't invoke for narrow code-task work, single-PR review, or anything where standard COO discipline already fits — exec-mode is bias-overlay for broad-scope sessions, not a wrapper around the standard COO."
 disable-model-invocation: true
 argument-hint: optional scope hint, or --revise-persona
 metadata:
@@ -14,7 +14,7 @@ Executive bias-overlay for broad-scope sessions: sweep/cleanup
 across open PRs and issues, strategic reflection on substrate
 state and priorities, or combinations. The skill is the invocation
 primitive; the persona doctrine lives at `./persona.md`
-(originally `coo/personas/exec-mode.md` in the substrate this was
+(originally `personas/exec-mode.md` in the substrate this was
 extracted from — adapt to your own project's location) and is
 loaded fresh each session. **The persona file wins on any
 procedural disagreement.**
@@ -38,14 +38,14 @@ that doesn't benefit from delegated parallel-sub-agent exploration.
 
 ## Procedure
 
-1. **Standard COO boot.** If the `coo/CLAUDE.md` reading order is
+1. **Standard COO boot.** If the `CLAUDE.md` reading order is
    not yet complete this session, complete it before continuing.
    The persona's discipline expects identity / governance /
    preferences / episodic / lineage substrate to be loaded first.
-2. **Load persona doctrine.** Read `coo/personas/exec-mode.md` in
+2. **Load persona doctrine.** Read `personas/exec-mode.md` in
    full. Routine /exec-mode invocations rely on its **Discipline
    rollup** (rule-name index + provenance map). Persona
-   retrospectives in `coo/personas/exec-mode-retrospectives/` are
+   retrospectives in `personas/exec-mode-retrospectives/` are
    NOT read at boot in routine mode — only in `--revise-persona`
    mode.
 3. **Mode selection.** If `--revise-persona` is in `$ARGUMENTS`,
@@ -79,8 +79,8 @@ that doesn't benefit from delegated parallel-sub-agent exploration.
 
 ```text
 coo-memory/.claude/skills/exec-mode/SKILL.md (this file)
-coo-memory/coo/personas/exec-mode.md (persona doctrine — SOT)
-coo-memory/coo/personas/exec-mode-retrospectives/ (audit trail)
+coo-memory/personas/exec-mode.md (persona doctrine — SOT)
+coo-memory/personas/exec-mode-retrospectives/ (audit trail)
 coo-memory/CLAUDE.md (standard COO boot — substrate)
 ```
 
@@ -89,8 +89,8 @@ the persona file wins.
 
 ## Cross-references
 
-- `coo/personas/README.md` — persona-overlay pattern doc
-- `coo/parallel_instance_protocol.md` §8 + §8.5 — sub-agent dispatch
+- `personas/README.md` — persona-overlay pattern doc
+- `operations/parallel_instance_protocol.md` §8 + §8.5 — sub-agent dispatch
 
 $ARGUMENTS
 
@@ -106,7 +106,7 @@ setup_hints:
   - key: boot_procedure_ref
     kind: PROMPT
     question: "Path to your agent's boot/reading-order file (e.g. CLAUDE.md)? Used in Step 1 of the procedure."
-    find: "the `coo/CLAUDE.md` reading order"
+    find: "the `CLAUDE.md` reading order"
     fallback: "your project's boot reading order (if you have one)"
 
   - key: persona_doctrine_path
@@ -118,7 +118,7 @@ setup_hints:
   - key: persona_doctrine_path_long
     kind: OPTIONAL
     question: "Same path again, with full prose context — see find string. Skip to leave the VADE worked-example reference."
-    find: "(originally `coo/personas/exec-mode.md` in the substrate this was\nextracted from — adapt to your own project's location)"
+    find: "(originally `personas/exec-mode.md` in the substrate this was\nextracted from — adapt to your own project's location)"
     fallback: ""
 
   - key: repo_set_description
@@ -151,7 +151,7 @@ setup_hints:
 script_hints:
   - path: persona.md
     treatment: REGENERATE-PER-USER
-    rationale: "The persona doctrine is the heart of exec-mode and is densely substrate-coupled (five named repos, integrity-check probe paths, proj:* labels, permanently-open semantics, coo/lineage/ manifest paths, CB-006 quorum, named auditor agents). Mechanical substitution produces an incoherent doctrine. The adapted version is emitted as a skeleton with Phase 0-4 headings filled in but the discipline-rollup empty for the user to fold their own per-run lessons into. Source for inspiration: skills/reference/exec-mode/persona.md (this file's sibling — read but do not install verbatim)."
+    rationale: "The persona doctrine is the heart of exec-mode and is densely substrate-coupled (five named repos, integrity-check probe paths, proj:* labels, permanently-open semantics, lineage/ manifest paths, CB-006 quorum, named auditor agents). Mechanical substitution produces an incoherent doctrine. The adapted version is emitted as a skeleton with Phase 0-4 headings filled in but the discipline-rollup empty for the user to fold their own per-run lessons into. Source for inspiration: skills/reference/exec-mode/persona.md (this file's sibling — read but do not install verbatim)."
 
   - path: personas-README.md
     treatment: PARAMETERIZE

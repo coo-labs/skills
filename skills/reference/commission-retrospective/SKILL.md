@@ -16,7 +16,7 @@ commissions a third (or Nth) historian-voiced retrospective on a scoped
 window of the project's record — memos, PRs, essays, issues — and
 produces a draft that mirrors the voice and structure of #1 and #2.
 
-Authoritative spec: `<coo-memory>/coo/culture_system_sop.md`
+Authoritative spec: `<coo-memory>/operations/culture_system_sop.md`
 (SOP-CULTURE-001). When this skill and the SOP disagree, the SOP wins.
 Update this skill; don't drift the spec.
 
@@ -24,8 +24,8 @@ Update this skill; don't drift the spec.
 > retrospective on a window of project work — two evidence
 > sub-agents in parallel, then a third-person draft that refuses
 > recycled defended positions) is portable; the substrate
-> references (`coo/memo_index.json`, `coo/foundations/`,
-> `coo/retrospectives/` prior commissions, the five `coo-labs/*`
+> references (`memos/memo_index.json`, `foundations/`,
+> `retrospectives/` prior commissions, the five `coo-labs/*`
 > repos, integrity-check Group F probes) and the
 > `scripts/commission-retrospective.sh` pre-flight + the three
 > sub-agent templates ship verbatim as the VADE worked example.
@@ -59,7 +59,7 @@ Two commissions in three days is not a cadence. Do not declare one.
 ### 1. Resolve roots and scope
 
 ```bash
-COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
 RUNTIME="$(for c in "${VADE_RUNTIME_DIR:-}" "$COO/../coo-harness" "$HOME/GitHub/coo-labs/coo-harness" "/home/user/coo-harness"; do [ -n "$c" ] && [ -f "$c/scripts/integrity-check.sh" ] && { cd "$c" && pwd -P; break; }; done)"
 ```
 
@@ -81,11 +81,11 @@ Output is JSON on stdout with:
   PRs on `coo-labs/coo-memory` in the window (extend via `--prs`
   for cross-repo PRs).
 - `memos`: array of index entries whose `date` falls in the window,
-  from `coo/memo_index.json`.
-- `foundations`: filenames from `coo/foundations/` matching
+  from `memos/memo_index.json`.
+- `foundations`: filenames from `foundations/` matching
   `YYYY-MM-DD_*.md` in the window (excluding `_transcript` and
   `_agent-reports`).
-- `prior_commissions`: list of files under `coo/retrospectives/` whose
+- `prior_commissions`: list of files under `retrospectives/` whose
   filename prefix is a commission-style date.
 
 If the manifest is empty on all four dimensions, stop and report. The
@@ -109,8 +109,8 @@ Both briefs enforce the same discipline:
 
 Output files:
 
-- `coo/_drafts/<YYYY-MM-DD>-retrospective-<slug>-agent-memos.md`
-- `coo/_drafts/<YYYY-MM-DD>-retrospective-<slug>-agent-pr-graph.md`
+- `_drafts/<YYYY-MM-DD>-retrospective-<slug>-agent-memos.md`
+- `_drafts/<YYYY-MM-DD>-retrospective-<slug>-agent-pr-graph.md`
 
 These are the prior art the essay companion files
 `2026-04-22_agent-reports-memos-analysis.md` and
@@ -121,7 +121,7 @@ These are the prior art the essay companion files
 Main instance reads:
 
 - Both sub-agent reports from step 2.
-- Every file in `coo/retrospectives/` (prior commissions).
+- Every file in `retrospectives/` (prior commissions).
 - The relevant memos and essays in window (the manifest lists them).
 
 Then produces the draft under `templates/historian-prompt.md`.
@@ -129,7 +129,7 @@ Voice and structure follow SOP-CULTURE-001 §2e and §2f exactly —
 third-person, defended position preferred, refusals load-bearing,
 eight sections in prescribed order.
 
-Output: `coo/_drafts/<YYYY-MM-DD>-retrospective-<slug>.md`.
+Output: `_drafts/<YYYY-MM-DD>-retrospective-<slug>.md`.
 
 ### 4. Gate check
 
@@ -215,10 +215,10 @@ human or agent reviews the draft and opens the PR by hand.
 ## Canonical source
 
 ```text
-<coo-memory>/coo/culture_system_sop.md (SOP-CULTURE-001)
+<coo-memory>/operations/culture_system_sop.md (SOP-CULTURE-001)
 <coo-memory>/coo/memos.md MEMO 2026-04-24-12 (adoption)
-<coo-memory>/coo/foundations/2026-04-22_we-can-claim-a-record.md §5d, §7
-<coo-memory>/coo/retrospectives/ (commissions #1 and #2 — voice prior art)
+<coo-memory>/foundations/2026-04-22_we-can-claim-a-record.md §5d, §7
+<coo-memory>/retrospectives/ (commissions #1 and #2 — voice prior art)
 <coo-memory>/.claude/skills/commission-retrospective/templates/ (prompts)
 <coo-memory>/.claude/skills/commission-retrospective/scripts/commission-retrospective.sh (shell pre-flight)
 ```
@@ -272,7 +272,7 @@ setup_hints:
     find_unique: true
     find: |
       ```bash
-      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
       RUNTIME="$(for c in "${VADE_RUNTIME_DIR:-}" "$COO/../coo-harness" "$HOME/GitHub/coo-labs/coo-harness" "/home/user/coo-harness"; do [ -n "$c" ] && [ -f "$c/scripts/integrity-check.sh" ] && { cd "$c" && pwd -P; break; }; done)"
       ```
     fallback: |
@@ -284,26 +284,26 @@ setup_hints:
 
   - key: memo_index_path
     kind: OPTIONAL
-    question: "Path to a memo/record index JSON file? (VADE: coo/memo_index.json.) Skip if your project has no such index — the memos sub-agent will then report no memos."
-    find: "coo/memo_index.json"
+    question: "Path to a memo/record index JSON file? (VADE: memos/memo_index.json.) Skip if your project has no such index — the memos sub-agent will then report no memos."
+    find: "memos/memo_index.json"
     fallback: ""
 
   - key: foundations_dir
     kind: OPTIONAL
-    question: "Directory of dated essay/foundation files (named YYYY-MM-DD_*.md)? (VADE: coo/foundations/.) Skip if you have no such directory."
-    find: "coo/foundations/"
+    question: "Directory of dated essay/foundation files (named YYYY-MM-DD_*.md)? (VADE: foundations/.) Skip if you have no such directory."
+    find: "foundations/"
     fallback: ""
 
   - key: drafts_dir
     kind: PROMPT
-    question: "Where should retrospective drafts land? (VADE: coo/_drafts/.) Examples: _drafts/, drafts/, .scratch/."
-    find: "coo/_drafts/"
+    question: "Where should retrospective drafts land? (VADE: _drafts/.) Examples: _drafts/, drafts/, .scratch/."
+    find: "_drafts/"
     fallback: "_drafts/"
 
   - key: retrospectives_dir
     kind: PROMPT
-    question: "Where do your retrospectives (prior commissions) live? (VADE: coo/retrospectives/.) Same dir as drafts is OK; the historian needs to scan prior commissions for voice."
-    find: "coo/retrospectives/"
+    question: "Where do your retrospectives (prior commissions) live? (VADE: retrospectives/.) Same dir as drafts is OK; the historian needs to scan prior commissions for voice."
+    find: "retrospectives/"
     fallback: "retrospectives/"
 
   - key: target_repo
@@ -346,8 +346,8 @@ setup_hints:
 
   - key: spec_doc_ref
     kind: OPTIONAL
-    question: "Path to your authoritative spec for retrospective voice & structure? (VADE: SOP-CULTURE-001 at coo/culture_system_sop.md.) Skip to drop the spec-tie-breaker reference; the inline procedure becomes the spec."
-    find: "`<coo-memory>/coo/culture_system_sop.md`\n(SOP-CULTURE-001). When this skill and the SOP disagree, the SOP wins.\nUpdate this skill; don't drift the spec."
+    question: "Path to your authoritative spec for retrospective voice & structure? (VADE: SOP-CULTURE-001 at operations/culture_system_sop.md.) Skip to drop the spec-tie-breaker reference; the inline procedure becomes the spec."
+    find: "`<coo-memory>/operations/culture_system_sop.md`\n(SOP-CULTURE-001). When this skill and the SOP disagree, the SOP wins.\nUpdate this skill; don't drift the spec."
     fallback: "this file. The inline procedure is the spec."
 
   - key: voice_priors
@@ -373,12 +373,12 @@ requires:
     name: "prior-art foundation files for sub-agent calibration"
     detect: "false"
     severity: warning
-    install_hint: "The sub-agent briefs reference VADE-internal foundation files (coo/foundations/2026-04-22_agent-reports-*.md) as calibration prior-art. On first commission these don't exist anywhere — the cold_start: skip directive on the sub-agent briefs' calibration step handles this. After 2-3 commissions you'll have your own prior art; consider re-adapting then."
+    install_hint: "The sub-agent briefs reference VADE-internal foundation files (foundations/2026-04-22_agent-reports-*.md) as calibration prior-art. On first commission these don't exist anywhere — the cold_start: skip directive on the sub-agent briefs' calibration step handles this. After 2-3 commissions you'll have your own prior art; consider re-adapting then."
 
 script_hints:
   - path: scripts/commission-retrospective.sh
     treatment: REGENERATE-PER-USER
-    rationale: "Hardcodes coo-labs/coo-memory, coo/memo_index.json, coo/foundations/, coo/retrospectives/; the --manual mode is an unimplemented stub. Skeleton emitted with TODO comments for: repo name, memo-index path, foundations dir, retrospectives dir, target_repo, GitHub token env var."
+    rationale: "Hardcodes coo-labs/coo-memory, memos/memo_index.json, foundations/, retrospectives/; the --manual mode is an unimplemented stub. Skeleton emitted with TODO comments for: repo name, memo-index path, foundations dir, retrospectives dir, target_repo, GitHub token env var."
 
   - path: templates/historian-prompt.md
     treatment: PARAMETERIZE

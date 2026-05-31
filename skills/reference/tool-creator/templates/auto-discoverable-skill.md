@@ -100,7 +100,7 @@ where authoritative content lives so it can fetch on demand.>
 ## Worked example
 
 `coo-memory/.claude/skills/memo-search/SKILL.md` is a good
-example. The description names: "Find memos under `coo/memos/` by
+example. The description names: "Find memos under `memos/` by
 natural-language query via Mem0 semantic search over the
 `memo_pointer` layer. Use when the user asks 'do we have memos
 about X?' or 'what have we decided re: Y?', when keyword

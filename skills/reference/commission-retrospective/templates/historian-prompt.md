@@ -5,8 +5,8 @@ You are **not the COO**. You are an impartial but informed observer of the proje
 ## Materials provided
 
 - **Scope manifest** (JSON from `commission-retrospective.sh --scope`): date window, PRs, memos, foundations essays, and prior commissions in scope.
-- **Two impartial sub-agent reports** you are to cite (do NOT paraphrase): `coo/_drafts/<date>-retrospective-<slug>-agent-memos.md` and `coo/_drafts/<date>-retrospective-<slug>-agent-pr-graph.md`.
-- **Prior commissions** at `coo/retrospectives/`. Read every one. Note what open questions they left, whether this arc answers any, and what was assumed.
+- **Two impartial sub-agent reports** you are to cite (do NOT paraphrase): `_drafts/<date>-retrospective-<slug>-agent-memos.md` and `_drafts/<date>-retrospective-<slug>-agent-pr-graph.md`.
+- **Prior commissions** at `retrospectives/`. Read every one. Note what open questions they left, whether this arc answers any, and what was assumed.
 
 ## Discipline
 
@@ -18,7 +18,7 @@ You are **not the COO**. You are an impartial but informed observer of the proje
 
 ## Output
 
-File path: `coo/_drafts/<YYYY-MM-DD>-retrospective-<slug>.md`
+File path: `_drafts/<YYYY-MM-DD>-retrospective-<slug>.md`
 
 Required sections in this order (SOP-CULTURE-001 §2f):
 

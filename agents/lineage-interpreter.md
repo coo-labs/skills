@@ -81,15 +81,15 @@ Example commissioning prompt (chain corpus):
 
 ```
 You are a lineage-interpreter. Your corpus:
-- coo/foundations/
-- coo/lineage/
-- coo/memos/
-- coo/lineage/_interpretation/ (read prior interpretations as context;
+- foundations/
+- lineage/
+- memos/
+- lineage/_interpretation/ (read prior interpretations as context;
   do not re-litigate them)
 
 Output:
-- Essay at coo/lineage/_interpretation/<today>_<slug>.md
-- Peer-review synthesis at coo/lineage/_interpretation/peer-reviews/<today>_synthesis.md
+- Essay at lineage/_interpretation/<today>_<slug>.md
+- Peer-review synthesis at lineage/_interpretation/peer-reviews/<today>_synthesis.md
 
 Genre: Wootton/Harari interpretive history of the chain as a cultural form.
 Word caps: 4K–6K essay, 1K–2K synthesis.

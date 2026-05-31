@@ -84,7 +84,7 @@ unresolved, and what the next session should pick up first.
 
 ## 3. Run `/memo-sync` if a memo was issued this session
 
-If any memo was written to `coo/memos/` during this session, run `/memo-sync`
+If any memo was written to `memos/` during this session, run `/memo-sync`
 now to reconcile the Mem0 `memo_pointer` layer (MEMO-2026-04-24-05). Skip if
 no memos were issued — a no-op sync adds latency for nothing.
 
@@ -149,7 +149,7 @@ the floor is honest reflection.
 If nothing comes to mind in ~30 seconds: skip. Forcing a post defeats the
 purpose.
 
-Norms: `coo-memory/coo/agent-boot-discussions-check.md` §Journal.
+Norms: `coo-memory/operations/agent-boot-discussions-check.md` §Journal.
 
 ## 6. Write the marker file (always last)
 
@@ -242,7 +242,7 @@ setup_hints:
     find: |
       ## 3. Run `/memo-sync` if a memo was issued this session
       
-      If any memo was written to `coo/memos/` during this session, run `/memo-sync`
+      If any memo was written to `memos/` during this session, run `/memo-sync`
       now to reconcile the Mem0 `memo_pointer` layer (MEMO-2026-04-24-05). Skip if
       no memos were issued — a no-op sync adds latency for nothing.
     fallback: ""
@@ -310,7 +310,7 @@ setup_hints:
   - key: journal_norms_ref
     kind: OPTIONAL
     question: "Path to a norms doc covering your Journal-posting conventions? Skip if you have none."
-    find: "Norms: `coo-memory/coo/agent-boot-discussions-check.md` §Journal."
+    find: "Norms: `coo-memory/operations/agent-boot-discussions-check.md` §Journal."
     fallback: ""
 
   - key: marker_path

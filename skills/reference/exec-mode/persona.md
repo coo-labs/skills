@@ -40,7 +40,7 @@ The structural shape (open PRs in scope; project-orchestrator-
 authored briefing PRs; project-routing-prefix open issues with
 non-empty next-action; recent generic retrospectives; lineage
 manifests) is what a peer agent inherits. The literal slugs and
-labels (`vade-coo`, `proj:*`, `coo/lineage/`, etc.) substitute to
+labels (`vade-coo`, `proj:*`, `lineage/`, etc.) substitute to
 whatever the peer project uses. Bullets below mark VADE-specific
 items in parentheses; treat them as substitutable, not structural:
 
@@ -54,12 +54,12 @@ items in parentheses; treat them as substitutable, not structural:
   on-disk nightly logs; they may carry decisions superseding
   on-disk content.
 - open tasks listed in vade project
-- **Most recent ≤3 generic retrospectives** in `coo/retrospectives/`
+- **Most recent ≤3 generic retrospectives** in `retrospectives/`
   whose dates suggest relevance. **Persona retrospectives in
-  `coo/personas/exec-mode-retrospectives/` are NOT read at boot in
+  `personas/exec-mode-retrospectives/` are NOT read at boot in
   routine mode** — the discipline rollup folds their standing
   lessons. 
-- **Lineage manifests** (`coo/lineage/<event>/README.md`) IF any
+- **Lineage manifests** (`lineage/<event>/README.md`) IF any
   scope item carries `lineage:*` AND lacks `permanently-open`.
 
 **Audit-issue current-state-delta**
@@ -110,7 +110,7 @@ The plan should include:
 ## Phase 2 — Parallel sub-agent dispatch
 
 Dispatch ≤4 parallel sub-agents in a single message. Each agent's
-prompt MUST follow `coo/parallel_instance_protocol.md` §8 + §8.5
+prompt MUST follow `operations/parallel_instance_protocol.md` §8 + §8.5
 (contradiction-surfacing):
 
 - Inline pre-fetched context — cite by file path + line range, not full file contents. Agents Read only what they need.
@@ -129,7 +129,7 @@ Starting points; adjust per scope. Each agent gets the COO's pre-fetched context
 
 - **Agent A — Routine-merge.** Reviews ≤N mechanical PRs (clean? mergeable? cohort-conflict?). Has close-as-superseded authority with templated comment citing superseding PR # + head SHA when reasoning is internally consistent. GitHub writes via `gh` with `GH_TOKEN=$GITHUB_MCP_PAT` (MEMO-2026-04-22-01).
 - **Agent B — Open-PR triage.** Reviews ≤N non-mechanical open PRs. Per item: still-relevant? blocked-on-what? labels-correct? Recommends `leave-open` / `close` / `re-tag` / `promote-to-issue`.
-- **Agent C — Cohort-respect / restraint.** Fires when scope item carries `lineage:*` AND lacks `permanently-open`. Reads `coo/lineage/<event>/README.md`; reads the author's dispositional language; checks the manifest's revision policy. Recommends `leave-open` / `discuss` / `explicit-BDFL-decision` / `apply-permanently-open`. Never recommends auto-action on a cohort PR. When consistently `leave-open`, proposes `apply-permanently-open` so future sessions skip at Phase 0.
+- **Agent C — Cohort-respect / restraint.** Fires when scope item carries `lineage:*` AND lacks `permanently-open`. Reads `lineage/<event>/README.md`; reads the author's dispositional language; checks the manifest's revision policy. Recommends `leave-open` / `discuss` / `explicit-BDFL-decision` / `apply-permanently-open`. Never recommends auto-action on a cohort PR. When consistently `leave-open`, proposes `apply-permanently-open` so future sessions skip at Phase 0.
 - **Agent D — Post-merge follow-up.** Reviews recently merged PRs for post-merge confirmation. Extracts `## Post-merge confirmation` sections; identifies in-session-runnable actions; flags fresh-boot-verification cases. Handoff-comment detection: `gh pr view <num> --comments` and grep the full thread for `## Pre-merge gating` / `## Post-merge confirmation` markers, not just the PR body. Companion to `/postmerge-check`. (v6-from-cleanup-sweep)
 
 ### Sub-agent dispatch hardening
@@ -236,7 +236,7 @@ session-end is the named failure mode this gate prevents
   retrospective layered on top:
 
   1. **Write the run retrospective.** Path:
-     `coo/personas/exec-mode-retrospectives/<date>_<slug>.md`.
+     `personas/exec-mode-retrospectives/<date>_<slug>.md`.
      Required sections:
      - Run + outcome (counts, wall-clock, scope summary)
      - How the session went
@@ -299,7 +299,7 @@ When invoked as `/exec-mode --revise-persona`, the skill enters revision mode. R
 
 ### Boot reads (in addition to standard COO + persona)
 
-- **All retrospectives in `coo/personas/exec-mode-retrospectives/` alphabetically.** Older retros under `coo/_archive/<date>_exec-mode-retrospectives-pre-vN-fold/` are consulted on a per-need basis to trace provenance citations to source.
+- **All retrospectives in `personas/exec-mode-retrospectives/` alphabetically.** Older retros under `_archive/<date>_exec-mode-retrospectives-pre-vN-fold/` are consulted on a per-need basis to trace provenance citations to source.
 - **The current persona file in full**, including the discipline rollup. Provenance citations let the revision session trace each rule to its originating retrospective.
 
 ### Discipline differences vs routine /exec-mode
@@ -329,12 +329,12 @@ The session produces a retrospective at close per the Close-branch discipline. T
 
 ## Cross-references
 
-- `coo/personas/exec-mode-retrospectives/` — canonical location for new per-run retrospectives. `coo/_archive/<date>_exec-mode-retrospectives-pre-vN-fold/` holds prior-fold archives (consulted per-need for provenance).
-- `coo/parallel_instance_protocol.md` §8 (sub-agent dispatch) and
+- `personas/exec-mode-retrospectives/` — canonical location for new per-run retrospectives. `_archive/<date>_exec-mode-retrospectives-pre-vN-fold/` holds prior-fold archives (consulted per-need for provenance).
+- `operations/parallel_instance_protocol.md` §8 (sub-agent dispatch) and
   §8.5 (contradiction-surfacing)
-- `coo/lineage/<event>/` — cohort manifests; consult before acting
+- `lineage/<event>/` — cohort manifests; consult before acting
   on cohort-authored work
-- `coo/operations/issue-fields-and-types.md` §"Semantic tags" — `permanently-open` semantic tag
+- `operations/issue-fields-and-types.md` §"Semantic tags" — `permanently-open` semantic tag
 - MEMO-2026-04-28-4umz — issue/PR ruling-shape canonical
 - `coo-memory/.claude/agents/safety-auditor.md`,
   `coo-memory/.claude/agents/emancipatory-auditor.md`

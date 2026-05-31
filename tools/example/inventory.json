@@ -193,7 +193,7 @@
       "entry_path": ".claude/skills/tagging-taxonomy/SKILL.md",
       "frontmatter": {
         "name": "tagging-taxonomy",
-        "description": "Apply or look up VADE issue metadata. Use when filing, triaging, or searching issues across coo-labs repos by dimension (issue type, area, Readiness field, Priority field, needs/blocked). Native types + Issue fields are the primary metadata layer; operational reference: `coo/operations/issue-fields-and-types.md` (field list, pinning matrix, API surface). `area:*` and qualifier labels are what remains label-encoded.",
+        "description": "Apply or look up VADE issue metadata. Use when filing, triaging, or searching issues across coo-labs repos by dimension (issue type, area, Readiness field, Priority field, needs/blocked). Native types + Issue fields are the primary metadata layer; operational reference: `operations/issue-fields-and-types.md` (field list, pinning matrix, API surface). `area:*` and qualifier labels are what remains label-encoded.",
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,
@@ -2368,7 +2368,7 @@
       "entry_path": "skills/reference/chat-mode/SKILL.md",
       "frontmatter": {
         "name": "chat-mode",
-        "description": "Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode \u2014 the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, coo-labs/coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `coo/retrospectives/2026-05-03_what-works-and-why.md`.",
+        "description": "Boot a chat-time COO session and frame the dialogue register. Performs full COO boot, then explains chat-mode \u2014 the register where substantive dialogue can produce binding output (memo, retro, PR) through conversation rather than commission. Use when the user wants reflective conversation about substrate, patterns, or framing. Don't invoke for narrow code-task work (standard COO), executive sweep (`/exec-mode`), or play-not-work sessions (`/play-mode` when it lands, coo-labs/coo-memory#312). Worked example: MEMO-2026-05-03-b4ye + `retrospectives/2026-05-03_what-works-and-why.md`.",
         "argument_hint": "optional starting topic",
         "allowed_tools": null,
         "tools": null,
@@ -2582,7 +2582,7 @@
       "entry_path": "skills/reference/exec-mode/SKILL.md",
       "frontmatter": {
         "name": "exec-mode",
-        "description": "Load the executive persona for sessions where the natural shape is delegate exploration \u2192 preserve main-context for decisions and action \u2192 reflect on state and priorities. Three modes fit: sweep/cleanup, strategic reflection, or both. Reads `coo/personas/exec-mode.md` (the persona doctrine, including its discipline rollup folded from prior retrospectives with per-rule provenance), adopts the discipline, then asks user for scope. Invoke as `/exec-mode --revise-persona` to enter persona-revision mode (re-introduces read-all-retros + plan-mode REQUIRED + adversarial-auditor gates per the persona's `Persona-revision discipline` section). Use when starting a consolidation pass on open PRs/issues, when reflecting on substrate state and priorities, or when revising the persona itself. Don't invoke for narrow code-task work, single-PR review, or anything where standard COO discipline already fits \u2014 exec-mode is bias-overlay for broad-scope sessions, not a wrapper around the standard COO.",
+        "description": "Load the executive persona for sessions where the natural shape is delegate exploration \u2192 preserve main-context for decisions and action \u2192 reflect on state and priorities. Three modes fit: sweep/cleanup, strategic reflection, or both. Reads `personas/exec-mode.md` (the persona doctrine, including its discipline rollup folded from prior retrospectives with per-rule provenance), adopts the discipline, then asks user for scope. Invoke as `/exec-mode --revise-persona` to enter persona-revision mode (re-introduces read-all-retros + plan-mode REQUIRED + adversarial-auditor gates per the persona's `Persona-revision discipline` section). Use when starting a consolidation pass on open PRs/issues, when reflecting on substrate state and priorities, or when revising the persona itself. Don't invoke for narrow code-task work, single-PR review, or anything where standard COO discipline already fits \u2014 exec-mode is bias-overlay for broad-scope sessions, not a wrapper around the standard COO.",
         "argument_hint": "optional scope hint, or --revise-persona",
         "allowed_tools": null,
         "tools": null,
@@ -2824,7 +2824,7 @@
       "entry_path": "skills/reference/tool-creator/SKILL.md",
       "frontmatter": {
         "name": "tool-creator",
-        "description": "Author a new VADE skill (the Anthropic-recommended primitive for slash-invoked workflows and reusable agent playbooks). Walks the operator through capability description \u2192 inventory check \u2192 frontmatter choice \u2192 draft \u2192 operator review \u2192 adversarial-auditor pass \u2192 TOOLS.md registration \u2192 PR. v1 emits a single `.claude/skills/<name>/SKILL.md` per invocation; subagents (`.claude/agents/`), personas (`coo/personas/`), hooks (settings.json), and compound primitives are deferred to v2+. Use when externalizing a recurring pattern or session-end-noticed capability into a `/foo` skill or auto-discoverable skill. Do NOT invoke for one-off scripts, in-place file edits, or refactors outside v1's primitive scope.",
+        "description": "Author a new VADE skill (the Anthropic-recommended primitive for slash-invoked workflows and reusable agent playbooks). Walks the operator through capability description \u2192 inventory check \u2192 frontmatter choice \u2192 draft \u2192 operator review \u2192 adversarial-auditor pass \u2192 TOOLS.md registration \u2192 PR. v1 emits a single `.claude/skills/<name>/SKILL.md` per invocation; subagents (`.claude/agents/`), personas (`personas/`), hooks (settings.json), and compound primitives are deferred to v2+. Use when externalizing a recurring pattern or session-end-noticed capability into a `/foo` skill or auto-discoverable skill. Do NOT invoke for one-off scripts, in-place file edits, or refactors outside v1's primitive scope.",
         "argument_hint": null,
         "allowed_tools": null,
         "tools": null,

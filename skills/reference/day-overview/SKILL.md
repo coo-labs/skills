@@ -14,17 +14,17 @@ metadata:
 Produces a structured retrospective for a UTC date window:
 memos issued, PRs merged, integrity-check state, grouped into
 lanes, with carried-forward follow-ups and ranked next actions.
-The file lands at `coo/retrospectives/<date>_day-overview.md`;
+The file lands at `retrospectives/<date>_day-overview.md`;
 the default flow ships via PR.
 
 Format reference: the most recent existing day-overview in
-`coo/retrospectives/`. Match its shape exactly — readers expect
+`retrospectives/`. Match its shape exactly — readers expect
 this shape, not creative restructuring.
 
 > **Reference skill.** The pattern (briefing-shape day synthesis
 > from substrate records — memos, merged PRs, integrity snapshot
 > — grouped into lanes) is portable; the worked-example paths
-> (`coo/retrospectives/`, `coo/memos/`, the five `coo-labs/*`
+> (`retrospectives/`, `memos/`, the five `coo-labs/*`
 > repo list, integrity-check JSON shape, GraphQL category and
 > label IDs) and the `scripts/day-overview.sh` manifest gatherer
 > are substrate-coupled and ship verbatim as the VADE worked
@@ -45,14 +45,14 @@ Don't invoke for:
 - Routine status updates (use `/status-check` for grounding).
 - Single-PR retrospectives (write a memo, not a day-overview).
 - Reflection that doesn't fit the briefing shape (write prose
-  to `coo/_drafts/`).
+  to `_drafts/`).
 
 ## Procedure
 
 ### 0. Resolve paths and date
 
 ```bash
-COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
 [ -n "$COO" ] || { echo "day-overview: could not find coo-memory data root"; exit 1; }
 ```
 
@@ -210,7 +210,7 @@ case "$CURRENT_BRANCH" in
   *) BRANCH="claude/day-overview-${DATE}"
      git checkout -b "$BRANCH" 2>/dev/null || git checkout "$BRANCH" ;;
 esac
-git add "coo/retrospectives/${DATE}_day-overview.md"
+git add "retrospectives/${DATE}_day-overview.md"
 git commit -m "Add ${DATE} day-overview retrospective"
 git push -u origin "$BRANCH"
 GH_TOKEN="$GITHUB_MCP_PAT" gh pr create --repo coo-labs/coo-memory --base main --head "$BRANCH" \
@@ -232,7 +232,7 @@ If `$ARGUMENTS` contains `--post`:
 # Body = file content + standard source-link footer (day-overview-specific)
 {
   cat "$TARGET_FILE"
-  printf '\n\n---\n\n*Source: [`coo/retrospectives/%s_day-overview.md`](https://github.com/coo-labs/coo-memory/blob/main/coo/retrospectives/%s_day-overview.md) on `coo-labs/coo-memory`. The file is the source of truth; this discussion is the publication surface.*\n' "$DATE" "$DATE"
+  printf '\n\n---\n\n*Source: [`retrospectives/%s_day-overview.md`](https://github.com/coo-labs/coo-memory/blob/main/retrospectives/%s_day-overview.md) on `coo-labs/coo-memory`. The file is the source of truth; this discussion is the publication surface.*\n' "$DATE" "$DATE"
 } > "/tmp/day-overview-body-${DATE}.md"
 
 # Discussion title — strip the leading "# " from the file's H1 line; no [retrospective*] prefix
@@ -290,7 +290,7 @@ Tell the user the discussion number and URL.
 ```text
 coo-memory/.claude/skills/day-overview/scripts/day-overview.sh (manifest builder)
 coo-memory/.claude/_lib/post-discussion.sh (shared GraphQL helper)
-coo-memory/coo/retrospectives/<date>_day-overview.md (output location)
+coo-memory/retrospectives/<date>_day-overview.md (output location)
 ```
 
 ## Cross-references
@@ -330,11 +330,11 @@ setup_hints:
 
   - key: data_root_discovery
     kind: OPTIONAL
-    question: "Step 0 discovers the repo root via a sentinel file (VADE looks for coo/memo_protocol.md). What's your equivalent sentinel? Skip to use git rev-parse instead."
+    question: "Step 0 discovers the repo root via a sentinel file (VADE looks for operations/memo_protocol.md). What's your equivalent sentinel? Skip to use git rev-parse instead."
     find_unique: true
     find: |
       ```bash
-      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/coo/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
       [ -n "$COO" ] || { echo "day-overview: could not find coo-memory data root"; exit 1; }
       ```
     fallback: |
@@ -345,20 +345,20 @@ setup_hints:
 
   - key: retrospectives_dir
     kind: PROMPT
-    question: "Where should day-overview files land? (VADE: coo/retrospectives/.) Examples: docs/retrospectives/, logs/daily/, .agent-logs/days/."
-    find: "coo/retrospectives/<date>_day-overview.md"
+    question: "Where should day-overview files land? (VADE: retrospectives/.) Examples: docs/retrospectives/, logs/daily/, .agent-logs/days/."
+    find: "retrospectives/<date>_day-overview.md"
     fallback: "retrospectives/<date>_day-overview.md"
 
   - key: retrospectives_dir_short
     kind: PROMPT
     question: "Same retrospectives dir without the trailing filename (used in several body locations). Provide just the directory path with trailing slash."
-    find: "coo/retrospectives/"
+    find: "retrospectives/"
     fallback: "retrospectives/"
 
   - key: memos_dir_ref
     kind: OPTIONAL
-    question: "Do you have a memos directory the skill should mention as the source-of-truth for lanes? (VADE: coo/memos/.) Skip if you have no memo system."
-    find: "`coo/memos/`"
+    question: "Do you have a memos directory the skill should mention as the source-of-truth for lanes? (VADE: memos/.) Skip if you have no memo system."
+    find: "`memos/`"
     fallback: "your project's records directory"
 
   - key: github_token_env
@@ -410,7 +410,7 @@ setup_hints:
       # Body = file content + standard source-link footer (day-overview-specific)
       {
         cat "$TARGET_FILE"
-        printf '\n\n---\n\n*Source: [`coo/retrospectives/%s_day-overview.md`](https://github.com/coo-labs/coo-memory/blob/main/coo/retrospectives/%s_day-overview.md) on `coo-labs/coo-memory`. The file is the source of truth; this discussion is the publication surface.*\n' "$DATE" "$DATE"
+        printf '\n\n---\n\n*Source: [`retrospectives/%s_day-overview.md`](https://github.com/coo-labs/coo-memory/blob/main/retrospectives/%s_day-overview.md) on `coo-labs/coo-memory`. The file is the source of truth; this discussion is the publication surface.*\n' "$DATE" "$DATE"
       } > "/tmp/day-overview-body-${DATE}.md"
       
       # Discussion title — strip the leading "# " from the file's H1 line; no [retrospective*] prefix
@@ -447,5 +447,5 @@ setup_hints:
 script_hints:
   - path: scripts/day-overview.sh
     treatment: REGENERATE-PER-USER
-    rationale: "Hardcodes five VADE repo names in REPOS array; coo/memo_index.json path; the $VADE_CLOUD_STATE_DIR integrity-check probe; four-level path-relative discovery. Mechanical substitution can't safely rewrite all of these without breaking shell quoting. Skeleton emitted with TODO comments for: REPOS list, memo-index path (or skip-block), integrity-check probe (or skip-block), output directory."
+    rationale: "Hardcodes five VADE repo names in REPOS array; memos/memo_index.json path; the $VADE_CLOUD_STATE_DIR integrity-check probe; four-level path-relative discovery. Mechanical substitution can't safely rewrite all of these without breaking shell quoting. Skeleton emitted with TODO comments for: REPOS list, memo-index path (or skip-block), integrity-check probe (or skip-block), output directory."
 ```

@@ -67,10 +67,10 @@ Example commissioning prompt:
 
 ```
 You are a research agent. Your question: what convergence rules does
-coo/committee_protocol.md define for multi-instance draft passes?
+operations/committee_protocol.md define for multi-instance draft passes?
 
 Read only these files:
-- coo/committee_protocol.md
+- operations/committee_protocol.md
 
 Do not read anything else. Do not write any files.
 Use the default research-investigator schema.
