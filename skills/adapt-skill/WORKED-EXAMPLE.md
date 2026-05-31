@@ -15,8 +15,8 @@ hints in `skills/reference/day-overview/` or
 `skills/reference/status-check/SKILL.md` references three things
 that won't resolve in a foreign repo:
 
-- The authoritative spec at `coo/status_check_template.md` v0.1
-  (used as a tie-breaker reference).
+- The authoritative spec at `_archive/2026-05-27_canonical-layout-archive-sweep/status_check_template.md` v0.1
+  (archived; used as a tie-breaker reference).
 - Mem0 by name, in the governance section ("Must not auto-write
   to Mem0").
 - A "Tier-2 content" governance concept.
@@ -30,7 +30,7 @@ setup_hints:
   - key: spec_template_path
     kind: OPTIONAL
     question: "Do you have a local spec or template file that should be the authoritative tie-breaker for this skill? Provide the path, or skip."
-    find: "coo/status_check_template.md"
+    find: "_archive/2026-05-27_canonical-layout-archive-sweep/status_check_template.md"
     fallback: ""
 
   - key: memory_layer_name
@@ -77,7 +77,7 @@ The substitution map is built:
 
 | key | find | replace |
 |---|---|---|
-| spec_template_path | `coo/status_check_template.md` | `""` (fallback) |
+| spec_template_path | `_archive/2026-05-27_canonical-layout-archive-sweep/status_check_template.md` | `""` (fallback) |
 | memory_layer_name | `Must not auto-write to Mem0` | `Must not write to any persistent memory layer` (fallback — user skipped) |
 | content_tier_term | `Must not leak Tier-2 content` | `Must not surface confidential project content` (fallback) |
 
@@ -91,9 +91,9 @@ want to do post-install.)
 `adapt-skill` writes to `./.claude/skills/status-check/SKILL.md`:
 
 - Frontmatter preserved verbatim.
-- Body lines about the authoritative spec at
-  `coo/status_check_template.md` now reference `""` (an obvious
-  marker for the user to clean up).
+- Body lines about the authoritative spec at the archived
+  template now reference `""` (an obvious marker for the user
+  to clean up).
 - The Governance section's three rules now read:
   - "Must not write to any persistent memory layer" (was: Mem0)
   - "Must not surface confidential project content" (was:

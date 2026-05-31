@@ -175,7 +175,6 @@ substrate by path. Installing them unchanged leaves the consumer's
 agent looking for files that don't exist (`personas/exec-mode.md`,
 `retrospectives/2026-05-03_what-works-and-why.md`,
 `CLAUDE.md`, `briefings/README.md`, `memos/memo_index.json`,
-`coo/status_check_template.md`, `operations/culture_system_sop.md`,
-`TOOLS.md`, `coo-logs/sessions/`). The substrate-agnostic
+`operations/culture_system_sop.md`, `TOOLS.md`, `coo-logs/sessions/`). The substrate-agnostic
 skills under `skills/` proper (`quarto-docs`, `tldraw-docs`,
 `canvas-ui`, `peer-review`) install cleanly; these don't.

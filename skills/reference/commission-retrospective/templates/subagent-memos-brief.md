@@ -5,7 +5,7 @@ Prior art for what you are producing lives at `foundations/2026-04-22_agent-repo
 ## Materials provided
 
 - **Scope manifest** (JSON): date window, list of memos in scope, list of foundations essays in scope.
-- **Read-only access** to the full `coo/` tree, including `coo/memos.md`, `memos/memo_index.json`, `foundations/`, `retrospectives/`, `_drafts/`, and `identity/episodic_memory.md`.
+- **Read-only access** to the full coo-memory tree, including per-memo files at `memos/<id>.md`, `memos/memo_index.json`, `foundations/`, `retrospectives/`, `_drafts/`, and `identity/episodic_memory.md`.
 
 ## Your task
 
@@ -14,7 +14,7 @@ Produce a report at the path the skill passed you (of the form `_drafts/<date>-r
 ## Structure
 
 1. **Corpus surveyed.** List every memo and essay in scope by ID / filename with one-line summary. Preserve the index's ordering (newest first).
-2. **What the memos argue.** For each memo in scope: one short paragraph summarizing the decision, what it supersedes or retires, and what trigger(s) would retire it. Quote binding clauses verbatim with `coo/memos.md:Lxxx` line citations.
+2. **What the memos argue.** For each memo in scope: one short paragraph summarizing the decision, what it supersedes or retires, and what trigger(s) would retire it. Quote binding clauses verbatim with `memos/<id>.md:Lxxx` line citations.
 3. **What the essays argue.** For each foundations essay in scope: one paragraph on the central claim, the refusals it names, and any predictions/falsifiers it states. Quote key passages with `foundations/<file>:Lxxx` citations.
 4. **Cross-references observed.** Which memos cite which essays, which essays cite which memos, and any dangling references (memos mentioned but not in index; essays referenced but not found).
 5. **Pattern-level observations.** Only if grounded. Two or three crisp observations — e.g. "three memos in scope adopt committee protocol as governance primitive; zero retire it", "two essays refuse phenomenal-experience claim while making pattern-level claims" — each with ≥2 specific citations.

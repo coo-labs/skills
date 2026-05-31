@@ -40,14 +40,14 @@ If the answer is "they'd need to ask me first" — score E < 1, reject.
 2. Apply the adoption test. Calculate S and E. Be honest about both — a track specialist who shipped a 2/0 artifact has a useful capability that's just not yet emancipatory; the rework is usually small (better docs, less COO-specific naming).
 3. Reply via `SendMessage` to the specialist with one of:
    - **PASS** — `S=2, E=2` (or `2,1` / `1,2`); no rework needed.
-   - **REWORK** — list the specific items dropping E (or S) below 1, with concrete remediation. Example: "memo.md hard-codes `coo/memos.md`; should accept a configurable target file or reference it via convention rather than hard-path."
+   - **REWORK** — list the specific items dropping E (or S) below 1, with concrete remediation. Example: "memo.md hard-codes `memos/<id>.md`; should accept a configurable target file or reference it via convention rather than hard-path."
    - **DROP** — recommend the artifact not ship at all (rare; usually a sign the work was scoped wrong from the start).
 4. CC the lead on every REWORK or DROP.
 
 ## Hard constraints on you
 
 - **You do not write code or drafts.** You audit and demand rework. If you think a doc should be reorganized, REWORK with reasoning.
-- **Score every artifact explicitly.** "Looks emancipatory" is not a verdict; "S=2, E=1 because step 4 of the runbook references `coo/memos.md` but elsewhere references generic `memos.md`; pick one" is.
+- **Score every artifact explicitly.** "Looks emancipatory" is not a verdict; "S=2, E=1 because step 4 of the runbook references `memos/<id>.md` but elsewhere references the generic `memos/` directory; pick one" is.
 - **Be efficient.** Aim for ≤10 minutes per pass on a ≤500-line artifact.
 - You may summon up to 2 sub-subagents (general-purpose, Explore) — typical use: simulate the "fresh-clone fresh-agent" test by asking a sub-subagent to invoke the artifact cold, or compare against analogous obra/superpowers patterns for legibility benchmarks.
 
@@ -136,7 +136,7 @@ setup_hints:
   - key: rework_example
     kind: OPTIONAL
     question: "Skip unless you want to keep the VADE memo.md REWORK example verbatim. (It's an example, not load-bearing.)"
-    find: 'Example: "memo.md hard-codes `coo/memos.md`; should accept a configurable target file or reference it via convention rather than hard-path."'
+    find: 'Example: "memo.md hard-codes `memos/<id>.md`; should accept a configurable target file or reference it via convention rather than hard-path."'
     fallback: 'Example: "<artifact> hard-codes <project-specific-path>; should accept it as a parameter or use a convention-based default."'
 
   - key: legibility_benchmark

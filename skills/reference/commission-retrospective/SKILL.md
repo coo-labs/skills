@@ -216,7 +216,7 @@ human or agent reviews the draft and opens the PR by hand.
 
 ```text
 <coo-memory>/operations/culture_system_sop.md (SOP-CULTURE-001)
-<coo-memory>/coo/memos.md MEMO 2026-04-24-12 (adoption)
+<coo-memory>/memos/2026-04-24-12.md (adoption)
 <coo-memory>/foundations/2026-04-22_we-can-claim-a-record.md §5d, §7
 <coo-memory>/retrospectives/ (commissions #1 and #2 — voice prior art)
 <coo-memory>/.claude/skills/commission-retrospective/templates/ (prompts)
