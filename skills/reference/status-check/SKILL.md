@@ -16,7 +16,7 @@ session) with **no install step**. The emancipatory clause is
 load-bearing: a non-COO agent should be able to invoke this and
 get useful output without any setup.
 
-Authoritative spec: [`coo/status_check_template.md`](../../../coo/status_check_template.md)
+Authoritative spec: [`_archive/2026-05-27_canonical-layout-archive-sweep/status_check_template.md`](https://github.com/coo-labs/coo-memory/blob/main/_archive/2026-05-27_canonical-layout-archive-sweep/status_check_template.md) (archived 2026-05-27 per canonical-layout sweep; the inline procedure below is the live spec)
 v0.1 (issue coo-labs/coo-memory#50). When this skill and the template
 disagree, the template wins. Update the skill; don't drift the
 spec.
@@ -26,7 +26,7 @@ spec.
 > with `⚠ not grounded` as the explicit "I can't answer that
 > from loaded context" marker) is portable and largely
 > substrate-agnostic; the worked-example references
-> (`coo/status_check_template.md`, MEMO-2026-04-11-08 / -10,
+> (the archived `status_check_template.md` v0.1, MEMO-2026-04-11-08 / -10,
 > MEMO-2026-04-20-01) ship verbatim. Because the procedure body
 > is just the six prompts, this is one of the easiest reference
 > skills to lift directly — the emancipatory clause (works from
@@ -137,7 +137,7 @@ install step.
 ## Canonical source
 
 ```text
-coo-memory/coo/status_check_template.md (v0.1, issue #50)
+coo-memory/_archive/2026-05-27_canonical-layout-archive-sweep/status_check_template.md (v0.1, issue #50; archived 2026-05-27)
 ```
 
 (Tie-breaker stated in the intro paragraph above; not repeated here.)
@@ -162,7 +162,7 @@ setup_hints:
   - key: spec_template_path
     kind: OPTIONAL
     question: "Do you have a local spec or template file that should be the authoritative tie-breaker for this skill? Provide the path, or skip."
-    find: "[`coo/status_check_template.md`](../../../coo/status_check_template.md)"
+    find: "[`_archive/2026-05-27_canonical-layout-archive-sweep/status_check_template.md`](https://github.com/coo-labs/coo-memory/blob/main/_archive/2026-05-27_canonical-layout-archive-sweep/status_check_template.md)"
     fallback: "this file"
     severity: warning
 
