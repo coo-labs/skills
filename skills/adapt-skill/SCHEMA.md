@@ -174,7 +174,7 @@ setup_hints:
   - key: repo_list
     kind: PROMPT
     question: "List the GitHub repos this skill should scan, comma-separated (owner/repo format)."
-    find: 'REPOS=("coo-memory" "coo-harness" "vade-canvas" "vade-governance" "coo-logs")'
+    find: 'REPOS=("coo-memory" "coo-harness" "coo-logs" "coo-console" "tjsonl" "skills" "coo4one" "vade-canvas" "site")'
     fallback: 'REPOS=()'
 
   - key: integrity_check_path

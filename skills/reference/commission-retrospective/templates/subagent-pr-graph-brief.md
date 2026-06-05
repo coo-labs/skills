@@ -5,7 +5,7 @@ Prior art for what you are producing lives at `foundations/2026-04-22_agent-repo
 ## Materials provided
 
 - **Scope manifest** (JSON): date window, list of merged PRs in scope (with numbers, titles, authors, merged_at, and URLs), optional `--prs` extension for cross-repo PRs, and the commissioning focus question if any.
-- **`gh` CLI** available with `GH_TOKEN="$GITHUB_MCP_PAT"`. Use it for PR bodies, comments, review threads, commit messages, and issue linkages. Repo scope: `coo-labs/coo-memory`, `coo-labs/vade-canvas`, `coo-labs/coo-harness`, `coo-labs/vade-governance`, `coo-labs/coo-logs`.
+- **`gh` CLI** available with `GH_TOKEN="$GITHUB_MCP_PAT"`. Use it for PR bodies, comments, review threads, commit messages, and issue linkages. Repo scope: `coo-labs/coo-memory`, `coo-labs/coo-harness`, `coo-labs/coo-logs`, `coo-labs/coo-console`, `coo-labs/tjsonl`, `coo-labs/skills`, `coo-labs/coo4one`, `coo-labs/vade-canvas`, `coo-labs/site`.
 
 ## Your task
 
