@@ -26,7 +26,7 @@ COO_REPO="$(cd "$SCRIPT_DIR/../../../.." && pwd -P)"
 
 DATE=""
 END=""
-REPOS=(coo-memory coo-harness vade-canvas vade-governance coo-logs)
+REPOS=(coo-memory coo-harness coo-logs coo-console tjsonl skills coo4one vade-canvas site)
 
 usage() {
   cat >&2 <<EOF
