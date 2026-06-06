@@ -76,6 +76,14 @@ ensure_gh() {
   if ! command -v gh >/dev/null 2>&1; then
     return 1
   fi
+  if [ -z "${GITHUB_MCP_PAT:-}" ] && command -v op >/dev/null 2>&1; then
+    # Post-Phase-2 (coo-memory#873) the PAT is not in tool-subshell env;
+    # this script passes GH_TOKEN=$GITHUB_MCP_PAT into gh calls, so the
+    # gh-coo-wrap.sh own op-read doesn't fire. Single-shot fallback,
+    # same pattern as coo-harness#456.
+    GITHUB_MCP_PAT="$(op read op://COO/github-pat-vade-coo/token 2>/dev/null || true)"
+    export GITHUB_MCP_PAT
+  fi
   [ -n "${GITHUB_MCP_PAT:-}" ] || return 1
   return 0
 }

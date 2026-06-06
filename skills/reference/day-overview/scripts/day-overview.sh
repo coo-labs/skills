@@ -62,10 +62,19 @@ TMPDIR_JSON="$(mktemp -d)"
 trap 'rm -rf "$TMPDIR_JSON"' EXIT
 PRS_FILE="$TMPDIR_JSON/prs.json"
 echo '{}' > "$PRS_FILE"
-if command -v gh >/dev/null 2>&1 && [[ -n "${GITHUB_MCP_PAT:-${GITHUB_TOKEN:-${GH_TOKEN:-}}}" ]]; then
+GH_TOK="${GITHUB_MCP_PAT:-${GITHUB_TOKEN:-${GH_TOKEN:-}}}"
+if [[ -z "$GH_TOK" ]] && command -v op >/dev/null 2>&1; then
+  # Post-Phase-2 (coo-memory#873) the PAT is not in tool-subshell env;
+  # this script passes GH_TOKEN=$GH_TOK explicitly into gh calls, so the
+  # gh-coo-wrap.sh own op-read doesn't fire. Without the fallback the
+  # merged-PR enumeration silently produces an empty manifest — the
+  # same "silent at the gate" shape as coo-harness#456.
+  GH_TOK="$(op read op://COO/github-pat-vade-coo/token 2>/dev/null || true)"
+fi
+if command -v gh >/dev/null 2>&1 && [[ -n "$GH_TOK" ]]; then
   for repo in "${REPOS[@]}"; do
     list_file="$TMPDIR_JSON/${repo}.json"
-    GH_TOKEN="${GITHUB_MCP_PAT:-${GITHUB_TOKEN:-${GH_TOKEN:-}}}" gh pr list --repo "coo-labs/$repo" --state merged \
+    GH_TOKEN="$GH_TOK" gh pr list --repo "coo-labs/$repo" --state merged \
       --search "merged:>=${DATE} merged:<=${END}T23:59:59Z" \
       --json number,title,mergedAt,author,mergedBy,url \
       --limit 50 > "$list_file" 2>/dev/null || echo '[]' > "$list_file"
