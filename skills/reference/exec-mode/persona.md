@@ -334,7 +334,7 @@ The session produces a retrospective at close per the Close-branch discipline. T
   §8.5 (contradiction-surfacing)
 - `lineage/<event>/` — cohort manifests; consult before acting
   on cohort-authored work
-- `operations/issue-fields-and-types.md` §"Semantic tags" — `permanently-open` semantic tag
+- `.claude/skills/filing-issues/references/issue-fields-and-types.md` §"Semantic tags" — `permanently-open` semantic tag
 - MEMO-2026-04-28-4umz — issue/PR ruling-shape canonical
 - `coo-memory/.claude/agents/safety-auditor.md`,
   `coo-memory/.claude/agents/emancipatory-auditor.md`
