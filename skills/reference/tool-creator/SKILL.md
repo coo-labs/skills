@@ -90,7 +90,7 @@ The skill expects (operator-supplied, prompted if absent):
 #### Step 1.1 — Resolve roots and capture intent
 
 ```bash
-COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/identity/charter.md" ] && { cd "$c" && pwd -P; break; }; done)"
 [ -n "$COO" ] || { echo "tool-creator: could not find coo-memory data root"; exit 1; }
 ```
 
@@ -487,7 +487,7 @@ setup_hints:
     question: "Step 1.1 has a COO data-root resolution block (sentinel-file discovery). Skip to replace with a generic 'cd to repo root' instruction."
     find_unique: true
     find: |-
-      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/identity/charter.md" ] && { cd "$c" && pwd -P; break; }; done)"
       [ -n "$COO" ] || { echo "tool-creator: could not find coo-memory data root"; exit 1; }
     fallback: |-
       COO="$(git rev-parse --show-toplevel 2>/dev/null)"

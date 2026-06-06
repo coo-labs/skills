@@ -52,7 +52,7 @@ Don't invoke for:
 ### 0. Resolve paths and date
 
 ```bash
-COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/identity/charter.md" ] && { cd "$c" && pwd -P; break; }; done)"
 [ -n "$COO" ] || { echo "day-overview: could not find coo-memory data root"; exit 1; }
 ```
 
@@ -330,11 +330,11 @@ setup_hints:
 
   - key: data_root_discovery
     kind: OPTIONAL
-    question: "Step 0 discovers the repo root via a sentinel file (VADE looks for operations/memo_protocol.md). What's your equivalent sentinel? Skip to use git rev-parse instead."
+    question: "Step 0 discovers the repo root via a sentinel file (VADE looks for identity/charter.md). What's your equivalent sentinel? Skip to use git rev-parse instead."
     find_unique: true
     find: |
       ```bash
-      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/identity/charter.md" ] && { cd "$c" && pwd -P; break; }; done)"
       [ -n "$COO" ] || { echo "day-overview: could not find coo-memory data root"; exit 1; }
       ```
     fallback: |

@@ -59,7 +59,7 @@ Two commissions in three days is not a cadence. Do not declare one.
 ### 1. Resolve roots and scope
 
 ```bash
-COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/identity/charter.md" ] && { cd "$c" && pwd -P; break; }; done)"
 RUNTIME="$(for c in "${VADE_RUNTIME_DIR:-}" "$COO/../coo-harness" "$HOME/GitHub/coo-labs/coo-harness" "/home/user/coo-harness"; do [ -n "$c" ] && [ -f "$c/scripts/integrity-check.sh" ] && { cd "$c" && pwd -P; break; }; done)"
 ```
 
@@ -272,7 +272,7 @@ setup_hints:
     find_unique: true
     find: |
       ```bash
-      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+      COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "${CLAUDE_PROJECT_DIR:-}/../coo-memory" "$HOME/GitHub/coo-labs/coo-memory" "/home/user/coo-memory"; do [ -n "$c" ] && [ -f "$c/identity/charter.md" ] && { cd "$c" && pwd -P; break; }; done)"
       RUNTIME="$(for c in "${VADE_RUNTIME_DIR:-}" "$COO/../coo-harness" "$HOME/GitHub/coo-labs/coo-harness" "/home/user/coo-harness"; do [ -n "$c" ] && [ -f "$c/scripts/integrity-check.sh" ] && { cd "$c" && pwd -P; break; }; done)"
       ```
     fallback: |

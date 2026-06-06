@@ -64,7 +64,7 @@ Resolve the data root and pull the subcommand off `$ARGUMENTS`:
 
 ```bash
 COO="$(for c in "${COO_MEMORY_DIR:-}" "${CLAUDE_PROJECT_DIR:-}" "/home/user/coo-memory"; do
-  [ -n "$c" ] && [ -f "$c/operations/memo_protocol.md" ] && { cd "$c" && pwd -P; break; }; done)"
+  [ -n "$c" ] && [ -f "$c/identity/charter.md" ] && { cd "$c" && pwd -P; break; }; done)"
 [ -n "$COO" ] || { echo "briefing: could not find coo-memory data root"; exit 1; }
 SUB="${ARGUMENTS%% *}"
 REST="${ARGUMENTS#"$SUB"}"; REST="${REST# }"
