@@ -1,3 +1,5 @@
+<!-- migration-sweep: skip — changelog entries record past rename events (e.g., `vade-app/skills` → `coo-labs/skills`) as historical record. Whole-file exempt; changelog is append-only by convention. -->
+
 # Changelog
 
 All notable changes to this repository are documented in this file.
